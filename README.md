@@ -26,6 +26,7 @@ print(t["default"]) -- Works fine.
 Otherwise, you have two options:
   1. Refactor your code.
   2. Compile Pluto in compatibility mode.
+
 If you wish to compile Pluto in compatibility mode, all new keywords will be prefixed with 'pluto_' to avoid breaking existing identifiers. Toggle the `PLUTO_COMPATIBLE_MODE` macro in `luaconf.h`. More information can also be found in that file.
 ## New Features:
 ### Alternative Operators
@@ -52,8 +53,8 @@ local str = "123"
 local inc_str = str:gsub(".", |c| -> tonumber(c) + 1)
 print(inc_str) -- "234"
 ```
-- The '|' token was chosen because it's not commonly used as an unary operator in programming.
-- The '->' arrow syntax looked better and didn't resemble any operators. It also plays along with common lambda tokens.
+- The `|` token was chosen because it's not commonly used as an unary operator in programming.
+- The `->` arrow syntax looked better and didn't resemble any operators. It also plays along with common lambda tokens.
 
 <a href="https://plutolang.github.io/web/#code=local%20str%20%3D%20%22123%22%0D%0Alocal%20inc_str%20%3D%20str%3Agsub(%22.%22%2C%20%7Cc%7C%20-%3E%20tonumber(c)%20%2B%201)%0D%0Aprint(inc_str)%20--%20%22234%22">Try it yourself!</a>
 ### Ternary Expressions
