@@ -5,7 +5,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@main
 
       - name: build
         run: |
