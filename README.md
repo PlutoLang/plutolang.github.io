@@ -32,6 +32,7 @@ If you wish to compile Pluto in compatibility mode, all new keywords will be pre
 ### Alternative Operators
 - `**` is a valid alternative to `^`, the power operator.
 - `!=` is a valid alternative to `~=`, the inequality operator.
+
 ### Arbitrary Characters in Numeral Literals
 Long numbers can get confusing to read for some people. `1_000_000` is now a valid alternative to `1000000`.
 ### String Indexing
