@@ -1,5 +1,7 @@
 name: Github Pages
 on: [push]
+permissions:
+  contents: write
 jobs:
   build-and-deploy:
     runs-on: windows-latest
@@ -13,9 +15,8 @@ jobs:
           npm run build
 
       - name: deploy
-        uses: |
-          Burnett01/rsync-deployments@5.2
-          JamesIves/github-pages-deploy-action@4.1.5
+        uses: Burnett01/rsync-deployments@5.2
+        uses: JamesIves/github-pages-deploy-action@4.1.5
 
         with:
           branch: gh-pages
