@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Pluto',
   tagline: 'A dialect of Lua 5.4, which adds desirable syntax and features to Lua which otherwise wouldn\'t exist.',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://well-in-that-case.github.io/plutolang.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
