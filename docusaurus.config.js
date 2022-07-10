@@ -35,9 +35,6 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
         },
-        blog: {
-          showReadingTime: true,
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -61,7 +58,6 @@ const config = {
             position: 'left',
             label: 'Introduction',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/well-in-that-case/Pluto',
             label: 'GitHub',
