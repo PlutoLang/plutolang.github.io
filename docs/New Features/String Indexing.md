@@ -6,3 +6,5 @@ print(str[200]) -- nil
 print(str[-1]) -- "d"
 ```
 Any character-intensive task — for example, a hash algorithm — will greatly benefit from this.
+
+<h3><a href="https://plutolang.github.io/web/#code=local%20str%20%3D%20%22hello%20world%22%0D%0Aprint(str%5B5%5D)%20--%20%22o%22%0D%0Aprint(str%5B200%5D)%20--%20nil%0D%0Aprint(str%5B-1%5D)%20--%20%22d%22">Interactive Example</a></h3>
