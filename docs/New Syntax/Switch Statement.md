@@ -19,6 +19,9 @@ switch value do
 end
 -- Break jumps here.
 ```
+
+<a href="https://plutolang.github.io/web/#code=local%20value%20%3D%203%0D%0Aswitch%20value%20do%0D%0A%20%20case%201%3A%0D%0A%20%20case%202%3A%0D%0A%20%20case%203%3A%0D%0A%20%20case%204%3A%0D%0A%20%20case%205%3A%0D%0A%20%20%20%20print%20%22Got%201-5.%22%0D%0A%20%20%20%20break%0D%0A%20%20default%3A%0D%0A%20%20%20%20print%20%22Value%20is%20greater%20than%205.%22%0D%0Aend%0D%0A--%20Break%20jumps%20here.">Try it yourself!</a>
+
 # Using Compatibility Mode?
 The keywords will be:
   - `pluto_case`

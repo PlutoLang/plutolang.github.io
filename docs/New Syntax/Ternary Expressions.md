@@ -12,3 +12,5 @@ end
 local max = if a > b then a else b
 ```
 Unlike `if` statements, these do not terminate with `end`. They don't support `elseif` either.
+
+<a href="https://plutolang.github.io/web/#code=local%20a%20%3D%206%0Alocal%20b%20%3D%209%0A%0Alocal%20max%20%3D%20if%20a%20%3E%20b%20then%20a%20else%20b%0A%0Aprint(max)">Try it yourself!</a>
