@@ -1,0 +1,8 @@
+{
+  "label": "Optimizations",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Optimizations that Pluto performs."
+  }
+}

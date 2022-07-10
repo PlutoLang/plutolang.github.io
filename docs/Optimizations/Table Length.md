@@ -1,0 +1,1 @@
+Pluto will cache the length of a table when you request it for the first time. This cache is refreshed whenever you make an edit to the table. It's still advisable to localize this value though, since looking through the cache and the virtual machine is expensive compared to looking up a local.

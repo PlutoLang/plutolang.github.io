@@ -1,0 +1,26 @@
+name: Github Pages
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@main
+
+      - name: build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Install rsync 📚
+        run: |
+          sudo apt-get update && sudo apt-get install -y rsync
+
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+
+        with:
+          branch: gh-pages
+          folder: build
