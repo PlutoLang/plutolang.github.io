@@ -70,7 +70,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Ryan Starrett. Built with Docusaurus.`,
       },
       prism: {
-        theme: darkCodeTheme,
+        theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         lightTheme: lightCodeTheme
       },
