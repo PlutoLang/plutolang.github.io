@@ -28,5 +28,8 @@ make PLAT={yourplatform}
 The platform list can be found [here](https://github.com/well-in-that-case/Pluto/blob/main/src/Makefile#L33).
 #### Note for Windows
 The `make` command isn't installed by default, so you should install [MSYS](https://www.msys2.org/).
+:::info
+On Windows, you can install Visual Studio 2022 and simply use the vedored Visual Studio files from the Pluto repository.
+:::
 ## Running Pluto
 After you compile Pluto, all the binaries will be within the `src/` directory.

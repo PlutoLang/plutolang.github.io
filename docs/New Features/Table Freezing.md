@@ -30,8 +30,9 @@ for i = 1, 249 do
   end
 end
 ```
-## Sandboxing
-If you're going to use this for a sandbox, make sure you call `table.freeze` before any users can access the Lua environment, otherwise they can replace that function.
-
 ### What will this prevent?
 All modifications to the table will be prevented, including those from the `debug` library.
+
+:::info
+If you're going to use this for a sandbox, ensure you call `table.freeze` before any users can access the Lua environment, otherwise they can replace that function.
+:::
