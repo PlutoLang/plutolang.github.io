@@ -1,0 +1,9 @@
+{
+    "label": "Standard Library",
+    "position": 4,
+    "link": {
+      "type": "generated-index",
+      "description": "Pluto's expansions to the default standard library."
+    }
+  }
+  
