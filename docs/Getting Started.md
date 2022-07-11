@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Getting Started
 
+This document will explain how to get started with writing Pluto in no time.
+
 ## Write Pluto Online
 
 The easiest way to get started writing Pluto is to use [Write Pluto Online](https://plutolang.github.io/web/), which runs Pluto code directly in your browser using WASM.
