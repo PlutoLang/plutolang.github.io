@@ -250,7 +250,7 @@ An integer, or `nil` if nothing is matched.
 ```lua title="Basic Usage"
 -- This will find the last occurance of any listed characters.
 local s = "he$$o ?$! world$"
-local r = string.find_last_of("!$") --> 16
+local r = string.find_last_of(s, "!$") --> 16
 ```
 ### string.find_first_of
 Searches the string for the first character that matches any of the characters specified in its arguments.
@@ -263,7 +263,7 @@ An integer, or `nil` if nothing is matched.
 ```lua title="Basic Usage"
 -- This will find the first occurance of any listed characters.
 local s = "he$$o ?$! world$"
-local r = string.find_last_of("!$") --> 3
+local r = string.find_first_of(s, "!$") --> 3
 ```
 ### string.iswhitespace
 Checks if this string is entirely composed of whitespace characters.
@@ -287,7 +287,7 @@ An integer, or `nil` if nothing is matched.
 ```lua title="Basic Usage"
 -- This will find the last non-ccurance of any listed characters.
 local s = "he$$o ?$! world$"
-local r = string.find_last_not_of("!$") --> 15
+local r = string.find_last_not_of(s, "!$") --> 15
 ```
 ### string.find_first_not_of
 Searches the string for the first character that does not match any of the characters specified in its arguments.
@@ -300,5 +300,5 @@ An integer, or `nil` if nothing is matched.
 ```lua title="Basic Usage"
 -- This will find the first occurance of any listed characters.
 local s = "he$$o ?$! world$"
-local r = string.find_first_not_of("!$") --> 1
+local r = string.find_first_not_of(s, "!$") --> 1
 ```
