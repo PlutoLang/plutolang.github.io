@@ -1,7 +1,7 @@
 The messages for syntax errors are enhanced. They include tailored messages and code snippets, which should help newer programmers identify problems quicker. It's not a game changer, but it's neat.
 
 ### Example 1
-```lua title="Problematic Code"
+```lua showLineNumbers title="Problematic Code"
 if a < b and t == 5 return "Gottem" end
 ```
 ```lua title="Emitted Syntax Error"
@@ -11,7 +11,7 @@ pluto: file.lua:1: syntax error: expected 'then' to delimit condition.
            |
 ```
 ### Example 2
-```lua title="Problematic Code"
+```lua showLineNumbers title="Problematic Code"
 local fn = |a, b, c| => (a == b and a < c)
 ```
 ```lua title="Emitted Syntax Error"

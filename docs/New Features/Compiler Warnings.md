@@ -1,5 +1,5 @@
 Pluto offers optional compiler warnings for certain misbehaviors. Currently, this is applied only to duplicated local definitions. These internal checks are faster, and more reliable than analytical third-party software.
-```lua title="Problematic Code"
+```lua showLineNumbers title="Problematic Code"
 local variable = "hello world"
 do
     local variable = "shadowed"
