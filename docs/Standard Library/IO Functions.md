@@ -1,3 +1,4 @@
+New functions for the `io` library, implemented by Pluto.
 ### io.isdir
 #### Parameters
 1. A string path.
