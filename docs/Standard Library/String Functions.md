@@ -285,7 +285,7 @@ Searches the string for the last character that does not match any of the charac
 An integer, or `nil` if nothing is matched.
 #### Example
 ```lua title="Basic Usage"
--- This will find the last non-ccurance of any listed characters.
+-- This will find the last non-occurance of any listed characters.
 local s = "he$$o ?$! world$"
 local r = string.find_last_not_of(s, "!$") --> 15
 ```
@@ -298,7 +298,7 @@ Searches the string for the first character that does not match any of the chara
 An integer, or `nil` if nothing is matched.
 #### Example
 ```lua title="Basic Usage"
--- This will find the first occurance of any listed characters.
+-- This will find the first non-occurance of any listed characters.
 local s = "he$$o ?$! world$"
 local r = string.find_first_not_of(s, "!$") --> 1
 ```
