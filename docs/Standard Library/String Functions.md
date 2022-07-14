@@ -70,8 +70,8 @@ Strips characters from both ends of a string.
 The new string.
 #### Example
 ```lua title="Basic Usage"
-local s = "<{}|hello world>{|}"
-local r = string.strip(s, "{}|") --> "<hello world>"
+local s = "{}|hello world>{|}"
+local r = string.strip(s, "{}|") --> "hello world"
 ```
 ### string.lstrip
 Strips characters from the left side of a string.
