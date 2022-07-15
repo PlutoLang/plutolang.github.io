@@ -8,4 +8,11 @@ Pluto's new syntax will break the following identifiers:
 - `default`
 - `continue`
 
-That's it.
+These identifiers are still valid fields & accessors, such that:
+```lua showLineNumbers
+local t = {
+    default = "key"
+}
+print(t.default)
+```
+Will continue to work fine. The only incompatibility is not being able to use them as variable names.
