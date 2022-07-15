@@ -1,5 +1,7 @@
 name: Github Pages
-on: [push]
+on:
+  push:
+    main
 permissions:
   contents: write
 jobs:
