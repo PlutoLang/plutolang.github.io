@@ -10,6 +10,8 @@ for i = 1, 10 do
 end
 ```
 They introduce a new keyword, `continue`. These cannot be used inside switch statements.
+## Continue's Only Argument
+This keyword accepts an optional integral argument which tells it how many levels of enclosing loops it should skip to the end of. The default value is 1, thus skipping to the end of the current loop.
 :::info
 Note, `continue` will skip code. If any code within your loop will determine if the loop continues, make sure `continue` doesn't jump over it.
 :::
