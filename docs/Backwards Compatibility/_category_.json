@@ -3,7 +3,7 @@
     "position": 6,
     "link": {
       "type": "generated-index",
-      "description": "Compatibility concerns for users switching from Lua to Pluto."
+      "description": "Pluto is exceptionally compatible with Lua, but these are the compatibility concerns for users switching from Lua to Pluto."
     }
   }
   

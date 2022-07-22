@@ -12,6 +12,7 @@ Pluto implements a plethora of compound operators, which are actually faster tha
 - Multiplication: `*=`
 - Concatenation: `..=`
 - Integer division: `//=`
+- Null-Coalescing: `??=`
 # Why are they faster?
 They store their left-operand in a temporary register, which reduces a lookup & makes them roughly 30% faster.
 

@@ -1,4 +1,4 @@
-The `when` expression is vehemently similar to the `until` expression. It's simply the direct opposite.
+The `when` statement is vehemently similar to the `until` statement. It's simply the direct opposite.
 ```lua showLineNumbers title="Looping until 'condition' is true, the old way."
 repeat
     
