@@ -29,9 +29,9 @@ Checks if this table contains an element.
 1. The table to check.
 2. The element to check for.
 #### Returns
-A boolean.
+The index if found, otherwise `nil`.
 #### Example
 ```lua title="Basic Usage"
 local t = { 1, 2, 3, 4, 5, 6 }
-local r = table.contains(t, 4) --> true
+local r = table.contains(t, 4) --> 4
 ```
