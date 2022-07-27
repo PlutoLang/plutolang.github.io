@@ -3,7 +3,13 @@ The switch statement consists of the following new keywords:
 - `switch`
 - `default`
 
-The behavior of this syntax is nearly identical with C, so you should learn how they work in C if you're unaware.
+The behavior of this syntax is nearly identical with C, so you should learn how they work in C if you're unaware. However, this implementation supports more types:
+- `nil`
+- `string`
+- `number`
+- `boolean`
+
+Essentially, any compile-time type is supported. 
 ```lua showLineNumbers title="Example Code"
 local value = 3
 switch value do
