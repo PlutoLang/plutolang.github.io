@@ -15,3 +15,6 @@ local t = {
 }
 ```
 This automatically marks the functions as methods.
+:::info
+Keep in mind, this produces *methods*, meaning you'll need to use the colon invocation syntax to avoid positional ambiguities in your parameters.
+:::
