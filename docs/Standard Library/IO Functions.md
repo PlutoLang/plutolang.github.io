@@ -69,6 +69,9 @@ else
     print("Failed to create a backup config.")
 end
 ```
+:::info
+As of 0.3.2, this may throw an exception on failure.
+:::
 ### io.filesize
 Fetch the size of a file in kilobytes.
 #### Parameters
@@ -81,6 +84,9 @@ if io.filesize("cfg/config.txt") < 1.0 then
     print("Config is too small or empty.")
 end
 ```
+:::info
+As of 0.3.2, this may throw an exception on failure.
+:::
 ### io.makedir
 Create a directory.
 #### Parameters
