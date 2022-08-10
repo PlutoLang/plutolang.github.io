@@ -9,7 +9,7 @@ _G.string = {}
 // ERROR:
 -- file.lua:2: attempt to modify frozen table.
 ```
-```lua showLineNumbers title="Example Code 3"
+```lua showLineNumbers title="Example Code 2"
 -- Creating a constant local that's associated with a frozen table.
 local Frozen <const> = table.freeze({ 1, 2, 3 })
 
@@ -28,7 +28,7 @@ rawset(Frozen, "key", "value")
 // ERROR:
 -- file.lua:10: attempt to modify frozen table.
 ```
-```lua showLineNumbers title="Example Code 4"
+```lua showLineNumbers title="Example Code 3"
 --- Trying to swap the value with the debug library.
 for i = 1, 249 do
   local name, value = debug.getlocal(1, i)

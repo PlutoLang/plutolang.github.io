@@ -4,7 +4,7 @@ Freezes a table to prevent modification.
 #### Parameters
 1. The table to freeze
 #### Returns
-The original table.
+The original table, but frozen.
 #### Example
 ```lua title="Basic Usage"
 local t = table.freeze({...})
