@@ -33,6 +33,7 @@ end
 List all the files within a directory.
 #### Parameters
 1. A string path to the directory.
+2. A boolean indicating whether or not to recurse sub-directories.
 #### Returns
 A table mapping indices to file paths.
 #### Example

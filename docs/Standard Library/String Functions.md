@@ -1,4 +1,5 @@
 New functions for the `string` type, implemented by Pluto.
+## New Functions
 ### string.split
 Splits a string by a separator.
 #### Parameters
@@ -301,4 +302,20 @@ An integer, or `nil` if nothing is matched.
 -- This will find the first non-occurance of any listed characters.
 local s = "he$$o ?$! world$"
 local r = string.find_first_not_of(s, "!$") --> 1
+```
+
+## Modified Functions
+### string.upper
+This function now takes a second parameter that specifies which index to capitalize.
+#### Example
+```lua showLineNumbers title="Basic Usage"
+local s = "hello"
+assert(s:upper(1) == "Hello")
+```
+### string.lower
+This function now takes a second parameter that specifies which index to make lowercase.
+#### Example
+```lua showLineNumbers title="Basic Usage"
+local s = "HELLO"
+assert(s:lower(1) == "hELLO")
 ```
