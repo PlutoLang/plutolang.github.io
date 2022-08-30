@@ -8,7 +8,7 @@ write() 		--> "No text provided."
 write("Hello!") --> "Hello!"
 ```
 ```lua showLineNumbers title="This code is semantically equal."
-local function write(text = "No text provided.")
+local function write(text)
 	text ??= "No text provided."
 	print(text)
 end
