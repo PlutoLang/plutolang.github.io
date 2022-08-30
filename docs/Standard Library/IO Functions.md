@@ -1,7 +1,7 @@
 New functions for the `io` library, implemented by Pluto.
 ### io.isdir
 #### Parameters
-1. A string path.
+1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led toward a directory.
 #### Example
@@ -16,7 +16,7 @@ end
 ```
 ### io.isfile
 #### Parameters
-1. A string path.
+1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led towards a file.
 #### Example
@@ -33,6 +33,7 @@ end
 List all the files within a directory.
 #### Parameters
 1. A string path to the directory.
+2. A boolean indicating whether or not to recurse sub-directories.
 #### Returns
 A table mapping indices to file paths.
 #### Example
@@ -43,7 +44,7 @@ end
 ```
 ### io.exists
 #### Parameters
-1. A string path.
+1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led towards an existing file or directory.
 #### Example
@@ -57,7 +58,7 @@ end
 ### io.copyto
 Copy a file to another file, creating a new file if needed.
 #### Parameters
-1. A path towards the file to copy.
+1. A string path or file stream.
 2. A path towards the file to copy into.
 #### Returns
 A boolean indicating if the file was successfully copied.
@@ -75,7 +76,7 @@ As of 0.3.2, this may throw an exception on failure.
 ### io.filesize
 Fetch the size of a file in kilobytes.
 #### Parameters
-1. The string path to the file.
+1. A string path or file stream.
 #### Returns
 A double.
 #### Example
@@ -104,7 +105,7 @@ end
 ### io.absolute
 Convert a relative path into an absolute one.
 #### Parameters
-1. The relative string path.
+1. A string path or file stream.
 #### Returns
 A string representing the new file path.
 #### Example
