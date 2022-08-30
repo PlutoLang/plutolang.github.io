@@ -11,7 +11,7 @@ end
 -- New
 local max = a > b ? a : b
 ```
-They also support an alternative syntax, for compatibility with older verisonf of Pluto:
+They also support an alternative syntax, for compatibility with older versions of Pluto:
 ```lua showLineNumbers title="Example Code"
 -- Old
 local max
