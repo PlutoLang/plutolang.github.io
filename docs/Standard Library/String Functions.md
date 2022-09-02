@@ -15,7 +15,7 @@ local r = string.split(s, " ")
     The value of 'r':
     {
         "hello",
-        "world",
+        "world,",
         "how",
         "is",
         "everyone",
@@ -30,7 +30,7 @@ local r = string.split(s, "HALLOWORLD")
     The value of 'r':
     {
         "hello",
-        "world",
+        "world,",
         "how",
         "is",
         "everyone",
@@ -71,7 +71,7 @@ Strips characters from both ends of a string.
 The new string.
 #### Example
 ```lua title="Basic Usage"
-local s = "{}|hello world>{|}"
+local s = "{}|hello world{|}"
 local r = string.strip(s, "{}|") --> "hello world"
 ```
 ### string.lstrip
