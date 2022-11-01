@@ -71,7 +71,7 @@ local str = "hello"
 assert(crypto.fnv1a(str) == 8618312879776256743)
 ```
 ### CRC32
-Hash a string using the JOAAT non-cryptographic hashing algorithm.
+Hash a string using the CRC32 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 2. The initial value for the hash. By default, this is zero.
