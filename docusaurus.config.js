@@ -11,7 +11,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.png',
   plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
 
   // GitHub pages deployment config.
@@ -48,8 +48,8 @@ const config = {
       navbar: {
         title: 'Pluto',
         logo: {
-          alt: 'Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Pluto Logo',
+          src: 'img/logo.png',
         },
         items: [
           {
@@ -59,7 +59,7 @@ const config = {
             label: 'Introduction',
           },
           {
-            href: 'https://github.com/well-in-that-case/Pluto',
+            href: 'https://github.com/PlutoLang/Pluto',
             label: 'GitHub',
             position: 'right',
           },
