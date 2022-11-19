@@ -12,7 +12,7 @@ The easiest way to get started writing Pluto is to use [Write Pluto Online](http
 
 ## Prebuilt Binaries
 
-You can find pre-built binaries of Pluto for Windows, Linux, & Mac OS over on [Pluto's Github repository](https://github.com/well-in-that-case/Pluto/actions?query=event%3Apush+branch%3Amain). Just click on the latest successful workflow run and download the appropriate artifact.
+You can find pre-built binaries of Pluto for Windows, Linux, & Mac OS over on [Pluto's Github Releases page](https://github.com/PlutoLang/Pluto/releases).
 
 ## Compile Pluto Yourself
 
