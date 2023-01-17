@@ -1,5 +1,5 @@
 Continue statements are meant to be used in loops, like `break`. They skip the current iteration of the loop, and they'll skip any code necessary to do so.
-```lua showLineNumbers title="Example Code"
+```pluto showLineNumbers title="Example Code"
 -- Print every number besides five.
 for i = 1, 10 do
     if i == 5 then
@@ -12,12 +12,12 @@ end
 They introduce a new keyword, `continue`. These cannot be used inside switch statements.
 ## Continue's Only Argument
 This keyword accepts an optional integral argument which tells it how many levels of enclosing loops it should skip to the end of. The default value is 1, thus skipping to the end of the current loop.
-```lua showLineNumbers title="Example 1"
+```pluto showLineNumbers title="Example 1"
 for i = 1, 10 do -- Loop 1.
     continue 1 --> This is identical to `continue` without any arguments.
 end
 ```
-```lua showLineNumbers title="Example 2"
+```pluto showLineNumbers title="Example 2"
 for i = 1, 10 do -- Loop 1.
     for ii = 1, 5 do -- Loop 2.
         continue 1 --> This will continue from Loop 2.

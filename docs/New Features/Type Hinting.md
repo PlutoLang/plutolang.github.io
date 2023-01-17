@@ -1,9 +1,9 @@
 Type-hinting looks like this:
-```lua showLineNumbers
+```pluto showLineNumbers
 local var: string = "hello world"
 ```
 The parser will occasionally raise warnings when you violate the hinted type:
-```lua showLineNumbers
+```pluto showLineNumbers
 local var: string = "hello world"
 do
     var = 5
@@ -17,7 +17,7 @@ file.lua:3: warning: 'var' was type-hinted as 'string', but is assigned a number
            |
 ```
 It works with functions too:
-```lua showLineNumbers
+```pluto showLineNumbers
 local function myfunc(a: string, b: string): number
     return tonumber(a) + tonumber(b)
 end

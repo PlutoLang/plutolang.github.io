@@ -5,7 +5,7 @@ New functions for the `io` library, implemented by Pluto.
 #### Returns
 A boolean indicating if the path led toward a directory.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 local path = "./dir/main/"
 local bool = io.isdir(path)
 if bool then
@@ -20,7 +20,7 @@ end
 #### Returns
 A boolean indicating if the path led towards a file.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 local path = "./isfile/file"
 local bool = io.isdir(path)
 if bool then
@@ -37,7 +37,7 @@ List all the files within a directory.
 #### Returns
 A table mapping indices to file paths.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 for _, filepath in io.listdir(".") do
     print(filepath)
 end
@@ -48,7 +48,7 @@ end
 #### Returns
 A boolean indicating if the path led towards an existing file or directory.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 if io.exists("cfg/config.txt") then
     print("Config exists!")
 else
@@ -63,7 +63,7 @@ Copy a file to another file, creating a new file if needed.
 #### Returns
 A boolean indicating if the file was successfully copied.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 if io.copyto("./cfg/config.txt", "./backup_cfg/config.txt") then
     print("Successfully created a backup config!")
 else
@@ -80,7 +80,7 @@ Fetch the size of a file in kilobytes.
 #### Returns
 A double.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 if io.filesize("cfg/config.txt") < 1.0 then
     print("Config is too small or empty.")
 end
@@ -95,7 +95,7 @@ Create a directory.
 #### Returns
 A boolean indicating if the directory was successfully created.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 if io.makedir("./cfg") then
     print("Created cfg directory.")
 else
@@ -109,7 +109,7 @@ Convert a relative path into an absolute one.
 #### Returns
 A string representing the new file path.
 #### Example
-```lua showLineNumbers title="Example Usage"
+```pluto showLineNumbers title="Example Usage"
 --> cfg/config.txt
 io.absolute("cfg/cfg.txt") --> "C:\Users\Desktop\Username\Project\cfg\cfg.txt"
 ```

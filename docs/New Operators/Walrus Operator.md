@@ -1,7 +1,7 @@
 The Walrus operator allows you to perform assignment expresssions, where the second operand to your assignment is the value of the expression.
 
 ### Examples
-```lua showLineNumbers
+```pluto showLineNumbers
 if a := get_value() then
 	-- 'a' was assigned a truthy value.
 else
@@ -18,7 +18,7 @@ end
 ```
 
 Expressions for the Walrus operator may be evaluated multiple times in circumstances like loops.
-```lua showLineNumbers
+```pluto showLineNumbers
 local function get()
 	return true
 end
@@ -29,7 +29,7 @@ end
 ```
 
 Like any other expression, you can also do things like this:
-```lua showLineNumbers
+```pluto showLineNumbers
 if (a := math.random(1, 10)) < 5 then
 	print("A is less than five! Value: " .. a)
 else

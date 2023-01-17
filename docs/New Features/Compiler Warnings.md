@@ -12,7 +12,7 @@ These are the current warning circumstances:
 
 ## Examples
 #### Type Mismatch
-```lua showLineNumbers
+```pluto showLineNumbers
 local var: number = 5
 var = "hello"
 ```
@@ -23,7 +23,7 @@ file.lua:2: warning: 'var' was type-hinted as 'number', but is assigned a string
            |
 ```
 #### Variable Shadowing
-```lua showLineNumbers
+```pluto showLineNumbers
 local var = 5
 do
   local var = "hello"
@@ -36,7 +36,7 @@ file.lua:3: warning: duplicate local declaration
            |
 ```
 #### Unreachable Code
-```lua showLineNumbers
+```pluto showLineNumbers
 for i = 1, 10 do
   if i == 5 then
     continue
@@ -51,7 +51,7 @@ file.lua:4: warning: unreachable code
            |
 ```
 #### Excessive Arguments
-```lua showLineNumbers
+```pluto showLineNumbers
 local function func(a, b, c)
 
 end
@@ -67,7 +67,7 @@ tests/quick.lua:5: warning: too many arguments
 
 ## Compile-time Configuration
 Warnings can be disabled during compile-time, so you can make exceptions for the next line, a region of code, or the entire warning itself.
-```lua title="These are the configuration comments."
+```pluto title="These are the configuration comments."
 --- @pluto_warnings: enable-all
 --- @pluto_warnings: disable-all
 

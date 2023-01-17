@@ -3,7 +3,7 @@ New functions for the `os` library, implemented by Pluto.
 #### Parameters:
 1. The amount of milliseconds to sleep for.
 #### Example
-```lua showLineNumbers title="Basic Usage"
+```pluto showLineNumbers title="Basic Usage"
 os.sleep(1000) --> Pause this thread for 1000ms.
 ```
 ### os.millis

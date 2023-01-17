@@ -1,5 +1,5 @@
 During a function declaration, parameters can now declare their own default value, which must be a compile-time constant.
-```lua showLineNumbers title="Example Code"
+```pluto showLineNumbers title="Example Code"
 local function write(text = "No text provided.")
 	print(text)
 end
@@ -7,7 +7,7 @@ end
 write() 		--> "No text provided."
 write("Hello!") --> "Hello!"
 ```
-```lua showLineNumbers title="This code is semantically equal."
+```pluto showLineNumbers title="This code is semantically equal."
 local function write(text)
 	text ??= "No text provided."
 	print(text)
