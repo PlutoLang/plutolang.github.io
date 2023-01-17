@@ -8,7 +8,7 @@ You can disable execution of compiled bytecode, by defining `PLUTO_DISABLE_COMPI
 
 You may already have filters before passing scripts to run onto Pluto, but mechanisms such as `dofile` and `require` may be used to bypass them. To help you combat this, Pluto provides `PLUTO_LOADFILE_HOOK`. For example, if you set it to `ContmodOnLoadfile` in `luaconf.h` or your build config, you only need to define that function somewhere in your code, like this:
 
-```C++
+```cpp
 extern "C" bool ContmodOnLoadfile(const char* filename) {
   return !isCodeProhibited(soup::string::fromFile(filename));
 }
