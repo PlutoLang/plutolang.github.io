@@ -26,5 +26,5 @@ assert((3 in t) == false) -- No key with the value of '3'.
 - The left-hand operand can be anything if the right-hand operand is a table.
 
 :::info
-This feature is partially implemented in the VM and therefore will not work when compiling Pluto to bytecode and running it via Lua.
+The bytecode of this feature is not backwards-compatible with Lua.
 :::

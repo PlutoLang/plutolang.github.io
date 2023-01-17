@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Pluto',
-  tagline: 'A dialect of Lua 5.4, which adds desirable syntax and features to Lua which otherwise wouldn\'t exist.',
-  url: 'https://well-in-that-case.github.io/',
+  tagline: 'A superset of Lua 5.4 — with unique features, optimizations, and improvements.',
+  url: 'https://plutolang.github.io',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -16,7 +16,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'well-in-that-case', // Usually your GitHub org/user name.
+  organizationName: 'PlutoLang', // Usually your GitHub org/user name.
   projectName: 'Pluto', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
