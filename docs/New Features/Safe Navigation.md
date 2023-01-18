@@ -15,4 +15,6 @@ print(get_color())
 ```
 :::info
 These cannot be used for statements, like `a?.b?.c = 0`. They're only valid as expressions.
+
+Safe Navigation was written by Sven Olsen.
 :::
