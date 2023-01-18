@@ -1,5 +1,5 @@
 Ternary expressions behave identical as to how they would in C. They introduce no new keywords.
-```lua showLineNumbers title="Example Code"
+```pluto showLineNumbers title="Example Code"
 -- Old
 local max
 if a > b then
@@ -12,7 +12,7 @@ end
 local max = a > b ? a : b
 ```
 They also support an alternative syntax, for compatibility with older versions of Pluto:
-```lua showLineNumbers title="Example Code"
+```pluto showLineNumbers title="Example Code"
 -- Old
 local max
 if a > b then

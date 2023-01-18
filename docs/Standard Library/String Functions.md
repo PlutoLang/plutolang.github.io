@@ -8,7 +8,7 @@ Splits a string by a separator.
 #### Returns
 A table.
 #### Example
-```lua title="Splitting a string by a single character."
+```pluto title="Splitting a string by a single character."
 local s = "hello world, how is everyone doing?"
 local r = string.split(s, " ")
 --[[
@@ -23,7 +23,7 @@ local r = string.split(s, " ")
     }
 --]]
 ```
-```lua title="Splitting a string by a substring."
+```pluto title="Splitting a string by a substring."
 local s = "helloHALLOWORLDworld,HALLOWORLDhowHALLOWORLDisHALLOWORLDeveryoneHALLOWORLDdoing?"
 local r = string.split(s, "HALLOWORLD")
 --[[
@@ -46,7 +46,7 @@ Returns the index of where a substring starts. Begins searching at the left side
 #### Returns
 An integer for the index of the substring, or `nil` if the substring was not found.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "hello world"
 local r = string.lfind(s, "world") --> 7
 ```
@@ -58,7 +58,7 @@ Returns the index of where a substring starts. Begins searching at the right sid
 #### Returns
 An integer for the index of the substring, or `nil` if the substring was not found.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "hello world"
 local r = string.rfind(s, "world") --> 7
 ```
@@ -70,7 +70,7 @@ Strips characters from both ends of a string.
 #### Returns
 The new string.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "{}|hello world{|}"
 local r = string.strip(s, "{}|") --> "hello world"
 ```
@@ -82,7 +82,7 @@ Strips characters from the left side of a string.
 #### Returns
 The new string.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "<{}|hello world>{|}"
 local r = string.strip(s, "{}|") --> "<hello world>{|}"
 ```
@@ -94,7 +94,7 @@ Strips characters from the right side of a string.
 #### Returns
 The new string.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "<{}|hello world>{|}"
 local r = string.strip(s, "{}|") --> "<{}|<hello world>"
 ```
@@ -105,7 +105,7 @@ Checks if a string is entirely composed of ASCII characters.
 #### Returns
 A Boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
 local r = string.isascii(r) --> true
 ```
@@ -119,7 +119,7 @@ Checks if a string is entirely composed of lowercase characters.
 #### Returns
 A Boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "helloworld"
 local r = string.islower(r) --> true
 ```
@@ -133,7 +133,7 @@ Checks if a string is entirely composed of alphabetic characters.
 #### Returns
 A Boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "HELLOWORLD"
 local r = string.isalpha(r) --> true
 ```
@@ -147,7 +147,7 @@ Checks if a string is entirely composed of uppercase characters.
 #### Returns
 A Boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "HELLOWORLD"
 local r = string.isupper(r) --> true
 ```
@@ -161,7 +161,7 @@ Checks if a string is entirely composed of alphanumeric characters.
 #### Returns
 A Boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
 local r = string.isalnum(r) --> true
 ```
@@ -176,7 +176,7 @@ Checks if a string contains a substring.
 #### Returns
 A boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "hello world"
 local r = string.contains(s, "worl") --> true
 ```
@@ -188,7 +188,7 @@ Compares two strings, agnostic of any capitalization.
 #### Returns
 A boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s1 = "hello world"
 local s2 = "heLLo WoRlD"
 local r1 = string.casefold(s1, s2) --> true
@@ -202,14 +202,14 @@ Splits a string once, on the first occurance of a separator.
 #### Returns
 Two strings: A substring for all the content before the first occurance of `sep`, and another substring for all the content afterwards.
 #### Example
-```lua title="A Basic Partition"
+```pluto title="A Basic Partition"
 local s = "hello world, what's up?"
 local before, after = string.partition(s, " ")
 
 assert(before == "hello")
 assert(after == "world, what's up?")
 ```
-```lua title="Partioning From The Right"
+```pluto title="Partioning From The Right"
 local s = "hello world, what's up?"
 local before, after = string.partition(s, " ", true)
 
@@ -224,7 +224,7 @@ Checks if a string ends with a suffix.
 #### Returns
 A boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "hello world"
 local r = string.endswith(s, "world") --> true
 ```
@@ -236,7 +236,7 @@ Checks if a string starts with a prefix.
 #### Returns
 A boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "hello world"
 local r = string.startswith(s, "hello") --> true
 ```
@@ -248,7 +248,7 @@ Searches the string for the last character that matches any of the characters sp
 #### Returns
 An integer, or `nil` if nothing is matched.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 -- This will find the last occurance of any listed characters.
 local s = "he$$o ?$! world$"
 local r = string.find_last_of(s, "!$") --> 16
@@ -261,7 +261,7 @@ Searches the string for the first character that matches any of the characters s
 #### Returns
 An integer, or `nil` if nothing is matched.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 -- This will find the first occurance of any listed characters.
 local s = "he$$o ?$! world$"
 local r = string.find_first_of(s, "!$") --> 3
@@ -273,7 +273,7 @@ Checks if this string is entirely composed of whitespace characters.
 #### Returns
 A boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "    \t \v \f     \t\t\t\t"
 local r = string.iswhitespace(s) --> true
 ```
@@ -285,7 +285,7 @@ Searches the string for the last character that does not match any of the charac
 #### Returns
 An integer, or `nil` if nothing is matched.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 -- This will find the last non-occurance of any listed characters.
 local s = "he$$o ?$! world$"
 local r = string.find_last_not_of(s, "!$") --> 15
@@ -298,7 +298,7 @@ Searches the string for the first character that does not match any of the chara
 #### Returns
 An integer, or `nil` if nothing is matched.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 -- This will find the first non-occurance of any listed characters.
 local s = "he$$o ?$! world$"
 local r = string.find_first_not_of(s, "!$") --> 1
@@ -308,14 +308,14 @@ local r = string.find_first_not_of(s, "!$") --> 1
 ### string.upper
 This function now takes a second parameter that specifies which index to capitalize.
 #### Example
-```lua showLineNumbers title="Basic Usage"
+```pluto showLineNumbers title="Basic Usage"
 local s = "hello"
 assert(s:upper(1) == "Hello")
 ```
 ### string.lower
 This function now takes a second parameter that specifies which index to make lowercase.
 #### Example
-```lua showLineNumbers title="Basic Usage"
+```pluto showLineNumbers title="Basic Usage"
 local s = "HELLO"
 assert(s:lower(1) == "hELLO")
 ```

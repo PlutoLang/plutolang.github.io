@@ -4,7 +4,7 @@ The switch statement consists of the following new keywords:
 - `default`
 
 Any variable or object can be used for the case statement, but you cannot use expressions like `1 == 1` in them.
-```lua showLineNumbers title="Example Code"
+```pluto showLineNumbers title="Example Code"
 local value = 3
 switch value do
   case 1:

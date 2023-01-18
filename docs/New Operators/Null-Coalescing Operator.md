@@ -1,10 +1,10 @@
 The null-coalescing operator (or more appropriately, nil-coalescing operator) is used as follows:
-```lua showLineNumbers
+```pluto showLineNumbers
 local value = nil
 local result = value ?? "This is the value if 'value' is nil."
 ```
 It's semantically equal to the following code:
-```lua showLineNumbers
+```pluto showLineNumbers
 local value = nil
 local result = if value == nil then "This is the value if 'value' is nil." else value
 ```

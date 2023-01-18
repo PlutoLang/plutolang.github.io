@@ -16,7 +16,7 @@ Pluto implements a plethora of compound operators, which are actually faster tha
 # Why are they faster?
 They store their left-operand in a temporary register, which reduces a lookup & makes them roughly 30% faster.
 
-```lua title="Example Code"
+```pluto title="Example Code"
 local a = 5
 
 -- Old

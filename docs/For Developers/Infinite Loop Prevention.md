@@ -1,10 +1,10 @@
 Pluto can detect infinite loops by preventing too many successive iterations. This was implemented because game threads usually force users to call some sort of `yield` mechanism to return control to the game thread. In Pluto, you specify a hard bottleneck on iterations, then you specify a function pointer which should prevent ILP within the loop it's called in.
-```lua showLineNumbers title="This will produce an error due to ILP:"
+```pluto showLineNumbers title="This will produce an error due to ILP:"
 while true do
 
 end
 ```
-```lua showLineNumbers title="This will not, with correct configuration:"
+```pluto showLineNumbers title="This will not, with correct configuration:"
 while true do
     yield()
 end

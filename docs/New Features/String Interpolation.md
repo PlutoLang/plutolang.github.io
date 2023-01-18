@@ -1,5 +1,5 @@
 String interpolation is very simple.
-```lua
+```pluto
 local variable = "world"
 local statement = $"hello {variable}"
 

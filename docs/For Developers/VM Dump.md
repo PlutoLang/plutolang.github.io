@@ -11,7 +11,7 @@ VM Dump can be enabled by defining `PLUTO_VMDUMP` in `luaconf.h` or your build c
 
 Given the following code:
 
-```lua showLineNumbers
+```pluto showLineNumbers
 local value = 3
 switch value do
   case 1:

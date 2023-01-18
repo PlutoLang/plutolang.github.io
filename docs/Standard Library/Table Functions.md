@@ -6,7 +6,7 @@ Freezes a table to prevent modification.
 #### Returns
 The original table, but frozen.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local t = table.freeze({...})
 -- `table.freeze(t)` on another line will work fine too.
 t.key = "value" -- Fails.
@@ -18,7 +18,7 @@ Checks if this table is frozen.
 #### Returns
 A boolean.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local t = {}
 table.freeze(t)
 assert(table.isfrozen(t) == true)
@@ -31,7 +31,7 @@ Checks if this table contains an element.
 #### Returns
 The index if found, otherwise `nil`.
 #### Example
-```lua title="Basic Usage"
+```pluto title="Basic Usage"
 local t = { 1, 2, 3, 4, 5, 6 }
 local r = table.contains(t, 4) --> 4
 ```
