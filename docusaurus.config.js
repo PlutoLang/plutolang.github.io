@@ -71,12 +71,14 @@ const config = {
       },
       prism: {
         theme: darkCodeTheme,
+        additionalLanguages: ['cpp'],
         magicComments: [
           {
             className: 'code-block-error-line',
             line: 'ERROR:',
           },
-      ]},
+        ],
+      },
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,
