@@ -117,7 +117,7 @@ A string representing the new file path.
 io.absolute("cfg/cfg.txt") --> "C:\Users\Desktop\Username\Project\cfg\cfg.txt"
 ```
 ### io.makedirs
-Allows you to create new nested directories.
+Creates a directory and all the non-existing parent directories in the given path.
 #### Parameters
 1. The string path for your new directory.
 #### Example
