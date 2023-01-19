@@ -5,7 +5,7 @@ The messages for syntax errors are enhanced. They include tailored messages and 
 if a < b and t == 5 return "Gottem" end
 ```
 ```diff title="Emitted Syntax Error"
-syntax error: file.lua:1: expected 'then' to delimit condition.
+syntax error: file.pluto:1: expected 'then' to delimit condition.
     1 | if a < b and t == 5 return "Gottem" end
       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ here: expected 'then' symbol.
 ```
@@ -14,7 +14,7 @@ syntax error: file.lua:1: expected 'then' to delimit condition.
 local fn = |a, b, c| => (a == b and a < c)
 ```
 ```diff title="Emitted Syntax Error"
-syntax error: file.lua:1: impromper lambda definition
+syntax error: file.pluto:1: impromper lambda definition
     1 | local fn = |a, b, c| => (a == b and a < c)
       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ here: expected '->' arrow syntax for lambda expression.
 ```

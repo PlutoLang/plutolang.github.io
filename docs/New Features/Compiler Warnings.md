@@ -17,7 +17,7 @@ local var: number = 5
 var = "hello"
 ```
 ```
-file.lua:2: warning: variable type mismatch [type-mismatch]
+file.pluto:2: warning: variable type mismatch [type-mismatch]
     2 | var = "hello"
       | ^^^^^^^^^^^^^ here: 'var' type-hinted as 'number', but assigned a string value.
 ```
@@ -29,7 +29,7 @@ do
 end
 ```
 ```
-file.lua:3: warning: duplicate local declaration [var-shadow]
+file.pluto:3: warning: duplicate local declaration [var-shadow]
     3 | local var = "hello"
       | ^^^^^^^^^^^^^^^^^^^ here: this shadows the initial declaration of 'var' on line 1.
 ```
@@ -43,7 +43,7 @@ for i = 1, 10 do
 end
 ```
 ```
-file.lua:4: warning: unreachable code [unreachable-code]
+file.pluto:4: warning: unreachable code [unreachable-code]
     4 | print("message")
       | ^^^^^^^^^^^^^^^^ here: this code comes after an escaping 'continue' statement.
 ```
@@ -56,7 +56,7 @@ end
 func(1, 2, 3, 4)
 ```
 ```
-file.lua:5: warning: too many arguments [excessive-arguments]
+file.pluto:5: warning: too many arguments [excessive-arguments]
     5 | func(1, 2, 3, 4)
       | ^^^^^^^^^^^^^^^^ here: expected 3 arguments, got 4.
 ```

@@ -7,7 +7,7 @@ table.freeze(_G)
 // ERROR:
 _G.string = {}
 // ERROR:
--- file.lua:2: attempt to modify frozen table.
+-- file.pluto:2: attempt to modify frozen table.
 ```
 ```pluto showLineNumbers title="Example Code 2"
 -- Creating a constant local that's associated with a frozen table.
@@ -16,17 +16,17 @@ local Frozen <const> = table.freeze({ 1, 2, 3 })
 // ERROR:
 Frozen = {}
 // ERROR:
--- file.lua:4: attempt to reassign constant.
+-- file.pluto:4: attempt to reassign constant.
 
 // ERROR:
 Frozen[1] = "new value"
 // ERROR:
--- file.lua:7: attempt to modify frozen table.
+-- file.pluto:7: attempt to modify frozen table.
 
 // ERROR:
 rawset(Frozen, "key", "value")
 // ERROR:
--- file.lua:10: attempt to modify frozen table.
+-- file.pluto:10: attempt to modify frozen table.
 ```
 ```pluto showLineNumbers title="Example Code 3"
 --- Trying to swap the value with the debug library.
@@ -36,7 +36,7 @@ for i = 1, 249 do
     // ERROR:
     debug.setlocal(1, i, { ["key"] = "hello world" })
     // ERROR:
-    -- file.lua:5: attempt to modify local variable with a frozen table.
+    -- file.pluto:5: attempt to modify local variable with a frozen table.
   end
 end
 ```
