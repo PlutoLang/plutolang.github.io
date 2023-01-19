@@ -36,3 +36,6 @@ assert(OPTION_1 == 1)
 assert(OPTION_2 == 2)
 assert(OPTION_3 == 3)
 ```
+
+# Using Compatibility Mode?
+You may need to use `pluto_enum` instead of `enum`.
