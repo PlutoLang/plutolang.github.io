@@ -22,7 +22,7 @@ pluto: file.lua:4: syntax error: impromper lambda definition
 ```
 ## ANSI Coloring
 These errors support coloring, but it's disabled by default. Define the `PLUTO_USE_COLORED_OUTPUT` macro in `luaconf.h` or your build config to enable colored error messages.
-:::info
+:::tip
 For Windows users, you can enable ANSI coloring support with the following command:
   - `REG ADD HKCU\CONSOLE /f /v VirtualTerminalLevel /t REG_DWORD /d 1`
 :::

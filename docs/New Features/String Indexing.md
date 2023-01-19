@@ -7,7 +7,7 @@ print(str[-1]) -- "d"
 ```
 Any character-intensive task — for example, a hash algorithm — will greatly benefit from this.
 
-:::info
+:::caution
 The bytecode of this feature is not backwards-compatible with Lua.
 :::
 

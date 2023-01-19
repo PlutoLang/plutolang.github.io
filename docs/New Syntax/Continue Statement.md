@@ -25,7 +25,7 @@ for i = 1, 10 do -- Loop 1.
     end
 end
 ```
-:::info
+:::caution
 Note, `continue` will skip code. If any code within your loop will determine if the loop continues, make sure `continue` doesn't jump over it.
 :::
 

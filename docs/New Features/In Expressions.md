@@ -25,6 +25,6 @@ assert((3 in t) == false) -- No key with the value of '3'.
 - The left-hand operand must be a string if the right-hand operand is a string.
 - The left-hand operand can be anything if the right-hand operand is a table.
 
-:::info
+:::caution
 The bytecode of this feature is not backwards-compatible with Lua.
 :::

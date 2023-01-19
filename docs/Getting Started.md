@@ -39,6 +39,6 @@ After you compile Pluto, all the binaries will be within the `src/` directory.
 
 #### Note for Windows
 The `make` command isn't installed by default, so you should install [MSYS](https://www.msys2.org/).
-:::info
+:::tip
 On Windows, you can install Visual Studio 2022 and simply use the vendored Visual Studio files from the Pluto repository.
 :::

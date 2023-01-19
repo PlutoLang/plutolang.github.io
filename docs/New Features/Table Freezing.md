@@ -43,6 +43,6 @@ end
 ### What will this prevent?
 All modifications to the table from within the Lua environment will be prevented, including those from the `debug` library.
 
-:::info
+:::caution
 If you're going to use this for a sandbox, ensure you call `table.freeze` before any users can access the Lua environment, otherwise they can replace that function.
 :::
