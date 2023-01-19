@@ -111,7 +111,7 @@ Creates a directory and all the non-existing parent directories in the given pat
 1. The string path for your new directory.
 #### Example
 ```pluto showLineNumbers title="Example Usage"
-io.makedirs("A/B/C") --> Creates "C:\Users\Desktop\Username\Project\A\B\C"
+io.makedirs("A/B/C") --> Creates "C:\Users\Username\Desktop\Project\A\B\C"
 ```
 ### io.absolute
 Convert a relative path into an absolute one.
@@ -122,5 +122,5 @@ A string representing the new file path.
 #### Example
 ```pluto showLineNumbers title="Example Usage"
 --> cfg/config.txt
-io.absolute("cfg/cfg.txt") --> "C:\Users\Desktop\Username\Project\cfg\cfg.txt"
+io.absolute("cfg/cfg.txt") --> "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
