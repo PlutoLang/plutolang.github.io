@@ -113,3 +113,11 @@ A string representing the new file path.
 --> cfg/config.txt
 io.absolute("cfg/cfg.txt") --> "C:\Users\Desktop\Username\Project\cfg\cfg.txt"
 ```
+### io.makedirs
+Allows you to create a new directory.
+#### Parameters
+1. The string path for your new directory.
+#### Example
+```pluto showLineNumbers title="Example Usage"
+io.makedirs("A/B/C") --> Creates "C:\Users\Desktop\Username\Project\A\B\C"
+```
