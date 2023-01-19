@@ -9,7 +9,7 @@ Some minor changes & additions to the environment must be disclosed:
 if _PVERSION == nil then
     print("Plain Lua detected (".._VERSION..")")
 else
-    local soup = _PSOUP ? "" : "not"
-    print($"Pluto detected ({_PVERSION}), based on {_VERSION}, {soup} compiled with Soup.")
+    local soup = _PSOUP ? "" : "not "
+    print($"Pluto detected ({_PVERSION}), based on {_VERSION}, {soup}compiled with Soup.")
 end
 ```
