@@ -1,3 +1,6 @@
+---
+sidebar_position: 7
+---
 Functions regarding cryptography, implemented by Pluto.
 ## Hashing Algorithms
 ### Lua

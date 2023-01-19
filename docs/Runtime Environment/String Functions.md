@@ -1,3 +1,6 @@
+---
+sidebar_position: 5
+---
 New functions for the `string` type, implemented by Pluto.
 ## New Functions
 ### string.split

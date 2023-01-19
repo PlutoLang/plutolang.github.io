@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 New functions for the `os` library, implemented by Pluto.
 ### os.sleep
 #### Parameters:

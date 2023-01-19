@@ -1,3 +1,6 @@
+---
+sidebar_position: 4
+---
 New functions for the `table` type, implemented by Pluto.
 ### table.freeze
 Freezes a table to prevent modification.
