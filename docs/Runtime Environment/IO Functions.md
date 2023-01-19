@@ -105,6 +105,14 @@ else
     print("Failed to create cfg directory.")
 end
 ```
+### io.makedirs
+Creates a directory and all the non-existing parent directories in the given path.
+#### Parameters
+1. The string path for your new directory.
+#### Example
+```pluto showLineNumbers title="Example Usage"
+io.makedirs("A/B/C") --> Creates "C:\Users\Desktop\Username\Project\A\B\C"
+```
 ### io.absolute
 Convert a relative path into an absolute one.
 #### Parameters
@@ -115,12 +123,4 @@ A string representing the new file path.
 ```pluto showLineNumbers title="Example Usage"
 --> cfg/config.txt
 io.absolute("cfg/cfg.txt") --> "C:\Users\Desktop\Username\Project\cfg\cfg.txt"
-```
-### io.makedirs
-Creates a directory and all the non-existing parent directories in the given path.
-#### Parameters
-1. The string path for your new directory.
-#### Example
-```pluto showLineNumbers title="Example Usage"
-io.makedirs("A/B/C") --> Creates "C:\Users\Desktop\Username\Project\A\B\C"
 ```
