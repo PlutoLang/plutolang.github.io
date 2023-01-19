@@ -17,10 +17,9 @@ local var: number = 5
 var = "hello"
 ```
 ```
-file.lua:2: warning: 'var' was type-hinted as 'number', but is assigned a string value.                                               
-         2 | var = "hello"
-           | ^^^^^^^^^^^^^ here: type mismatch
-           |
+file.lua:2: warning: variable type mismatch [type-mismatch]
+    2 | var = "hello"
+      | ^^^^^^^^^^^^^ here: 'var' type-hinted as 'number', but assigned a string value.
 ```
 #### Variable Shadowing
 ```pluto showLineNumbers
@@ -30,10 +29,9 @@ do
 end
 ```
 ```
-file.lua:3: warning: duplicate local declaration
-         3 | local var =
-           | ^^^^^^^^^^^ here: this shadows the value of the initial declaration on line1.
-           |
+file.lua:3: warning: duplicate local declaration [var-shadow]
+    3 | local var = "hello"
+      | ^^^^^^^^^^^^^^^^^^^ here: this shadows the initial declaration of 'var' on line 1.
 ```
 #### Unreachable Code
 ```pluto showLineNumbers
@@ -45,10 +43,9 @@ for i = 1, 10 do
 end
 ```
 ```
-file.lua:4: warning: unreachable code
-         4 | print
-           | ^^^^^ here: this code comes after an escaping 'continue' statement.
-           |
+file.lua:4: warning: unreachable code [unreachable-code]
+    4 | print("message")
+      | ^^^^^^^^^^^^^^^^ here: this code comes after an escaping 'continue' statement.
 ```
 #### Excessive Arguments
 ```pluto showLineNumbers
@@ -59,10 +56,9 @@ end
 func(1, 2, 3, 4)
 ```
 ```
-tests/quick.lua:5: warning: too many arguments
-         5 | func(1, 2, 3, 4)
-           | ^^^^^^^^^^^^^^^^ here: expected 3 arguments, got 4.
-           | 
+file.lua:5: warning: too many arguments [excessive-arguments]
+    5 | func(1, 2, 3, 4)
+      | ^^^^^^^^^^^^^^^^ here: expected 3 arguments, got 4.
 ```
 
 ## Compile-time Configuration
