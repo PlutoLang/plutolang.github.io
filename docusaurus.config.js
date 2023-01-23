@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const config = {
   title: 'Pluto',
   tagline: 'A superset of Lua 5.4 — with unique features, optimizations, and improvements.',
-  url: 'https://plutolang.github.io',
+  url: 'https://pluto-lang.org',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
