@@ -31,7 +31,7 @@ p, h1, h2, h3, h4, a {
 }
 
 .hero__title, .hero__subtitle {
-  color: #938ee0;
+  color: #b564bd;
 }
 
 .featureSvg_src-components-HomepageFeatures-styles-module {
@@ -61,7 +61,7 @@ p, h1, h2, h3, h4, a {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #938ee0;
+  --ifm-color-primary: #b564bd;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;

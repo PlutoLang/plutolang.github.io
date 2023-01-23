@@ -30,7 +30,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`${siteConfig.title}, a modern Lua dialect.`}
       description="The official website for Pluto, a modern Lua dialect.">
       <HomepageHeader />
       <main>

@@ -1,5 +1,5 @@
 Searching a string for a substring, or searching an array for an element is a very simple operation now. The `in` operator has been extended to support these operations.
-```lua showLineNumbers title="Searching for a substring."
+```pluto showLineNumbers title="Searching for a substring."
 local a = "hello"
 local b = "hello world"
 
@@ -12,7 +12,7 @@ local r5 = "goodbye" in "hello world"
 assert(r1 and r2 and r3 and r4) -- They'll all return true.
 assert(r5 == false) -- Except this one.
 ```
-```lua showLineNumbers title="Searching a table for keys and elements."
+```pluto showLineNumbers title="Searching a table for keys and elements."
 local t = { [5] = "five", [6] = "six", [7] = "seven", key = "value" }
 
 assert(("key" in t) == true) -- Found a key with the value of 'key'.
@@ -25,6 +25,6 @@ assert((3 in t) == false) -- No key with the value of '3'.
 - The left-hand operand must be a string if the right-hand operand is a string.
 - The left-hand operand can be anything if the right-hand operand is a table.
 
-:::info
-This feature is partially implemented in the VM and therefore will not work when compiling Pluto to bytecode and running it via Lua.
+:::caution
+The bytecode of this feature is not backwards-compatible with Lua.
 :::
