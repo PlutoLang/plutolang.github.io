@@ -11,4 +11,4 @@ Any character-intensive task — for example, a hash algorithm — will greatly 
 The bytecode of this feature is not backwards-compatible with Lua.
 :::
 
-#### [Interactive Example](https://plutolang.github.io/web/#code=local%20str%20%3D%20%22hello%20world%22%0D%0Aprint(str%5B5%5D)%20--%20%22o%22%0D%0Aprint(str%5B200%5D)%20--%20nil%0D%0Aprint(str%5B-1%5D)%20--%20%22d%22)
+#### [Interactive Example](https://pluto-lang.org/web/#code=local%20str%20%3D%20%22hello%20world%22%0D%0Aprint(str%5B5%5D)%20--%20%22o%22%0D%0Aprint(str%5B200%5D)%20--%20nil%0D%0Aprint(str%5B-1%5D)%20--%20%22d%22)
