@@ -85,6 +85,7 @@ const config = {
         respectPrefersColorScheme: false,
       },
     }),
+  trailingSlash: false
 };
 
 module.exports = config;
