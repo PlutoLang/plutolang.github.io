@@ -26,14 +26,14 @@ Pluto can compile on virtually any platform, as long as there's a C++ 17 compile
 
 To compile Pluto yourself, you first need to clone the repository:
 ```
-git clone https://github.com/well-in-that-case/Pluto.git
+git clone https://github.com/PlutoLang/Pluto.git
 cd Pluto
 ```
 And then it's as simple as running the make command:
 ```
 make PLAT={yourplatform}
 ```
-The platform list can be found [here](https://github.com/well-in-that-case/Pluto/blob/main/src/Makefile#L33).
+The platform list can be found [here](https://github.com/PlutoLang/Pluto/blob/main/src/Makefile#L33).
 
 After you compile Pluto, all the binaries will be within the `src/` directory.
 
