@@ -33,7 +33,7 @@ And then it's as simple as running the make command:
 ```
 make PLAT={yourplatform}
 ```
-The platform list can be found [here](https://github.com/PlutoLang/Pluto/blob/main/src/Makefile#L33).
+The platform list can be found [here](https://github.com/PlutoLang/Pluto/blob/main/src/Makefile#L38).
 
 After you compile Pluto, all the binaries will be within the `src/` directory.
 
