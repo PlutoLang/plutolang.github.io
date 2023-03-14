@@ -31,9 +31,9 @@ base64.decode("SGVsbG8sIFdvcmxkIQ==")
 	Hello, World!
 --]]
 ```
-### base64.urlEncode(data, pad)
+### base64.url_encode(data, pad)
 Returns a base64url-encoded string. This variant is sometimes refered to as filename safe base64.
-### base64.urlDecode(data)
+### base64.url_decode(data)
 Similar to `base64.decode` except for base64url.
 
 ## base58
