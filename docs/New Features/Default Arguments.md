@@ -1,4 +1,4 @@
-During a function declaration, parameters can now declare their own default value, which must be a compile-time constant.
+During a function declaration, parameters can now declare their own default value.
 ```pluto showLineNumbers title="Example Code"
 local function write(text = "No text provided.")
 	print(text)
