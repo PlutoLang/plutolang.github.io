@@ -14,10 +14,13 @@ There's no effect on performance. This is implemented entirely during the compil
 ### What types can I use?
 - `string`
 - `number`
+  - `int`
+  - `float`
 - `boolean`/`bool`
 - `function`
 - `table`
 - `userdata`
+- `void` (return type only)
 
 You can also suffix a `?` to indicate nil-able types, e.g. `?string` indicates that it may be nil or a string.
 
