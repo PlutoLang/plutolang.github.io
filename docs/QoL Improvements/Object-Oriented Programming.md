@@ -35,3 +35,17 @@ local t = {
 }
 t.say("Hello") -- "Hello"
 ```
+
+## New Expression
+
+Pluto adds an easy way to make instances with the `new` expression. This expression will also call the `__construct` method if it exists.
+
+```pluto showLineNumbers
+local Human = {
+    function __construct(name)
+        self.name = name
+    end
+}
+local john = new Human("John")
+print(john.name) -- John
+```
