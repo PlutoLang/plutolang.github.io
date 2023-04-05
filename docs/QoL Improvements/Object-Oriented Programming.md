@@ -1,3 +1,7 @@
+Pluto makes a plethora of improvements when it comes to object-oriented programming.
+
+## Method Creation
+
 A series of methods was otherwise ugly to implement into a Lua table.
 ```pluto showLineNumbers title="Old Code"
 local t = {}
@@ -18,3 +22,16 @@ This automatically marks the functions as methods.
 :::caution
 Keep in mind, this produces *methods*, meaning you'll need to use the colon invocation syntax to avoid positional ambiguities in your parameters.
 :::
+
+## Static Functions
+
+For consistency with the above syntax, you can use 'static function' to declare non-method functions in your tables:
+
+```pluto showLineNumbers
+local t = {
+    static function say(msg)
+        print(msg)
+    end
+}
+t.say("Hello") -- "Hello"
+```
