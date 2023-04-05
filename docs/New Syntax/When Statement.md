@@ -11,5 +11,5 @@ when <condition>
 ```
 This syntax is more readable. It's not any faster, but it's the Lua semantic of `do .. while` from other languages.
 
-# Using Compatibility Mode?
+## Using Compatibility Mode?
 You may need to use `pluto_when` instead of `when`.
