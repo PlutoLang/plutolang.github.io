@@ -56,7 +56,7 @@ const config = {
             type: 'doc',
             docId: 'Introduction',
             position: 'left',
-            label: 'Introduction',
+            label: 'Documentation',
           },
           {
             href: 'https://github.com/PlutoLang/Pluto',
