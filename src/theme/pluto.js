@@ -16,5 +16,6 @@ Prism.languages.pluto = {
 			lookbehind: true
 		}
 	],
+	'constant': /\.\.\./,
 	'punctuation': /[\[\](){},;]|\.+|:+/
 };
