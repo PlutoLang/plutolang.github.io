@@ -80,3 +80,19 @@ local Human = class
     end
 end
 ```
+
+### Extends
+
+The class statement also supports `extends` to specify a parent:
+
+```pluto showLineNumbers
+class Entity
+    age = 1
+end
+
+class Human extends Entity
+end
+
+local human = new Human()
+print(human.age) -- 1
+```
