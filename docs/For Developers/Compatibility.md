@@ -4,7 +4,6 @@ Pluto is 99.9% compatible with most Lua source code. However, it's imperfect. Du
 Pluto's adds the following reserved tokens:
 - `switch`
 - `continue`
-- `when`
 - `enum`
 
 Which means you can't use them as variable names or for function calls. They can still be used with short-hand table indexes and goto labels though, because Pluto [removes the restriction from them](../QoL%20Improvements/Reserved%20Identifiers).
