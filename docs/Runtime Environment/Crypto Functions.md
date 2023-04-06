@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 Functions regarding cryptography, implemented by Pluto.
 ## Hashing Algorithms
