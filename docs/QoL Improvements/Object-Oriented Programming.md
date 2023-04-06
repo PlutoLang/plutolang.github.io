@@ -136,6 +136,12 @@ print(e instanceof Human) -- false
 print(h instanceof Entity) -- true (by inheritance)
 print(h instanceof Human) -- true
 ```
+It can also be used as a function:
+```pluto showLineNumbers
+class Entity end
+local e = new Entity()
+print(instanceof(e, Entity)) -- true
+```
 
 ## Using Compatibility Mode?
 
