@@ -1,10 +1,10 @@
-Pluto allows you to use reserved tokens such as `if` from Lua and `when` from Pluto as identifiers with shorthand table syntax and for goto labels.
+Pluto allows you to use reserved tokens such as `if` from Lua and `class` from Pluto as identifiers with shorthand table syntax and for goto labels.
 
 ```pluto showLineNumbers title="Reserved tokens as identifiers with shorthand table syntax"
 local t = {
-    when = "key"
+    class = "key"
 }
-print(t.when)
+print(t.class)
 ```
 
 ```pluto showLineNumbers title="Reserved tokens as identifiers for goto labels"
