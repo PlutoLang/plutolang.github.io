@@ -7,8 +7,8 @@ Although Pluto can theoretically be used with Lua-based tooling, there is specia
 
 ## Syntax Highlighting
 
-There is a TextMate-based grammar for Pluto [available here](https://github.com/PlutoLang/Syntax-Highlighting). This can be used for syntax highlighting in many applications.
+There is a TextMate bundle for Pluto [available here](https://github.com/PlutoLang/Syntax-Highlighting). It provides syntax highlighting as well as snippets (e.g. when you type "fun" then press tab). This can be used in many applications, including Sublime Text and VS Code.
 
-## Linting
+## Language Server
 
-A linter tells you warnings and errors without running your code. This is built into plutoc, and can be leveraged via [pluto-language-server](https://github.com/PlutoLang/pluto-language-server) to deliver the diagnostics right into your text editor.
+[pluto-language-server](https://github.com/PlutoLang/pluto-language-server) is a simple wrapper on top of plutoc's ability to give you warnings, errors, and suggestions/completions, using LSP to deliver it right into your text editor.
