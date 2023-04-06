@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 7
 ---
 Some minor changes & additions to the environment must be disclosed:
 1. `_PVERSION` is the global to check your current version of Pluto.
