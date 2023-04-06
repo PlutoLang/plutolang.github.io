@@ -171,6 +171,8 @@ local r = string.isalnum(r) --> true
 :::info
 Whitespace characters are not alphanumeric characters.
 :::
+### string.uformat
+Same as `string.format`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
 ### string.contains
 Checks if a string contains a substring.
 #### Parameters
