@@ -96,3 +96,35 @@ end
 local human = new Human()
 print(human.age) -- 1
 ```
+
+This also adds a `__parent` field to Human.
+
+## Parent Expression
+
+The `parent` expression is a shorthand for `self.__parent`, which also supports method call syntax, in which case it's a shorthand for `self.__parent.METHOD(self, ...)`.
+
+```pluto showLineNumbers
+class Entity
+    function __construct(name)
+        self.name = name
+    end
+end
+
+class Human extends Entity
+    -- If we don't define __construct, the parent-constructor would be called automatically.
+    -- However, if we overwrite it, we can use parent:__construct to call it manually.
+    function __construct(name)
+        parent:__construct(name)
+    end
+end
+
+local human = new Human("John")
+print(human.name) -- "John"
+```
+
+## Using Compatibility Mode?
+
+Some of the syntax discussed here may be different due to compatiblity mode:
+- `new` -> `pluto_new`
+- `class` -> `pluto_class`
+- `parent` -> `pluto_parent`
