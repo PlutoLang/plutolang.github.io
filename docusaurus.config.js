@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+const codeTheme = require('./src/theme/monokai');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -70,7 +70,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Ryan Starrett. Built with Docusaurus.`,
       },
       prism: {
-        theme: darkCodeTheme,
+        theme: codeTheme,
         additionalLanguages: ['cpp'],
         magicComments: [
           {
