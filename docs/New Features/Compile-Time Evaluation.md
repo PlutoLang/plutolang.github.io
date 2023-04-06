@@ -7,7 +7,9 @@ Compile-time evaluation is delimited by the "$" symbol before a function call. T
 
 And on the following functions:
 - `tostring`
+- `utostring`
 - `tonumber`
+- `utonumber`
 ```pluto showLineNumbers
 local crypto = require("crypto")
 
