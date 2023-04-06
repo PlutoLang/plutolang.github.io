@@ -16,3 +16,8 @@ else
     print("Pluto detected (".._PVERSION.."), based on ".._VERSION..", "..soup.."compiled with Soup integration")
 end
 ```
+## New Functions
+### utostring
+Same as `tostring`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
+### utonumber
+Same as `tonumber`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
