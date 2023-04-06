@@ -49,3 +49,34 @@ local Human = {
 local john = new Human("John")
 print(john.name) -- John
 ```
+
+## Class Statement
+
+The `class` statement is similar to a table constructor, but it does not require commas or semicolons:
+
+```pluto showLineNumbers
+class Human
+    function __construct(name)
+        self.name = name
+    end
+
+    function __gc()
+        print(self.name .. " died of irrelevance")
+    end
+}
+local john = new Human("John")
+```
+
+The class statement also supports modifiers: `local class NAME`, `export class NAME`
+
+### Class Expression
+
+There is also a `class` expression, which can be used e.g. when assigning to a variable:
+
+```pluto showLineNumbers
+local Human = class
+    function __construct(name)
+        self.name = name
+    end
+end
+```
