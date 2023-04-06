@@ -122,6 +122,21 @@ local human = new Human("John")
 print(human.name) -- "John"
 ```
 
+## Instanceof Operator
+
+The `instanceof` operator can be used to check if a table is a class instance, including inherited classes:
+
+```pluto showLineNumbers
+class Entity end
+class Human extends Entity end
+local e = new Entity()
+local h = new Human()
+print(e instanceof Entity) -- true
+print(e instanceof Human) -- false
+print(h instanceof Entity) -- true (by inheritance)
+print(h instanceof Human) -- true
+```
+
 ## Using Compatibility Mode?
 
 Some of the syntax discussed here may be different due to compatiblity mode:
