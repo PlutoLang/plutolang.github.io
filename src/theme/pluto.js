@@ -6,7 +6,7 @@ Prism.languages.pluto = {
 	},
 	'boolean': /\b(?:true|false)\b/,
 	'number': /\b([\d][\d_]+|(0x[a-f\d]+)|(0b[01]+))(?:\.[a-f\d]*)?(?:p[+-]?\d+)?\b|\b\d+(?:\.\B|(?:\.\d*)?(?:e[+-]?\d+)?\b)|\B\.\d+(?:e[+-]?\d+)?\b/i,
-	'keyword': /\b(?:and|as|class|enum|begin|break|when|do|else|elseif|end|for|function|goto|if|in|local|new|nil|not|or|repeat|return|static|then|until|while|continue|switch|case|default|pluto_case|pluto_switch|pluto_continue|pluto_default)\b/,
+	'keyword': /\b(?:and|as|class|enum|begin|break|when|do|else|elseif|end|for|function|goto|if|in|local|new|not|or|repeat|return|static|then|until|while|continue|switch|case|default|pluto_case|pluto_switch|pluto_continue|pluto_default)\b/,
 	'variable': /\b(?:self)\b/,
 	'function': /(?!\d)\w+(?=\s*(?:[({]))/,
 	'operator': [
@@ -16,6 +16,6 @@ Prism.languages.pluto = {
 			lookbehind: true
 		}
 	],
-	'constant': /(\.\.\.|_VERSION|_PVERSION|_PSOUP)/,
+	'constant': /(nil|\.\.\.|_VERSION|_PVERSION|_PSOUP)/,
 	'punctuation': /[\[\](){},;]|\.+|:+/
 };
