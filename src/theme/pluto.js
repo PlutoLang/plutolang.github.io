@@ -10,7 +10,7 @@ Prism.languages.pluto = {
 	'variable': /\b(?:self|parent|pluto_parent)\b/,
 	'function': /(?!\d)\w+(?=\s*(?:[({]))/,
 	'operator': [
-		/[-+*%^&|#]|\/\/?|<[<=]?|>[>=]?|[=~]=?|\:=|\?\?|\?\./,
+		/[-+*%^&|#]|\/\/?|<[<=]?|>[>=]?|[=~]=?|\:=|\?\?|\?\.|instanceof/,
 		{
 			pattern: /(^|[^.])\.\.(?!\.)/,
 			lookbehind: true
