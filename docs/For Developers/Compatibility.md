@@ -5,6 +5,10 @@ Pluto's adds the following reserved tokens:
 - `switch`
 - `continue`
 - `enum`
+- `new`
+- `class`
+- `parent`
+- `export`
 
 Which means you can't use them as variable names or for function calls. They can still be used with short-hand table indexes and goto labels though, because Pluto [removes the restriction from them](../QoL%20Improvements/Reserved%20Identifiers).
 
