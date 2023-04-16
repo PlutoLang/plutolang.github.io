@@ -16,3 +16,6 @@ end
 write() 		--> "No text provided."
 write("Hello!") --> "Hello!"
 ```
+:::caution
+The bytecode of this feature is not backwards-compatible with Lua.
+:::

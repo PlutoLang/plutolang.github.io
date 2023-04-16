@@ -12,3 +12,6 @@ As you can see, the null-coalescing operator allows much shorter statements.
 :::info
 This is a lazily-evaluated operator. It will not "choose whatever isn't nil", it'll simply evaluate the second expression if the first expression is nil.
 :::
+:::caution
+The bytecode of this feature is not backwards-compatible with Lua.
+:::
