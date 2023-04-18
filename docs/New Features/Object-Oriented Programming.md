@@ -63,7 +63,7 @@ class Human
     function __gc()
         print(self.name .. " died of irrelevance")
     end
-}
+end
 local john = new Human("John")
 ```
 
