@@ -110,7 +110,7 @@ A Boolean.
 #### Example
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
-local r = string.isascii(r) --> true
+local r = string.isascii(s) --> true
 ```
 :::info
 This would exclude any multi-byte characters, like emojis.
@@ -124,7 +124,7 @@ A Boolean.
 #### Example
 ```pluto title="Basic Usage"
 local s = "helloworld"
-local r = string.islower(r) --> true
+local r = string.islower(s) --> true
 ```
 :::info
 Whitespace characters are not lowercase characters.
@@ -138,7 +138,7 @@ A Boolean.
 #### Example
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD"
-local r = string.isalpha(r) --> true
+local r = string.isalpha(s) --> true
 ```
 :::info
 Whitespace characters are not alphabetic characters.
@@ -152,7 +152,7 @@ A Boolean.
 #### Example
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD"
-local r = string.isupper(r) --> true
+local r = string.isupper(s) --> true
 ```
 :::info
 Whitespace characters are not uppercase characters.
@@ -166,7 +166,7 @@ A Boolean.
 #### Example
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
-local r = string.isalnum(r) --> true
+local r = string.isalnum(s) --> true
 ```
 :::info
 Whitespace characters are not alphanumeric characters.
