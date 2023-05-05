@@ -18,3 +18,20 @@ They also support an alternative syntax, for compatibility with older versions o
 ```pluto showLineNumbers
 local max = if a > b then a else b
 ```
+
+## Doesn't Lua already have ternaries?
+
+While it is true that you can do something like this:
+
+```pluto
+local max = a > b and a or b
+```
+
+Keep in mind that this falls apart when the true-expression has a falsy value:
+
+```pluto
+local x = -1
+x = (x == -1 and nil or x)
+```
+
+In this case, x will be -1 despite the intention being to set it to nil. There are no such issues using Pluto's ternary expressions.
