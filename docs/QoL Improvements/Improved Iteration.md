@@ -18,6 +18,10 @@ end
 ```
 This is compatible with for-loop optimizations.
 
+:::caution
+The bytecode of this feature is not backwards-compatible with Lua.
+:::
+
 ## For As Loop
 
 When you only want to iterate over the values of a table, you can use Pluto's for-as syntax.
@@ -34,3 +38,7 @@ for _, value in t do
     print(value)
 end
 ```
+
+:::info
+The bytecode of this feature is only backwards-compatible with Lua when `pairs` or `ipairs` is used.
+:::
