@@ -7,9 +7,11 @@ end
 write() 		--> "No text provided."
 write("Hello!") --> "Hello!"
 ```
-```pluto showLineNumbers title="This code is semantically equal."
+```pluto showLineNumbers title="This code produces the same bytecode."
 local function write(text)
-	text ??= "No text provided."
+	if text == nil then
+		text = "No text provided."
+	end
 	print(text)
 end
 
