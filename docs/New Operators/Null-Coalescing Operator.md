@@ -6,7 +6,7 @@ local effective_permissions = permissions ?? "NO_PERMISSIONS"
 
 group ??= "User"
 ```
-It's semantically equal to the following code:
+It's semantically equal to the following code using [ternary expressions](../New Syntax/Ternary Expressions.md):
 ```pluto showLineNumbers
 local permissions, group = nil, nil
 
