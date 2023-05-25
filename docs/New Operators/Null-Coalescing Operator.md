@@ -1,14 +1,22 @@
-The null-coalescing operator (or more appropriately, nil-coalescing operator) is used as follows:
+The null-coalescing operator (or more appropriately, nil-coalescing operator) can be used as follows:
 ```pluto showLineNumbers
-local value = nil
-local result = value ?? "This is the value if 'value' is nil."
+local permissions, group = nil, nil
+
+local effective_permissions = permissions ?? "NO_PERMISSIONS"
+
+group ??= "User"
 ```
 It's semantically equal to the following code:
 ```pluto showLineNumbers
-local value = nil
-local result = if value == nil then "This is the value if 'value' is nil." else value
+local permissions, group = nil, nil
+
+local effective_permissions = permissions == nil ? "NO_PERMISSIONS" : permissions
+
+if group == nil then
+	group = "User"
+end
 ```
-As you can see, the null-coalescing operator allows much shorter statements.
+As you can see, the null-coalescing operator allows for more concise statements.
 :::info
 This is a lazily-evaluated operator. It will not "choose whatever isn't nil", it'll simply evaluate the second expression if the first expression is nil.
 :::
