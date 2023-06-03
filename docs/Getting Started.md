@@ -14,6 +14,17 @@ The easiest way to get started writing Pluto is to use [Write Pluto Online](http
 
 You can find pre-built binaries of Pluto for Windows, Linux, & Mac OS over on [Pluto's Github Releases page](https://github.com/PlutoLang/Pluto/releases).
 
+### Chocolatey
+
+You can easily install pluto & plutoc via Chocolatey as follows:
+
+```
+choco source add -n "Calamity, Inc." -s https://choco.calamity.gg/index.json
+choco install plutolang
+```
+
+Note that Chocolatey 2.0.0 or above is needed.
+
 ## Compile Pluto Yourself
 
 Pluto can compile on virtually any platform, as long as there's a C++ 17 compiler for it, which includes, but is not limited to:
