@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 ## How compatible with Lua is Pluto?
 Pluto is 99.9% compatible with most Lua source code. However, it's imperfect. Due to that, Pluto implements several compatibility macros.
 ### Where are the incompatibilities?
