@@ -122,6 +122,20 @@ local human = new Human("John")
 print(human.name) -- "John"
 ```
 
+## Constructor Promotion
+
+Because a common task of `__construct` methods is to assign the value of arguments to table fields, Pluto provides a simple syntax to reduce this boilerplate:
+
+```pluto
+class Human
+    function __construct(public name)
+    end
+end
+
+local human = new Human("John")
+print(human.name) -- "John"
+```
+
 ## Instanceof Operator
 
 The `instanceof` operator can be used to check if a table is a class instance, including inherited classes:
