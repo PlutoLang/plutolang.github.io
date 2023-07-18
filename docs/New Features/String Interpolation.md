@@ -1,8 +1,15 @@
-String interpolation is very simple.
-```pluto
-local variable = "world"
-local statement = $"hello {variable}"
+String interpolation is a simple alternative syntax to concatenation.
 
-assert(statement == "hello world")
+```pluto title="Concatenation"
+local label = "meaning of life"
+local data = { value = 42 }
+print("The " .. label .. " is " .. data.value) -- "The meaning of life is 42"
 ```
-As you can see, you declare a string interpolated by prefixing it with the dollar symbol. Brackets should contain a variable name, be that global or local. The variable will be converted to a string. 
+
+```pluto title="String interpolation"
+local label = "meaning of life"
+local data = { value = 42 }
+print($"The {label} is {data.value}") -- "The meaning of life is 42"
+```
+
+As you can see, you declare a string interpolated by prefixing it with the "$" symbol. Brackets can contain any expression. The result of expressions will be converted to a string as with normal concatenation, although note that Pluto supports [boolean concatenation](../QoL%20Improvements/Boolean%20Concatenation) unlike Lua.
