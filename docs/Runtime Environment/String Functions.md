@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 New functions for the `string` type, implemented by Pluto.
 ## New Functions

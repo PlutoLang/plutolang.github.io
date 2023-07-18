@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 New functions for the `table` type, implemented by Pluto.
 ### table.freeze

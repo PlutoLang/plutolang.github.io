@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 New functions for the `io` library, implemented by Pluto.
 ### io.isdir
