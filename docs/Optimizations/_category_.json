@@ -1,6 +1,6 @@
 {
   "label": "Optimizations",
-  "position": 7,
+  "position": 5,
   "link": {
     "type": "generated-index",
     "description": "Optimizations that Pluto performs."

@@ -1,6 +1,6 @@
 {
     "label": "Runtime Environment",
-    "position": 9,
+    "position": 7,
     "link": {
       "type": "generated-index",
       "description": "Pluto's changes to the runtime environment."
