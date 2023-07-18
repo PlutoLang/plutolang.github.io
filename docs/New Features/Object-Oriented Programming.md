@@ -122,6 +122,8 @@ local human = new Human("John")
 print(human.name) -- "John"
 ```
 
+Note that if you have a local variable (or function argument) called "parent", the `parent` expression will defer to it.
+
 ## Constructor Promotion
 
 Because a common task of `__construct` methods is to assign the value of arguments to table fields, Pluto provides a simple syntax to reduce this boilerplate:
