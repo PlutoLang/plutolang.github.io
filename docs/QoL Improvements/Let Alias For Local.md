@@ -12,3 +12,7 @@ If this is causing ambiguities in your script, you can disable it again after yo
 ```pluto
 pluto_use let = false
 ```
+
+## For integrators
+
+You can enable `let` in your Pluto environment by default by defining the `PLUTO_USE_LET` macro in `luaconf.h` or your build config.
