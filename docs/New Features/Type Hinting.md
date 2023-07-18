@@ -22,7 +22,11 @@ There's no effect on performance. This is implemented entirely during the compil
 - `userdata`
 - `void` (return type only)
 
-You can also suffix a `?` to indicate nil-able types, e.g. `?string` indicates that it may be nil or a string.
+Prefix a `?` to indicate nil-able types, e.g. `?string` indicates that it may be nil or a string.
+
+You can also use `|` to delimit alternatives, e.g. `string|int` indicates that it may be a string or an int.
+
+Putting all of this together, we could also have e.g. `?string|int` to indicate that it may be nil, a string, or an int.
 
 :::info
 This is a WIP feature, and it's very difficult to implement in a one-pass compiler. Allow tolerance for missing coverage, and report any bugs.
