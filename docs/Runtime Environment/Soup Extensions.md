@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 ---
 If you compile Pluto with Soup, then you get access to these additional libraries. They must be included via `require`.
 
