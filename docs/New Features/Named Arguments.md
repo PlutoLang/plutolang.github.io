@@ -10,7 +10,7 @@ end
 process_file(file = "hello.txt", version = 2) -- "Processing hello.txt with mode 'r' and version 2"
 ```
 
-Note that this example also makes use of [default arguments](Default Arguments.md) and [string interpolation](String Interpolation.md).
+Note that this example also makes use of [default arguments](Default%20Arguments.md) and [string interpolation](String%20Interpolation.md).
 
 ## Mixing arguments
 

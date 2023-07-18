@@ -10,14 +10,9 @@ local function add(a, b)
 	return a + b
 end
 
-local class Bigint
-	chunks = {}
-end
-
 return {
 	version = version,
-	add = add,
-	Bigint = Bigint
+	add = add
 }
 ```
 
@@ -26,10 +21,6 @@ export version = 2
 
 export function add(a, b)
 	return a + b
-end
-
-export class Bigint
-	chunks = {}
 end
 ```
 
