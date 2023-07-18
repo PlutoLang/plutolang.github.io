@@ -1,3 +1,6 @@
+---
+sidebar_position: 12
+---
 Type-hinting looks like this:
 ```pluto showLineNumbers
 local var: string = "hello world"

@@ -1,3 +1,6 @@
+---
+sidebar_position: 6
+---
 String interpolation is a simple alternative syntax to concatenation.
 
 ```pluto title="Concatenation"
@@ -6,7 +9,7 @@ local data = { value = 42 }
 print("The " .. label .. " is " .. data.value) -- "The meaning of life is 42"
 ```
 
-```pluto title="String interpolation"
+```pluto title="String Interpolation"
 local label = "meaning of life"
 local data = { value = 42 }
 print($"The {label} is {data.value}") -- "The meaning of life is 42"

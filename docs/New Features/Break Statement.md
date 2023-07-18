@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 This keyword accepts an optional integral argument which tells it how many levels of enclosing loops it should break. The default value is 1, thus breaking out of the current loop.
 ```pluto showLineNumbers title="Example 1"
 for i = 1, 10 do -- Loop 1.

@@ -1,3 +1,6 @@
+---
+sidebar_position: 13
+---
 Searching a string for a substring, or searching an array for an element is a very simple operation now. The `in` operator has been extended to support these operations.
 ```pluto showLineNumbers title="Searching for a substring."
 local a = "hello"

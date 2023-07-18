@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 Continue statements, like `break`, are meant to be used in loops. They skip the current iteration of the loop.
 
 They introduce a new keyword, `continue`. These cannot be used inside switch statements.

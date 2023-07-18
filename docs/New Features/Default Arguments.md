@@ -1,3 +1,6 @@
+---
+sidebar_position: 11
+---
 During a function declaration, parameters can now declare their own default value.
 ```pluto showLineNumbers title="Example Code"
 local function write(text = "No text provided.")

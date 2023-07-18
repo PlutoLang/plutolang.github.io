@@ -1,3 +1,6 @@
+---
+sidebar_position: 4
+---
 Lambda expressions are shorthand function objects for evaluating quick expressions. Take this code:
 ```pluto showLineNumbers title="The Old Way"
 local s1 = "123"

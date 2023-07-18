@@ -1,3 +1,6 @@
+---
+sidebar_position: 7
+---
 Ternary expressions behave identical as to how they would in C. They introduce no new keywords.
 ```pluto showLineNumbers title="Old Code"
 local max

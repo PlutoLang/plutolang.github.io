@@ -1,3 +1,6 @@
+---
+sidebar_position: 9
+---
 Pluto adds the following syntax:
 ```pluto
 enum MyEnum begin
