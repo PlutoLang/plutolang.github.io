@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 Pluto makes two small changes to numeral parsing.
 
 ## Cosmetic Underscores

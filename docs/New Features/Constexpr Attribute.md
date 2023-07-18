@@ -1,3 +1,6 @@
+---
+sidebar_position: 16
+---
 Pluto adds the `<constexpr>` attribute which is a strengthened version of the `<const>` attribute.
 
 So, both of these lines of code are valid and mean the same thing:

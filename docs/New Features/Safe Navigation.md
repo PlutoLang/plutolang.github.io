@@ -1,3 +1,6 @@
+---
+sidebar_position: 17
+---
 Accessing deeply nested fields which can potentially be `nil` was problematic, because you'd need an unreasonable amount of guard clauses to prevent an "attempt to index nil" error. Pluto now offers this syntax:
 ```pluto showLineNumbers title="Basic Usage"
 local value = a?.b?.c?.d

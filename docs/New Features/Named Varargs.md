@@ -1,3 +1,6 @@
+---
+sidebar_position: 14
+---
 If you have a function that takes varargs and you want them in a table, you'd have to do something like this:
 
 ```pluto

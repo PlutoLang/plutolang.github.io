@@ -1,3 +1,6 @@
+---
+sidebar_position: 15
+---
 Destructuring is a better way to assign local variables from expressions that return a table.
 
 ## Array destructuring

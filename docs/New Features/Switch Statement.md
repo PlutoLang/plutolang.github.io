@@ -1,3 +1,6 @@
+---
+sidebar_position: 10
+---
 The switch statement consists of the following new keywords:
 - `case`
 - `switch`
