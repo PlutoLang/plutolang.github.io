@@ -10,7 +10,7 @@ end
 write() 		--> "No text provided."
 write("Hello!") --> "Hello!"
 ```
-```pluto showLineNumbers title="This code produces the same bytecode."
+```pluto showLineNumbers title="This code behaves identically."
 local function write(text)
 	if text == nil then
 		text = "No text provided."
