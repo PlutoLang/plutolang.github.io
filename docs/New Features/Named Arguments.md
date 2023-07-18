@@ -1,10 +1,25 @@
 Instead of positional arguments, you can use the names of arguments you want to set:
 
 ```pluto
-local function f(file, mode = "r", version = 1)
-	print(file, mode, version)
+local function process_file(file, mode = "r", version = 1)
+	print($"Processing {file} with mode '{mode}' and version {version}")
 end
-f(file = "Hello", version = 2) -- Hello    r    2
+process_file(file = "hello.txt", version = 2) -- "Processing hello.txt with mode 'r' and version 2"
 ```
 
-Note that this feature is implemented entirely in the parser and therefore only works for local functions.
+Note that this example also makes use of [default arguments](Default Arguments.md) and [string interpolation](String Interpolation.md).
+
+## Mixing arguments
+
+You can use positional arguments for the first few arguments and then use positional arguments for the latter ones, for example:
+
+```pluto
+local function process_file(file, mode = "r", version = 1)
+	print($"Processing {file} with mode '{mode}' and version {version}")
+end
+process_file("hello.txt", version = 2) -- "Processing hello.txt with mode 'r' and version 2"
+```
+
+## Limitations
+
+This feature is implemented entirely in the parser and therefore only works for local functions at the moment.
