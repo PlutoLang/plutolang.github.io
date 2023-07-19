@@ -122,7 +122,7 @@ local human = new Human("John")
 print(human.name) -- "John"
 ```
 
-Note that if you have a local variable (or function argument) called "parent", the `parent` expression will defer to it.
+Note that if you have a local variable (or function parameter) called "parent", the `parent` expression will defer to it.
 
 ## Constructor Promotion
 
