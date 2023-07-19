@@ -32,5 +32,9 @@ You can change the meaning of Pluto's reserved tokens at any point in your scrip
 ### Configuration for integrators
 The macros for compatibility mode are well-documented, and found inside your `luaconf.h` file.
 
-## Proactive compatibility
-We recommend scripters be proactive about compatibility by simply placing `pluto_use "0.6.0"` or `pluto_use "0.5.0"` at the beginning of their scripts. The reason why this is important is that when you name a variable, for example, "inline" and then Pluto X.Y.Z makes "inline" a reserved keyword, that reserved keyword would be "pluto_inline" instead, as your `pluto_use` statement has caused compatibility mode to be enabled on it. Would you not do this, "inline" would be ambiguous in Pluto X.Y.Z, and the "reserved keyword" interpretation would cause you problems.
+## Portability & proactive compatibility
+We recommend scripters place a `pluto_use` statement at the beginning of their scripts for two reasons:
+- **Portability.** This will override the compatibility mode settings compiled into Pluto so your script will be parsed identically in all Pluto environments.
+- **Proactive compatibility.** Any keywords added by future versions of Pluto will also be put in compatibility mode by these statements, so in the off-chance your script uses a future reserved keyword as a variable name, it would still parse as you intended when you wrote it.
+
+Plus, it's as simple as `pluto_use "0.6.0"` or `pluto_use "0.5.0"` — see "Configuration for scripters" above.
