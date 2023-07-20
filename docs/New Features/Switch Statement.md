@@ -16,6 +16,7 @@ switch value do
 		print("There is only two!")
 		break
 end
+-- Break jumps here.
 ```
 
 Switch statements also support fallthrough.
@@ -34,6 +35,7 @@ switch value do
 end
 -- Break jumps here.
 ```
+In this example, cases 1-4 fall through to case 5.
 
 **Remember to use break whenever you do not want fallthrough**. Here is an example of a potential bug:
 ```pluto
@@ -55,14 +57,11 @@ The `default` case is executed if none of the other cases are true. For example:
 local value = 1
 switch value do
 	case 2:
-		... -- Example code.
-		break
 	case 3:
-		...
 		break
 
 	default:
-		print("Neither case 2 or 3 have ran!s")
+		print("Value is neither 2 nor 3!")
 end
 ```
 The `default` case can be placed anywhere in the statement. It also supports fallthrough, so remember to use `break` if you place it above any cases.
