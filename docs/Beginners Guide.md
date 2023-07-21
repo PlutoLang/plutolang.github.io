@@ -224,7 +224,7 @@ As you can see, this prints "nil" two times, so that's the answer — we get `ni
 
 You should now have an understanding of the fundemantals of Pluto. If you want to learn more, the rest of this documentation is certainly a good place to learn more about Pluto.
 
-You could start with some of the Pluto features we already made use of it in this guide:
+You could start with some of the Pluto features we already made use of in this guide:
 - [String Interpolation](New%20Features/String%20Interpolation.md) (`$`-strings)
 - [For-As Loop](New%20Features/For-As%20Loop.md)
 - [Type Hinting](New%20Features/Type%20Hinting.md)
