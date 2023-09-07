@@ -14,7 +14,7 @@ Note that this example also makes use of [default arguments](Default%20Arguments
 
 ## Mixing arguments
 
-You can use positional arguments for the first few arguments and then use positional arguments for the latter ones, for example:
+You can use positional arguments for the first few arguments and then use named arguments for the latter ones, for example:
 
 ```pluto
 local function process_file(file, mode = "r", version = 1)
