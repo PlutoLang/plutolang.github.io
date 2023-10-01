@@ -80,6 +80,18 @@ switch true do
 end
 ```
 
+There is a short-hand fallthrough syntax:
+```pluto
+switch value do
+	case 1, 2, 3:
+		print("1-3")
+		break;
+	case 4, 5, 6:
+		print("4-6")
+		break;
+end
+```
+
 However, note that method calls needs to be encapsulated with parentheses:
 ```pluto
 local t = {
