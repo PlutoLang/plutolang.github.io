@@ -124,3 +124,13 @@ A string representing the new file path.
 --> cfg/config.txt
 io.absolute("cfg/cfg.txt") --> "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
+### io.currentdir
+Get or set the current working directory.
+#### Parameters
+1. A path to the desired current working directory. If this parameter is absent, this function works as a *getter.*
+#### Returns
+If this function is acting as a *getter*, it will return the current working directory.
+```pluto showLineNumbers title="Example Usage"
+local cwd = io.currentdir() -- Get cwd
+io.currentdir("abc/abc") -- Set a new cwd
+```
