@@ -1,27 +1,25 @@
 ---
 sidebar_position: 13
 ---
-Searching a string for a substring, or searching an array for an element is a very simple operation now. The `in` operator has been extended to support these operations.
+Searching a string for a substring, or searching a table for a value is a very simple (and fast) operation now. The `in` operator has been extended to support these operations.
 ```pluto showLineNumbers title="Searching for a substring."
-local a = "hello"
-local b = "hello world"
-
-local r1 = a in b
-local r2 = "hello" in b
-local r3 = a in "hello world"
-local r4 = "hello" in "hello world"
-local r5 = "goodbye" in "hello world"
-
-assert(r1 and r2 and r3 and r4) -- They'll all return true.
-assert(r5 == false) -- Except this one.
+assert("world" in "hello world")
 ```
-```pluto showLineNumbers title="Searching a table for keys and elements."
-local t = { [5] = "five", [6] = "six", [7] = "seven", key = "value" }
+```pluto showLineNumbers title="Searching a table for a value."
+local t = { "a", "b", key = "value" }
 
-assert(("key" in t) == true) -- Found a key with the value of 'key'.
-assert((5 in t) == true) -- Found a key with the value of '5'.
-assert((3 in t) == false) -- No key with the value of '3'.
+assert(t[1] == "a")
+assert(t[2] == "b")
+assert(t.key == "value")
+
+assert("a" in t)
+assert("b" in t)
+assert("c" not in t)
+assert("value" in t)
+assert("random" not in t)
 ```
+
+As you can see, `not in` can also be used for more readable boolean inversion.
 
 ## Rules
 - The right-hand operand must always be a table or a string.
