@@ -32,9 +32,11 @@ Checks if this table contains an element.
 1. The table to check.
 2. The element to check for.
 #### Returns
-The index if found, otherwise `nil`.
+The index or key if found, otherwise `nil`.
 #### Example
 ```pluto title="Basic Usage"
-local t = { 1, 2, 3, 4, 5, 6 }
-local r = table.contains(t, 4) --> 4
+local t = { 1, 2, 3, 4, 5, 6, key = "value" }
+assert(table.contains(t, 4) == 4)
+assert(table.contains(t, "value") == "key")
+assert(table.contains(t, "nothing") == nil)
 ```
