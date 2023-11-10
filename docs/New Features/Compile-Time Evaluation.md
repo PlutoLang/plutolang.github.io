@@ -38,7 +38,7 @@ If there is certain code you only want to have compiled in for a certain build, 
 ```pluto
 local DEBUG <constexpr> = true
 
-$if DEBUG
+$if DEBUG then
 	print("Script running in debug mode")
 $else
 	print("Script running in release mode")
