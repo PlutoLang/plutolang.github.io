@@ -8,7 +8,7 @@ const config = {
   title: 'Pluto',
   tagline: 'A superset of Lua 5.4 — with unique features, optimizations, and improvements.',
   url: 'https://pluto-lang.org',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.png',
@@ -33,6 +33,9 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: './docs',
+          routeBasePath: '/',
+          breadcrumbs: false,
           sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {
