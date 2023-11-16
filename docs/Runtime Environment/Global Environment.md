@@ -1,6 +1,3 @@
----
-sidebar_position: 6
----
 Some minor changes & additions to the environment must be disclosed:
 1. `_PVERSION` is the global to check your current version of Pluto.
 2. `_PSOUP` is a global boolean you can access to check linkage with Soup.
@@ -16,8 +13,3 @@ else
     print("Pluto detected (".._PVERSION.."), based on ".._VERSION..", "..soup.."compiled with Soup integration")
 end
 ```
-## New Functions
-### utostring
-Same as `tostring`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
-### utonumber
-Same as `tonumber`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
