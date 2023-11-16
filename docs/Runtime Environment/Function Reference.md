@@ -669,7 +669,6 @@ An alternative to coroutine.resume that rethrows any errors thrown by the corout
 ---
 
 ## `crypto`
-Available if you compiled Pluto with Soup. Must be included via `require`.
 ### `crypto.lua`
 Hash a string using Lua's version of the DJB2 non-cryptographic hashing algorithm.
 #### Parameters
