@@ -2,7 +2,6 @@
 sidebar_position: 10
 ---
 
-## Tooling
 Although Pluto can theoretically be used with Lua-based tooling, there is specialised support for it to enhance your coding experience in VS Code, Sublime Text, etc.
 
 ## Syntax Highlighting
