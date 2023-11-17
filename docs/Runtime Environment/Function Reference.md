@@ -217,8 +217,10 @@ io.currentdir("abc/abc") -- Set a new cwd
 os.sleep(1000) --> Pause this thread for 1000ms.
 ```
 ---
-### `nanos`, `millis`, `seconds`, `unixseconds`
-All of these return their respective times since epoch. The returns are implementation-specific.
+### `os.nanos`, `os.millis`, `os.seconds`
+All of these return their respective times since implementation-specific epoch.
+### `os.unixseconds`
+Returns seconds since UNIX epoch.
 
 ---
 ## `table`
