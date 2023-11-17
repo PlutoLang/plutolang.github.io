@@ -22,9 +22,61 @@ The search bar at the top right of the page is available. (Or Ctrl+F)
 ## Global
 ### `utostring`
 Same as `tostring`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
+
+---
 ### `utonumber`
 Same as `tonumber`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
 
+---
+### `dumpvar`
+A debug function designed to dump values into human-readable formats.
+#### Parameters
+1. The value to dump.
+#### Returns
+A string representation of the value.
+```pluto showLineNumbers
+local table = {
+    ["hello"] = 1234,
+    ["goodbye"] = _G.table,
+
+    ["name"] = "John",
+    ["lastname"] = "Doe",
+
+    ["details"] = {
+        "No details available."
+    }
+}
+
+print(dumpvar(table))
+```
+```
+{
+        ["lastname"] = string(3) "Doe",
+        ["name"] = string(4) "John",
+        ["goodbye"] = {
+                ["unpack"] = function: 00007FF7738B3C20,
+                ["insert"] = function: 00007FF7738B30D0,
+                ["freeze"] = function: 00007FF7738B43F0,
+                ["foreach"] = function: 00007FF7738B3220,
+                ["filter"] = function: 00007FF7738B4700,
+                ["isfrozen"] = function: 00007FF7738B44B0,
+                ["getn"] = function: 00007FF7738B43B0,
+                ["pack"] = function: 00007FF7738B3B10,
+                ["contains"] = function: 00007FF7738B4540,
+                ["move"] = function: 00007FF7738B34D0,
+                ["concat"] = function: 00007FF7738B37F0,
+                ["sort"] = function: 00007FF7738B42B0,
+                ["remove"] = function: 00007FF7738B33C0,
+                ["map"] = function: 00007FF7738B49A0,
+        },
+        ["hello"] = 1234,
+        ["details"] = {
+                [1] = string(21) "No details available.",
+        },
+}
+```
+
+---
 ## `io`
 ### `io.isdir`
 #### Parameters
