@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 ---
-## Alternative Operators
+## Operator Aliases
 These operators function the same, but they're more consistent with what's been standardized through programming today.
 
 - `**` is an alias for `^`, the exponent operator.
