@@ -451,6 +451,20 @@ local r = string.iswhitespace(s) --> true
 Same as `string.format`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
 
 ---
+### `string.truncate`
+Truncates a given string to a specified length. If an elipsis is desired and the string was actually truncated, the last three characters of the resultant string will be replaced with an elipsis.
+#### Parameters
+1. The string to truncate.
+2. The desired length of the truncated string.
+3. A boolean indicating whether or not to append `...` to the string **if** it is truncated. This is `false` by default.
+#### Returns
+The truncated string.
+```pluto showLineNumbers
+string.truncate("Hello, world!", 50)      --> "Hello, world!"
+string.truncate("Hello, world!", 5)       --> "Hello"
+string.truncate("Hello, world!", 5, true) --> "He..."
+```
+---
 ### `string.contains`
 Checks if a string contains a substring.
 #### Parameters
