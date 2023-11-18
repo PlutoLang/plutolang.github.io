@@ -4,6 +4,7 @@ sidebar_position: 3
 ## Operator Aliases
 These operators function the same, but they're more consistent with what's been standardized through programming today.
 
+- `!` is an alias for `not`, the boolean inversion operator.
 - `**` is an alias for `^`, the exponent operator.
 - `!=` is an alias for `~=`, the inequality operator.
 
