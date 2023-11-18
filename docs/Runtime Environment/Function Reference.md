@@ -456,6 +456,26 @@ local r = string.iswhitespace(s) --> true
 Same as `string.format`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
 
 ---
+### `string.replace`
+Replace substrings with another substring. Similar to `string.gsub`, but it operates on plain-text and is not burdened by a pattern capture limit.
+#### Parameters
+1. `original` — The substring to replace.
+2. `substitute` — The replacement substring.
+3. `max_replace` — The maximum number of replacements you wish to occur. The default value is effectively `0`, which means "infinite". If you pass `1`, this leads to a maximum of one replacement, and so on.
+#### Returns
+A string.
+#### Errors
+An error is thrown under the following conditions:
+1. The length of `original` is zero.
+2. The length of `substitute` is zero.
+3. `max_replace` is less than zero.
+```pluto showLineNumbers
+string.replace("Hello, world!", "!", ".")         --> "Hello, world."
+string.replace("Hello, world!", "apple", "")      --> "Hello, world!"
+string.replace("Hello, world!", "Hello", "Apple") --> "Apple, world!"
+string.replace("Hello, world!", "Hello, ", "")    --> "world!"
+```
+---
 ### `string.truncate`
 Truncates a given string to a specified length. If an elipsis is desired and the string was actually truncated, the last three characters of the resultant string will be replaced with an elipsis.
 #### Parameters
