@@ -26,7 +26,7 @@ To aid environments that have to be sandboxed, Pluto provides Execution Time Lim
 
 By default, ETL allows code to run for a total of 1 ms (1.000.000 nanos). This can be changed by overwriting `PLUTO_ETL_NANOS`.
 
-Note that this is a hammer solution. If you only want to prevent stupid mistakes, [Infinite Loop Prevention](Infinite%20Loop%20Prevention) is a far better tool.
+Note that this is a hammer solution. If you only want to prevent stupid mistakes, Infinite Loop Prevention is a far better tool.
 
 ## Infinite Loop Prevention
 Pluto can detect infinite loops by preventing too many successive iterations. This was implemented because game threads usually force users to call some sort of `yield` mechanism to return control to the game thread. In Pluto, you specify a hard bottleneck on iterations, then you specify a function pointer which should prevent ILP within the loop it's called in.
