@@ -466,9 +466,8 @@ Replace substrings with another substring. Similar to `string.gsub`, but it oper
 A string.
 #### Errors
 An error is thrown under the following conditions:
-1. The length of `original` is zero.
+1. `max_replace` is less than zero.
 2. The length of `substitute` is zero.
-3. `max_replace` is less than zero.
 ```pluto showLineNumbers
 string.replace("Hello, world!", "!", ".")         --> "Hello, world."
 string.replace("Hello, world!", "apple", "")      --> "Hello, world!"
