@@ -13,6 +13,8 @@ Pluto adds the following reserved tokens:
 - `class`
 - `parent`
 - `export`
+- `try`
+- `catch`
 
 Which means you can't use them as variable names or for function calls. They can still be used with short-hand table indexes and goto labels though, because Pluto [removes the restriction from them](QoL%20Improvements/Reserved%20Identifiers).
 
@@ -28,6 +30,7 @@ You can change the meaning of Pluto's reserved tokens at any point in your scrip
 - `pluto_use "0.2.0"` enables compatibility mode for all keywords except for: `switch`, `continue`
 - `pluto_use "0.5.0"` enables compatibility mode for all keywords except for: `switch`, `continue`, `enum`
 - `pluto_use "0.6.0"` enables compatibility mode for all keywords except for: `switch`, `continue`, `enum`, `new`, `class`, `parent`, `export`
+- `pluto_use "0.8.0"` enables compatibility mode for all keywords except for: `switch`, `continue`, `enum`, `new`, `class`, `parent`, `export`, `try`, `catch`
 
 ### Configuration for integrators
 The macros for compatibility mode are well-documented, and found inside your `luaconf.h` file.
