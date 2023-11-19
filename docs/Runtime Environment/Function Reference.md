@@ -456,6 +456,19 @@ local r = string.iswhitespace(s) --> true
 Same as `string.format`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
 
 ---
+### `string.repeat`
+Repeats the given string a certain amount of times.
+#### Parameters
+1. `input` — The string to repeat.
+2. `count` — The amount of times to repeat.
+#### Returns
+A string.
+#### Errors
+An error will be thrown if `count` is less than one.
+```pluto showLineNumbers
+string.repeat("*", 5) == "*****"
+```
+---
 ### `string.replace`
 Replace substrings with another substring. Similar to `string.gsub`, but it operates on plain-text and is not burdened by a pattern capture limit.
 #### Parameters
