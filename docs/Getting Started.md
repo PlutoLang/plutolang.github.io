@@ -27,29 +27,70 @@ Note that Chocolatey 2.0.0 or above is needed.
 
 ## Compile Pluto Yourself
 
-Pluto can compile on virtually any platform, as long as there's a C++ 17 compiler for it, which includes, but is not limited to:
-  - BSD
-  - FreeBSD
-  - Linux
-  - MacOS
-  - Windows
-  - Solaris
+Pluto can compile on virtually any platform, as long as there's a C++ 17 compiler for it.
 
-To compile Pluto yourself, you first need to clone the repository:
+First, you need to clone the repository:
 ```
-git clone https://github.com/PlutoLang/Pluto.git
+git clone https://github.com/PlutoLang/Pluto
 cd Pluto
 ```
-And then it's as simple as running the make command:
+
+Then, you can use any of the build methods documented here.
+
+### PHP Scripts
+
+:::info
+PHP is required for this method. You can check if PHP is installed by running `php -v`. You can install it via `sudo apt intall php-cli` on Debian or `sudo pacman -S php` on Arch.
+:::
+
+Now, simply run the following commands:
+```
+php scripts/compile.php clang
+php scripts/link_pluto.php clang
+php scripts/link_plutoc.php clang
+php scripts/link_static.php
+```
+You can easily modify these commands to a compiler other than clang, if you wish. There are also additional scripts for the various types of shared libraries.
+
+The binaries will be placed in the `src/` directory.
+
+### Visual Studio
+
+In the repository you just cloned, there's a Pluto.sln you can open with Visual Studio.
+
+Within Visual Studio, open the **Build > Batch Build** dialog. Here, click "Select All", then "Build".
+
+The binaries will be placed in the `out/` directory.
+
+### Make
+
+:::caution
+This will build Pluto without Soup linked in, severely limiting the standard library available at runtime.
+:::
+
+
+You can simply run the make command:
 ```
 make PLAT={yourplatform}
 ```
 The platform list can be found [here](https://github.com/PlutoLang/Pluto/blob/main/src/Makefile#L38).
 
-After you compile Pluto, all the binaries will be within the `src/` directory.
+The binaries will be placed in the `src/` directory.
 
-#### Note for Windows
-The `make` command isn't installed by default, so you should install [MSYS](https://www.msys2.org/).
-:::tip
-On Windows, you can install Visual Studio 2022 and simply use the vendored Visual Studio files from the Pluto repository.
-:::
+### Sun
+
+Pluto supports the [Sun build system](https://github.com/calamity-inc/Sun) by providing .sun files in the `src/` directory, you can use them to build `pluto` & `plutoc`:
+```
+cd src
+sun pluto
+sun plutoc
+```
+
+Binaries will be placed in the `src/` directory.
+
+If you wish to use Pluto as a static library in your own projects, simply add the following to your project's .sun file:
+```
+require ../Pluto/src
+```
+
+Assuming a directory structure where your own project and Pluto share the same parent.
