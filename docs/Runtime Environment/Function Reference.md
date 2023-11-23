@@ -78,6 +78,24 @@ print(dumpvar(table))
 
 ---
 ## `io`
+### `io.copy`
+Copy a file to another file, creating a new file if needed.
+#### Parameters
+1. A string path or file stream.
+2. A path towards the file to copy into.
+#### Returns
+A boolean indicating if the file was successfully copied.
+```pluto showLineNumbers title="Example Usage"
+if io.copy("./cfg/config.txt", "./backup_cfg/config.txt") then
+    print("Successfully created a backup config!")
+else
+    print("Failed to create a backup config.")
+end
+```
+:::info
+The old name of this function —`io.copyto` — is still valid.
+:::
+---
 ### `io.isdir`
 #### Parameters
 1. A string path or file stream.
@@ -118,21 +136,6 @@ if io.exists("cfg/config.txt") then
     print("Config exists!")
 else
     print("Config does not exist!")
-end
-```
----
-### `io.copyto`
-Copy a file to another file, creating a new file if needed.
-#### Parameters
-1. A string path or file stream.
-2. A path towards the file to copy into.
-#### Returns
-A boolean indicating if the file was successfully copied.
-```pluto showLineNumbers title="Example Usage"
-if io.copyto("./cfg/config.txt", "./backup_cfg/config.txt") then
-    print("Successfully created a backup config!")
-else
-    print("Failed to create a backup config.")
 end
 ```
 ---
