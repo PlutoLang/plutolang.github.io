@@ -31,9 +31,17 @@ base64.decode("SGVsbG8sIFdvcmxkIQ==")
 --]]
 ```
 ---
-### `base64.url_encode`
+### `base64.urlencode`
 Returns a base64url-encoded string. This variant is sometimes refered to as filename safe base64.
 
+:::info
+The old name of this function — `base64.url_encode` — was deprecated in Pluto 0.8.0.
+:::
+
 ---
-### `base64.url_decode`
+### `base64.urldecode`
 Similar to `base64.decode` except for base64url.
+
+:::info
+The old name of this function — `base64.url_encode` — was deprecated in Pluto 0.8.0.
+:::

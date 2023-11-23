@@ -326,6 +326,9 @@ An integer for the index of the substring, or `nil` if the substring was not fou
 local s = "hello world"
 local r = string.lfind(s, "world") --> 7
 ```
+:::info
+This function is deprecated in Pluto 0.8.0, consider using `string.find(str, substr, 1, true)` instead.
+:::
 ---
 ### `string.rfind`
 Returns the index of where a substring starts. Begins searching at the right side of the string.
@@ -621,6 +624,9 @@ An integer, or `nil` if nothing is matched.
 local s = "he$$o ?$! world$"
 local r = string.find_last_of(s, "!$") --> 16
 ```
+:::info
+This function is deprecated in Pluto 0.8.0, consider using `string.rfind(str, "[characters]")` instead.
+:::
 ---
 ### `string.find_first_of`
 Searches the string for the first character that matches any of the characters specified in its arguments.
@@ -634,6 +640,9 @@ An integer, or `nil` if nothing is matched.
 local s = "he$$o ?$! world$"
 local r = string.find_first_of(s, "!$") --> 3
 ```
+:::info
+This function is deprecated in Pluto 0.8.0, consider using `string.find(str, "[characters]")` instead.
+:::
 ---
 ### `string.find_last_not_of`
 Searches the string for the last character that does not match any of the characters specified in its arguments.
@@ -647,6 +656,9 @@ An integer, or `nil` if nothing is matched.
 local s = "he$$o ?$! world$"
 local r = string.find_last_not_of(s, "!$") --> 15
 ```
+:::info
+This function is deprecated in Pluto 0.8.0, consider using `string.rfind(str, "[^characters]")` instead.
+:::
 ---
 ### `string.find_first_not_of`
 Searches the string for the first character that does not match any of the characters specified in its arguments.
@@ -660,6 +672,9 @@ An integer, or `nil` if nothing is matched.
 local s = "he$$o ?$! world$"
 local r = string.find_first_not_of(s, "!$") --> 1
 ```
+:::info
+This function is deprecated in Pluto 0.8.0, consider using `string.find(str, "[^characters]")` instead.
+:::
 ---
 ## `coroutine`
 ### `coroutine.xresume`
