@@ -534,7 +534,7 @@ local s2 = "heLLo WoRlD"
 local r1 = string.casefold(s1, s2) --> true
 ```
 ---
-### `string.format_int`
+### `string.formatint`
 This function makes an integer easier to read by inserting `separator` every `N` characters. It can handle strings representing integers, making it suitable for BigInt modules or any integer beyond Lua's representation limits. If you provide a string, it should consist solely of digits. A single unary operator is permitted at the beginning of the string to indicate whether it's a negative or positive number.
 #### Parameters
 1. `integer` — The integer or string input.
@@ -545,22 +545,22 @@ Returns the modified string.
 #### Errors
 If the input is a **string** and does not meet the aforementioned criteria, an error will be thrown.
 ```pluto showLineNumbers title="Usage Example"
-string.format_int(500)      --> "500"
-string.format_int(-5000)    --> "-5,000"
-string.format_int(50000)    --> "50,000"
-string.format_int(-500000)  --> "-500,000"
+string.formatint(500)      --> "500"
+string.formatint(-5000)    --> "-5,000"
+string.formatint(50000)    --> "50,000"
+string.formatint(-500000)  --> "-500,000"
 
-string.format_int(500, ".", 2)     --> "5.00"
-string.format_int("-5000", ",", 1) --> "-5,0,0,0"
-string.format_int(50000, ",", 4)   --> "5,0000"
+string.formatint(500, ".", 2)     --> "5.00"
+string.formatint("-5000", ",", 1) --> "-5,0,0,0"
+string.formatint(50000, ",", 4)   --> "5,0000"
 ```
 ```pluto showLineNumbers title="Error Example"
-string.format_int("-500000.4")
+string.formatint("-500000.4")
 ```
 ```
-pluto: test.pluto:3: argument 'integer' for string.format_int was a string, but does not represent a valid integer (bad character: '.')
+pluto: test.pluto:3: argument 'integer' for string.formatint was a string, but does not represent a valid integer (bad character: '.')
 stack traceback:
-        [C]: in function 'string.format_int'
+        [C]: in function 'string.formatint'
         test.pluto:3: in main chunk
         [C]: in ?
 ```
