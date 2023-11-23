@@ -500,7 +500,7 @@ Truncates a given string to a specified length. If an elipsis is desired and the
 #### Parameters
 1. The string to truncate.
 2. The desired length of the truncated string.
-3. A boolean indicating whether or not to append `...` to the string **if** it is truncated. This is `false` by default.
+3. A boolean indicating whether or not to replace the last three character of the string with `...` **if** it is truncated. This is `false` by default.
 #### Returns
 The truncated string.
 ```pluto showLineNumbers
