@@ -25,6 +25,19 @@ choco install plutolang
 
 Note that Chocolatey 2.0.0 or above is needed.
 
+### APT Repository
+
+You can easily install pluto & plutoc via APT as follows:
+
+```
+wget -qO- https://deb.calamity.gg/key.gpg | sudo tee /usr/share/keyrings/calamity-inc.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/calamity-inc.gpg] https://deb.calamity.gg/ buster main" | sudo tee /etc/apt/sources.list.d/calamity-inc.list > /dev/null
+sudo apt update
+sudo apt install pluto
+```
+
+Don't worry about the "buster" part; our prebuilt binaries are compiled on Debian 10 (buster), but they work on all subsequent Debian releases, as well as Ubuntu 20 and above.
+
 ## Compile Pluto Yourself
 
 Pluto can compile on virtually any platform, as long as there's a C++ 17 compiler for it.
