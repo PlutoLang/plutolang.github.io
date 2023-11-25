@@ -43,7 +43,7 @@ Then, you can use any of the build methods documented here.
 PHP is required for this method. You can check if PHP is installed by running `php -v`. You can install it via `sudo apt intall php-cli` on Debian or `sudo pacman -S php` on Arch.
 :::
 
-Now, simply run the following commands:
+Simply run the following commands:
 ```
 php scripts/compile.php clang
 php scripts/link_pluto.php clang
@@ -86,7 +86,7 @@ sun pluto
 sun plutoc
 ```
 
-Binaries will be placed in the `src/` directory.
+The binaries will be placed in the `src/` directory.
 
 If you wish to use Pluto as a static library in your own projects, simply add the following to your project's .sun file:
 ```
