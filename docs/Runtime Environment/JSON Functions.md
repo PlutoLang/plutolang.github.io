@@ -19,7 +19,7 @@ encoded = json.encode(data, true)
 
 data = 
 {
-	key = "Hello, World!"
+	key = "Hello, World!",
 	nested = {
 		nested_key = 1337
 	}
