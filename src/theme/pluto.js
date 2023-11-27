@@ -1,6 +1,12 @@
 Prism.languages.pluto = {
 	'comment': /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,
-	'function': /\b(?!in\s)(?!\d)(?!return)(?!case)\w+(?=\s*(?:[({"]))/,
+	'attr-name': /(?<=(function|class|extends)\s)[\w:]+/,
+	'function': [
+		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)\w+(?=\s*(?:[({"]))/,
+		/\b(function|enum|class)\b/,
+		/\b(debug|table|string|number|io|os|coroutine|_VERSION|_PVERSION|_PSOUP)\b/, // standard library + type hints
+	],
+	'attr-value': /<(const|constexpr|close)>/,
 	'string': {
 		pattern: /(["'])(?:(?!\1)[^\\\r\n]|\\z(?:\r\n|\s)|\\(?:\r\n|[^z]))*\1|\[(=*)\[[\s\S]*?\]\2\]/,
 		greedy: true
@@ -16,6 +22,6 @@ Prism.languages.pluto = {
 			lookbehind: true
 		}
 	],
-	'constant': /(nil|\.\.\.|_VERSION|_PVERSION|_PSOUP)/,
-	'punctuation': /[\[\](){},;]|\.+|:+/
+	'constant': /(nil|\.\.\.)/,
+	'punctuation': /[\[\](){},;]|\.+|:+/,
 };
