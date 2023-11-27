@@ -1,6 +1,6 @@
 Prism.languages.pluto = {
 	'comment': /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,
-	'function': /\b(?!in\s)(?!\d)\w+(?=\s*(?:[({"]))/,
+	'function': /\b(?!in\s)(?!\d)(?!return)\w+(?=\s*(?:[({"]))/,
 	'string': {
 		pattern: /(["'])(?:(?!\1)[^\\\r\n]|\\z(?:\r\n|\s)|\\(?:\r\n|[^z]))*\1|\[(=*)\[[\s\S]*?\]\2\]/,
 		greedy: true
