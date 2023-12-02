@@ -114,6 +114,15 @@ print(exportvar(t))
 ```
 
 ---
+### `wcall`
+Calls the given function and returns a string of warnings raised by it.
+```pluto showLineNumbers
+local w = wcall(|| -> warn("Bad!"))
+print(w ~= "" ? (w:strip()) : "No warnings")
+-- Output: "Bad!"
+```
+
+---
 ## `io`
 ### `io.copy`
 Copy a file to another file, creating a new file if needed.
