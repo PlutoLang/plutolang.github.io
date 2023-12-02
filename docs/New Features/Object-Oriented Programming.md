@@ -158,6 +158,9 @@ class Entity end
 local e = new Entity()
 print(instanceof(e, Entity)) -- true
 ```
+:::caution
+The instanceof operator and function should not be used if you want to compile Pluto to bytecode and run it with Lua.
+:::
 
 ## Using Compatibility Mode?
 
