@@ -16,7 +16,7 @@ Prism.languages.pluto = {
 	'keyword': /\$|\b(?:and|as|class|pluto_class|enum|begin|break|do|else|elseif|end|for|function|goto|if|in|local|new|not|or|repeat|return|static|then|until|while|continue|switch|case|default|pluto_switch|pluto_continue|extends|export|pluto_export|pluto_use|public)\b/,
 	'variable': /\b(?:self|parent|pluto_parent)\b/,
 	'operator': [
-		/[-+*%^&|#]|\/\/?|<[<=]?|>[>=]?|[=~]=?|\:=|\?|\:|\?\.|instanceof/,
+		/[-+*%^&|#]|\/\/?|<[<=]?|>[>=]?|[=~]=?|\:=|\?|(?<!\w)\:|\?\.|instanceof/,
 		{
 			pattern: /(^|[^.])\.\.(?!\.)/,
 			lookbehind: true
