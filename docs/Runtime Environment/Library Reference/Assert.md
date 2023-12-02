@@ -17,14 +17,14 @@ assert.isnil(nil) --> Passes.
 assert.isnil(5) --> Error:
 --[[
 test.pluto:4 -> Assertion Error: (assert.isnil)
-        Intended Value: nil
-        Received Value: 5
+    Intended Value: nil
+    Received Value: 5
 
 stack traceback:
-        [C]: in function 'error'
-        [string "Pluto Standard Library"]:105: in function <[string "Pluto Standard Library"]:76>
-        (...tail calls...)
-        [C]: in ?
+    [C]: in function 'error'
+    [string "pluto:assert"]:75: in function <[string "pluto:assert"]:46>
+    (...tail calls...)
+    [C]: in ?
 --]]
 ```
 ---
@@ -41,15 +41,15 @@ assert.istrue(true) --> Passes.
 assert.istrue(false) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.istrue)
-        Intended Value: true
-        Received Value: false
+    Intended Value: true
+    Received Value: false
 
 stack traceback:
-        [C]: in function 'error'
-        [string "Pluto Standard Library"]:105: in function <[string "Pluto Standard Library"]:76>
-        (...tail calls...)
-        test.pluto:4: in main chunk
-        [C]: in ?
+    [C]: in function 'error'
+    [string "pluto:assert"]:75: in function <[string "pluto:assert"]:46>
+    (...tail calls...)
+    test.pluto:4: in main chunk
+    [C]: in ?
 --]]
 ```
 ---
@@ -66,15 +66,15 @@ assert.isfalse(false) --> Passes.
 assert.isfalse(true) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.isfalse)
-        Intended Value: false
-        Received Value: true
+    Intended Value: false
+    Received Value: true
 
 stack traceback:
-        [C]: in function 'error'
-        [string "Pluto Standard Library"]:105: in function <[string "Pluto Standard Library"]:76>
-        (...tail calls...)
-        test.pluto:4: in main chunk
-        [C]: in ?
+    [C]: in function 'error'
+    [string "pluto:assert"]:75: in function <[string "pluto:assert"]:46>
+    (...tail calls...)
+    test.pluto:4: in main chunk
+    [C]: in ?
 --]]
 ```
 ---
@@ -92,15 +92,15 @@ assert.falsy(false) --> Passes.
 assert.falsy("Hello, world!") --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.falsy)
-        Intended Value: nil or false
-        Received Value: string(13) "Hello, world!"
+    Intended Value: nil or false
+    Received Value: string(13) "Hello, world!"
 
 stack traceback:
-        [C]: in function 'error'
-        [string "Pluto Standard Library"]:105: in function <[string "Pluto Standard Library"]:76>
-        (...tail calls...)
-        test.pluto:4: in main chunk
-        [C]: in ?
+    [C]: in function 'error'
+    [string "pluto:assert"]:75: in function <[string "pluto:assert"]:46>
+    (...tail calls...)
+    test.pluto:4: in main chunk
+    [C]: in ?
 --]]
 ```
 ---
@@ -117,15 +117,15 @@ assert.truthy("Hello, world!") --> Passes.
 assert.truthy(nil) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.truthy)
-        Intended Value: not nil or false
-        Received Value: nil
+    Intended Value: not nil or false
+    Received Value: nil
 
 stack traceback:
-        [C]: in function 'error'
-        [string "Pluto Standard Library"]:105: in function <[string "Pluto Standard Library"]:76>
-        (...tail calls...)
-        test.pluto:4: in main chunk
-        [C]: in ?
+    [C]: in function 'error'
+    [string "pluto:assert"]:75: in function <[string "pluto:assert"]:46>
+    (...tail calls...)
+    test.pluto:4: in main chunk
+    [C]: in ?
 --]]
 ```
 ---
@@ -142,15 +142,15 @@ assert.notnil("Hello, world!") --> Passes.
 assert.notnil(nil) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.notnil)
-        Intended Value: not nil
-        Received Value: nil
+    Intended Value: not nil
+    Received Value: nil
 
 stack traceback:
-        [C]: in function 'error'
-        [string "Pluto Standard Library"]:105: in function <[string "Pluto Standard Library"]:76>
-        (...tail calls...)
-        test.pluto:4: in main chunk
-        [C]: in ?
+    [C]: in function 'error'
+    [string "pluto:assert"]:75: in function <[string "pluto:assert"]:46>
+    (...tail calls...)
+    test.pluto:4: in main chunk
+    [C]: in ?
 --]]
 ```
 ---
@@ -169,15 +169,15 @@ local assert = require("assert")
 assert.equal("Hello, world!", "Hello, world...") --> Error:
 --[[
 pluto: test.pluto:3 -> Assertion Error: (assert.equal)
-        Intended Value: string(13) "Hello, world!"
-        Received Value: string(15) "Hello, world..."
+    Intended Value: string(13) "Hello, world!"
+    Received Value: string(15) "Hello, world..."
 --]]
 
 assert.equal("Hi there.":split(" "), "Hello there.":split(" ")) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.equal)
-        Intended Value: { [1] = string(2) "Hi", [2] = string(6) "there.", }
-        Received Value: { [1] = string(5) "Hello", [2] = string(6) "there.", }
+    Intended Value: { [1] = string(2) "Hi", [2] = string(6) "there.", }
+    Received Value: { [1] = string(5) "Hello", [2] = string(6) "there.", }
 --]]
 ```
 ---
@@ -211,7 +211,7 @@ assert.less(1, 2) --> Passes.
 assert.less(1, 1) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.less)
-        Expression: (1 < 1) == false
+    Expression: (1 < 1) == false
 --]]
 ```
 ---
@@ -229,7 +229,7 @@ assert.lesseq(1, 2) --> Passes.
 assert.lesseq(1, 0) --> Error:
 --[[
 pluto: test.pluto:3 -> Assertion Error: (assert.lesseq)
-        Expression: (1 <= 0) == false
+    Expression: (1 <= 0) == false
 --]]
 ```
 ---
@@ -247,7 +247,7 @@ assert.greater(3, 2) --> Passes.
 assert.greater(3, 3) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.greater)
-        Expression: (3 > 3) == false
+    Expression: (3 > 3) == false
 --]]
 ```
 ---
@@ -279,7 +279,7 @@ assert.noerror(tostring, 400) --> Passes.
 assert.noerror(error, "argument argument") --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.noerror)
-        An error was raised: argument argument
+    An error was raised: argument argument
 --]]
 ```
 ---
@@ -297,7 +297,7 @@ assert.haserror(error, "argument argument") --> Passes.
 assert.haserror(tostring, 400) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.haserror)
-        Expected an error, but there was none.
+    Expected an error, but there was none.
 --]]
 ```
 ---
@@ -318,14 +318,14 @@ assert.searcherror("argument", error, "argument argument") --> Passes.
 assert.searcherror("something", tostring, 400) --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.searcherror)
-        Expected an error, but there was none.
+    Expected an error, but there was none.
 --]]
 
 assert.searcherror("argument", error, "argument argument") --> Passes.
 assert.searcherror("argument", error, "something something") --> Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.searcherror)
-        Absent String: argument
-        Error Message: something s
+    Absent String: argument
+    Error Message: something s
 --]]
 ```
