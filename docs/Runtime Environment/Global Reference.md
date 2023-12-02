@@ -81,6 +81,39 @@ print(dumpvar(t))
 ```
 
 ---
+### `exportvar`
+Similar to dumpvar, but returns valid Lua/Pluto code. May error if the value can not be represented accordingly.
+#### Parameters
+1. The value to dump.
+#### Returns
+A string representation of the value.
+```pluto showLineNumbers
+-- Slightly altered data from last example as C functions can not be exported.
+local t = {
+    ["hello"] = 1234,
+
+    ["name"] = "John",
+    ["lastname"] = "Doe",
+
+    ["details"] = {
+        "No details available."
+    }
+}
+
+print(exportvar(t))
+```
+```
+{
+    ["hello"] = 1234,
+    ["name"] = "John",
+    ["details"] = {
+        [1] = "No details available.",
+    },
+    ["lastname"] = "Doe",
+}
+```
+
+---
 ## `io`
 ### `io.copy`
 Copy a file to another file, creating a new file if needed.
