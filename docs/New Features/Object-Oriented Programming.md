@@ -124,18 +124,49 @@ print(human.name) -- "John"
 
 Note that if you have a local variable (or function parameter) called "parent", the `parent` expression will defer to it.
 
+## Private Fields
+
+Pluto allows you to specify if a field is 'public' or 'private'. Private fields can only be accessed by the class that defined them.
+
+```pluto
+class Human
+    public name
+    private age
+
+    function __construct(name, age)
+        self.name = name
+        self.age = age
+    end
+
+    function getAge()
+        return self.age
+    end
+end
+
+local human = new Human("John", 42)
+print(human.name) -- "John"
+print(human:getAge()) -- 42
+print(human.age) -- nil
+```
+
 ## Constructor Promotion
 
 Because a common task of `__construct` methods is to assign the value of arguments to table fields, Pluto provides a simple syntax to reduce this boilerplate:
 
 ```pluto
 class Human
-    function __construct(public name)
+    function __construct(public name, private age)
+    end
+
+    function getAge()
+        return self.age
     end
 end
 
-local human = new Human("John")
+local human = new Human("John", 42)
 print(human.name) -- "John"
+print(human:getAge()) -- 42
+print(human.age) -- nil
 ```
 
 ## Instanceof Operator
