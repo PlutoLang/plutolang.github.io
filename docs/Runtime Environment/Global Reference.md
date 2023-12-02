@@ -317,21 +317,6 @@ local r = string.split(s, "HALLOWORLD")
 --]]
 ```
 ---
-### `string.lfind`
-Returns the index of where a substring starts. Begins searching at the left side of the string.
-#### Parameters
-1. The string to search.
-2. The substring to search for.
-#### Returns
-An integer for the index of the substring, or `nil` if the substring was not found.
-```pluto title="Basic Usage"
-local s = "hello world"
-local r = string.lfind(s, "world") --> 7
-```
-:::info
-This function is deprecated in Pluto 0.8.0, consider using `string.find(str, substr, 1, true)` instead.
-:::
----
 ### `string.rfind`
 Returns the index of where a substring starts. Begins searching at the right side of the string.
 #### Parameters
@@ -613,70 +598,6 @@ A boolean.
 local s = "hello world"
 local r = string.startswith(s, "hello") --> true
 ```
----
-### `string.find_last_of`
-Searches the string for the last character that matches any of the characters specified in its arguments.
-#### Parameters
-1. The string to search.
-2. A string of characters to match.
-#### Returns
-An integer, or `nil` if nothing is matched.
-```pluto title="Basic Usage"
--- This will find the last occurance of any listed characters.
-local s = "he$$o ?$! world$"
-local r = string.find_last_of(s, "!$") --> 16
-```
-:::info
-This function is deprecated in Pluto 0.8.0, consider using `string.rfind(str, "[characters]")` instead.
-:::
----
-### `string.find_first_of`
-Searches the string for the first character that matches any of the characters specified in its arguments.
-#### Parameters
-1. The string to search.
-2. A string of characters to match.
-#### Returns
-An integer, or `nil` if nothing is matched.
-```pluto title="Basic Usage"
--- This will find the first occurance of any listed characters.
-local s = "he$$o ?$! world$"
-local r = string.find_first_of(s, "!$") --> 3
-```
-:::info
-This function is deprecated in Pluto 0.8.0, consider using `string.find(str, "[characters]")` instead.
-:::
----
-### `string.find_last_not_of`
-Searches the string for the last character that does not match any of the characters specified in its arguments.
-#### Parameters
-1. The string to search.
-2. A string of characters to match.
-#### Returns
-An integer, or `nil` if nothing is matched.
-```pluto title="Basic Usage"
--- This will find the last non-occurance of any listed characters.
-local s = "he$$o ?$! world$"
-local r = string.find_last_not_of(s, "!$") --> 15
-```
-:::info
-This function is deprecated in Pluto 0.8.0, consider using `string.rfind(str, "[^characters]")` instead.
-:::
----
-### `string.find_first_not_of`
-Searches the string for the first character that does not match any of the characters specified in its arguments.
-#### Parameters
-1. The string to search.
-2. A string of characters to match.
-#### Returns
-An integer, or `nil` if nothing is matched.
-```pluto title="Basic Usage"
--- This will find the first non-occurance of any listed characters.
-local s = "he$$o ?$! world$"
-local r = string.find_first_not_of(s, "!$") --> 1
-```
-:::info
-This function is deprecated in Pluto 0.8.0, consider using `string.find(str, "[^characters]")` instead.
-:::
 ---
 ## `coroutine`
 ### `coroutine.xresume`
