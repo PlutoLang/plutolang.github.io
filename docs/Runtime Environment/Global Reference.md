@@ -637,6 +637,24 @@ A boolean.
 local s = "hello world"
 local r = string.startswith(s, "hello") --> true
 ```
+
+---
+## `math`
+### `math.isnan`
+Checks if a number is NaN.
+#### Parameters
+1. The number to check.
+#### Returns
+A boolean.
+```pluto
+local x = 0 / 0
+print(x ~= x) -- Old way: Prove the variable is NaN because it is not equal to itself. Works, but unintuitive.
+print(math.isnan(x))
+```
+---
+### `math.atan2`
+An alias of `math.atan`.
+
 ---
 ## `coroutine`
 ### `coroutine.xresume`
