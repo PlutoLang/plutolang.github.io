@@ -96,9 +96,6 @@ else
     print("Failed to create a backup config.")
 end
 ```
-:::info
-The old name of this function —`io.copyto` — is still valid.
-:::
 ---
 ### `io.isdir`
 #### Parameters
