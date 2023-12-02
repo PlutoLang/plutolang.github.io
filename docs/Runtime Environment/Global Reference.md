@@ -39,7 +39,7 @@ A debug function designed to dump values into human-readable formats.
 #### Returns
 A string representation of the value.
 ```pluto showLineNumbers
-local table = {
+local t = {
     ["hello"] = 1234,
     ["goodbye"] = _G.table,
 
@@ -51,7 +51,7 @@ local table = {
     }
 }
 
-print(dumpvar(table))
+print(dumpvar(t))
 ```
 ```
 {
