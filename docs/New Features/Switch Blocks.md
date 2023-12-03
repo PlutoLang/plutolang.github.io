@@ -1,10 +1,12 @@
 ---
 sidebar_position: 10
 ---
-The switch statement consists of the following new keywords:
+Switch blocks consists of the following new keywords:
 - `case`
 - `switch`
 - `default`
+
+## Switch Statement
 
 ```pluto
 local value = 1
@@ -64,13 +66,13 @@ switch value do
 		print("Value is neither 2 nor 3!")
 end
 ```
-The `default` case can be placed anywhere in the statement. It also supports fallthrough, so remember to use `break` if you place it above any cases.
+The `default` case can be placed anywhere in the block. It also supports fallthrough, so remember to use `break` if you place it above any cases.
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20value%20%3D%203%0D%0Aswitch%20value%20do%0D%0A%20%20case%201%3A%0D%0A%20%20case%202%3A%0D%0A%20%20case%203%3A%0D%0A%20%20case%204%3A%0D%0A%20%20case%205%3A%0D%0A%20%20%20%20print%20%22Got%201-5.%22%0D%0A%20%20%20%20break%0D%0A%20%20default%3A%0D%0A%20%20%20%20print%20%22Value%20is%20greater%20than%205.%22%0D%0Aend%0D%0A--%20Break%20jumps%20here.)
 
-## Case Statement
+## Case Blocks
 
-Any expression can be used for the case statement:
+Any expression can be used for the case condition:
 
 ```pluto
 switch true do
@@ -112,6 +114,38 @@ switch 42 do
 end
 ```
 
+## Switch Expression
+
+Just like ternary expressions, these allow you to conditionally provide values, with massively simplified case blocks:
+
+```pluto
+local place = 1
+place = switch place do
+    case 1 -> "1st"
+    case 2 -> "2nd"
+    case 3 -> "3rd"
+    default -> $"{place}th"
+end
+print(place) --> "1st"
+```
+
+Note that the case blocks here have their conditions delimited by an arrow (->) instead of a colon (:).
+
+Despite not being able to manually fall through, the shorthand fallthrough syntax still works:
+
+```pluto
+local function print_range(value)
+    print(switch value do
+        case 1, 2, 3 -> "1-3"
+        case 4, 5, 6 -> "4-6"
+    end)
+end
+print_range(1) --> "1-3"
+print_range(6) --> "4-6"
+print_range(9) --> nil
+```
+
+Notice how the `default` case was omitted in this example, so it was implicitly set to `default -> nil`.
 
 ## Using Compatibility Mode?
 You may need to use `pluto_switch` instead of `switch`. Alternatively, `pluto_use switch` will enable the keyword independently of environment settings.
