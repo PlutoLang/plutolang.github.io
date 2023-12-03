@@ -1,25 +1,22 @@
 ---
 sidebar_position: 13
 ---
-Searching a string for a substring, or searching a table for a value is a very simple (and fast) operation now. The `in` operator has been extended to support these operations.
+The `in` operator has been extended to support string searches and table searches. For these purposes, it's the fastest possible solution.
+
 ```pluto showLineNumbers title="Searching for a substring."
 assert("world" in "hello world")
 ```
+
+When used on tables, the `in` operator searches for *values*. It'll search for array *elements* and it'll search keys for *their values*.
+
 ```pluto showLineNumbers title="Searching a table for a value."
 local t = { "a", "b", key = "value" }
 
-assert(t[1] == "a")
-assert(t[2] == "b")
-assert(t.key == "value")
-
-assert("a" in t)
-assert("b" in t)
-assert("c" not in t)
-assert("value" in t)
-assert("random" not in t)
+assert("a" in t) -- "a" is an element inside of t.
+assert("b" in t) -- "b" is an element inside of t.
+assert("value" in t) -- "value" is the value of a key inside of t.
+assert(not "random" in t) -- "random" is not an element OR the value of a key inside of t.
 ```
-
-As you can see, `not in` can also be used for more readable boolean inversion.
 
 ## Rules
 - The right-hand operand must always be a table or a string.
