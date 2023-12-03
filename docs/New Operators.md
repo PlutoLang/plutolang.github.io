@@ -128,3 +128,21 @@ while a := get() do
 	--> Be aware of this if you intend on using the Walrus operator with loops.
 end
 ```
+
+## Spaceship Operator
+The spaceship operator, also known as the three-way comparison operator, allows you to quickly compare 2 values for equality and order.
+
+```pluto
+local eq = 1 <=> 1
+local lt = 3 <=> 42
+local gt = 9 <=> 5
+print(eq, lt, gt) --> 0, -1, 1
+```
+
+It works with any type that supports `__eq` and `__lt`, making it well-suited for usage in generic algorithms like sorting. The return values are designed such that you can compare them to `0`, e.g. with the values from above:
+
+```pluto
+print(eq <= 0) --> true
+print(lt <= 0) --> true
+print(gt <= 0) --> false
+```
