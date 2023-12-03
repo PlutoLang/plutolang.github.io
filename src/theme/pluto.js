@@ -2,7 +2,7 @@ Prism.languages.pluto = {
 	'comment': /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,
 	'attr-name': /(?<=(function|class|extends)\s)[\w:]+/,
 	'function': [
-		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)\w+(?=\s*(?:\??[({"]))/,
+		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)(?!not)\w+(?=\s*(?:\??[({"]))/,
 		/\b(function|enum|class)\b/,
 		/\b(debug|table|string|number|io|os|coroutine|_VERSION|_PVERSION|_PSOUP)\b/, // standard library + type hints
 	],
