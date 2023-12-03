@@ -32,6 +32,18 @@ Same as `tostring`, but performs the operation under the `en_US.UTF-8` locale. E
 Same as `tonumber`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
 
 ---
+### `require`
+This function has been modified to prioritize the loading of local files before standard library modules. This was done to ensure a smooth migration when a codebase might have local dependencies named after Pluto libraries. For example:
+```pluto showLineNumbers
+local json = require("json")
+```
+If you had a custom JSON module, that would be loaded instead of Pluto's JSON module. If there are no local module conflicts, then this will still load the Pluto libary. If you want to specifically load the Pluto library, then you can do this:
+```pluto showLineNumbers
+local json = require("pluto:json")
+```
+The `pluto:` prefix tells `require` that you specifically want to load a Pluto library named `json` and nothing else.
+
+---
 ### `dumpvar`
 A debug function designed to dump values into human-readable formats.
 #### Parameters
