@@ -37,4 +37,4 @@ end
 ```
 
 ## Using Compatibility Mode?
-You may need to use `pluto_continue` instead of `continue`.
+You may need to use `pluto_continue` instead of `continue`. Alternatively, `pluto_use continue` will enable the keyword independently of environment settings.

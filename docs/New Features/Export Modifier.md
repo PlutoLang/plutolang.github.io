@@ -28,4 +28,4 @@ The return statement is automatically generated.
 
 ## Using Compatibility Mode?
 
-You may need to use `pluto_export` instead of `export`.
+You may need to use `pluto_export` instead of `export`. Alternatively, `pluto_use export` will enable the keyword independently of environment settings.
