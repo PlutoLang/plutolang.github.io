@@ -114,4 +114,4 @@ end
 
 
 ## Using Compatibility Mode?
-You may need to use `pluto_switch` instead of `switch`.
+You may need to use `pluto_switch` instead of `switch`. Alternatively, `pluto_use switch` will enable the keyword independently of environment settings.

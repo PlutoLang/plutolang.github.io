@@ -76,4 +76,4 @@ assert(OPTION_3 == 3)
 ```
 
 ## Using Compatibility Mode?
-You may need to use `pluto_enum` instead of `enum`.
+You may need to use `pluto_enum` instead of `enum`. Alternatively, `pluto_use enum` will enable the keyword independently of environment settings.

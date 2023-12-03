@@ -199,3 +199,5 @@ Some of the syntax discussed here may be different due to compatiblity mode:
 - `new` -> `pluto_new`
 - `class` -> `pluto_class`
 - `parent` -> `pluto_parent`
+
+Alternatively, `pluto_use new, class, parent` will enable these keywords independently of environment settings.
