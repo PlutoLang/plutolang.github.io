@@ -329,6 +329,45 @@ assert(table.contains(t, "value") == "key")
 assert(table.contains(t, "nothing") == nil)
 ```
 ---
+### `table.reverse`
+Reverses the array elements of a table.
+#### Parameters
+1. The table to reverse.
+#### Returns
+This modifies the table you pass, but it'll also return it.
+```pluto showLineNumbers
+local t = { 1, 2, hello = "world", 3, 4, 5, key = "value" }
+
+print(dumpvar(t))
+local same = t:reverse()
+assert(same == t)
+print(dumpvar(t))
+
+--[[
+Before:
+{
+    [1] = 1,
+    [2] = 2,
+    [3] = 3,
+    [4] = 4,
+    [5] = 5,
+    ["key"] = string(5) "value",
+    ["hello"] = string(5) "world",
+}
+
+After:
+{
+    [1] = 5,
+    [2] = 4,
+    [3] = 3,
+    [4] = 2,
+    [5] = 1,
+    ["key"] = string(5) "value",
+    ["hello"] = string(5) "world",
+}
+--]]
+```
+---
 ## `string`
 ### `string.upper`
 This function now takes a second parameter that specifies which index to capitalize.
