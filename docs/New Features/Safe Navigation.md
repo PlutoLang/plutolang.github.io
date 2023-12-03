@@ -1,6 +1,7 @@
 ---
 sidebar_position: 17
 ---
+## For Member Access
 Accessing deeply nested fields which can potentially be `nil` was problematic, because you'd need an unreasonable amount of guard clauses to prevent an "attempt to index nil" error. Pluto now offers this syntax:
 ```pluto showLineNumbers title="Basic Usage"
 local person = {
@@ -26,5 +27,25 @@ In this example, we also use the null coalescing operator `??`.
 :::info
 These cannot be used for statements, like `a?.b?.c = 0`. They're only valid as expressions.
 
-Safe Navigation was written by Sven Olsen.
+Safe Navigation (for member access) was written by Sven Olsen.
 :::
+
+## For Method Calls
+
+Similarly, if you want to have optional hook functions, you can use safe method calls instead of writing conditionals:
+
+```pluto showLineNumbers title="Old Way"
+if self.onEvent then
+    self:onEvent(event)
+end
+```
+```pluto showLineNumbers title="New Way"
+self:onEvent?(event)
+```
+
+You can also check if the left-hand side of `:` is not nil:
+
+```pluto showLineNumbers
+object?:onEvent(event) -- 'object' may be nil
+object?:onEvent?(event) -- 'object' and 'object.onEvent' may be nil
+```
