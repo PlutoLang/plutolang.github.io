@@ -7,7 +7,7 @@ Currently, Pluto's standard library is built on top of the base Lua 5.4 standard
 The search bar at the top right of the page is available. (Or Ctrl+F)
 
 ---
-Some minor changes & additions to the environment must be disclosed:
+Some changes & additions to the environment must be disclosed:
 1. `_PVERSION` is the global to check your current version of Pluto.
 2. `_PSOUP` is a global boolean you can access to check linkage with Soup.
 3. `package.path` is modified to also search for `.pluto` files.
@@ -23,6 +23,20 @@ else
 end
 ```
 
+Tables have metatables by default now, akin to how each string has a metatable by default. Now, this is possible:
+```pluto showLineNumbers
+local t = {}
+
+t:contains(1)
+t:concat("\n")
+
+-- As opposed to...
+table.contains(t, 1)
+table.concat(t, "\n")
+```
+
+This behavior is implemented by setting the `__index` metamethod to `_G.table`. If you override the metatable, you may want to replicate that.
+ 
 ## Global
 ### `utostring`
 Same as `tostring`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
