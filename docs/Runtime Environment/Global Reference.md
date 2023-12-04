@@ -422,16 +422,8 @@ local r = string.split(s, "HALLOWORLD")
 ```
 ---
 ### `string.rfind`
-Returns the index of where a substring starts. Begins searching at the right side of the string.
-#### Parameters
-1. The string to search.
-2. The substring to search for.
-#### Returns
-An integer for the index of the substring, or `nil` if the substring was not found.
-```pluto title="Basic Usage"
-local s = "hello world"
-local r = string.rfind(s, "world") --> 7
-```
+Identical to the base Lua `string.find` in every way, except it searches right-to-left instead of left-to-right.
+
 ---
 ### `string.strip`
 Strips characters from both ends of a string.
