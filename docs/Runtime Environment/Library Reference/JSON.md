@@ -68,3 +68,6 @@ assert(decoded.key == "Hello")
 assert(type(decoded) == "table")
 assert(decoded.nested.nested_key == 1337)
 ```
+---
+## Encoding Null Values
+The `json.null` value — assuming you did `local json = require("json")` — can be used to encode null JSON values.
