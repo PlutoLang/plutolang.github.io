@@ -1,27 +1,9 @@
 Pluto offers optional compiler warnings for certain misbehaviors.
 
-These are the current warning circumstances:
-- Type mismatch.
-  - When the type of an expression doesn't match the hinted type.
-- Variable shadowing.
-  - When a new local is created with the same name as an existing one.
-- Unreachable code.
-  - When a block of code will never be ran.
-- Excessive arguments.
-  - When too many arguments are given to a non-vararg function.
+## Warning Types
 
-## Examples
-#### Type Mismatch
-```pluto showLineNumbers
-local var: number = 5
-var = "hello"
-```
-```
-file.pluto:2: warning: variable type mismatch [type-mismatch]
-    2 | var = "hello"
-      | ^^^^^^^^^^^^^ here: 'var' type-hinted as 'number', but assigned a string value.
-```
-#### Variable Shadowing
+### var-shadow
+This is raised when a new local is created with the same name as an existing one.
 ```pluto showLineNumbers
 local var = 5
 do
@@ -33,7 +15,35 @@ file.pluto:3: warning: duplicate local declaration [var-shadow]
     3 | local var = "hello"
       | ^^^^^^^^^^^^^^^^^^^ here: this shadows the initial declaration of 'var' on line 1.
 ```
-#### Unreachable Code
+
+### global-shadow
+This is raised when a new local is created with the same name as a global variable.
+```pluto showLineNumbers
+local table = {}
+```
+```
+file.pluto:1: warning: duplicate global declaration [global-shadow]
+    1 | local table = {}
+      | ^^^^^^^^^^^^^^^^ here: this shadows the initial global definition of 'table'
+```
+To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_GLOBAL_SHADOW` macro.
+
+Furthermore, this only covers the globals 'table', 'string', and 'arg' by default. Integrators can overwrite the `PLUTO_COMMON_GLOBAL_NAMES` macro to change this list.
+
+### type-mismatch
+This is raised when the type of an expression doesn't match the hinted type.
+```pluto showLineNumbers
+local var: number = 5
+var = "hello"
+```
+```
+file.pluto:2: warning: variable type mismatch [type-mismatch]
+    2 | var = "hello"
+      | ^^^^^^^^^^^^^ here: 'var' type-hinted as 'number', but assigned a string value.
+```
+
+### unreachable-code
+This is raised when a block of code will never be ran.
 ```pluto showLineNumbers
 for i = 1, 10 do
   if i == 5 then
@@ -47,7 +57,9 @@ file.pluto:4: warning: unreachable code [unreachable-code]
     4 | print("message")
       | ^^^^^^^^^^^^^^^^ here: this code comes after an escaping 'continue' statement.
 ```
-#### Excessive Arguments
+
+### excessive-arguments
+This is raised when too many arguments are given to a non-vararg function.
 ```pluto showLineNumbers
 local function func(a, b, c)
 
@@ -61,23 +73,92 @@ file.pluto:5: warning: too many arguments [excessive-arguments]
       | ^^^^^^^^^^^^^^^^ here: expected 3 arguments, got 4.
 ```
 
+### bad-practice
+This is raised when the code does something stupid but not quite stupid enough to cause an error.
+```pluto showLineNumbers
+pluto_use *
+```
+```
+file.pluto:1: warning: 'pluto_use *' is a bad idea because future Pluto versions may add keywords that will break your script [bad-practice]
+    1 | pluto_use *
+      | ^^^^^^^^^^^ here: consider using 'pluto_use "0.8.0"' instead
+```
+
+### possible-typo
+This is raised when the code seems syntactically incorrect.
+```pluto showLineNumbers
+local magic const = 42
+```
+```
+file.pluto:1: warning: Possibly mistyped attribute [possible-typo]
+    1 | local magic const = 42
+      | ^^^^^^^^^^^^^^^^^^^^^^ here: Did you mean '<const>'?
+```
+
+### non-portable-code
+This is raised when the code may not be considered valid by all Pluto environments due to compatibility mode.
+```pluto showLineNumbers
+new exception("Not implemented")
+```
+```
+file.pluto:1: warning: non-portable keyword usage [non-portable-code]
+    1 | new exception("Not implemented")
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ here: use 'pluto_new' instead, or 'pluto_use' this keyword: https://pluto.do/compat
+```
+To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_NON_PORTABLE_CODE` macro.
+
+### non-portable-name
+This is raised when a variable name is only valid due to compatibility mode.
+```pluto showLineNumbers
+local class = "fruit"
+```
+```
+file.pluto:1: warning: 'class' is a non-portable name [non-portable-name]
+    1 | local class = "fruit"
+      | ^^^^^^^^^^^^^^^^^^^^^ here: use a different name, or use 'pluto_use' to disable this keyword: https://pluto.do/compat
+```
+To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_NON_PORTABLE_NAME` macro.
+
+### non-portable-bytecode
+This is raised when the code will not run in Lua environments (when compiling Pluto to bytecode).
+```pluto showLineNumbers
+print(nil ?? "hello")
+```
+```
+file.pluto:1: warning: non-portable operator usage [non-portable-bytecode]
+    1 | print(nil ?? "hello")
+      | ^^^^^^^^^^^^^^^^^^^^^ here: this operator generates bytecode which is incompatible with Lua.
+```
+To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_NON_PORTABLE_BYTECODE` macro.
+
 ## Compile-time Configuration
-Warnings can be disabled during compile-time, so you can make exceptions for the next line, a region of code, or the entire warning itself.
-```pluto title="These are the configuration comments."
---- @pluto_warnings: enable-all
---- @pluto_warnings: disable-all
+The state of each warning type can be changed during compile-time and exception for certain code can be made.
 
---- @pluto_warnings: disable-next
+### Changing Warning States
 
---- @pluto_warnings: enable-var-shadow
---- @pluto_warnings: disable-var-shadow
+Warnings have 3 states: 'disable', 'enable', and 'error'. The 'error' state is a more aggressive version of 'enable' that causes compilation to fail if the warning type is raied.
 
---- @pluto_warnings: enable-type-mismatch
---- @pluto_warnings: disable-type-mismatch
+To change the state of a warning, write a `@pluto_warnings` comment with the state and warning type joined by a hyphen (-):
+```pluto
+local var = 5
+do
+  -- @pluto_warnings: disable-var-shadow
+  local var = "hello"
+  -- @pluto_warnings: enable-var-shadow
+end
+```
 
---- @pluto_warnings: enable-unreachable-code
---- @pluto_warnings: disable-unreachable-code
+For this, there is also the special type, 'all', which can be used e.g. to enable all warnings except for non-portable-bytecode:
+```pluto
+-- @pluto_warnings: enable-all, disable-non-portable-bytecode
+```
 
---- @pluto_warnings: enable-excessive-arguments
---- @pluto_warnings: disable-excessive-arguments
+### Disable Warnings On Line
+To disable warnings on a specific line of code, simply put a comment on the line before it with `@pluto_warnings: disable-next`.
+```pluto showLineNumbers
+local var = 5
+do
+  -- @pluto_warnings: disable-next
+  local var = "hello"
+end
 ```
