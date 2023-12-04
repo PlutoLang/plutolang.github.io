@@ -203,8 +203,8 @@ print(instanceof(e, Entity)) -- true
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=class%20Entity%20end%0D%0Aclass%20Human%20extends%20Entity%20end%0D%0A%0D%0Alocal%20e%20%3D%20new%20Entity()%0D%0Alocal%20h%20%3D%20new%20Human()%0D%0A%0D%0Aprint(e%20instanceof%20Entity)%20--%20true%0D%0Aprint(e%20instanceof%20Human)%20--%20false%0D%0Aprint(h%20instanceof%20Entity)%20--%20true%20(by%20inheritance)%0D%0Aprint(h%20instanceof%20Human)%20--%20true%0D%0A%0D%0Aprint(instanceof(e%2C%20Entity))%20--%20true%0D%0A)
 
-:::caution
-The instanceof operator and function should not be used if you want to compile Pluto to bytecode and run it with Lua.
+:::info
+Note that, while the instanceof operator generates Lua-compatible bytecode, the instanceof function is a part of Pluto's standard library, and hence unavailable under Lua.
 :::
 
 ## Using Compatibility Mode?
