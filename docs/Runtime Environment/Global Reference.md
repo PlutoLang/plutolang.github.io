@@ -141,6 +141,8 @@ print(exportvar(t))
 
 ---
 ### `version_compare`
+Available if you compiled Pluto with Soup.
+
 Performs a three-way comparison on 2 version numbers, similar to the [Spaceship Operator](../New%20Operators#spaceship-operator).
 ```pluto
 assert(version_compare("1.0.0", "0.9.0")     >= 0)
