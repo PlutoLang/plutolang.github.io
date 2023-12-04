@@ -207,6 +207,20 @@ else
     print("Config does not exist!")
 end
 ```
+### `io.parent`
+Fetch the parent directories of a file up until the current working directory.
+#### Parameters
+1. A string path or file stream.
+#### Returns
+A string indicating the parent directory(s) of a file or file path. An empty string if the parent directory is the current working directory.
+```pluto showLineNumbers
+io.makedirs("directory1/directory2")
+local a = io.open("directory1/directory2/file.txt", "w+")
+a:write("hello world")
+a:close()
+print(io.parent(a)) --> "directory1/directory2"
+print(io.open(io.parent(a) .. "/file.txt"):read("a")) --> "hello world"
+```
 ---
 ### `io.makedir`
 Create a directory.
