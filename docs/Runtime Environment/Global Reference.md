@@ -140,6 +140,15 @@ print(exportvar(t))
 ```
 
 ---
+### `version_compare`
+Performs a three-way comparison on 2 version numbers, similar to the [Spaceship Operator](../New%20Operators#spaceship-operator).
+```pluto
+assert(version_compare("1.0.0", "0.9.0")     >= 0)
+assert(version_compare("1.0.0", "1.0.0-dev") >= 0)
+```
+Note that pre-release versions (e.g. with `-dev` suffix) are considered to be _less than_ their final counterparts.
+
+---
 ### `wcall`
 Calls the given function and returns a string of warnings raised by it.
 ```pluto showLineNumbers
