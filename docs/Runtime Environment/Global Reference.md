@@ -208,18 +208,15 @@ else
 end
 ```
 ### `io.parent`
-Fetch the parent directories of a file up until the current working directory.
+Strips the rightmost component of the given path, leaving you with effectively the path to its parent directory.
 #### Parameters
 1. A string path or file stream.
 #### Returns
-A string indicating the parent directory(s) of a file or file path. An empty string if the parent directory is the current working directory.
+The path to the parent directory.
 ```pluto showLineNumbers
-io.makedirs("directory1/directory2")
-local a = io.open("directory1/directory2/file.txt", "w+")
-a:write("hello world")
-a:close()
-print(io.parent(a)) --> "directory1/directory2"
-print(io.open(io.parent(a) .. "/file.txt"):read("a")) --> "hello world"
+print(io.parent("a/b/c")) --> "a/b"
+print(io.parent("a/b"))   --> "a"
+print(io.parent("a"))     --> ""
 ```
 ---
 ### `io.makedir`
