@@ -32,8 +32,6 @@ a += 1
 
 :::info
 Compound operators will call the same metamethods as the normal arithmetic operation would.
-
-For older processors, compound operators can yield a noteworthy performance improvement.
 :::
 
 ## Coalescing Operator
