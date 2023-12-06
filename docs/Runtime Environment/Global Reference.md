@@ -390,6 +390,39 @@ After:
 --]]
 ```
 ---
+### `table.reorder`
+Reorders the array portion of a table so it becomes a continuous array with no holes.
+#### Parameters
+1. The table.
+#### Returns
+This modifies the input, so you don't need the return value. But, it still returns the input value either way.
+```pluto showLineNumbers
+local assert = require("assert")
+local t1 = { 1, nil, 2, nil, nil, 3, nil, 4 }
+
+assert.equal(t1:reorder(), { 1, 2, 3, 4 })
+```
+---
+### `table.filter`
+Filters away keys (both array and non-array) that fail to meet the condition established by `callback`. Elimination is done by setting the value to `nil`, consider using `table.reorder` if you want a continuous array after filtering.
+#### Parameters
+1. The table.
+2. The callback responsible for deciding which keys to keep or remove. This should `false` or `nil` if you want the key to be eliminated.
+#### Returns
+This modifies the input, so you don't need the return value. But, it still returns the input value either way.
+```pluto showLineNumbers
+local assert = require("assert")
+local t1 = { 1, hello = "world", 2, key = "value" }
+
+assert.equal(t1:filter(|value| -> type(value) == "number"), { 1, 2 })
+
+local t2 = { 1, hello = "world", 2, key = "value" }
+
+assert.equal(t2:filter(|value| -> type(value) ~= "number"), { hello = "world", key = "value" })
+```
+### `table.map`
+Remaps every key to a new value, provded by the `callback` function.
+---
 ## `string`
 ### `string.upper`
 This function now takes a second parameter that specifies which index to capitalize.
