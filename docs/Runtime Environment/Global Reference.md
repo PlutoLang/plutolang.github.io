@@ -484,7 +484,7 @@ Identical to the base Lua `string.find` in every way, except it searches right-t
 Strips characters from both ends of a string.
 #### Parameters
 1. The string to strip.
-2. A string of characters to strip.
+2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
 #### Returns
 The new string.
 ```pluto title="Basic Usage"
@@ -496,7 +496,7 @@ local r = string.strip(s, "{}|") --> "hello world"
 Strips characters from the left side of a string.
 #### Parameters
 1. The string to strip.
-2. A string of characters to strip.
+2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
 #### Returns
 The new string.
 ```pluto title="Basic Usage"
@@ -508,7 +508,7 @@ local r = string.strip(s, "{}|") --> "<hello world>{|}"
 Strips characters from the right side of a string.
 #### Parameters
 1. The string to strip.
-2. A string of characters to strip.
+2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
 #### Returns
 The new string.
 ```pluto title="Basic Usage"
