@@ -77,11 +77,6 @@ The binaries will be placed in the `out/` directory.
 
 ### Make
 
-:::caution
-This will build Pluto without Soup linked in, severely limiting the standard library available at runtime.
-:::
-
-
 You can simply run the make command:
 ```
 make -j PLAT={yourplatform}
