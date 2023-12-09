@@ -84,7 +84,7 @@ This will build Pluto without Soup linked in, severely limiting the standard lib
 
 You can simply run the make command:
 ```
-make PLAT={yourplatform}
+make -j PLAT={yourplatform}
 ```
 The platform list can be found [here](https://github.com/PlutoLang/Pluto/blob/main/src/Makefile#L38).
 
