@@ -31,6 +31,12 @@ As a shorthand for:
 local meaning <const> = 42
 ```
 
+## `pluto_use` Shorthands
+
+When using `pluto_use` with a version number, you can also enable optional keywords using '+':
+- `pluto_use "0.7.0+"` is the same as `pluto_use "0.6.0", let`
+- `pluto_use "0.8.0+"` is the same as `pluto_use "0.8.0", let, const`
+
 ## For Integrators
 
 You can enable `let` and `const` in your Pluto environment by default by defining the `PLUTO_USE_LET` and `PLUTO_USE_CONST` macros in `luaconf.h` or your build config.
