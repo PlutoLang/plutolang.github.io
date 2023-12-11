@@ -122,11 +122,11 @@ To avoid excessive annoyance, this warning type is off by default. To enable it,
 ### non-portable-bytecode
 This is raised when the code will not run in Lua environments (when compiling Pluto to bytecode).
 ```pluto showLineNumbers
-print(nil ?? "hello")
+print("h" in "hello")
 ```
 ```
 file.pluto:1: warning: non-portable operator usage [non-portable-bytecode]
-    1 | print(nil ?? "hello")
+    1 | print("h" in "hello")
       | ^^^^^^^^^^^^^^^^^^^^^ here: this operator generates bytecode which is incompatible with Lua.
 ```
 To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_NON_PORTABLE_BYTECODE` macro.
