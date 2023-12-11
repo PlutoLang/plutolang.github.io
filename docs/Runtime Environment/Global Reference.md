@@ -140,11 +140,11 @@ print(exportvar(t))
 ```
 
 ---
-### `version_compare`
+### `compareversions`
 Performs a three-way comparison on 2 version numbers, similar to the [Spaceship Operator](../New%20Operators#spaceship-operator).
 ```pluto
-assert(version_compare("1.0.0", "0.9.0")     >= 0)
-assert(version_compare("1.0.0", "1.0.0-dev") >= 0)
+assert(compareversions("1.0.0", "0.9.0")     >= 0)
+assert(compareversions("1.0.0", "1.0.0-dev") >= 0)
 ```
 Note that pre-release versions (e.g. with `-dev` suffix) are considered to be _less than_ their final counterparts.
 
