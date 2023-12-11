@@ -1,5 +1,3 @@
-## `base32`
-
 Must be included via `require`.
 
 ### `base32.encode`
