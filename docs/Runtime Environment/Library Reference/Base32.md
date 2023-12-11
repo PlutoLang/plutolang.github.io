@@ -1,6 +1,6 @@
 ## `base32`
 
-Available if you compiled Pluto with Soup. Must be included via `require`.
+Must be included via `require`.
 
 ### `base32.encode`
 Returns an encoded base32 string.

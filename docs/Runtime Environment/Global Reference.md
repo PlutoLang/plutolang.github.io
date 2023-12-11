@@ -9,7 +9,7 @@ The search bar at the top right of the page is available. (Or Ctrl+F)
 ---
 Some changes & additions to the environment must be disclosed:
 1. `_PVERSION` is the global to check your current version of Pluto.
-2. `_PSOUP` is a global boolean you can access to check linkage with Soup.
+2. `_PSOUP` is a global boolean you can access to check linkage with Soup. Always true as of 0.8.0.
 3. `package.path` is modified to also search for `.pluto` files.
 ```pluto
 if _PVERSION == nil then
@@ -141,8 +141,6 @@ print(exportvar(t))
 
 ---
 ### `version_compare`
-Available if you compiled Pluto with Soup.
-
 Performs a three-way comparison on 2 version numbers, similar to the [Spaceship Operator](../New%20Operators#spaceship-operator).
 ```pluto
 assert(version_compare("1.0.0", "0.9.0")     >= 0)
