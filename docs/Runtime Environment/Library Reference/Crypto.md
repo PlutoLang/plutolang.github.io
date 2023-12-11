@@ -108,10 +108,12 @@ assert(crypto.times33(str) == 3889643616)
 Hash a string using the SHA-256 cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
 ```pluto showLineNumbers
 local crypto = require("crypto")
 local str = "hello world"
 assert(crypto.sha256(str) == "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9")
+assert(crypto.sha256(str, true) == "\xb9\x4d\x27\xb9\x93\x4d\x3e\x08\xa5\x2e\x52\xd7\xda\x7d\xab\xfa\xc4\x84\xef\xe3\x7a\x53\x80\xee\x90\x88\xf7\xac\xe2\xef\xcd\xe9")
 ```
 ---
 ### `crypto.murmur1`
