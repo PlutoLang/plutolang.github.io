@@ -419,7 +419,18 @@ local t2 = { 1, hello = "world", 2, key = "value" }
 assert.equal(t2:filter(|value| -> type(value) ~= "number"), { hello = "world", key = "value" })
 ```
 ### `table.map`
-Remaps every key to a new value, provded by the `callback` function.
+Remaps every key to a new value, provided by the `callback` function.
+#### Parameters
+1. The table.
+2. The callback responsible for producing the updated values.
+#### Returns
+This modifies the input, so you don't need the return value. But, it still returns the input value either way.
+```pluto showLineNumbers
+local data = "41 20 68"
+print(data:split(" "):map(tonumber):map(|x| -> x + 1):concat(" ")) -- "42 21 69"
+```
+In this example, we first use the `tonumber` function to turn the strings into numbers, then add 1 to them. (Although the first step is not needed in Lua/Pluto since the `+` operator would take care of it, it is used here for demonstration purposes.)
+
 ---
 ## `string`
 ### `string.upper`
