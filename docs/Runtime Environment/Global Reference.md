@@ -1,5 +1,6 @@
 ---
 title: Global Reference
+sidebar_position: 1
 ---
 
 Currently, Pluto's standard library is built on top of the base Lua 5.4 standard library.

@@ -1,5 +1,3 @@
-## `base64`
-
 Must be included via `require`.
 
 ### `base64.encode`
