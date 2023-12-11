@@ -1,6 +1,6 @@
 ## `base64`
 
-Available if you compiled Pluto with Soup. Must be included via `require`.
+Must be included via `require`.
 
 ### `base64.encode`
 Returns a base64-encoded string.

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 ## `json`
-Available if you compiled Pluto with Soup. Must be included via `require`.
+Must be included via `require`.
 ### `json.encode`
 Returns a string of JSON.
 #### Parameters:
