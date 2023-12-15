@@ -406,29 +406,31 @@ assert.equal(t1:reorder(), { 1, 2, 3, 4 })
 Filters away keys (both array and non-array) that fail to meet the condition established by `callback`. Elimination is done by setting the value to `nil`, consider using `table.reorder` if you want a continuous array after filtering.
 #### Parameters
 1. The table.
-2. The callback responsible for deciding which keys to keep or remove. This should `false` or `nil` if you want the key to be eliminated.
+2. The callback responsible for deciding which keys to keep or remove. This should return `false` or `nil` if you want the key to be eliminated.
+3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
 #### Returns
 This modifies the input, so you don't need the return value. But, it still returns the input value either way.
 ```pluto showLineNumbers
-local assert = require("assert")
-local t1 = { 1, hello = "world", 2, key = "value" }
+data = { 1, 2, 3, 4, 5 }
+print(data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ")) -- "1 3 5"
 
-assert.equal(t1:filter(|value| -> type(value) == "number"), { 1, 2 })
-
-local t2 = { 1, hello = "world", 2, key = "value" }
-
-assert.equal(t2:filter(|value| -> type(value) ~= "number"), { hello = "world", key = "value" })
+data = { 2, 2, 3, 4, 4 }
+print(data:filter(|k, v| -> k == v, true):reorder():concat(" ")) -- "2 3 4"
 ```
 ### `table.map`
 Remaps every key to a new value, provided by the `callback` function.
 #### Parameters
 1. The table.
 2. The callback responsible for producing the updated values.
+3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
 #### Returns
 This modifies the input, so you don't need the return value. But, it still returns the input value either way.
 ```pluto showLineNumbers
-local data = "41 20 68"
-print(data:split(" "):map(tonumber):map(|x| -> x + 1):concat(" ")) -- "42 21 69"
+data = "41 20 68"
+print(data:split(" "):map(tonumber):map(|v| -> v + 1):concat(" ")) -- "42 21 69"
+
+data = "10 15 10"
+print(data:split(" "):map(tonumber):map(|k, v| -> k * v, true):concat(" ")) -- "10 30 30"
 ```
 In this example, we first use the `tonumber` function to turn the strings into numbers, then add 1 to them. (Although the first step is not needed in Lua/Pluto since the `+` operator would take care of it, it is used here for demonstration purposes.)
 
