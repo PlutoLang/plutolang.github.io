@@ -184,19 +184,3 @@ This is a cryptographically-secure PRNG when your system can provide those servi
 local crypto = require("crypto")
 assert(crypto.random(1, 10) < 11)
 ```
----
-### `crypto.hexdigest`
-Converts an integer into its hexadecimal representation, as a string.
-#### Parameters
-1. The string to convert.
-```pluto
-local crypto = require("crypto")
-local hash = crypto.joaat("hello world")
-print("hash: " .. hash)
-print("digest: " .. crypto.hexdigest(hash))
---[[
-	hash: 1045060183
-	digest: "0x3e4a5a57"
---]]
-assert(tonumber(crypto.hexdigest(hash)) == hash)
-```
