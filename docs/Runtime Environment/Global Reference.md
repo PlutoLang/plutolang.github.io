@@ -269,6 +269,7 @@ io.makedirs("A/B/C") --> Creates "C:\Users\Username\Desktop\Project\A\B\C"
 Convert a relative path into an absolute one.
 #### Parameters
 1. A string path or file stream.
+2. An optional bool if the path should be canonicalized. A canonical path does not go through symlinks.
 #### Returns
 A string representing the new file path.
 ```pluto showLineNumbers title="Example Usage"
