@@ -175,6 +175,18 @@ else
 end
 ```
 ---
+### `io.part`
+Extracts the given part from a path.
+#### Parameters
+1. A string path or file stream.
+2. The part to return, "parent" or "name".
+#### Returns
+The extracted part.
+```pluto showLineNumbers
+print(io.part("/path/to/foo.txt", "parent")) -- "/path/to"
+print(io.part("/path/to/foo.txt", "name")) -- "foo.txt"
+```
+---
 ### `io.isdir`
 #### Parameters
 1. A string path or file stream.
@@ -216,17 +228,6 @@ if io.exists("cfg/config.txt") then
 else
     print("Config does not exist!")
 end
-```
-### `io.parent`
-Strips the rightmost component of the given path, leaving you with effectively the path to its parent directory.
-#### Parameters
-1. A string path or file stream.
-#### Returns
-The path to the parent directory.
-```pluto showLineNumbers
-print(io.parent("a/b/c")) --> "a/b"
-print(io.parent("a/b"))   --> "a"
-print(io.parent("a"))     --> ""
 ```
 ---
 ### `io.makedir`
