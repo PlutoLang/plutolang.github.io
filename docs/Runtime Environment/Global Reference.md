@@ -277,13 +277,13 @@ io.absolute("cfg/cfg.txt") --> "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
 ---
 ### `io.filesize`
-Fetch the size of a file in kilobytes.
+Fetch the size of a file in bytes.
 #### Parameters
 1. A string path or file stream.
 #### Returns
 A number.
 ```pluto showLineNumbers title="Example Usage"
-if io.filesize("cfg/config.txt") < 1.0 then
+if io.filesize("cfg/config.txt") <= 1 then
     print("Config is too small or empty.")
 end
 ```
