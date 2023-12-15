@@ -272,7 +272,6 @@ Convert a relative path into an absolute one.
 #### Returns
 A string representing the new file path.
 ```pluto showLineNumbers title="Example Usage"
---> cfg/config.txt
 io.absolute("cfg/cfg.txt") --> "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
 ---
