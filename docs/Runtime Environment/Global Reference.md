@@ -315,6 +315,13 @@ Returns seconds since UNIX epoch.
 
 ---
 ## `table`
+### `table.sort`
+This function was slightly modified to return the mutated input table instead of `nil.` Such that:
+```pluto showLineNumbers
+local t = { 3, 2, 1 }
+t = t:sort(...)
+```
+Will not result in `t` becoming `nil`.
 ### `table.freeze`
 Freezes a table to prevent modification.
 #### Parameters
