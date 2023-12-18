@@ -9,7 +9,7 @@ These mechanisms are battle-tested. If you are an integrator who needs help conf
 ## Content Moderation
 ### Compiled Code
 You can disable execution of compiled bytecode by defining `PLUTO_DISABLE_COMPILED` in `luaconf.h` or your build config.
-### Module Loading
+### Custom Module Filters
 
 You may already have filters before passing scripts to run onto Pluto, but mechanisms such as `dofile` and `require` may be used to bypass them. To help you combat this, Pluto provides `PLUTO_LOADFILE_HOOK`. For example, if you set it to `ContmodOnLoadfile` in `luaconf.h` or your build config, you only need to define that function somewhere in your code, like this:
 
@@ -20,6 +20,9 @@ extern "C" bool ContmodOnLoadfile(const char* filename) {
 ```
 
 This requires you to use Pluto as a static library, as otherwise this linking relationship won't work.
+
+### Prevent Loading of Binary Modules
+The `PLUTO_NO_BINARIES` macro can be defined to totally eliminate `package.loadlib` and any DLL/SO loading capability from the `require` function. This is helpful because `package.loadlib` can be used to bypass sandbox restrictions by manually loading symbols from a Lua/Pluto library, and the `require` function can load any Lua/Pluto C Module which may or may not provide dangerous functions. This is generally vital for any sandbox. This mechanism cannot be bypassed, since it configures Pluto to compile without support for any of the aforementioned features.
 
 ## Execution Time Limit
 To aid environments that have to be sandboxed, Pluto provides Execution Time Limit (ETL), which can be enabled by defining `PLUTO_ETL_ENABLE` in `luaconf.h` or your build config.
