@@ -379,7 +379,7 @@ Reverses the array elements of a table.
 1. The table to reverse.
 #### Returns
 This modifies the table you pass, but it'll also return it.
-```pluto showLineNumbers
+```pluto
 local t = { 1, 2, hello = "world", 3, 4, 5, key = "value" }
 
 print(dumpvar(t))
@@ -418,11 +418,27 @@ Reorders the array portion of a table so it becomes a continuous array with no h
 1. The table.
 #### Returns
 This modifies the input, so you don't need the return value. But, it still returns the input value either way.
-```pluto showLineNumbers
+```pluto
 local assert = require("assert")
 local t1 = { 1, nil, 2, nil, nil, 3, nil, 4 }
 
 assert.equal(t1:reorder(), { 1, 2, 3, 4 })
+```
+---
+### `table.foreach`
+Note that this function is not the same as the Lua function that was deprecated/removed in 5.1.
+#### Parameters
+1. The table.
+2. The callback to be called for every element.
+3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
+#### Returns
+Nothing.
+```pluto
+local t = { 1, 2, 3 }
+t:foreach(print)
+--> 1
+--> 2
+--> 3
 ```
 ---
 ### `table.filter`
@@ -433,7 +449,7 @@ Filters away keys (both array and non-array) that fail to meet the condition est
 3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
 #### Returns
 This modifies the input, so you don't need the return value. But, it still returns the input value either way.
-```pluto showLineNumbers
+```pluto
 data = { 1, 2, 3, 4, 5 }
 print(data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ")) -- "1 3 5"
 
@@ -448,7 +464,7 @@ Remaps every key to a new value, provided by the `callback` function.
 3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
 #### Returns
 This modifies the input, so you don't need the return value. But, it still returns the input value either way.
-```pluto showLineNumbers
+```pluto
 data = "41 20 68"
 print(data:split(" "):map(tonumber):map(|v| -> v + 1):concat(" ")) -- "42 21 69"
 
