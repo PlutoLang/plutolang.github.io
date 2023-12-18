@@ -21,7 +21,7 @@ print(vector3(1, 2, 3)) --> vector3(1, 2, 3)
 
 ### `__tostring`
 
-As you may have seen from the previous example, vector3 instances effortlessly stringify.
+As seen above, the `__tostring` method provides a string representation of the class.
 
 ### `__add`, `__sub`, `__mul`, `__div`
 
