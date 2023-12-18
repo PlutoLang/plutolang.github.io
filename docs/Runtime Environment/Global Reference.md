@@ -288,6 +288,21 @@ if io.filesize("cfg/config.txt") <= 1 then
 end
 ```
 ---
+### `io.writetime`
+Get or set a file's modification time.
+#### Parameters
+1. A string path or file stream.
+2. The desired timestamp. If this parameter is absent, this function works as a *getter.*
+#### Returns
+If this function is acting as a *getter*, it will return the file's last write time as seconds since the UNIX epoch.
+```pluto
+local time = io.writetime("foo.txt")
+time += 3600
+io.writetime("foo.txt", time)
+```
+This example adds an hour (= 60 minutes = 3600 seconds) to the last write time of "foo.txt" (or errors if that file does not exist).
+
+---
 ### `io.currentdir`
 Get or set the current working directory.
 #### Parameters
