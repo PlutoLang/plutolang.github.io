@@ -2,7 +2,7 @@ Must be included via `require`.
 
 ### `__construct`
 
-The constructor up to 3 arguments:
+The constructor takes up to 3 arguments:
 
 ```pluto
 local vector3 = require "pluto:vector3"
