@@ -14,6 +14,8 @@ The easiest way to get started writing Pluto is to use [Write Pluto Online](http
 
 You can find pre-built binaries of Pluto for Windows, Linux, & Mac OS over on [Pluto's Github Releases page](https://github.com/PlutoLang/Pluto/releases).
 
+## Packages
+
 ### Chocolatey
 
 You can easily install pluto & plutoc via Chocolatey as follows:
@@ -37,6 +39,10 @@ sudo apt install pluto
 ```
 
 Don't worry about the "buster" part; our prebuilt binaries are compiled on Debian 10 (buster), but they work on all subsequent Debian releases, as well as Ubuntu 20 and above.
+
+### AUR
+
+Pluto is in the Arch User Repository under the name `plutolang`.
 
 ## Compile Pluto Yourself
 
