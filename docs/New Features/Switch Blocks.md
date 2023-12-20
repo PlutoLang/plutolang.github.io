@@ -87,10 +87,10 @@ There is a short-hand fallthrough syntax:
 switch value do
 	case 1, 2, 3:
 		print("1-3")
-		break;
+		break
 	case 4, 5, 6:
 		print("4-6")
-		break;
+		break
 end
 ```
 
