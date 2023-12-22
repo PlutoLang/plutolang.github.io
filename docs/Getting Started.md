@@ -44,6 +44,10 @@ Don't worry about the "buster" part; our prebuilt binaries are compiled on Debia
 
 Pluto is in the Arch User Repository under the name `plutolang`.
 
+### Termux
+
+Pluto is available in the Termux package main repository under `plutolang` for binaries and `libpluto` for development library.
+
 ## Compile Pluto Yourself
 
 Pluto can compile on virtually any platform, as long as there's a C++ 17 compiler for it.
