@@ -14,9 +14,7 @@ local t = { 3, 6, 9 }
 This is how we would assign each value to variables called `a`, `b`, and `c` using the Lua and Pluto ways:
 
 ```pluto title="Lua way"
-local a = t[1]
-local b = t[2]
-local c = t[3]
+local a, b, c = table.unpack(t)
 ```
 ```pluto title="Pluto way"
 local [a, b, c] = t
