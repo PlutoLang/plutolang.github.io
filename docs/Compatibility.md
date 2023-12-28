@@ -39,4 +39,4 @@ We recommend scripters place a `pluto_use` statement at the beginning of their s
 - **Portability.** This will override the compatibility mode settings compiled into Pluto so your script will be parsed identically in all Pluto environments.
 - **Proactive compatibility.** Any keywords added by future versions of Pluto will also be put in compatibility mode by these statements, so in the off-chance your script uses a future reserved keyword as a variable name, it would still parse as you intended when you wrote it.
 
-Plus, it's as simple as `pluto_use "0.6.0"` or `pluto_use "0.5.0"` — see "Configuration for scripters" above.
+Plus, it's as simple as `pluto_use "0.6.0"` or `pluto_use "0.5.0"` — see "Compile-time Configuration" above.
