@@ -21,11 +21,8 @@ You can find pre-built binaries of Pluto for Windows, Linux, & Mac OS over on [P
 You can easily install pluto & plutoc via Chocolatey as follows:
 
 ```
-choco source add -n "Calamity, Inc." -s https://choco.calamity.gg/index.json
 choco install plutolang
 ```
-
-Note that Chocolatey 2.0.0 or above is needed.
 
 ### APT Repository
 
