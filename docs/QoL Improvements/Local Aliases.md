@@ -15,6 +15,10 @@ If this is causing ambiguities in your script, you can disable it again after yo
 pluto_use let = false
 ```
 
+:::caution
+The `let` keyword will be deprecated in 0.9.0.
+:::
+
 ## Const
 
 To enable the `const` keyword, simply do:
