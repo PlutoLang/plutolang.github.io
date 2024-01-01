@@ -12,5 +12,5 @@ ipairs: ipairsaux, table, integer, nil
 ```
 As long as you don't access the last `nil` value, you're fine.
 :::info
-This optimization was published by Xmelia Hermit.
+This optimization was published and implemented entirely by Xmelia Hermit.
 :::
