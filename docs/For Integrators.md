@@ -4,7 +4,7 @@ sidebar_position: 9
 ---
 
 # For Integrators
-These mechanisms are battle-tested. If you are an integrator who needs help configuring any of this, or who wants us to implement another mechanism, feel free to contact us on GitHub.
+The `luaconf.h` in Pluto provides various battle-tested mechanisms for locking down your Pluto environments. In this article, we've documented some of those. If you are an integrator who needs help configuring any of this, or who wants us to implement another mechanism, feel free to contact us on GitHub.
 
 ## Content Moderation
 ### Compiled Code
