@@ -1,7 +1,3 @@
-Pluto improves iteration in a few ways.
-
-## Generalized Iteration
-
 It's redundant to call the `pairs` function for simple iteration. This action is now optional, and handled by the virtual machine if the function is absent.
 ```pluto showLineNumbers title="New Code"
 local t = { 1, 2, 3, "hello", "world" }
