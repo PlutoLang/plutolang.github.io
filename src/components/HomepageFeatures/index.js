@@ -8,16 +8,16 @@ const FeatureList = [
     Svg: require('@site/static/img/one.svg').default,
     description: (
       <>
-        Pluto implements various popular syntaxes that are absent in Lua.
+        Pluto implements various popular syntaxes that are absent in Lua, such as switch statements, compound operators, ternary expressions, etc.
       </>
     ),
   },
   {
-    title: 'Optimizations',
+    title: 'Compatibility',
     Svg: require('@site/static/img/one.svg').default,
     description: (
       <>
-        Pluto is slightly faster than Lua, but in some instances by a pretty large margin.
+        Pluto is remarkably compatible with Lua's source & bytecode. The only conflict is how our new keywords may conflict with identifiers, however we offer "Compatibility Mode" to resolve this issue.
       </>
     ),
   },
@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('@site/static/img/one.svg').default,
     description: (
       <>
-        Pluto aims to meet the standard library of Python, and is slowly encroaching this goal.
+        Dozens of new string functions, table functions, portable filesystem functions, assertion libraries for unit testing, hashing algorithms, JSON, Base64, URL encoding, Vector3, and more.
       </>
     )
   },

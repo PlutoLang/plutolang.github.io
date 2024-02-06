@@ -6,7 +6,7 @@ const codeTheme = require('./src/theme/monokai');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Pluto',
-  tagline: 'A superset of Lua 5.4 — with unique features, optimizations, and improvements.',
+  tagline: 'A superset of Lua 5.4 with a focus on general-purpose programming.',
   url: 'https://pluto-lang.org',
   baseUrl: '/',
   onBrokenLinks: 'warn',
@@ -68,7 +68,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} Ryan Starrett. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} PlutoLang. Built with Docusaurus.`,
       },
       prism: {
         theme: codeTheme,
