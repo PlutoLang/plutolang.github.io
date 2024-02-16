@@ -12,7 +12,6 @@ for key, value in next(t) do
     print(key, value)
 end
 ```
-This is compatible with for-loop optimizations.
 
 :::caution
 The bytecode of this feature is not backwards-compatible with Lua.
