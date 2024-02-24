@@ -802,6 +802,17 @@ print(x ~= x) -- Old way: Prove the variable is NaN because it is not equal to i
 print(math.isnan(x))
 ```
 ---
+### `math.round`
+Rounds a number to the nearest integer.
+#### Parameters
+1. The number to round.
+#### Returns
+An integer.
+```pluto
+print(math.round(2.4)) --> 2
+print(math.round(2.5)) --> 3
+```
+---
 ### `math.atan2`
 An alias of `math.atan`.
 
