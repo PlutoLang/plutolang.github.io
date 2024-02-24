@@ -4,7 +4,7 @@ Must be included via `require`.
 Returns an encoded base32 string.
 #### Parameters:
 1. `data` — A string of data to encode.
-2. `pad` — Whether or not to apply padding.
+2. `pad` — Whether or not to apply padding. Defaults to `true`.
 ### `base32.decode`
 Returns a decoded base32 string.
 #### Parameters:
