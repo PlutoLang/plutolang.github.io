@@ -11,16 +11,17 @@ The search bar at the top right of the page is available. (Or Ctrl+F)
 Some changes & additions to the environment must be disclosed:
 1. `_PVERSION` is the global to check your current version of Pluto.
 2. `_PSOUP` is a global boolean you can access to check linkage with Soup. Always true as of 0.8.0.
-3. `package.path` is modified to also search for `.pluto` files.
+3. `os.platform` is a global string containing the host platform. Can be "windows", "wasm", "linux", "macos", "android", or "unknown".
+4. `package.path` is modified to also search for `.pluto` files.
 ```pluto
 if _PVERSION == nil then
     print("Plain Lua detected (".._VERSION..")")
 else
-    local soup = ""
-    if not _PSOUP then
-        soup = "not "
+    io.write("Pluto detected (".._PVERSION.."), based on ".._VERSION)
+    if os.platform then
+        io.write(", running on "..os.platform)
     end
-    print("Pluto detected (".._PVERSION.."), based on ".._VERSION..", "..soup.."compiled with Soup integration")
+    io.write("\n")
 end
 ```
 
