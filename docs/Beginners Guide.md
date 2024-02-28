@@ -16,7 +16,7 @@ print("Hello, world!")
 ```
 #### [Try It Yourself](https://pluto-lang.org/web/#code=print(%22Hello%2C%20world!%22))
 
-Participation using the "try it yourself" links is recommended. Also feel free to modify the code and use the terminal to run it again (Arrow Key Up + Enter).
+Participation using the "try it yourself" links is recommended — not just running the code, but also modifying it.
 
 As you can see, this program prints "Hello, world!", and it does so by calling the builtin `print` function from Lua.
 
