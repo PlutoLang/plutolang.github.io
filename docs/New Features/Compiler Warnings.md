@@ -131,6 +131,36 @@ file.pluto:1: warning: non-portable operator usage [non-portable-bytecode]
 ```
 To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_NON_PORTABLE_BYTECODE` macro.
 
+### unannotated-fallthrough
+This is raised when there's a non-obvious fallthrough in a switch block:
+```pluto showLineNumbers
+local a = 1
+switch a do
+  case 1:
+    print("Case 1")
+  case 2:
+    print("Case 2")
+end
+```
+```
+file.pluto:5: warning: possibly unwanted fallthrough [unannotated-fallthrough]
+    5 | case 2:
+      | ^^^^^^^ here: the case on line 3 flows into this case
+      + note: place `--@fallthrough` before this case if this is intended
+```
+As the warning points out, a `@fallthrough` annotation can be used to label the fallthrough, in turn silencing the warning:
+```pluto showLineNumbers
+local a = 1
+switch a do
+  case 1:
+    print("Case 1")
+    -- @fallthrough
+  case 2:
+    print("Case 2")
+end
+```
+
+
 ## Compile-time Configuration
 The state of each warning type can be changed during compile-time and exception for certain code can be made.
 
