@@ -142,6 +142,14 @@ print(exportvar(t))
 ```
 
 ---
+### `range`
+Returns a table of numbers in the given range.
+```pluto
+print(range(10):unpack())   --> 1   2   3   4   5   6   7   8   9   10
+print(range(4, 8):unpack()) --> 4   5   6   7   8
+```
+
+---
 ### `compareversions`
 Performs a three-way comparison on 2 version numbers, similar to the [Spaceship Operator](../New%20Operators#spaceship-operator).
 ```pluto
