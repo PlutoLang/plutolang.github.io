@@ -285,6 +285,21 @@ A string representing the new file path.
 io.absolute("cfg/cfg.txt") -- "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
 ---
+### `io.contents`
+Get or set a file's contents.
+#### Parameters
+1. A string path or file stream.
+2. The desired content. If this parameter is absent, this function works as a *getter.*
+#### Returns
+If this function is acting as a *getter*, it will return the file's contents or `nil` if there was an error.
+```pluto
+local text = io.contents("foo.txt") or ""
+text ..= "bar"
+io.contents("foo.txt", text)
+```
+This function is not only easier to use than the traditional `io.open` approach, it also performs significantly better.
+
+---
 ### `io.filesize`
 Fetch the size of a file in bytes.
 #### Parameters
