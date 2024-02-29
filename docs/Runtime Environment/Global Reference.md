@@ -25,7 +25,7 @@ end
 ```
 
 Tables have metatables by default now, akin to how each string has a metatable by default. Now, this is possible:
-```pluto showLineNumbers
+```pluto
 local t = {}
 
 t:contains(1)
@@ -49,11 +49,11 @@ Same as `tonumber`, but performs the operation under the `en_US.UTF-8` locale. E
 ---
 ### `require`
 This function has been modified to prioritize the loading of local files before standard library modules. This was done to ensure a smooth migration when a codebase might have local dependencies named after Pluto libraries. For example:
-```pluto showLineNumbers
+```pluto
 local json = require("json")
 ```
 If you had a custom JSON module, that would be loaded instead of Pluto's JSON module. If there are no local module conflicts, then this will still load the Pluto libary. If you want to specifically load the Pluto library, then you can do this:
-```pluto showLineNumbers
+```pluto
 local json = require("pluto:json")
 ```
 The `pluto:` prefix tells `require` that you specifically want to load a Pluto library named `json` and nothing else.
@@ -65,7 +65,7 @@ A debug function designed to dump values into human-readable formats.
 1. The value to dump.
 #### Returns
 A string representation of the value.
-```pluto showLineNumbers
+```pluto
 local t = {
     ["hello"] = 1234,
     ["goodbye"] = _G.table,
@@ -114,7 +114,7 @@ Similar to dumpvar, but returns valid Lua/Pluto code. May error if the value can
 1. The value to dump.
 #### Returns
 A string representation of the value.
-```pluto showLineNumbers
+```pluto
 -- Slightly altered data from last example as C functions can not be exported.
 local t = {
     ["hello"] = 1234,
@@ -152,7 +152,7 @@ Note that pre-release versions (e.g. with `-dev` suffix) are considered to be _l
 ---
 ### `wcall`
 Calls the given function and returns a string of warnings raised by it.
-```pluto showLineNumbers
+```pluto
 local w = wcall(|| -> warn("Bad!"))
 print(w ~= "" ? (w:strip()) : "No warnings")
 -- Output: "Bad!"
@@ -167,7 +167,7 @@ Copy a file to another file, creating a new file if needed.
 2. A path towards the file to copy into.
 #### Returns
 A boolean indicating if the file was successfully copied.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 if io.copy("./cfg/config.txt", "./backup_cfg/config.txt") then
     print("Successfully created a backup config!")
 else
@@ -182,7 +182,7 @@ Extracts the given part from a path.
 2. The part to return, "parent" or "name".
 #### Returns
 The extracted part.
-```pluto showLineNumbers
+```pluto
 print(io.part("/path/to/foo.txt", "parent")) -- "/path/to"
 print(io.part("/path/to/foo.txt", "name")) -- "foo.txt"
 ```
@@ -192,7 +192,7 @@ print(io.part("/path/to/foo.txt", "name")) -- "foo.txt"
 1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led toward a directory.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 local path = "./dir/main/"
 local bool = io.isdir(path)
 if bool then
@@ -207,7 +207,7 @@ end
 1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led towards a file.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 local path = "./isfile/file"
 local bool = io.isdir(path)
 if bool then
@@ -222,7 +222,7 @@ end
 1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led towards an existing file or directory.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 if io.exists("cfg/config.txt") then
     print("Config exists!")
 else
@@ -236,7 +236,7 @@ Create a directory.
 1. The path for the new directory.
 #### Returns
 A boolean indicating if the directory was successfully created.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 if io.makedir("./cfg") then
     print("Created cfg directory.")
 else
@@ -251,7 +251,7 @@ List all the files within a directory.
 2. A boolean indicating whether or not to recurse sub-directories.
 #### Returns
 A table mapping indices to file paths.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 for _, filepath in io.listdir(".") do
     print(filepath)
 end
@@ -261,7 +261,7 @@ end
 Creates a directory and all the non-existing parent directories in the given path.
 #### Parameters
 1. The string path for your new directory.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 io.makedirs("A/B/C") -- Creates "C:\Users\Username\Desktop\Project\A\B\C"
 ```
 ---
@@ -272,7 +272,7 @@ Convert a relative path into an absolute one.
 2. An optional bool if the path should be canonicalized. A canonical path does not go through symlinks.
 #### Returns
 A string representing the new file path.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 io.absolute("cfg/cfg.txt") -- "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
 ---
@@ -282,7 +282,7 @@ Fetch the size of a file in bytes.
 1. A string path or file stream.
 #### Returns
 A number.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 if io.filesize("cfg/config.txt") <= 1 then
     print("Config is too small or empty.")
 end
@@ -309,7 +309,7 @@ Get or set the current working directory.
 1. A path to the desired current working directory. If this parameter is absent, this function works as a *getter.*
 #### Returns
 If this function is acting as a *getter*, it will return the current working directory.
-```pluto showLineNumbers title="Example Usage"
+```pluto title="Example Usage"
 local cwd = io.currentdir() -- Get cwd
 io.currentdir("abc/abc") -- Set a new cwd
 ```
@@ -319,7 +319,7 @@ io.currentdir("abc/abc") -- Set a new cwd
 #### Parameters:
 1. The amount of milliseconds to sleep for.
 #### Example
-```pluto showLineNumbers title="Basic Usage"
+```pluto title="Basic Usage"
 os.sleep(1000) -- Pause this thread for 1000ms.
 ```
 ---
@@ -332,7 +332,7 @@ Returns seconds since UNIX epoch.
 ## `table`
 ### `table.sort`
 This function was slightly modified to return the mutated input table instead of `nil.` Such that:
-```pluto showLineNumbers
+```pluto
 local t = { 3, 2, 1 }
 t = t:sort(...)
 ```
@@ -477,14 +477,14 @@ In this example, we first use the `tonumber` function to turn the strings into n
 ## `string`
 ### `string.upper`
 This function now takes a second parameter that specifies which index to capitalize.
-```pluto showLineNumbers title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "hello"
 assert(s:upper(1) == "Hello")
 ```
 ---
 ### `string.lower`
 This function now takes a second parameter that specifies which index to make lowercase.
-```pluto showLineNumbers title="Basic Usage"
+```pluto title="Basic Usage"
 local s = "HELLO"
 assert(s:lower(1) == "hELLO")
 ```
@@ -664,7 +664,7 @@ A string.
 An error is thrown under the following conditions:
 1. `max_replace` is less than zero.
 2. The length of `substitute` is zero.
-```pluto showLineNumbers
+```pluto
 print(string.replace("Hello, world!", "!", "."))         --> Hello, world.
 print(string.replace("Hello, world!", "apple", ""))      --> Hello, world!
 print(string.replace("Hello, world!", "Hello", "Apple")) --> Apple, world!
@@ -679,7 +679,7 @@ Truncates a given string to a specified length. If an elipsis is desired and the
 3. A boolean indicating whether or not to replace the last three character of the string with `...` **if** it is truncated. This is `false` by default.
 #### Returns
 The truncated string.
-```pluto showLineNumbers
+```pluto
 print(string.truncate("Hello, world!", 50))      --> Hello, world!
 print(string.truncate("Hello, world!", 5))       --> Hello
 print(string.truncate("Hello, world!", 5, true)) --> He...
@@ -720,7 +720,7 @@ This function makes an integer easier to read by inserting `separator` every `N`
 Returns the modified string.
 #### Errors
 If the input is a **string** and does not meet the aforementioned criteria, an error will be thrown.
-```pluto showLineNumbers title="Usage Example"
+```pluto title="Usage Example"
 print(string.formatint(500))      --> 500
 print(string.formatint(-5000))    --> -5,000
 print(string.formatint(50000))    --> 50,000
@@ -730,7 +730,7 @@ print(string.formatint(500, ".", 2))     --> 5.00
 print(string.formatint("-5000", ",", 1)) --> -5,0,0,0
 print(string.formatint(50000, ",", 4))   --> 5,0000
 ```
-```pluto showLineNumbers title="Error Example"
+```pluto title="Error Example"
 string.formatint("-500000.4")
 ```
 ```
