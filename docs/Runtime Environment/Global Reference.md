@@ -364,6 +364,15 @@ local t = { 3, 2, 1 }
 t = t:sort(...)
 ```
 Will not result in `t` becoming `nil`.
+
+---
+### `table.size`
+Returns the number of elements in the table, counting both the array part and hash part.
+```pluto
+local t = { 1, 2, 3, ["foo"] = "bar" }
+print(t:size()) --> 4
+```
+---
 ### `table.freeze`
 Freezes a table to prevent modification.
 #### Parameters
@@ -375,6 +384,7 @@ local t = table.freeze({...})
 -- `table.freeze(t)` on another line will work fine too.
 t.key = "value" -- Fails.
 ```
+---
 ### `table.isfrozen`
 Checks if this table is frozen.
 #### Parameters
@@ -386,6 +396,7 @@ local t = {}
 table.freeze(t)
 assert(table.isfrozen(t) == true)
 ```
+---
 ### `table.contains`
 Checks if this table contains an element.
 #### Parameters
