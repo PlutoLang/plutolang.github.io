@@ -25,19 +25,22 @@ else
 end
 ```
 
-Tables have metatables by default now, akin to how each string has a metatable by default. Now, this is possible:
+Tables and coroutines/threads have metatables by default, akin to how each string has a metatable by default.
 ```pluto
 local t = {}
+local c = coroutine.create(|| -> do end)
 
+-- Can do this:
 t:contains(1)
 t:concat("\n")
+c:resume()
 
--- As opposed to...
+-- As opposed to this:
 table.contains(t, 1)
 table.concat(t, "\n")
+coroutine.resume(c)
 ```
-
-This behavior is implemented by setting the `__index` metamethod to `_G.table`. If you override the metatable, you may want to replicate that.
+This behavior is implemented by setting the `__index` metamethod to the respective library (`_G.table` or `_G.coroutine`). If you override the metatable, you may want to replicate that.
  
 ## Global
 ### `utostring`
