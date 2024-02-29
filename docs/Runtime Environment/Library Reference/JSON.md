@@ -9,30 +9,25 @@ Returns a string of JSON.
 2. `pretty` — Whether to return a human-readable string of JSON.
 ```pluto
 local json = require("json")
-local data, encoded
+local data
 
 data = "Hello, World!"
-encoded = json.encode(data, true)
---[[
-	"Hello, World!"
---]]
+print(json.encode(data, true))
+--> "Hello, World!"
 
-data = 
-{
-	key = "Hello, World!",
-	nested = {
-		nested_key = 1337
-	}
+data = {
+    key = "Hello, World!",
+    nested = {
+        nested_key = 1337
+    }
 }
-encoded = json.encode(data, true)
---[[
-	{
-	    "nested": {
-	        "nested_key": 1337
-	    },
-	    "key": "Hello, World!"
-	}
---]]
+print(json.encode(data, true))
+--> {
+-->     "key": "Hello, World!",
+-->     "nested": {
+-->         "nested_key": 1337
+-->     }
+--> }
 ```
 ---
 ### `json.decode`
