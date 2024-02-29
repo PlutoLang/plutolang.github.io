@@ -68,14 +68,6 @@ You can even use compound assignment:
 local function say(message)
 	message ??= "The message was nil."
 
-	--[[
-		It's the same as this:
-
-		if message == nil then
-			message = "The message was nil."
-		end
-	--]]
-
 	print(message)
 end
 
