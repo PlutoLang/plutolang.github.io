@@ -331,7 +331,7 @@ Returns seconds since UNIX epoch.
 ---
 ## `table`
 ### `table.sort`
-This function was slightly modified to return the mutated input table instead of `nil.` Such that:
+This function was slightly modified to return the mutated input table instead of `nil`, such that:
 ```pluto
 local t = { 3, 2, 1 }
 t = t:sort(...)
