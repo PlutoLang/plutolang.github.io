@@ -108,14 +108,14 @@ local function get()
 end
 
 while a := get() do
-	--> In the next iteration:
-	-->   - `a` will be assigned to `get()`.
-	-->   - Then the value will be evaluated for the condition.
-	-->
-	--> This happens because the Walrus operator itself is the condition.
-	--> It's not a short-hand for generating an assignment.
-	-->
-	--> Be aware of this if you intend on using the Walrus operator with loops.
+	--| In the next iteration:
+	--|   - `a` will be assigned to `get()`.
+	--|   - Then the value will be evaluated for the condition.
+	--|
+	--| This happens because the Walrus operator itself is the condition.
+	--| It's not a short-hand for generating an assignment.
+	--|
+	--| Be aware of this if you intend on using the Walrus operator with loops.
 end
 ```
 

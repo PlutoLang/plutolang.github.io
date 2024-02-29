@@ -11,7 +11,7 @@ local function myfunc(a: string, b: string): number
     return tonumber(a) + tonumber(b)
 end
 
-print(myfunc(1, "1")) --> This will emit a warning for argument type mismatch.
+print(myfunc(1, "1")) -- This will emit a warning for argument type mismatch.
 ```
 There's no effect on performance. This is implemented entirely during the compilation phase.
 ### What types can I use?

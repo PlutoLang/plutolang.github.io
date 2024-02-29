@@ -12,8 +12,8 @@ An assertion error is thrown if the `value` is not `nil`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.isnil(nil) --> Passes.
-assert.isnil(5) --> Error:
+assert.isnil(nil) -- Passes.
+assert.isnil(5) -- Error:
 --[[
 test.pluto:4 -> Assertion Error: (assert.isnil)
     Intended Value: nil
@@ -36,8 +36,8 @@ An assertion error is thrown if `value` is not `true`
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.istrue(true) --> Passes.
-assert.istrue(false) --> Error:
+assert.istrue(true) -- Passes.
+assert.istrue(false) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.istrue)
     Intended Value: true
@@ -61,8 +61,8 @@ An assertion error is thrown if `value` is not `false`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.isfalse(false) --> Passes.
-assert.isfalse(true) --> Error:
+assert.isfalse(false) -- Passes.
+assert.isfalse(true) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.isfalse)
     Intended Value: false
@@ -86,9 +86,9 @@ An assertion error is thrown if `value` is not falsy.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.falsy(nil) --> Passes.
-assert.falsy(false) --> Passes.
-assert.falsy("Hello, world!") --> Error:
+assert.falsy(nil) -- Passes.
+assert.falsy(false) -- Passes.
+assert.falsy("Hello, world!") -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.falsy)
     Intended Value: nil or false
@@ -112,8 +112,8 @@ An assertion error is thrown if `value` is not truthy, i.e if `value` is `nil` o
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.truthy("Hello, world!") --> Passes.
-assert.truthy(nil) --> Error:
+assert.truthy("Hello, world!") -- Passes.
+assert.truthy(nil) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.truthy)
     Intended Value: not nil or false
@@ -137,8 +137,8 @@ An assertion error is thrown if `value` is `nil`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.notnil("Hello, world!") --> Passes.
-assert.notnil(nil) --> Error:
+assert.notnil("Hello, world!") -- Passes.
+assert.notnil(nil) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.notnil)
     Intended Value: not nil
@@ -165,14 +165,14 @@ An assertion error is thrown if `value1` does not equal `value2`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.equal("Hello, world!", "Hello, world...") --> Error:
+assert.equal("Hello, world!", "Hello, world...") -- Error:
 --[[
 pluto: test.pluto:3 -> Assertion Error: (assert.equal)
     Intended Value: string(13) "Hello, world!"
     Received Value: string(15) "Hello, world..."
 --]]
 
-assert.equal("Hi there.":split(" "), "Hello there.":split(" ")) --> Error:
+assert.equal("Hi there.":split(" "), "Hello there.":split(" ")) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.equal)
     Intended Value: { [1] = string(2) "Hi", [2] = string(6) "there.", }
@@ -192,8 +192,8 @@ An assertion error is thrown of `value1` does equal `value2`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.nequal("Hello, world!", "Hi, world!") --> Passes.
-assert.nequal("Hi there.":split(" "), "Hello there.":split(" ")) --> Passes.
+assert.nequal("Hello, world!", "Hi, world!") -- Passes.
+assert.nequal("Hi there.":split(" "), "Hello there.":split(" ")) -- Passes.
 ```
 ---
 ### `assert.less`
@@ -206,8 +206,8 @@ An assertion error is thrown if `value1` is not less than `value2`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.less(1, 2) --> Passes.
-assert.less(1, 1) --> Error:
+assert.less(1, 2) -- Passes.
+assert.less(1, 1) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.less)
     Expression: (1 < 1) == false
@@ -224,8 +224,8 @@ An assertion error is thrown if `value1` is not less than or equal to `value2`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.lesseq(1, 2) --> Passes.
-assert.lesseq(1, 0) --> Error:
+assert.lesseq(1, 2) -- Passes.
+assert.lesseq(1, 0) -- Error:
 --[[
 pluto: test.pluto:3 -> Assertion Error: (assert.lesseq)
     Expression: (1 <= 0) == false
@@ -242,8 +242,8 @@ An assertion errros is thrown if `value1` is not greater than `value2`.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.greater(3, 2) --> Passes.
-assert.greater(3, 3) --> Error:
+assert.greater(3, 2) -- Passes.
+assert.greater(3, 3) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.greater)
     Expression: (3 > 3) == false
@@ -260,8 +260,8 @@ An assertion errros is thrown if `value1` is not greater than or equal to `value
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.greatereq(3, 2) --> Passes.
-assert.greatereq(3, 3) --> Passes.
+assert.greatereq(3, 2) -- Passes.
+assert.greatereq(3, 3) -- Passes.
 ```
 ---
 ### `assert.noerror`
@@ -274,8 +274,8 @@ An assertion error is thrown if `callback` raises an error.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.noerror(tostring, 400) --> Passes.
-assert.noerror(error, "argument argument") --> Error:
+assert.noerror(tostring, 400) -- Passes.
+assert.noerror(error, "argument argument") -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.noerror)
     An error was raised: argument argument
@@ -292,8 +292,8 @@ An assertion error is thrown if `callback` does not raise an error.
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.haserror(error, "argument argument") --> Passes.
-assert.haserror(tostring, 400) --> Error:
+assert.haserror(error, "argument argument") -- Passes.
+assert.haserror(tostring, 400) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.haserror)
     Expected an error, but there was none.
@@ -313,15 +313,15 @@ An assertion error is thrown if:
 ```pluto showLineNumbers
 local assert = require("assert")
 
-assert.searcherror("argument", error, "argument argument") --> Passes.
-assert.searcherror("something", tostring, 400) --> Error:
+assert.searcherror("argument", error, "argument argument") -- Passes.
+assert.searcherror("something", tostring, 400) -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.searcherror)
     Expected an error, but there was none.
 --]]
 
-assert.searcherror("argument", error, "argument argument") --> Passes.
-assert.searcherror("argument", error, "something something") --> Error:
+assert.searcherror("argument", error, "argument argument") -- Passes.
+assert.searcherror("argument", error, "something something") -- Error:
 --[[
 pluto: test.pluto:4 -> Assertion Error: (assert.searcherror)
     Absent String: argument

@@ -262,7 +262,7 @@ Creates a directory and all the non-existing parent directories in the given pat
 #### Parameters
 1. The string path for your new directory.
 ```pluto showLineNumbers title="Example Usage"
-io.makedirs("A/B/C") --> Creates "C:\Users\Username\Desktop\Project\A\B\C"
+io.makedirs("A/B/C") -- Creates "C:\Users\Username\Desktop\Project\A\B\C"
 ```
 ---
 ### `io.absolute`
@@ -273,7 +273,7 @@ Convert a relative path into an absolute one.
 #### Returns
 A string representing the new file path.
 ```pluto showLineNumbers title="Example Usage"
-io.absolute("cfg/cfg.txt") --> "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
+io.absolute("cfg/cfg.txt") -- "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
 ---
 ### `io.filesize`
@@ -320,7 +320,7 @@ io.currentdir("abc/abc") -- Set a new cwd
 1. The amount of milliseconds to sleep for.
 #### Example
 ```pluto showLineNumbers title="Basic Usage"
-os.sleep(1000) --> Pause this thread for 1000ms.
+os.sleep(1000) -- Pause this thread for 1000ms.
 ```
 ---
 ### `os.nanos`, `os.micros`, `os.millis`, `os.seconds`
@@ -539,8 +539,8 @@ Strips characters from both ends of a string.
 #### Returns
 The new string.
 ```pluto title="Basic Usage"
-local s = "{}|hello world{|}"
-local r = string.strip(s, "{}|") --> "hello world"
+local s = "{|}hello world{|}"
+print(string.strip(s, "{}|")) --> hello world
 ```
 ---
 ### `string.lstrip`
@@ -551,8 +551,8 @@ Strips characters from the left side of a string.
 #### Returns
 The new string.
 ```pluto title="Basic Usage"
-local s = "<{}|hello world>{|}"
-local r = string.strip(s, "{}|") --> "<hello world>{|}"
+local s = "{|}hello world{|}"
+print(string.lstrip(s, "{}|")) --> hello world{|}
 ```
 ---
 ### `string.rstrip`
@@ -563,8 +563,8 @@ Strips characters from the right side of a string.
 #### Returns
 The new string.
 ```pluto title="Basic Usage"
-local s = "<{}|hello world>{|}"
-local r = string.strip(s, "{}|") --> "<{}|<hello world>"
+local s = "{|}hello world{|}"
+print(string.rstrip(s, "{}|")) --> {|}hello world
 ```
 ---
 ### `string.isascii`
@@ -575,7 +575,7 @@ Checks if a string is entirely composed of ASCII characters.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
-local r = string.isascii(s) --> true
+print(string.isascii(s)) --> true
 ```
 :::info
 This would exclude any multi-byte characters, like emojis.
@@ -589,7 +589,7 @@ Checks if a string is entirely composed of lowercase characters.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "helloworld"
-local r = string.islower(s) --> true
+print(string.islower(s)) --> true
 ```
 :::info
 Whitespace characters are not lowercase characters.
@@ -603,7 +603,7 @@ Checks if a string is entirely composed of alphabetic characters.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD"
-local r = string.isalpha(s) --> true
+print(string.isalpha(s)) --> true
 ```
 :::info
 Whitespace characters are not alphabetic characters.
@@ -617,7 +617,7 @@ Checks if a string is entirely composed of uppercase characters.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD"
-local r = string.isupper(s) --> true
+print(string.isupper(s)) --> true
 ```
 :::info
 Whitespace characters are not uppercase characters.
@@ -631,7 +631,7 @@ Checks if a string is entirely composed of alphanumeric characters.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
-local r = string.isalnum(s) --> true
+print(string.isalnum(s)) --> true
 ```
 :::info
 Whitespace characters are not alphanumeric characters.
@@ -645,7 +645,7 @@ Checks if this string is entirely composed of whitespace characters.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "    \t \v \f     \t\t\t\t"
-local r = string.iswhitespace(s) --> true
+print(string.iswhitespace(s)) --> true
 ```
 ---
 ### `string.uformat`
@@ -665,10 +665,10 @@ An error is thrown under the following conditions:
 1. `max_replace` is less than zero.
 2. The length of `substitute` is zero.
 ```pluto showLineNumbers
-string.replace("Hello, world!", "!", ".")         --> "Hello, world."
-string.replace("Hello, world!", "apple", "")      --> "Hello, world!"
-string.replace("Hello, world!", "Hello", "Apple") --> "Apple, world!"
-string.replace("Hello, world!", "Hello, ", "")    --> "world!"
+print(string.replace("Hello, world!", "!", "."))         --> Hello, world.
+print(string.replace("Hello, world!", "apple", ""))      --> Hello, world!
+print(string.replace("Hello, world!", "Hello", "Apple")) --> Apple, world!
+print(string.replace("Hello, world!", "Hello, ", ""))    --> world!
 ```
 ---
 ### `string.truncate`
@@ -680,9 +680,9 @@ Truncates a given string to a specified length. If an elipsis is desired and the
 #### Returns
 The truncated string.
 ```pluto showLineNumbers
-string.truncate("Hello, world!", 50)      --> "Hello, world!"
-string.truncate("Hello, world!", 5)       --> "Hello"
-string.truncate("Hello, world!", 5, true) --> "He..."
+print(string.truncate("Hello, world!", 50))      --> Hello, world!
+print(string.truncate("Hello, world!", 5))       --> Hello
+print(string.truncate("Hello, world!", 5, true)) --> He...
 ```
 ---
 ### `string.contains`
@@ -694,7 +694,7 @@ Checks if a string contains a substring.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "hello world"
-local r = string.contains(s, "worl") --> true
+print(string.contains(s, "worl")) --> true
 ```
 ---
 ### `string.casefold`
@@ -707,7 +707,7 @@ A boolean.
 ```pluto title="Basic Usage"
 local s1 = "hello world"
 local s2 = "heLLo WoRlD"
-local r1 = string.casefold(s1, s2) --> true
+print(string.casefold(s1, s2)) --> true
 ```
 ---
 ### `string.formatint`
@@ -721,14 +721,14 @@ Returns the modified string.
 #### Errors
 If the input is a **string** and does not meet the aforementioned criteria, an error will be thrown.
 ```pluto showLineNumbers title="Usage Example"
-string.formatint(500)      --> "500"
-string.formatint(-5000)    --> "-5,000"
-string.formatint(50000)    --> "50,000"
-string.formatint(-500000)  --> "-500,000"
+print(string.formatint(500))      --> 500
+print(string.formatint(-5000))    --> -5,000
+print(string.formatint(50000))    --> 50,000
+print(string.formatint(-500000))  --> -500,000
 
-string.formatint(500, ".", 2)     --> "5.00"
-string.formatint("-5000", ",", 1) --> "-5,0,0,0"
-string.formatint(50000, ",", 4)   --> "5,0000"
+print(string.formatint(500, ".", 2))     --> 5.00
+print(string.formatint("-5000", ",", 1)) --> -5,0,0,0
+print(string.formatint(50000, ",", 4))   --> 5,0000
 ```
 ```pluto showLineNumbers title="Error Example"
 string.formatint("-500000.4")
@@ -773,7 +773,7 @@ Checks if a string ends with a suffix.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "hello world"
-local r = string.endswith(s, "world") --> true
+print(string.endswith(s, "world")) --> true
 ```
 ---
 ### `string.startswith`
@@ -785,7 +785,7 @@ Checks if a string starts with a prefix.
 A boolean.
 ```pluto title="Basic Usage"
 local s = "hello world"
-local r = string.startswith(s, "hello") --> true
+print(string.startswith(s, "hello")) --> true
 ```
 
 ---

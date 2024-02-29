@@ -51,7 +51,7 @@ end
 
 -- Output:
 --  There is only one!
---  There is only two! --> Uh oh.
+--  There is only two! <-- Uh oh.
 ```
  
 The `default` case is executed if none of the other cases are true. For example:
@@ -126,7 +126,7 @@ place = switch place do
     case 3 -> "3rd"
     default -> $"{place}th"
 end
-print(place) --> "1st"
+print(place) --> 1st
 ```
 
 Note that the case blocks here have their conditions delimited by an arrow (->) instead of a colon (:).
@@ -142,8 +142,8 @@ local function print_range(value)
         case 4, 5, 6 -> "4-6"
     end)
 end
-print_range(1) --> "1-3"
-print_range(6) --> "4-6"
+print_range(1) --> 1-3
+print_range(6) --> 4-6
 print_range(9) --> nil
 ```
 
