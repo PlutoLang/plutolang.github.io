@@ -5,7 +5,7 @@ Prism.languages.pluto = {
 		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)(?!new)\w+(?=\s*(?:\??\())/, // func()
 		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)(?!not)\w+(?=\s*(?:\??[{"]))/, // func "", func {}
 		/\b(function|enum|class)\b/,
-		/\b(debug|table|string|number|io|os|coroutine|_VERSION|_PVERSION|_PSOUP)\b/, // standard library + type hints
+		/\b(debug|table|string|number|io|os|coroutine|_VERSION|_PVERSION|_PSOUP|json\.null)\b/, // standard library + type hints
 	],
 	'attr-value': /<(const|constexpr|close)>/,
 	'string': {
