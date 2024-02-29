@@ -135,3 +135,51 @@ print(eq <= 0) --> true
 print(lt <= 0) --> true
 print(gt <= 0) --> false
 ```
+
+## Pipe Operator
+The pipe operator allows you represent data pipelines more succinctly.
+```pluto
+local { http, json } = require "pluto:*"
+
+http.request("https://httpbin.org/get")
+|> json.decode
+|> dumpvar
+|> print
+
+--> {
+-->     ["args"] = {},
+-->     ["headers"] = {
+-->         ["Host"] = string(11) "httpbin.org",
+-->         ["User-Agent"] = string(56) "Mozilla/5.0 (compatible; Soup Library; +https://soup.do)",
+-->         ["X-Amzn-Trace-Id"] = string(40) "Root=1-65e05b66-6aa8b7c94e7580774a804c24",
+-->         ["Accept-Encoding"] = string(13) "deflate, gzip",
+-->     },
+-->     ["origin"] = string(13) "1.2.3.4",
+-->     ["url"] = string(23) "https://httpbin.org/get",
+--> }
+```
+The HTTP-to-print pipeline here would otherwise be written like this:
+```pluto
+print(dumpvar(json.decode(http.request("https://httpbin.org/get"))))
+```
+
+### Additional Arguments
+It is also possible to provide additional arguments for the righthand side of the pipe operator:
+```pluto
+local producer = || -> "10"
+
+producer()
+|> tonumber|16|
+|> print --> 16
+```
+
+### Anonymous Functions
+The righthand side of the pipe operator can also be an anonymous function, allowing for more advanced usage like this:
+```pluto
+local producer = || -> 42
+
+producer()
+|> |res| -> print($"The result was {res}")
+
+--> The result was 42
+```
