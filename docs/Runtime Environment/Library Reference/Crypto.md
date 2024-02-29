@@ -42,6 +42,16 @@ local str = "hello"
 assert(crypto.fnv1(str) == 9065573210506989167)
 ```
 ---
+### `crypto.fnv1a`
+Hash a string using the FNV1A non-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+```pluto showLineNumbers
+local crypto = require("crypto")
+local str = "hello"
+assert(crypto.fnv1a(str) == 8618312879776256743)
+```
+---
 ### `crypto.joaat`
 Hash a string using the JOAAT non-cryptographic hashing algorithm.
 #### Parameters
@@ -60,16 +70,6 @@ Hash a string using the SDBM non-cryptographic hashing algorithm.
 local crypto = require("crypto")
 local str = "hello"
 assert(crypto.sdbm(str) == 430867652)
-```
----
-### `crypto.fnv1a`
-Hash a string using the FNV1A non-cryptographic hashing algorithm.
-#### Parameters
-1. The string to hash.
-```pluto showLineNumbers
-local crypto = require("crypto")
-local str = "hello"
-assert(crypto.fnv1a(str) == 8618312879776256743)
 ```
 ---
 ### `crypto.crc32`
