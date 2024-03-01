@@ -1,6 +1,3 @@
----
-sidebar_position: 1
----
 Must be included via `require`.
 ### `json.encode`
 Returns a string of JSON.
