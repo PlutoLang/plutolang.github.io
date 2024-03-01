@@ -357,6 +357,7 @@ Returns seconds since UNIX epoch.
 
 ---
 ## `table`
+
 ### `table.sort`
 This function was slightly modified to return the mutated input table instead of `nil`, such that:
 ```pluto
@@ -364,6 +365,8 @@ local t = { 3, 2, 1 }
 t = t:sort(...)
 ```
 Will not result in `t` becoming `nil`.
+### `table.sorted`
+Copying variant of `table.sort`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ### `table.size`
@@ -449,6 +452,9 @@ After:
 }
 --]]
 ```
+### `table.reversed`
+Copying variant of `table.reverse`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+
 ---
 ### `table.reorder`
 Reorders the array portion of a table so it becomes a continuous array with no holes.
@@ -462,6 +468,9 @@ local t1 = { 1, nil, 2, nil, nil, 3, nil, 4 }
 
 assert.equal(t1:reorder(), { 1, 2, 3, 4 })
 ```
+### `table.reordered`
+Copying variant of `table.reorder`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+
 ---
 ### `table.foreach`
 Note that this function is not the same as the Lua function that was deprecated/removed in 5.1.
@@ -494,6 +503,10 @@ print(data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ")) -- "1 3 5"
 data = { 2, 2, 3, 4, 4 }
 print(data:filter(|k, v| -> k == v, true):reorder():concat(" ")) -- "2 3 4"
 ```
+### `table.filtered`
+Copying variant of `table.filter`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+
+---
 ### `table.map`
 Remaps every key to a new value, provided by the `callback` function.
 #### Parameters
@@ -510,6 +523,8 @@ data = "10 15 10"
 print(data:split(" "):map(tonumber):map(|k, v| -> k * v, true):concat(" ")) -- "10 30 30"
 ```
 In this example, we first use the `tonumber` function to turn the strings into numbers, then add 1 to them. (Although the first step is not needed in Lua/Pluto since the `+` operator would take care of it, it is used here for demonstration purposes.)
+### `table.mapped`
+Copying variant of `table.map`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ## `string`
