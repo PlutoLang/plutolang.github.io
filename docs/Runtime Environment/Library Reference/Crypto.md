@@ -269,7 +269,7 @@ Returns two strings: the ciphertext and the authentication tag.
 3. `aadata` — Authenticated data.
 4. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
 5. `iv` — Must have a length of 16.
-6. `tag` — The authentication tag from the encrypt procedure.
+6. `tag` — The authentication tag produced by the "encrypt" procedure.
 
 Returns the decrypted data on success. Throws an error if authentication or unpadding failed.
 
@@ -292,3 +292,16 @@ Returns two tables: The public key (consisting of `n` and `e`), and the private 
 1. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
 2. `data` — The ciphertext to decrypt.
 3. `key` — The public or private key to use. If the data was encrypted with the public key, the private key is needed to decrypt it.
+### `crypto.sign`
+#### Parameters
+1. `mode` — "rsa-sha256" or "rsa-sha1".
+2. `data` — The data to sign.
+3. `key` — The private key to use.
+### `crypto.verify`
+#### Parameters
+1. `mode` — "rsa-sha256" or "rsa-sha1".
+2. `data` — The data that was signed.
+3. `key` — The public key corresponding to the signer's private key.
+4. `signature` — The signature produced by the "sign" procedure.
+
+Returns a boolean that indicates if the signature validated successfully.
