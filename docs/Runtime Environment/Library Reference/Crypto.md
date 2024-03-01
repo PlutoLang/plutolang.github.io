@@ -171,6 +171,7 @@ local crypto = require("crypto")
 local str = "hello"
 assert(crypto.murmur2neutral(str) == 1151865881)
 ```
+---
 ### `crypto.random`
 The `crypto.random` function uses your operating system's default PRNG. 
 - On Linux-based systems, this is `/dev/urandom`.
