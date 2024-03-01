@@ -29,6 +29,14 @@ print(json.encode(data, true))
 -->     }
 --> }
 ```
+
+The `json.null` value — assuming you did `local json = require("json")` — can be used to encode null JSON values.
+```pluto
+local json = require("json")
+
+print(json.encode(json.null)) --> null
+```
+
 ---
 ### `json.decode`
 Returns multiple potential types. If you pass a serialized boolean, number, or string, then it will return the same type. If you pass a complex JSON object, it will return a table.
@@ -61,12 +69,4 @@ decoded = json.decode(encoded)
 assert(decoded.key == "Hello")
 assert(type(decoded) == "table")
 assert(decoded.nested.nested_key == 1337)
-```
----
-## Encoding Null Values
-The `json.null` value — assuming you did `local json = require("json")` — can be used to encode null JSON values.
-```pluto
-local json = require("json")
-
-print(json.encode(json.null)) --> null
 ```
