@@ -215,3 +215,73 @@ This is a cryptographically-secure PRNG when your system can provide those servi
 local crypto = require("crypto")
 assert(crypto.random(1, 10) < 11)
 ```
+
+---
+## AES-CBC, AES-CFB
+These unauthenticated AES modes take both a key and an IV. The IV must be unique and unpredictable for each encryption session to ensure security.
+### `crypto.encrypt`
+#### Parameters
+1. `mode` — "aes-cbc-pkcs7" or "aes-cfb-pkcs7" for PKCS#7 padding, or "aes-cbc" or "aes-cfb" if you know what you're doing.
+2. `data` — The data to be encrypted.
+3. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
+4. `iv` — Must have a length of 16.
+### `crypto.decrypt`
+#### Parameters
+1. `mode` — "aes-cbc-pkcs7" or "aes-cfb-pkcs7" for PKCS#7 padding, or "aes-cbc" or "aes-cfb" if you know what you're doing.
+2. `data` — The ciphertext to decrypt.
+3. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
+4. `iv` — Must have a length of 16.
+
+Returns the decrypted data on success. Throws an error if the padding was incorrect.
+
+---
+## AES-ECB
+This unauthenticated AES mode takes only a key, and is considered to be the weakest. Identical plaintext blocks result in identical ciphertext blocks.
+### `crypto.encrypt`
+#### Parameters
+1. `mode` — "aes-ecb-pkcs7" for PKCS#7 padding, or "aes-ecb" if you know what you're doing.
+2. `data` — The data to be encrypted.
+3. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
+### `crypto.decrypt`
+#### Parameters
+1. `mode` — "aes-ecb-pkcs7" for PKCS#7 padding, or "aes-ecb" if you know what you're doing.
+2. `data` — The ciphertext to decrypt.
+3. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
+
+Returns the decrypted data on success. Throws an error if the padding was incorrect.
+
+---
+## AES-GCM
+This authenticated AES mode allows for additional data that will be validated although not encrypted, such as a Message Authentication Code (MAC).
+### `crypto.encrypt`
+#### Parameters
+1. `mode` — Must be "aes-gcm". AES-GCM can deal with unpadded data, hence does not need PKCS#7 padding.
+2. `data` — The data to be encrypted.
+3. `aadata` — Authenticated data. Will not be encrypted.
+4. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
+5. `iv` — Must have a length of 16.
+
+Returns two strings: the ciphertext and the authentication tag.
+### `crypto.decrypt`
+#### Parameters
+1. `mode` — Must be "aes-gcm".
+2. `data` — The ciphertext to decrypt.
+3. `aadata` — Authenticated data.
+4. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
+5. `iv` — Must have a length of 16.
+6. `tag` — The authentication tag from the encrypt procedure.
+
+Returns the decrypted data on success. Throws an error if authentication or unpadding failed.
+
+---
+## RSA
+### `crypto.encrypt`
+#### Parameters
+1. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
+2. `data` — The data to be encrypted.
+3. `key` — The public or private key to use. Commonly, a public key is used to encrypt data.
+### `crypto.decrypt`
+#### Parameters
+1. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
+2. `data` — The ciphertext to decrypt.
+3. `key` — The public or private key to use. If the data was encrypted with the public key, the private key is needed to decrypt it.
