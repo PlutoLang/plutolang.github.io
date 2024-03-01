@@ -275,6 +275,13 @@ Returns the decrypted data on success. Throws an error if authentication or unpa
 
 ---
 ## RSA
+### `crypto.generatekeypair`
+#### Parameters
+1. `mode` — Must be "rsa".
+2. `bits` — A positive integer for a strict bit-length requirement, or a negative integer for a lax requirement. Common values are `1024`, `2048`, and `4096`.
+
+Returns two tables: The public key (consisting of `n` and `e`), and the private key (consisting of `p` and `q`).
+
 ### `crypto.encrypt`
 #### Parameters
 1. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
