@@ -160,8 +160,9 @@ http.request("https://httpbin.org/get")
 ```
 The HTTP-to-print pipeline here would otherwise be written like this:
 ```pluto
-print(dumpvar(json.decode(http.request("https://httpbin.org/get"))))
+print(dumpvar(json.decode((http.request("https://httpbin.org/get")))))
 ```
+Note that the pipe operator only passes on the first return value, which is classically achieved by wrapping the expression in an extra pair of parentheses.
 
 ### Additional Arguments
 It is also possible to provide additional arguments for the righthand side of the pipe operator:
