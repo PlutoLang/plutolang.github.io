@@ -7,12 +7,12 @@ The `export` modifier allows you to automatically aggregate things you want to e
 local version = 2
 
 local function add(a, b)
-	return a + b
+    return a + b
 end
 
 return {
-	version = version,
-	add = add
+    version = version,
+    add = add
 }
 ```
 
@@ -20,7 +20,7 @@ return {
 export version = 2
 
 export function add(a, b)
-	return a + b
+    return a + b
 end
 ```
 
@@ -30,13 +30,13 @@ This works in all functions:
 
 ```pluto
 package.preload["test"] = function()
-	export version = 2
+    export version = 2
 
-	export function add(a, b)
-		return a + b
-	end
+    export function add(a, b)
+        return a + b
+    end
 
-	-- end of scope; 'return' is automatically generated
+    -- end of scope; 'return' is automatically generated
 end
 
 print(require"test".version)

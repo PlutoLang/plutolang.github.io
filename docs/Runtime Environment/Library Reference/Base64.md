@@ -12,7 +12,7 @@ local data, encoded
 data = "Hello, World!"
 encoded = base64.encode(data, true)
 --[[
-	SGVsbG8sIFdvcmxkIQ==
+    SGVsbG8sIFdvcmxkIQ==
 --]]
 ```
 ---
@@ -25,7 +25,7 @@ local base64 = require("base64")
 
 base64.decode("SGVsbG8sIFdvcmxkIQ==")
 --[[
-	Hello, World!
+    Hello, World!
 --]]
 ```
 ---

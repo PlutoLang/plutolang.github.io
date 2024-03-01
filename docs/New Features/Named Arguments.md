@@ -5,7 +5,7 @@ Instead of positional arguments, you can use the names of arguments you want to 
 
 ```pluto
 local function process_file(file, mode = "r", version = 1)
-	print($"Processing {file} with mode '{mode}' and version {version}")
+    print($"Processing {file} with mode '{mode}' and version {version}")
 end
 process_file(file = "hello.txt", version = 2) -- "Processing hello.txt with mode 'r' and version 2"
 ```
@@ -20,7 +20,7 @@ You can use positional arguments for the first few arguments and then use named 
 
 ```pluto
 local function process_file(file, mode = "r", version = 1)
-	print($"Processing {file} with mode '{mode}' and version {version}")
+    print($"Processing {file} with mode '{mode}' and version {version}")
 end
 process_file("hello.txt", version = 2) -- "Processing hello.txt with mode 'r' and version 2"
 ```

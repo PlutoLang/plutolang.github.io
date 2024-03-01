@@ -40,7 +40,7 @@ The nil-coalescing operator is helpful for evaluating values against `nil`.
 If the left-hand operand is `nil`, it returns the right-hand operand. Otherwise, it returns the left-hand operand.
 ```pluto showLineNumbers=true
 local function say(message)
-	print(message ?? "The message was nil.")
+    print(message ?? "The message was nil.")
 end
 
 say() --> The message was nil.
@@ -51,11 +51,11 @@ say("Hello, world!") --> Hello, world!
 It's a cleaner version of this code:
 ```pluto showLineNumbers=true
 local function say(message)
-	if message == nil then
-		message = "The message was nil."
-	end
+    if message == nil then
+        message = "The message was nil."
+    end
 
-	print(message)
+    print(message)
 end
 
 say() --> The message was nil.
@@ -66,9 +66,9 @@ say("Hello, world!") --> Hello, world!
 You can even use compound assignment:
 ```pluto showLineNumbers
 local function say(message)
-	message ??= "The message was nil."
+    message ??= "The message was nil."
 
-	print(message)
+    print(message)
 end
 
 say() --> The message was nil.
@@ -86,36 +86,36 @@ The second operand to your assignment is the value of the expression.
 
 ```pluto showLineNumbers
 if a := get_value() then
-	-- 'a' was assigned a truthy value.
+    -- 'a' was assigned a truthy value.
 else
-	-- 'a' was assigned a falsy value.
+    -- 'a' was assigned a falsy value.
 end
 ```
 You can imagine it like this, but note they're not always the same:
 ```pluto showLineNumbers
 local a = get_value()
 if a then
-	-- 'a' was assigned a truthy value.
+    -- 'a' was assigned a truthy value.
 else
-	-- 'a' was assigned a falsy value.
+    -- 'a' was assigned a falsy value.
 end
 ```
 
 What makes the Walrus operator different is that it'll be evaluated as many times as the condition:
 ```pluto showLineNumbers
 local function get()
-	return math.random(0, 1)
+    return math.random(0, 1)
 end
 
 while a := get() do
-	--| In the next iteration:
-	--|   - `a` will be assigned to `get()`.
-	--|   - Then the value will be evaluated for the condition.
-	--|
-	--| This happens because the Walrus operator itself is the condition.
-	--| It's not a short-hand for generating an assignment.
-	--|
-	--| Be aware of this if you intend on using the Walrus operator with loops.
+    --| In the next iteration:
+    --|   - `a` will be assigned to `get()`.
+    --|   - Then the value will be evaluated for the condition.
+    --|
+    --| This happens because the Walrus operator itself is the condition.
+    --| It's not a short-hand for generating an assignment.
+    --|
+    --| Be aware of this if you intend on using the Walrus operator with loops.
 end
 ```
 

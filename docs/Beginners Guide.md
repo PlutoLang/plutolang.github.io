@@ -56,9 +56,9 @@ a = 1
 b = 2
 
 if a + b == 4 then
-	print("The sum is 4!")
+    print("The sum is 4!")
 else
-	print("The sum is not 4. Could you change a or b to fix it?")
+    print("The sum is not 4. Could you change a or b to fix it?")
 end
 ```
 #### [Try It Yourself](https://pluto-lang.org/web/#code=a%20%3D%201%0D%0Ab%20%3D%202%0D%0A%0D%0Aif%20a%20%2B%20b%20%3D%3D%204%20then%0D%0A%20%20%20%20print(%22The%20sum%20is%204!%22)%0D%0Aelse%0D%0A%20%20%20%20print(%22The%20sum%20is%20not%204.%20Could%20you%20change%20a%20or%20b%20to%20fix%20it%3F%22)%0D%0Aend)
@@ -71,7 +71,7 @@ We can't just change _if_ code will run, but also how often. For example, we cou
 
 ```pluto
 for i=1, 10 do
-	print(i)
+    print(i)
 end
 ```
 #### [Try It Yourself](https://pluto-lang.org/web/#code=for%20i%3D1%2C%2010%20do%0D%0A%20%20%20%20print(i)%0D%0Aend)
@@ -96,7 +96,7 @@ players = {
     ["Bob"] = 12,
 }
 for name, score in players do
-	print($"{name} has a score of {score}.")
+    print($"{name} has a score of {score}.")
 end
 ```
 #### [Try It Yourself](https://pluto-lang.org/web/#code=players%20%3D%20%7B%0D%0A%20%20%20%20%5B%22John%22%5D%20%3D%2015%2C%0D%0A%20%20%20%20%5B%22Jane%22%5D%20%3D%2010%2C%0D%0A%20%20%20%20%5B%22Bob%22%5D%20%3D%2012%2C%0D%0A%7D%0D%0Afor%20name%2C%20score%20in%20players%20do%0D%0A%20%20%20%20print(%24%22%7Bname%7D%20has%20a%20score%20of%20%7Bscore%7D.%22)%0D%0Aend)
@@ -121,7 +121,7 @@ players = {
     },
 }
 for name, data in players do
-	print($"{name} has {data.kills} kills and {data.deaths} deaths.")
+    print($"{name} has {data.kills} kills and {data.deaths} deaths.")
 end
 ```
 #### [Try It Yourself](https://pluto-lang.org/web/#code=players%20%3D%20%7B%0D%0A%20%20%20%20%5B%22John%22%5D%20%3D%20%7B%0D%0A%20%20%20%20%20%20%20%20%5B%22kills%22%5D%20%3D%2015%2C%0D%0A%20%20%20%20%20%20%20%20%5B%22deaths%22%5D%20%3D%205%2C%0D%0A%20%20%20%20%7D%2C%0D%0A%20%20%20%20%5B%22Jane%22%5D%20%3D%20%7B%0D%0A%20%20%20%20%20%20%20%20%5B%22kills%22%5D%20%3D%2010%2C%0D%0A%20%20%20%20%20%20%20%20%5B%22deaths%22%5D%20%3D%208%2C%0D%0A%20%20%20%20%7D%2C%0D%0A%20%20%20%20%5B%22Bob%22%5D%20%3D%20%7B%0D%0A%20%20%20%20%20%20%20%20%5B%22kills%22%5D%20%3D%2012%2C%0D%0A%20%20%20%20%20%20%20%20%5B%22deaths%22%5D%20%3D%208%2C%0D%0A%20%20%20%20%7D%2C%0D%0A%7D%0D%0Afor%20name%2C%20data%20in%20players%20do%0D%0A%20%20%20%20print(%24%22%7Bname%7D%20has%20%7Bdata.kills%7D%20kills%20and%20%7Bdata.deaths%7D%20deaths.%22)%0D%0Aend)
@@ -164,9 +164,9 @@ We've been using functions quite a bit — or at least, the `print` function —
 
 ```pluto
 function calculate_kd(plys: table)
-	for plys as ply do
-	    ply.kd = ply.kills / ply.deaths
-	end
+    for plys as ply do
+        ply.kd = ply.kills / ply.deaths
+    end
 end
 players = {
     ["John"] = {
