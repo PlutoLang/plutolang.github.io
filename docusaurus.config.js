@@ -12,7 +12,7 @@ const config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.png',
-  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
+  plugins: [require.resolve("@easyops-cn/docusaurus-search-local")],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
