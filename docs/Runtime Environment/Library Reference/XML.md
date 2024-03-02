@@ -34,3 +34,24 @@ print(dumpvar(xml.decode([[
 -->     },
 --> }
 ```
+If there is no single root element, a "body" element is implied as the root:
+```pluto
+local xml = require "pluto:xml"
+
+print(dumpvar(xml.decode([[
+    <entry/>
+    <entry/>
+]])))
+
+--> {
+-->     ["tag"] = string(4) "body",
+-->     ["children"] = {
+-->         [1] = {
+-->             ["tag"] = string(5) "entry",
+-->         },
+-->         [2] = {
+-->             ["tag"] = string(5) "entry",
+-->         },
+-->     },
+--> }
+```
