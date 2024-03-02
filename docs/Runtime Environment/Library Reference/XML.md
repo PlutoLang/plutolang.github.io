@@ -6,7 +6,13 @@ Returns a table representing the XML data.
 ```pluto
 local xml = require "pluto:xml"
 
-print(dumpvar(xml.decode([[<entries><entry primary><name>primary</name></entry></entries>]])))
+print(dumpvar(xml.decode([[
+    <entries>
+        <entry primary>
+            <name>primary</name>
+        </entry>
+    </entries>
+]])))
 
 --> {
 -->     ["tag"] = string(7) "entries",
