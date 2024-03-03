@@ -8,7 +8,7 @@ local xml = require "pluto:xml"
 
 print(dumpvar(xml.decode([[
     <entries>
-        <entry primary>
+        <entry type="primary">
             <name>primary</name>
         </entry>
     </entries>
@@ -20,7 +20,7 @@ print(dumpvar(xml.decode([[
 -->         [1] = {
 -->             ["tag"] = string(5) "entry",
 -->             ["attributes"] = {
--->                 ["primary"] = string(0) "",
+-->                 ["type"] = string(7) "primary",
 -->             },
 -->             ["children"] = {
 -->                 [1] = {
