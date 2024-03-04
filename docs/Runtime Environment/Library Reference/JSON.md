@@ -6,7 +6,7 @@ Must be included via `require`.
 Returns a string of JSON.
 #### Parameters:
 1. `data` — A boolean, number, string, or table to encode as JSON.
-2. `pretty` — Whether to return a human-readable string of JSON.
+2. `pretty` — Whether to return a human-readable string of JSON. Defaults to `false`.
 ```pluto
 local json = require("json")
 local data
