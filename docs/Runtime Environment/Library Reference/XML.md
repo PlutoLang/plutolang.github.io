@@ -3,6 +3,7 @@ Must be included via `require`.
 Returns a table representing the XML data.
 #### Parameters:
 1. `data` — The XML data to decode.
+2. `parser` — Which parser to use against the data. Can be "html", "xml" (default), or "lax" (XML but accepts attributes without `=`).
 ```pluto
 local xml = require "pluto:xml"
 
