@@ -116,8 +116,6 @@ print(dumpvar(t))
 Similar to dumpvar, but returns valid Lua/Pluto code. May error if the value can not be represented accordingly.
 #### Parameters
 1. The value to dump.
-#### Returns
-A string representation of the value.
 ```pluto
 -- Slightly altered data from last example as C functions can not be exported.
 local t = {
@@ -262,7 +260,7 @@ List all the files within a directory.
 1. A string path to the directory.
 2. A boolean indicating whether or not to recurse sub-directories.
 #### Returns
-A table mapping indices to file paths.
+An index-based table containing file paths.
 ```pluto title="Example Usage"
 for _, filepath in io.listdir(".") do
     print(filepath)
@@ -307,8 +305,6 @@ This function is not only easier to use than the traditional `io.open` approach,
 Fetch the size of a file in bytes.
 #### Parameters
 1. A string path or file stream.
-#### Returns
-A number.
 ```pluto title="Example Usage"
 if io.filesize("cfg/config.txt") <= 1 then
     print("Config is too small or empty.")
@@ -359,7 +355,7 @@ Returns seconds since UNIX epoch.
 ## `table`
 
 ### `table.sort`
-This function was slightly modified to return the mutated input table instead of `nil`, such that:
+This function was modified to return the input table instead of `nil`, such that:
 ```pluto
 local t = { 3, 2, 1 }
 t = t:sort(...)
@@ -381,7 +377,7 @@ Freezes a table to prevent modification.
 #### Parameters
 1. The table to freeze
 #### Returns
-The original table, but frozen.
+The input table.
 ```pluto title="Basic Usage"
 local t = table.freeze({...})
 -- `table.freeze(t)` on another line will work fine too.
@@ -392,8 +388,6 @@ t.key = "value" -- Fails.
 Checks if this table is frozen.
 #### Parameters
 1. The table to check.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local t = {}
 table.freeze(t)
@@ -419,7 +413,7 @@ Reverses the array elements of a table.
 #### Parameters
 1. The table to reverse.
 #### Returns
-This modifies the table you pass, but it'll also return it.
+The input table.
 ```pluto
 local t = { 1, 2, hello = "world", 3, 4, 5, key = "value" }
 
@@ -461,7 +455,7 @@ Reorders the array portion of a table so it becomes a continuous array with no h
 #### Parameters
 1. The table.
 #### Returns
-This modifies the input, so you don't need the return value. But, it still returns the input value either way.
+The input table.
 ```pluto
 local assert = require("assert")
 local t1 = { 1, nil, 2, nil, nil, 3, nil, 4 }
@@ -478,8 +472,6 @@ Note that this function is not the same as the Lua function that was deprecated/
 1. The table.
 2. The callback to be called for every element.
 3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
-#### Returns
-Nothing.
 ```pluto
 local t = { 1, 2, 3 }
 t:foreach(print)
@@ -495,7 +487,7 @@ Filters away keys (both array and non-array) that fail to meet the condition est
 2. The callback responsible for deciding which keys to keep or remove. This should return `false` or `nil` if you want the key to be eliminated.
 3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
 #### Returns
-This modifies the input, so you don't need the return value. But, it still returns the input value either way.
+The input table.
 ```pluto
 data = { 1, 2, 3, 4, 5 }
 print(data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ")) -- "1 3 5"
@@ -514,7 +506,7 @@ Remaps every key to a new value, provided by the `callback` function.
 2. The callback responsible for producing the updated values.
 3. An optional bool if the callback function also takes a key (`|k, v|`) as opposed to only a value (`|v|`).
 #### Returns
-This modifies the input, so you don't need the return value. But, it still returns the input value either way.
+The input table.
 ```pluto
 data = "41 20 68"
 print(data:split(" "):map(tonumber):map(|v| -> v + 1):concat(" ")) -- "42 21 69"
@@ -624,8 +616,6 @@ print(string.rstrip(s, "{}|")) --> {|}hello world
 Checks if a string is entirely composed of ASCII characters.
 #### Parameters
 1. The string to check.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
 print(string.isascii(s)) --> true
@@ -638,8 +628,6 @@ This would exclude any multi-byte characters, like emojis.
 Checks if a string is entirely composed of lowercase characters.
 #### Parameters
 1. The string to check.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "helloworld"
 print(string.islower(s)) --> true
@@ -652,8 +640,6 @@ Whitespace characters are not lowercase characters.
 Checks if a string is entirely composed of alphabetic characters.
 #### Parameters
 1. The string to check.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD"
 print(string.isalpha(s)) --> true
@@ -666,8 +652,6 @@ Whitespace characters are not alphabetic characters.
 Checks if a string is entirely composed of uppercase characters.
 #### Parameters
 1. The string to check.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD"
 print(string.isupper(s)) --> true
@@ -680,8 +664,6 @@ Whitespace characters are not uppercase characters.
 Checks if a string is entirely composed of alphanumeric characters.
 #### Parameters
 1. The string to check.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "HELLOWORLD123"
 print(string.isalnum(s)) --> true
@@ -694,8 +676,6 @@ Whitespace characters are not alphanumeric characters.
 Checks if this string is entirely composed of whitespace characters.
 #### Paramaters
 1. The string to check.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "    \t \v \f     \t\t\t\t"
 print(string.iswhitespace(s)) --> true
@@ -711,8 +691,6 @@ Replace substrings with another substring. Similar to `string.gsub`, but it oper
 1. `original` — The substring to replace.
 2. `substitute` — The replacement substring.
 3. `max_replace` — The maximum number of replacements you wish to occur. The default value is effectively `0`, which means "infinite". If you pass `1`, this leads to a maximum of one replacement, and so on.
-#### Returns
-A string.
 #### Errors
 An error is thrown under the following conditions:
 1. `max_replace` is less than zero.
@@ -743,8 +721,6 @@ Checks if a string contains a substring.
 #### Parameters
 1. The string to check.
 2. The substring to check for.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "hello world"
 print(string.contains(s, "worl")) --> true
@@ -755,8 +731,6 @@ Compares two strings, agnostic of any capitalization.
 #### Parameters
 1. The first string to compare.
 2. The second string to compare.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s1 = "hello world"
 local s2 = "heLLo WoRlD"
@@ -769,8 +743,6 @@ This function makes an integer easier to read by inserting `separator` every `N`
 1. `integer` — The integer or string input.
 2. `sep` — The `separator` to use. This must be a single-character string.
 3. `group` — The grouping of each digit pair. This is `N`.
-#### Returns
-Returns the modified string.
 #### Errors
 If the input is a **string** and does not meet the aforementioned criteria, an error will be thrown.
 ```pluto title="Usage Example"
@@ -822,8 +794,6 @@ Checks if a string ends with a suffix.
 #### Parameters
 1. The string to check.
 2. The substring suffix to check for.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "hello world"
 print(string.endswith(s, "world")) --> true
@@ -834,8 +804,6 @@ Checks if a string starts with a prefix.
 #### Parameters
 1. The string to check.
 2. The substring prefix to check for.
-#### Returns
-A boolean.
 ```pluto title="Basic Usage"
 local s = "hello world"
 print(string.startswith(s, "hello")) --> true
@@ -847,8 +815,6 @@ print(string.startswith(s, "hello")) --> true
 Checks if a number is NaN.
 #### Parameters
 1. The number to check.
-#### Returns
-A boolean.
 ```pluto
 local x = 0 / 0
 print(x ~= x) -- Old way: Prove the variable is NaN because it is not equal to itself. Works, but unintuitive.
@@ -859,8 +825,6 @@ print(math.isnan(x))
 Rounds a number to the nearest integer.
 #### Parameters
 1. The number to round.
-#### Returns
-An integer.
 ```pluto
 print(math.round(2.4)) --> 2
 print(math.round(2.5)) --> 3
