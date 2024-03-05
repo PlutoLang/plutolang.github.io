@@ -24,7 +24,7 @@ However, we have a simple solution for this: Compatibility Mode. This allows int
 Obviously, you want to use Pluto's features, so how can you do it if the Pluto environment has all of its tokens disabled? The secret is that each reserved token mentioned above has a portable variant with a `pluto_` prefix. For example, `switch` has a twin called `pluto_switch` that is always valid.
 
 ### Compile-time Configuration
-You can also change the meaning of Pluto's reserved tokens at any point in your scripts using the `@pluto_use` annotation.
+You can also change the meaning of Pluto's reserved tokens at any point in your scripts using the `@pluto_use` annotation or `pluto_use` statement.
 
 For example, to disable all non-compatible keywords except for `switch`:
 ```pluto
