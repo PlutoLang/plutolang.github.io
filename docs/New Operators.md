@@ -18,6 +18,7 @@ A plethora of compound operators are available in Pluto:
 - Exponent: `^=`
 - Bitwise AND: `&=`
 - Bitwise OR: `|=`
+- Bitwise XOR: `~=`
 - Bitshift left: `<<=`
 - Bitshift right: `>>=`
 - Concatenation: `..=`
