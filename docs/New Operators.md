@@ -174,6 +174,23 @@ producer()
 |> print --> 16
 ```
 
+### Methods Calls
+There is specialized syntax for method calls with the pipe operator, too:
+```pluto
+local producer = || -> 21
+
+local obj = {
+    function multiply(value)
+        return value * self.factor
+    end
+}
+obj.factor = 2
+
+producer()
+|> obj:multiply
+|> print --> 42
+```
+
 ### Anonymous Functions
 The righthand side of the pipe operator can also be an anonymous function, allowing for more advanced usage like this:
 ```pluto
