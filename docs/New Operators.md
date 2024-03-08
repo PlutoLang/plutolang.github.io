@@ -10,18 +10,18 @@ These operators function the same, but they're more consistent with what's been 
 
 ## Compound Operators
 A plethora of compound operators are available in Pluto:
-- Modulo: `%=`
 - Addition: `+=`
-- Exponent: `^=`
-- Bitwise OR: `|=`
-- Subtraction: `-=`
-- Bitshift left: `<<=`
-- Bitwise AND: `&=`
-- Float division: `/=`
-- Bitshift right: `>>=`
+- Subtraction: `-=` 
 - Multiplication: `*=`
-- Concatenation: `..=`
+- Float division: `/=`
 - Integer division: `//=`
+- Modulo: `%=`
+- Exponent: `^=`
+- Bitwise AND: `&=`
+- Bitwise OR: `|=`
+- Bitshift left: `<<=`
+- Bitshift right: `>>=`
+- Concatenation: `..=`
 - Nil-Coalescing: `??=`
 
 ```pluto showLineNumbers=true
