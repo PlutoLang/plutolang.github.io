@@ -7,14 +7,15 @@ Returns a table representing the XML data.
 ```pluto
 local xml = require "pluto:xml"
 
-print(dumpvar(xml.decode([[
+local root = xml.decode([[
     <entries>
         <entry type="primary">
             <name>primary</name>
         </entry>
     </entries>
-]])))
+]])
 
+print(dumpvar(root))
 --> {
 -->     ["tag"] = string(7) "entries",
 -->     ["children"] = {
@@ -35,6 +36,20 @@ print(dumpvar(xml.decode([[
 -->     },
 --> }
 ```
+
+For ease of use, the returned tables have an `__index` metamethod:
+```pluto
+-- root is <entries>, so its first child is <entry>.
+-- we make use of the metamethod to get to <name>:
+print(dumpvar(root.children[1].name))
+--> {
+-->     ["tag"] = string(4) "name",
+-->     ["children"] = {
+-->         [1] = string(7) "primary",
+-->     },
+--> }
+```
+
 If there is no single root element, a "body" element is implied as the root:
 ```pluto
 local xml = require "pluto:xml"
