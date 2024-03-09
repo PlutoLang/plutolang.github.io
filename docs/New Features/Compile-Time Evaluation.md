@@ -45,4 +45,4 @@ $else
 $end
 ```
 
-In this case, only one of the two paths will be compiled in; the rest will not take up any space. We're also using the [constexpr attribute](Constexpr Attribute.md) here, for stricter guarantees than `<const>`, although `$if` would throw an error if the condition was not known at compile-time.
+In this case, only one of the two paths will be compiled in; the rest will not take up any space. We're also using the [constexpr attribute](<Constexpr Attribute>) here, for stricter guarantees than `<const>`, although `$if` would throw an error if the condition was not known at compile-time.
