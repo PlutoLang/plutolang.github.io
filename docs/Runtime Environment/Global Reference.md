@@ -532,7 +532,7 @@ Identical to the base Lua `string.find` in every way, except it searches right-t
 
 ---
 ### `string.strip`
-Strips characters from both ends of a string.
+Strips or trims characters from both ends of a string.
 #### Parameters
 1. The string to strip.
 2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
@@ -544,7 +544,7 @@ print(string.strip(s, "{}|")) --> hello world
 ```
 ---
 ### `string.lstrip`
-Strips characters from the left side of a string.
+Strips or trims characters from the left side of a string.
 #### Parameters
 1. The string to strip.
 2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
@@ -556,7 +556,7 @@ print(string.lstrip(s, "{}|")) --> hello world{|}
 ```
 ---
 ### `string.rstrip`
-Strips characters from the right side of a string.
+Strips or trims characters from the right side of a string.
 #### Parameters
 1. The string to strip.
 2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
