@@ -1,6 +1,5 @@
 ---
 sidebar_position: 3
-title: Beginner's Guide
 ---
 
 This article is for people completely unfamiliar with Lua who want to jump right into Pluto.
