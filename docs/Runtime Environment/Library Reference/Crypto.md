@@ -83,6 +83,17 @@ local str = "hello"
 assert(crypto.crc32(str) == 222957957)
 ```
 ---
+### `crypto.adler32`
+Hash a string using the Adler-32 non-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. The initial value for the hash. By default, this is zero.
+```pluto showLineNumbers
+local crypto = require("crypto")
+local str = "hello"
+assert(crypto.adler32(str) == 103547413)
+```
+---
 ### `crypto.lookup3`
 Hash a string using the Lookup3 non-cryptographic hashing algorithm.
 #### Parameters
