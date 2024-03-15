@@ -1,7 +1,7 @@
 Prism.languages.pluto = {
 	'comment': /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,
 	'attr-name': /(?<=(function|class|extends)\s)[\w:]+/,
-	'keyword': /\$|\b(?:and|as|class|pluto_class|enum|begin|break|do|else|elseif|end|for|goto|if|in|local|new|not|or|repeat|return|static|then|until|while|continue|switch|case|default|pluto_switch|pluto_continue|extends|export|pluto_export|pluto_use|public|private|try|catch|pluto_try|pluto_catch)\b/,
+	'keyword': /\$(define\b)?|\b(?:and|as|class|pluto_class|enum|begin|break|do|else|elseif|end|for|goto|if|in|local|new|not|or|repeat|return|static|then|until|while|continue|switch|case|default|pluto_switch|pluto_continue|extends|export|pluto_export|pluto_use|public|private|try|catch|pluto_try|pluto_catch)\b/,
 	'function': [
 		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)(?!new)\w+(?=\s*(?:\??\())/, // func()
 		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)(?!not)\w+(?=\s*(?:\??[{"]))/, // func "", func {}
@@ -11,7 +11,7 @@ Prism.languages.pluto = {
 		/\b(os\.platform|json\.null|json\.withnull|json\.withorder)\b/, // standard library constants
 		/\b(debug|table|string|number|io|os|coroutine|_VERSION|_PVERSION|_PSOUP)\b/, // standard library + type hints
 	],
-	'attr-value': /<(const|constexpr|close)>/,
+	'attr-value': /<(const|close)>/,
 	'string': {
 		pattern: /(["'])(?:(?!\1)[^\\\r\n]|\\z(?:\r\n|\s)|\\(?:\r\n|[^z]))*\1|\[(=*)\[[\s\S]*?\]\2\]/,
 		greedy: true
