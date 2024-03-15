@@ -30,6 +30,21 @@ To avoid excessive annoyance, this warning type is off by default. To enable it,
 
 Furthermore, this only covers the globals 'table', 'string', and 'arg' by default. Integrators can overwrite the `PLUTO_COMMON_GLOBAL_NAMES` macro to change this list.
 
+### field-shadow
+This is raised when the same field is declared multiple times in a table constructor:
+```pluto showLineNumbers
+local t = {
+  key = "fruit",
+  value = "apple",
+  value = "banana"
+}
+```
+```
+file.pluto:4: warning: duplicate table field [field-shadow]
+    4 | value = "banana"
+      | ^^^^^^^^^^^^^^^^ here: this overwrites the value assigned to this field earlier
+```
+
 ### type-mismatch
 This is raised when the type of an expression doesn't match the hinted type. See [Type Hinting](<Type Hinting>).
 ```pluto showLineNumbers
