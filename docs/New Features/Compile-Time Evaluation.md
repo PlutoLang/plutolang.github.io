@@ -31,12 +31,29 @@ And on the following functions:
 - `tonumber`
 - `utonumber`
 
+## Variables
+
+Compile-time constant variables can be defined via the `$define` statement:
+```pluto
+$define a = 123
+```
+This may seem identical to a local declared with the const attribute:
+```pluto
+local a <const> = 123
+```
+However, `$define` also enforces that the assigned variable is a compile-time constant:
+```pluto
+local a <const> = {}
+// ERROR:
+$define a = {} -- variable was not assigned a compile-time constant value
+```
+
 ## Conditionals
 
 If there is certain code you only want to have compiled in for a certain build, such as a debug build, you can use compile-time conditionals:
 
 ```pluto
-local DEBUG <constexpr> = true
+$define DEBUG = true
 
 $if DEBUG then
     print("Script running in debug mode")
@@ -45,4 +62,4 @@ $else
 $end
 ```
 
-In this case, only one of the two paths will be compiled in; the rest will not take up any space. We're also using the [constexpr attribute](<Constexpr Attribute>) here, for stricter guarantees than `<const>`, although `$if` would throw an error if the condition was not known at compile-time.
+In this case, only one of the two paths will be compiled in; the rest will not take up any space.
