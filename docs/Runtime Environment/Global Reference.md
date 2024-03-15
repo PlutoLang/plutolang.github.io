@@ -519,6 +519,40 @@ In this example, we first use the `tonumber` function to turn the strings into n
 Copying variant of `table.map`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
+### `table.reduce`
+For every value stored in the table, computes `accumulator = f(value, accumulator)`, returning the accumulator at the end.
+#### Parameters
+1. The table.
+2. The callback responsible for producing the updated accumulator.
+3. The initial value of accumulator. If absent, the accumulator is initialized with `0`.
+#### Returns
+The accumulator.
+```pluto
+local t = { 1, 2, 3 }
+t:reduce(|value, accumulator| -> value + accumulator) |> print --> 6
+```
+
+### `table.min`
+Returns the smallest value stored in the table.
+#### Parameters
+1. The table.
+```pluto
+local t = { 1, 2, 3 }
+print(t:min()) --> 1
+```
+This is identical to `:reduce(math.min, math.maxinteger)`.
+
+### `table.max`
+Returns the largest value stored in the table.
+#### Parameters
+1. The table.
+```pluto
+local t = { 1, 2, 3 }
+print(t:max()) --> 3
+```
+This is identical to `:reduce(math.max, math.mininteger)`.
+
+---
 ## `string`
 ### `string.upper`
 This function now takes a second parameter that specifies which index to capitalize.
