@@ -490,10 +490,10 @@ Filters away keys (both array and non-array) that fail to meet the condition est
 The input table.
 ```pluto
 data = { 1, 2, 3, 4, 5 }
-print(data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ")) -- "1 3 5"
+data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ") |> print -- "1 3 5"
 
 data = { 2, 2, 3, 4, 4 }
-print(data:filter(|k, v| -> k == v, true):reorder():concat(" ")) -- "2 3 4"
+data:filter(|k, v| -> k == v, true):reorder():concat(" ") |> print -- "2 3 4"
 ```
 ### `table.filtered`
 Copying variant of `table.filter`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
@@ -509,10 +509,10 @@ Remaps every key to a new value, provided by the `callback` function.
 The input table.
 ```pluto
 data = "41 20 68"
-print(data:split(" "):map(tonumber):map(|v| -> v + 1):concat(" ")) -- "42 21 69"
+data:split(" "):map(tonumber):map(|v| -> v + 1):concat(" ") |> print -- "42 21 69"
 
 data = "10 15 10"
-print(data:split(" "):map(tonumber):map(|k, v| -> k * v, true):concat(" ")) -- "10 30 30"
+data:split(" "):map(tonumber):map(|k, v| -> k * v, true):concat(" ") |> print -- "10 30 30"
 ```
 In this example, we first use the `tonumber` function to turn the strings into numbers, then add 1 to them. (Although the first step is not needed in Lua/Pluto since the `+` operator would take care of it, it is used here for demonstration purposes.)
 ### `table.mapped`
