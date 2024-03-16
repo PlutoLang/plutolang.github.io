@@ -377,6 +377,8 @@ Copying variant of `table.sort`; returns a new table instead of modifying the in
 ---
 ### `table.size`
 Returns the number of elements in the table, counting both the array part and hash part.
+#### Parameters
+1. The table to check.
 ```pluto
 local t = { 1, 2, 3, ["foo"] = "bar" }
 print(t:size()) --> 4
