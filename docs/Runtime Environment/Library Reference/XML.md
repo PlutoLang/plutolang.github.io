@@ -1,7 +1,7 @@
 Must be included via `require`.
 ### `xml.decode`
 Returns a table representing the XML data.
-#### Parameters:
+#### Parameters
 1. `data` — The XML data to decode.
 2. `parser` — Which parser to use against the data. Can be "html", "xml" (default), or "lax" (XML but accepts attributes without `=`).
 ```pluto
