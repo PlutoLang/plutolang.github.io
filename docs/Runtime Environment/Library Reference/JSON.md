@@ -1,7 +1,7 @@
 Must be included via `require`.
 ### `json.encode`
 Returns a string of JSON.
-#### Parameters:
+#### Parameters
 1. `data` — A boolean, number, string, or table to encode as JSON.
 2. `pretty` — Whether to return a human-readable string of JSON. Defaults to `false`.
 ```pluto
@@ -37,7 +37,7 @@ print(json.encode(json.null)) --> null
 ---
 ### `json.decode`
 Returns multiple potential types. If you pass a serialized boolean, number, or string, then it will return the same type. If you pass a complex JSON object, it will return a table.
-#### Parameters:
+#### Parameters
 1. `data` — The JSON data to decode.
 2. `flags` — Options to augment the return value. Multiple options can be combined with bitwise OR (`|`). Defaults to `0`.
     - `json.withnull` — decodes JSON null values as `json.null` instead of `nil`.

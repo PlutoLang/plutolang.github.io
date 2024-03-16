@@ -339,7 +339,7 @@ io.currentdir("abc/abc") -- Set a new cwd
 ---
 ## `os`
 ### `os.sleep`
-#### Parameters:
+#### Parameters
 1. The amount of milliseconds to sleep for.
 #### Example
 ```pluto title="Basic Usage"
