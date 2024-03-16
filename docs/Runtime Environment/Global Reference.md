@@ -431,6 +431,22 @@ assert(table.contains(t, "value") == "key")
 assert(table.contains(t, "nothing") == nil)
 ```
 ---
+### `table.find`
+Looks for an element in a table.
+#### Parameters
+1. The table to check.
+2. The callback function responsible for checking each element.
+#### Returns
+The element if found, otherwise `nil`.
+```pluto
+local items = {
+    { id = 1, name = "Apple" },
+    { id = 2, name = "Banana" },
+}
+
+print(items:find(|item| -> item.id == 1).name) --> Apple
+```
+---
 ### `table.reverse`
 Reverses the array elements of a table.
 #### Parameters
