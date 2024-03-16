@@ -31,7 +31,7 @@ To avoid excessive annoyance, this warning type is off by default. To enable it,
 Furthermore, this only covers the globals 'table', 'string', and 'arg' by default. Integrators can overwrite the `PLUTO_COMMON_GLOBAL_NAMES` macro to change this list.
 
 ### type-mismatch
-This is raised when the type of an expression doesn't match the hinted type.
+This is raised when the type of an expression doesn't match the hinted type. See [Type Hinting](<Type Hinting>).
 ```pluto showLineNumbers
 local var: number = 5
 var = "hello"
