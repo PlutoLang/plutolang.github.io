@@ -1,4 +1,37 @@
 Must be included via `require`.
+### `xml.encode`
+Returns a string of XML.
+#### Parameters
+1. `data` — A table or string to encode as XML.
+2. `pretty` — Whether to return a human-readable string of XML. Defaults to `false`.
+```pluto
+local xml = require "pluto:xml"
+
+print(xml.encode({
+    tag = "root",
+    children = {
+        {
+            tag = "entry",
+            attributes = {
+                ["type"] = "primary"
+            },
+            children = {
+                "Text node"
+            }
+        },
+        {
+            tag = "entry"
+        }
+    }
+}, true))
+--> <root>
+-->     <entry type="primary">
+-->         Text node
+-->     </entry>
+-->     <entry></entry>
+--> </root>
+```
+---
 ### `xml.decode`
 Returns a table representing the XML data.
 #### Parameters
