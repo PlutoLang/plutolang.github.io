@@ -177,7 +177,7 @@ Copy a file to another file, creating a new file if needed.
 2. A path towards the file to copy into.
 #### Returns
 A boolean indicating if the file was successfully copied.
-```pluto title="Example Usage"
+```pluto
 if io.copy("./cfg/config.txt", "./backup_cfg/config.txt") then
     print("Successfully created a backup config!")
 else
@@ -202,7 +202,7 @@ print(io.part("/path/to/foo.txt", "name")) -- "foo.txt"
 1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led toward a directory.
-```pluto title="Example Usage"
+```pluto
 local path = "./dir/main/"
 local bool = io.isdir(path)
 if bool then
@@ -217,7 +217,7 @@ end
 1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led towards a file.
-```pluto title="Example Usage"
+```pluto
 local path = "./isfile/file"
 local bool = io.isdir(path)
 if bool then
@@ -232,7 +232,7 @@ end
 1. A string path or file stream.
 #### Returns
 A boolean indicating if the path led towards an existing file or directory.
-```pluto title="Example Usage"
+```pluto
 if io.exists("cfg/config.txt") then
     print("Config exists!")
 else
@@ -246,7 +246,7 @@ Create a directory.
 1. The path for the new directory.
 #### Returns
 A boolean indicating if the directory was successfully created.
-```pluto title="Example Usage"
+```pluto
 if io.makedir("./cfg") then
     print("Created cfg directory.")
 else
@@ -261,7 +261,7 @@ List all the files within a directory.
 2. A boolean indicating whether or not to recurse sub-directories.
 #### Returns
 An index-based table containing file paths.
-```pluto title="Example Usage"
+```pluto
 for _, filepath in io.listdir(".") do
     print(filepath)
 end
@@ -271,7 +271,7 @@ end
 Creates a directory and all the non-existing parent directories in the given path.
 #### Parameters
 1. The string path for your new directory.
-```pluto title="Example Usage"
+```pluto
 io.makedirs("A/B/C") -- Creates "C:\Users\Username\Desktop\Project\A\B\C"
 ```
 ---
@@ -282,7 +282,7 @@ Convert a relative path into an absolute one.
 2. An optional bool if the path should be canonicalized. A canonical path does not go through symlinks.
 #### Returns
 A string representing the new file path.
-```pluto title="Example Usage"
+```pluto
 io.absolute("cfg/cfg.txt") -- "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
 ---
@@ -305,7 +305,7 @@ This function is not only easier to use than the traditional `io.open` approach,
 Fetch the size of a file in bytes.
 #### Parameters
 1. A string path or file stream.
-```pluto title="Example Usage"
+```pluto
 if io.filesize("cfg/config.txt") <= 1 then
     print("Config is too small or empty.")
 end
@@ -332,7 +332,7 @@ Get or set the current working directory.
 1. A path to the desired current working directory. If this parameter is absent, this function works as a *getter.*
 #### Returns
 If this function is acting as a *getter*, it will return the current working directory.
-```pluto title="Example Usage"
+```pluto
 local cwd = io.currentdir() -- Get cwd
 io.currentdir("abc/abc") -- Set a new cwd
 ```
@@ -342,7 +342,7 @@ io.currentdir("abc/abc") -- Set a new cwd
 #### Parameters
 1. The amount of milliseconds to sleep for.
 #### Example
-```pluto title="Basic Usage"
+```pluto
 os.sleep(1000) -- Pause this thread for 1000ms.
 ```
 ---
@@ -378,7 +378,7 @@ Freezes a table to prevent modification.
 1. The table to freeze
 #### Returns
 The input table.
-```pluto title="Basic Usage"
+```pluto
 local t = table.freeze({...})
 -- `table.freeze(t)` on another line will work fine too.
 t.key = "value" -- Fails.
@@ -388,7 +388,7 @@ t.key = "value" -- Fails.
 Checks if this table is frozen.
 #### Parameters
 1. The table to check.
-```pluto title="Basic Usage"
+```pluto
 local t = {}
 table.freeze(t)
 assert(table.isfrozen(t) == true)
@@ -401,7 +401,7 @@ Checks if this table contains an element.
 2. The element to check for.
 #### Returns
 The index or key if found, otherwise `nil`.
-```pluto title="Basic Usage"
+```pluto
 local t = { 1, 2, 3, 4, 5, 6, key = "value" }
 assert(table.contains(t, 4) == 4)
 assert(table.contains(t, "value") == "key")
@@ -556,14 +556,14 @@ This is identical to `:reduce(math.max, math.mininteger)`.
 ## `string`
 ### `string.upper`
 This function now takes a second parameter that specifies which index to capitalize.
-```pluto title="Basic Usage"
+```pluto
 local s = "hello"
 assert(s:upper(1) == "Hello")
 ```
 ---
 ### `string.lower`
 This function now takes a second parameter that specifies which index to make lowercase.
-```pluto title="Basic Usage"
+```pluto
 local s = "HELLO"
 assert(s:lower(1) == "hELLO")
 ```
@@ -617,7 +617,7 @@ Strips or trims characters from both ends of a string.
 2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
 #### Returns
 The new string.
-```pluto title="Basic Usage"
+```pluto
 local s = "{|}hello world{|}"
 print(string.strip(s, "{}|")) --> hello world
 ```
@@ -629,7 +629,7 @@ Strips or trims characters from the left side of a string.
 2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
 #### Returns
 The new string.
-```pluto title="Basic Usage"
+```pluto
 local s = "{|}hello world{|}"
 print(string.lstrip(s, "{}|")) --> hello world{|}
 ```
@@ -641,7 +641,7 @@ Strips or trims characters from the right side of a string.
 2. A string of characters to strip. Defaults to ` \n\r\t\v\0`.
 #### Returns
 The new string.
-```pluto title="Basic Usage"
+```pluto
 local s = "{|}hello world{|}"
 print(string.rstrip(s, "{}|")) --> {|}hello world
 ```
@@ -650,7 +650,7 @@ print(string.rstrip(s, "{}|")) --> {|}hello world
 Checks if a string is entirely composed of ASCII characters.
 #### Parameters
 1. The string to check.
-```pluto title="Basic Usage"
+```pluto
 local s = "HELLOWORLD123"
 print(string.isascii(s)) --> true
 ```
@@ -662,7 +662,7 @@ This would exclude any multi-byte characters, like emojis.
 Checks if a string is entirely composed of lowercase characters.
 #### Parameters
 1. The string to check.
-```pluto title="Basic Usage"
+```pluto
 local s = "helloworld"
 print(string.islower(s)) --> true
 ```
@@ -674,7 +674,7 @@ Whitespace characters are not lowercase characters.
 Checks if a string is entirely composed of alphabetic characters.
 #### Parameters
 1. The string to check.
-```pluto title="Basic Usage"
+```pluto
 local s = "HELLOWORLD"
 print(string.isalpha(s)) --> true
 ```
@@ -686,7 +686,7 @@ Whitespace characters are not alphabetic characters.
 Checks if a string is entirely composed of uppercase characters.
 #### Parameters
 1. The string to check.
-```pluto title="Basic Usage"
+```pluto
 local s = "HELLOWORLD"
 print(string.isupper(s)) --> true
 ```
@@ -698,7 +698,7 @@ Whitespace characters are not uppercase characters.
 Checks if a string is entirely composed of alphanumeric characters.
 #### Parameters
 1. The string to check.
-```pluto title="Basic Usage"
+```pluto
 local s = "HELLOWORLD123"
 print(string.isalnum(s)) --> true
 ```
@@ -710,7 +710,7 @@ Whitespace characters are not alphanumeric characters.
 Checks if this string is entirely composed of whitespace characters.
 #### Paramaters
 1. The string to check.
-```pluto title="Basic Usage"
+```pluto
 local s = "    \t \v \f     \t\t\t\t"
 print(string.iswhitespace(s)) --> true
 ```
@@ -755,7 +755,7 @@ Checks if a string contains a substring.
 #### Parameters
 1. The string to check.
 2. The substring to check for.
-```pluto title="Basic Usage"
+```pluto
 local s = "hello world"
 print(string.contains(s, "worl")) --> true
 ```
@@ -765,7 +765,7 @@ Compares two strings, agnostic of any capitalization.
 #### Parameters
 1. The first string to compare.
 2. The second string to compare.
-```pluto title="Basic Usage"
+```pluto
 local s1 = "hello world"
 local s2 = "heLLo WoRlD"
 print(string.casefold(s1, s2)) --> true
@@ -828,7 +828,7 @@ Checks if a string ends with a suffix.
 #### Parameters
 1. The string to check.
 2. The substring suffix to check for.
-```pluto title="Basic Usage"
+```pluto
 local s = "hello world"
 print(string.endswith(s, "world")) --> true
 ```
@@ -838,7 +838,7 @@ Checks if a string starts with a prefix.
 #### Parameters
 1. The string to check.
 2. The substring prefix to check for.
-```pluto title="Basic Usage"
+```pluto
 local s = "hello world"
 print(string.startswith(s, "hello")) --> true
 ```
