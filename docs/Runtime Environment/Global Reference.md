@@ -384,6 +384,17 @@ local t = { 1, 2, 3, ["foo"] = "bar" }
 print(t:size()) --> 4
 ```
 ---
+### `table.clear`
+Remove all elements from the table.
+#### Parameters
+1. The table to clear.
+```pluto
+local t = { 1, 2, 3, ["foo"] = "bar" }
+print(t:size()) --> 4
+t:clear()
+print(t:size()) --> 0
+```
+---
 ### `table.freeze`
 Freezes a table to prevent modification.
 #### Parameters
