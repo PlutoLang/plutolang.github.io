@@ -10,7 +10,7 @@ table.freeze(_G)
 // ERROR:
 _G.string = {}
 // ERROR:
--- file.pluto:2: attempt to modify frozen table.
+-- file.pluto:4: attempt to modify frozen table.
 ```
 ```pluto showLineNumbers title="Example Code 2"
 -- Creating a constant local that's associated with a frozen table.
