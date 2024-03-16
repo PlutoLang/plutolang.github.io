@@ -286,6 +286,16 @@ A string representing the new file path.
 io.absolute("cfg/cfg.txt") -- "C:\Users\Username\Desktop\Project\cfg\cfg.txt"
 ```
 ---
+### `io.relative`
+Convert an absolute path into a relative one.
+#### Parameters
+1. A string path or file stream.
+#### Returns
+A string representing the new file path.
+```pluto
+io.relative(io.absolute("cfg/cfg.txt")) -- "cfg\cfg.txt"
+```
+---
 ### `io.contents`
 Get or set a file's contents.
 #### Parameters
