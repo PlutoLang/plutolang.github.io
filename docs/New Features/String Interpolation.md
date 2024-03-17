@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 ---
 String interpolation is a simple alternative syntax to concatenation.
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 15
+sidebar_position: 2
 ---
 Destructuring is a better way to assign local variables from expressions that return a table.
 

@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 Pluto makes a plethora of improvements when it comes to object-oriented programming.
 
 ## Method Creation

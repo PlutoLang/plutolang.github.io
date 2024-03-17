@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 Pluto provides a more intuitive way to handle errors than `pcall` and `xpcall`.
 
 ```pluto

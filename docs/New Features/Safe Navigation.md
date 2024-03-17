@@ -1,5 +1,5 @@
 ---
-sidebar_position: 17
+sidebar_position: 2
 ---
 ## For Member Access
 Accessing deeply nested fields which can potentially be `nil` was problematic, because you'd need an unreasonable amount of guard clauses to prevent an "attempt to index nil" error. Pluto now offers this syntax:
