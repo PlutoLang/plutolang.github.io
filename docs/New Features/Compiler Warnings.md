@@ -178,6 +178,20 @@ switch a do
 end
 ```
 
+### discarded-return
+This is raised when the return value of a function declared `<nodiscard>` was discarded. See [Nodiscard Functions](<Nodiscard Functions>).
+```pluto showLineNumbers
+local function add(a, b) <nodiscard>
+    return a + b
+end
+
+add(1, 2)
+```
+```
+file.pluto:5: warning: discarding return value of function declared '<nodiscard>' [discarded-return]
+    5 | add(1, 2)
+      | ^^^^^^^^^ here
+```
 
 ## Compile-time Configuration
 The state of each warning type can be changed during compile-time and exception for certain code can be made.
