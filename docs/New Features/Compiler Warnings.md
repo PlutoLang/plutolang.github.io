@@ -178,6 +178,19 @@ switch a do
 end
 ```
 
+### implicit-global
+This is raised when the `global` keyword is enabled and a global was declared without it. See [Explicit Globals](<Explicit Globals>).
+```pluto showLineNumbers
+pluto_use global
+
+a = 1
+```
+```
+file.pluto:3: warning: implicit global creation [implicit-global]
+    3 | a = 1
+      | ^^^^^ here: prefix this with 'global' if creating a global was intended
+```
+
 ### discarded-return
 This is raised when the return value of a function declared `<nodiscard>` was discarded. See [Nodiscard Functions](<Nodiscard Functions>).
 ```pluto showLineNumbers
