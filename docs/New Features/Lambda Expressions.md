@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 Lambda expressions are an alternative way of writing anonymous functions.
 ```pluto showLineNumbers title="Old Way"

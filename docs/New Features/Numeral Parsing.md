@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 Pluto makes two small changes to numeral parsing.
 

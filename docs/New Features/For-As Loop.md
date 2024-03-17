@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 1
 ---
 When you only want to iterate over the values of a table, you can use Pluto's for-as syntax.
 ```pluto showLineNumbers title="New Code"

@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 Pluto's parser provides some powerful constructs which allow you to write code that will never be seen at runtime.
 
 ## Function calls

@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 Pluto offers optional compiler warnings for certain misbehaviors.
 
 ## Warning Types

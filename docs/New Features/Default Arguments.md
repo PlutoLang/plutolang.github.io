@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 1
 ---
 During a function declaration, parameters can now declare their own default value.
 ```pluto showLineNumbers title="Example Code"
