@@ -242,6 +242,18 @@ These unauthenticated AES modes take both a key and an IV. The IV must be unique
 
 Returns the decrypted data on success. Throws an error if the padding was incorrect.
 
+```pluto
+local crypto = require "pluto:crypto"
+local key <const> = "A Top Secret Key"
+-- Encrypt
+local iv = range(16):map(|| -> string.char(math.random(0, 255))):concat("")
+local plain = "Hello, world!"
+local enc = plain |> crypto.encrypt|"aes-cbc-pkcs7", key, iv|
+print(dumpvar(enc))
+-- Decrypt
+print(crypto.decrypt(enc, "aes-cbc-pkcs7", key, iv)) --> Hello, world!
+```
+
 ---
 ## AES-ECB
 This unauthenticated AES mode takes only a key, and is considered to be the weakest. Identical plaintext blocks result in identical ciphertext blocks.
@@ -257,6 +269,17 @@ This unauthenticated AES mode takes only a key, and is considered to be the weak
 3. `key` — Must have a length of 16, 24 or 32 for 128-, 192-, or 256-bit AES, respectively.
 
 Returns the decrypted data on success. Throws an error if the padding was incorrect.
+
+```pluto
+local crypto = require "pluto:crypto"
+local key <const> = "A Top Secret Key"
+-- Encrypt
+local plain = "Hello, world!"
+local enc = plain |> crypto.encrypt|"aes-ecb-pkcs7", key|
+print(dumpvar(enc)) --> string(16) "`p{����k\21*.>jG"
+-- Decrypt
+print(crypto.decrypt(enc, "aes-ecb-pkcs7", key)) --> Hello, world!
+```
 
 ---
 ## AES-GCM
@@ -281,6 +304,20 @@ Returns two strings: the ciphertext and the authentication tag.
 
 Returns the decrypted data on success. Throws an error if authentication or unpadding failed.
 
+```pluto
+local crypto = require "pluto:crypto"
+local key <const> = "A Top Secret Key"
+local aadata = "This is Pluto!"
+-- Encrypt
+local iv = range(16):map(|| -> string.char(math.random(0, 255))):concat("")
+local plain = "Hello, world!"
+local enc, tag = plain |> crypto.encrypt|"aes-gcm", aadata, key, iv|
+print(dumpvar(enc))
+print(dumpvar(tag))
+-- Decrypt
+print(crypto.decrypt(enc, "aes-gcm", aadata, key, iv, tag)) --> Hello, world!
+```
+
 ---
 ## RSA
 ### `crypto.generatekeypair`
@@ -289,6 +326,19 @@ Returns the decrypted data on success. Throws an error if authentication or unpa
 2. `bits` — A positive integer for a strict bit-length requirement, or a negative integer for a lax requirement. Common values are `1024`, `2048`, and `4096`.
 
 Returns two tables: The public key (consisting of `n` and `e`), and the private key (consisting of `p` and `q`).
+```pluto
+local pub, priv = crypto.generatekeypair("rsa", 512)
+print(dumpvar(pub))
+--> {
+-->     ["n"] = 11355630182234424425429331560518598643298965915936825610957270519615363349759012613228119611304846673085167794661819394470107090216347491908311079792054357,
+-->     ["e"] = 65537,
+--> }
+print(dumpvar(priv))
+--> {
+-->     ["p"] = 115443384115231951475820445136871322101870729500298182134363293112660251666017,
+-->     ["q"] = 98365361248415863235179644468056200977592391948608651522703704315152579004021,
+--> }
+```
 
 ### `crypto.encrypt`
 #### Parameters
@@ -300,6 +350,23 @@ Returns two tables: The public key (consisting of `n` and `e`), and the private 
 1. `data` — The ciphertext to decrypt.
 2. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
 3. `key` — The public or private key to use. If the data was encrypted with the public key, the private key is needed to decrypt it.
+```pluto
+local { base64, bigint, crypto } = require "pluto:*"
+local priv = {
+    p = new bigint("115443384115231951475820445136871322101870729500298182134363293112660251666017"),
+    q = new bigint("98365361248415863235179644468056200977592391948608651522703704315152579004021"),
+}
+-- Derive public key
+local pub = {
+    n = priv.p * priv.q, -- 11355630182234424425429331560518598643298965915936825610957270519615363349759012613228119611304846673085167794661819394470107090216347491908311079792054357
+    e = new bigint(0x10001) -- 65537
+}
+-- Encrypt
+local enc = crypto.encrypt("A secret message to the owner of the private key.", "rsa-pkcs1", pub)
+print(base64.encode(enc))
+-- Decrypt
+print(enc |> crypto.decrypt|"rsa-pkcs1", priv|) --> A secret message to the owner of the private key.
+```
 ### `crypto.sign`
 #### Parameters
 1. `data` — The data to sign.
@@ -313,3 +380,22 @@ Returns two tables: The public key (consisting of `n` and `e`), and the private 
 4. `signature` — The signature produced by the "sign" procedure.
 
 Returns a boolean that indicates if the signature validated successfully.
+
+```pluto
+local { base64, bigint, crypto } = require "pluto:*"
+local priv = {
+    p = new bigint("115443384115231951475820445136871322101870729500298182134363293112660251666017"),
+    q = new bigint("98365361248415863235179644468056200977592391948608651522703704315152579004021"),
+}
+-- Derive public key
+local pub = {
+    n = priv.p * priv.q, -- 11355630182234424425429331560518598643298965915936825610957270519615363349759012613228119611304846673085167794661819394470107090216347491908311079792054357
+    e = new bigint(0x10001) -- 65537
+}
+-- Sign
+local msg = "The canary has left the nest."
+local sig = msg |> crypto.sign|"rsa-sha256", priv|
+print(base64.encode(sig)) --> un1g04+cwG8WxYDpSlj4PO/hsTqSITgYKycRuR+m3AE6ypLyUCrVHC/0j4M3DeW81ADZVda6TVkC/Ht8EdYeFw==
+-- Verify
+print(crypto.verify(msg, "rsa-sha256", pub, sig)) --> true
+```
