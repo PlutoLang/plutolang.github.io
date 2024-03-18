@@ -2,12 +2,12 @@
 sidebar_position: 2
 ---
 Lambda expressions are an alternative way of writing anonymous functions.
-```pluto showLineNumbers title="Old Way"
+```pluto showLineNumbers title="Lua Way"
 local s1 = "123"
 local s2 = s1:gsub(".", function(c) return tonumber(c) + 1 end)
 print(s2) -- "234"
 ```
-```pluto title="New Way"
+```pluto title="Pluto Way"
 local s1 = "123"
 local s2 = s1:gsub(".", |c| -> tonumber(c) + 1)
 print(s2) -- "234"

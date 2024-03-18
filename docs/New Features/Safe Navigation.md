@@ -34,12 +34,12 @@ Safe Navigation (for member access) was written by Sven Olsen.
 
 Similarly, if you want to have optional hook functions, you can use safe method calls instead of writing conditionals:
 
-```pluto showLineNumbers title="Old Way"
+```pluto showLineNumbers title="Lua Way"
 if self.onEvent then
     self:onEvent(event)
 end
 ```
-```pluto showLineNumbers title="New Way"
+```pluto showLineNumbers title="Pluto Way"
 self:onEvent?(event)
 ```
 
