@@ -20,7 +20,7 @@ Prism.languages.pluto = {
 	'number': /\b([\d][\d_]+|(0x[a-f\d]+)|(0b[01]+))(?:\.[a-f\d]*)?(?:p[+-]?\d+)?\b|\b\d+(?:\.\B|(?:\.\d*)?(?:e[+-]?\d+)?\b)|\B\.\d+(?:e[+-]?\d+)?\b/i,
 	'variable': /\b(?:self|parent|pluto_parent)\b/,
 	'operator': [
-		/[-+*%^&|#]|\/\/?|<[<=]?|>[>=]?|[=~]=?|\:=|\?|(?<!\w)\:|\?\.|instanceof/,
+		/[-+*%^&|#]|\/\/?|<[<=]?|>[>=]?|[=~!]=?|\:=|\?|(?<!\w)\:|\?\.|instanceof/,
 		{
 			pattern: /(^|[^.])\.\.(?!\.)/,
 			lookbehind: true
