@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-Although Pluto can theoretically be used with Lua-based tooling, we provide specialised support for .pluto files to enhance your coding experience with features such as:
+Although Pluto can theoretically be used with Lua-based tooling, we provide specialized support for .pluto files to enhance your coding experience with features such as:
 - Syntax Highlighting
 - Snippets — e.g. for when you type "fun" and press tab
 - Comment Information — for editor features such as "Toggle Comment", "Toggle Block Comment"
