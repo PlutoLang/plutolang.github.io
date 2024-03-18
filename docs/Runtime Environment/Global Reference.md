@@ -592,6 +592,17 @@ print(t:max()) --> 3
 This is identical to `:reduce(math.max, math.mininteger)`.
 
 ---
+### `table.checkall`
+Runs the given function against all elements, returning true if all of them match.
+#### Parameters
+1. The table.
+2. The callback responsible for checking each element.
+```pluto
+print({ 2, 4, 6 }:checkall(|x| -> x % 2 == 0) ? "All are even" : "Some are odd") --> All are even
+print({ 1, 2, 3 }:checkall(|x| -> x % 2 == 0) ? "All are even" : "Some are odd") --> Some are odd
+```
+
+---
 ## `string`
 ### `string.upper`
 This function now takes a second parameter that specifies which index to capitalize.
