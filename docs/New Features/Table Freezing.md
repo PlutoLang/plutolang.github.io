@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 Tables can now be frozen at their current state to forbid any future modification. This action is irreversible and permanent for the lifespan of the table.
 
-```pluto showLineNumbers title="Example Code 1"
+```pluto showLineNumbers
 -- Disallowing any edits to the global environment table.
 table.freeze(_G)
 
@@ -12,7 +12,7 @@ _G.string = {}
 // ERROR:
 -- file.pluto:4: attempt to modify frozen table.
 ```
-```pluto showLineNumbers title="Example Code 2"
+```pluto showLineNumbers
 -- Creating a constant local that's associated with a frozen table.
 local Frozen <const> = table.freeze({ 1, 2, 3 })
 
@@ -31,7 +31,7 @@ rawset(Frozen, "key", "value")
 // ERROR:
 -- file.pluto:10: attempt to modify frozen table.
 ```
-```pluto showLineNumbers title="Example Code 3"
+```pluto showLineNumbers
 --- Trying to swap the value with the debug library.
 for i = 1, 249 do
   local name, value = debug.getlocal(1, i)
