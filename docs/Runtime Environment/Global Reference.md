@@ -901,7 +901,7 @@ Checks if a number is NaN.
 1. The number to check.
 ```pluto
 local x = 0 / 0
-print(x ~= x) -- Old way: Prove the variable is NaN because it is not equal to itself. Works, but unintuitive.
+print(x ~= x) -- Lua way: Prove the variable is NaN because it is not equal to itself. Works, but unintuitive.
 print(math.isnan(x))
 ```
 ---
