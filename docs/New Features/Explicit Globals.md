@@ -33,14 +33,3 @@ file.pluto:3: warning: implicit global creation [implicit-global]
     3 | a = 1
       | ^^^^^ here: prefix this with 'global' if creating a global was intended
 ```
-
-## `pluto_use` Shorthand
-
-Instead of having to do this:
-```pluto
-pluto_use "0.8.0", global
-```
-You can use a '+' after the version number to not only enable all non-compatible keywords, but also all optional keywords. In this case, the only optional keyword as of Pluto 0.9.0 is `global`, so the above and the following statement are identical:
-```pluto
-pluto_use "0.9.0+"
-```
