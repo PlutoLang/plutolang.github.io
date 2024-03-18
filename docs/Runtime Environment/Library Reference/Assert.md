@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 Must be included via `require`.
 ### `assert.isnil`
 Asserts that `value` is `nil`

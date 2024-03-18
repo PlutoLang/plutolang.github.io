@@ -1,6 +1,3 @@
----
-sidebar_position: 3
----
 Must be included via `require`.
 ### `crypto.lua`
 Hash a string using Lua's version of the DJB2 non-cryptographic hashing algorithm.
