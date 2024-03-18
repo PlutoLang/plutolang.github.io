@@ -21,7 +21,7 @@ Which means you can't use them as identifiers. They can still be used with short
 ### How to fix it?
 All of these incompatible keywords can be disabled:
 - **For Integrators:** Check your `luaconf.h` file to find the relevant macros under the "Compatibility" heading.
-- **For Scripters:** Usage of `pluto_use` in the source files.
+- **For Scripters:** Use `pluto_use` in the source files. `-- @pluto_use * = false` to simply disable all incompatible keywords.
 - **For Users:** Pass the `-c` flag to `pluto` or `plutoc`.
 
 ## For Scripters
