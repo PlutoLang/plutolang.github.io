@@ -32,7 +32,7 @@ a += 1
 ```
 
 :::info
-Compound operators will call the same metamethods as the normal arithmetic operation would.
+Compound operators are syntactic sugar. They'll call the same metamethods as their non-compound counterparts.
 :::
 
 ## Coalescing Operator
