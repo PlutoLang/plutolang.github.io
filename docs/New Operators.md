@@ -19,6 +19,7 @@ A plethora of compound operators are available in Pluto:
 - Bitwise AND: `&=`
 - Bitwise OR: `|=`
 - Bitwise XOR: `~=`
+  - In Lua, the inequality operator cannot be used in statements. It must be used in expressions. Because compound operators can only be used in statements (and cannot be used in expressions), this is not a compatibility break.
 - Bitshift left: `<<=`
 - Bitshift right: `>>=`
 - Concatenation: `..=`
