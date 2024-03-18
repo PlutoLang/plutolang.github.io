@@ -25,7 +25,7 @@ A plethora of compound operators are available in Pluto:
 - Concatenation: `..=`
 - Nil-Coalescing: `??=`
 
-```pluto showLineNumbers=true
+```pluto
 local a = 1
 a = a + 1 
 a += 1
@@ -39,7 +39,7 @@ Compound operators are syntactic sugar. They'll call the same metamethods as the
 The nil-coalescing operator is helpful for evaluating values against `nil`. 
 
 If the left-hand operand is `nil`, it returns the right-hand operand. Otherwise, it returns the left-hand operand.
-```pluto showLineNumbers=true
+```pluto
 local function say(message)
     print(message ?? "The message was nil.")
 end
@@ -50,7 +50,7 @@ say("Hello, world!") --> Hello, world!
 ````
 
 It's a cleaner version of this code:
-```pluto showLineNumbers=true
+```pluto
 local function say(message)
     if message == nil then
         message = "The message was nil."
@@ -65,7 +65,7 @@ say("Hello, world!") --> Hello, world!
 ```
 
 You can even use compound assignment:
-```pluto showLineNumbers
+```pluto
 local function say(message)
     message ??= "The message was nil."
 
@@ -85,7 +85,7 @@ The Walrus operator allows you to perform assignments inside of conditional expr
 
 The second operand to your assignment is the value of the expression.
 
-```pluto showLineNumbers
+```pluto
 if a := get_value() then
     -- 'a' was assigned a truthy value.
 else
@@ -93,7 +93,7 @@ else
 end
 ```
 You can imagine it like this, but note they're not always the same:
-```pluto showLineNumbers
+```pluto
 local a = get_value()
 if a then
     -- 'a' was assigned a truthy value.
@@ -103,7 +103,7 @@ end
 ```
 
 What makes the Walrus operator different is that it'll be evaluated as many times as the condition:
-```pluto showLineNumbers
+```pluto
 local function get()
     return math.random(0, 1)
 end
