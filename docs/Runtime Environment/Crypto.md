@@ -2,6 +2,7 @@
 sidebar_position: 3
 ---
 Must be included via `require`.
+## Non-Cryptographic Hashing Algorithms
 ### `crypto.lua`
 Hash a string using Lua's version of the DJB2 non-cryptographic hashing algorithm.
 #### Parameters
@@ -113,49 +114,6 @@ local crypto = require("crypto")
 local str = "hello"
 assert(crypto.times33(str) == 3889643616)
 ```
----
-### `crypto.sha1`
-Hash a string using the SHA-1 cryptographic hashing algorithm.
-#### Parameters
-1. The string to hash.
-2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
-```pluto
-local crypto = require("crypto")
-assert(crypto.sha1("Pluto") == "bce8c9aca4120776fad6b517874aa09c46405454")
-assert(crypto.sha1("Pluto", true) == "\xbc\xe8\xc9\xac\xa4\x12\x07\x76\xfa\xd6\xb5\x17\x87\x4a\xa0\x9c\x46\x40\x54\x54")
-```
----
-### `crypto.sha256`
-Hash a string using the SHA-256 cryptographic hashing algorithm.
-#### Parameters
-1. The string to hash.
-2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
-```pluto
-local crypto = require("crypto")
-assert(crypto.sha256("Pluto") == "8dad5f6a7dd2dcd8c35ec2fd7babb499bcad60d27d73fe73eca2ce025dfd3b47")
-assert(crypto.sha256("Pluto", true) == "\x8d\xad\x5f\x6a\x7d\xd2\xdc\xd8\xc3\x5e\xc2\xfd\x7b\xab\xb4\x99\xbc\xad\x60\xd2\x7d\x73\xfe\x73\xec\xa2\xce\x02\x5d\xfd\x3b\x47")
-```
----
-### `crypto.sha384`
-Hash a string using the SHA-384 cryptographic hashing algorithm.
-#### Parameters
-1. The string to hash.
-2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
-```pluto
-local crypto = require("crypto")
-assert(crypto.sha384("Pluto", false) == "db890233a919b6745d632633c419e14540ff79f1a89bc4ac194b00e7f913f0f06d5d4d7d6cc2b4aaf9485d223afb8cf0")
-```
----
-### `crypto.sha512`
-Hash a string using the SHA-512 cryptographic hashing algorithm.
-#### Parameters
-1. The string to hash.
-2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
-```pluto
-local crypto = require("crypto")
-assert(crypto.sha512("Pluto", false) == "ee8410a8bf9511b94fd6669b5c3e0c4b86e8e4bf7baa8dbd2773d4d6381dd1aecebbe391bef4c6158620ab3f6b794907652d4432c2301d7e1a6caf520565cdf2")
-```
----
 ### `crypto.murmur1`
 Hash a string using the Murmur1 non-cryptographic hashing algorithm.
 #### Parameters
@@ -213,6 +171,50 @@ local str = "hello"
 assert(crypto.murmur2neutral(str) == 1151865881)
 ```
 ---
+## Cryptographic Hashing Algorithms
+### `crypto.sha1`
+Hash a string using the SHA-1 cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+assert(crypto.sha1("Pluto") == "bce8c9aca4120776fad6b517874aa09c46405454")
+assert(crypto.sha1("Pluto", true) == "\xbc\xe8\xc9\xac\xa4\x12\x07\x76\xfa\xd6\xb5\x17\x87\x4a\xa0\x9c\x46\x40\x54\x54")
+```
+---
+### `crypto.sha256`
+Hash a string using the SHA-256 cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+assert(crypto.sha256("Pluto") == "8dad5f6a7dd2dcd8c35ec2fd7babb499bcad60d27d73fe73eca2ce025dfd3b47")
+assert(crypto.sha256("Pluto", true) == "\x8d\xad\x5f\x6a\x7d\xd2\xdc\xd8\xc3\x5e\xc2\xfd\x7b\xab\xb4\x99\xbc\xad\x60\xd2\x7d\x73\xfe\x73\xec\xa2\xce\x02\x5d\xfd\x3b\x47")
+```
+---
+### `crypto.sha384`
+Hash a string using the SHA-384 cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+assert(crypto.sha384("Pluto", false) == "db890233a919b6745d632633c419e14540ff79f1a89bc4ac194b00e7f913f0f06d5d4d7d6cc2b4aaf9485d223afb8cf0")
+```
+---
+### `crypto.sha512`
+Hash a string using the SHA-512 cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+assert(crypto.sha512("Pluto", false) == "ee8410a8bf9511b94fd6669b5c3e0c4b86e8e4bf7baa8dbd2773d4d6381dd1aecebbe391bef4c6158620ab3f6b794907652d4432c2301d7e1a6caf520565cdf2")
+```
+---
+## Cryptographic PRNGs
 ### `crypto.random`
 The `crypto.random` function uses your operating system's default PRNG. 
 - On Linux-based systems, this is `/dev/urandom`.
