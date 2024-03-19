@@ -60,6 +60,11 @@ const config = {
             label: 'Documentation',
           },
           {
+            href: 'https://discord.gg/jASXBzdcnT',
+            label: 'Discord',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/PlutoLang/Pluto',
             label: 'GitHub',
             position: 'right',
