@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 Must be included via `require`.
 ### `url.encode`
 Returns a URL-encoded string.
