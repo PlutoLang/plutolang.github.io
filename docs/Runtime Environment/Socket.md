@@ -15,13 +15,22 @@ A socket instance on success. Nil on failure.
 If called inside of a coroutine, this function yields. Otherwise, it blocks.
 
 ---
+### `socket.listen`
+Creates a new listener for the given port.
+#### Parameters
+1. The port to listen on.
+#### Returns
+A listener instance on success. Nil on failure.
+
+---
+## Socket Class
+Socket instances are obtained by calling `socket.connect` (client), or from a listener (server).
 ### `socket.send`
 Sends data on a socket.
 #### Parameters
 1. The socket instance.
 2. The data to send.
 
----
 ### `socket.recv`
 Receive data from a socket.
 #### Parameters
@@ -39,7 +48,6 @@ s:send("GET / HTTP/1.1\r\nHost: google.com\r\n\r\n")
 print(s:recv())
 ```
 
----
 ### `socket.unrecv`
 Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of `socket.recv`.
 #### Parameters
@@ -55,7 +63,6 @@ print(sock:recv()) --> Hello
 print(sock:recv()) --> World
 ```
 
----
 ### `socket.starttls`
 Attempts to add the TLS crypto layer to the socket, making the transport layer a sole carrier for TLS traffic.
 #### Parameters
@@ -76,8 +83,29 @@ while data := s:recv() do
 end
 ```
 
----
 ### `socket.close`
 Closes a socket.
 #### Parameters
 1. The socket instance.
+
+---
+## Listener Class
+Listener instances are obtained by calling `socket.listen`.
+### `accept`
+Accepts an incoming client connection, waiting until there is one.
+#### Returns
+A new socket instance. The socket can be used as per usual, with the exception of the starttls function being unavailable.
+#### Multitasking
+- If there is an incoming client connection, this function returns immediately.
+- If there is not, it waits for one. Waiting means yielding if called inside a coroutine, and blocking otherwise.
+### `hasconnection`
+Checks if there is an incoming client connection. If this function returns true, the next call to `accept` is guaranteed not to block or yield.
+```pluto
+local socket = require "pluto:socket"
+
+local l = socket.listen(80) or error("Failed to bind TCP/80")
+while not l:hasconnection() do -- Visit http://localhost to break this loop
+    os.sleep(1)
+end
+print(l:accept():recv())
+```
