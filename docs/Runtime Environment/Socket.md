@@ -10,7 +10,7 @@ Establishes a TCP connection.
 1. The host to connect to. Either an IPv4 or IPv6 address, or a domain name resolving to one.
 2. The port to contact the host on.
 #### Returns
-A socket instance on success, or nil on failure.
+A socket instance on success. Nil on failure.
 #### Multitasking
 If called inside of a coroutine, this function yields. Otherwise, it blocks.
 
@@ -23,9 +23,12 @@ Sends data on a socket.
 
 ---
 ### `socket.recv`
-Returns the oldest chunk of data received on the transport layer (TCP packet) or crypto layer (TLS record).
+Receive data from a socket.
 #### Parameters
 1. The socket instance.
+#### Returns
+- If the socket is open: The oldest chunk of data received on the transport layer (TCP packet) or crypto layer (TLS record) as a string.
+- If the socket is closed: Nil.
 #### Multitasking
 If a message is buffered, the function can return immediately. If not, it will yield if inside a coroutine, and block otherwise.
 ```pluto
@@ -72,3 +75,9 @@ while data := s:recv() do
     print(data)
 end
 ```
+
+---
+### `socket.close`
+Closes a socket.
+#### Parameters
+1. The socket instance.
