@@ -39,3 +39,23 @@ end
 print(body)
 ```
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20http%20%3D%20require%20%22pluto%3Ahttp%22%0D%0Alocal%20body%2C%20status_code%2C%20headers%2C%20status_text%20%3D%20http.request(%22https%3A%2F%2Fhttpbin.org%2Fanything%22)%0D%0Aprint(status_code..%22%20%22..status_text)%0D%0Aif%20os.platform%20!%3D%20%22wasm%22%20then%0D%0A%20%20%20%20print(dumpvar(headers))%0D%0Aend%0D%0Aprint(body))
+
+---
+### `http.hasconnection`
+Queries if a keep-alive connection is available for a remote. This function is not available in WASM builds of Pluto.
+#### Parameters
+1. A partial URL identifying the remote. Partial because only the protocol, host, and port are used; additional components such as path are ignored.
+#### Multitasking
+If called inside of a coroutine, this function may yield. Otherwise, it may block.
+```pluto
+local { http, scheduler } = require "*"
+
+local sched = new scheduler()
+sched:addloop(function()
+    print(http.hasconnection("https://httpbin.org"))
+end)
+sched:add(function()
+    print((http.request("https://httpbin.org/anything")))
+end)
+sched:run()
+```
