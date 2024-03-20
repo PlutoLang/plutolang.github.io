@@ -23,6 +23,24 @@ Creates a new listener for the given port.
 A listener instance on success. Nil on failure.
 
 ---
+### `socket.bind`
+A convenience function that wraps `socket.listen`, automatically accepting new clients and spinning up a coroutine for them.
+#### Parameters
+1. A [scheduler](Scheduler) instance.
+2. The port to listen on.
+3. The callback function that will be called in a new coroutine for each client socket.
+```pluto
+local { scheduler, socket } = require "*"
+
+local sched = new scheduler()
+socket.bind(sched, 80, |s| -> do
+    local content = "Hello, world!"
+    s:send("HTTP/1.1 200 OK\r\nConnection: Close\r\nContent-Length: "..#content.."\r\n\r\n"..content)
+end)
+sched:run()
+```
+
+---
 ## Socket Class
 Socket instances are obtained by calling `socket.connect` (client), or from a listener (server).
 ### `socket.send`
