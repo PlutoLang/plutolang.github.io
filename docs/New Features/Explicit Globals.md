@@ -21,7 +21,7 @@ a = 1
 
 ## Compiler Warnings
 
-When the `global` keyword is enabled, an 'implicit-global' warning is raised for any locals declared without it:
+When the `global` keyword is enabled, an 'implicit-global' warning is raised for any globals declared without it:
 
 ```pluto showLineNumbers
 pluto_use global
