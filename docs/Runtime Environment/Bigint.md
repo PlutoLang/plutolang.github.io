@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 Must be included via `require`.
 
+---
 ### `bigint.new`
 To instantiate a bigint, you can call the `bigint.new` function, or use the `new` expression.
 #### Parameters

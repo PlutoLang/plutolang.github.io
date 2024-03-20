@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 Must be included via `require`. This library is not available in WASM builds of Pluto.
 
+---
 ### `socket.connect`
 Establishes a TCP connection.
 #### Parameters
@@ -13,12 +14,14 @@ A socket instance on success, or nil on failure.
 #### Multitasking
 If called inside of a coroutine, this function yields. Otherwise, it blocks.
 
+---
 ### `socket.send`
 Sends data on a socket.
 #### Parameters
 1. The socket instance.
 2. The data to send.
 
+---
 ### `socket.recv`
 Returns the oldest chunk of data received on the transport layer (TCP packet) or crypto layer (TLS record).
 #### Parameters
@@ -33,6 +36,7 @@ s:send("GET / HTTP/1.1\r\nHost: google.com\r\n\r\n")
 print(s:recv())
 ```
 
+---
 ### `socket.unrecv`
 Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of `socket.recv`.
 #### Parameters
@@ -48,6 +52,7 @@ print(sock:recv()) --> Hello
 print(sock:recv()) --> World
 ```
 
+---
 ### `socket.starttls`
 Attempts to add the TLS crypto layer to the socket, making the transport layer a sole carrier for TLS traffic.
 #### Parameters

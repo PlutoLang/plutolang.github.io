@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 Must be included via `require`.
 
+---
 ### `http.request`
 Performs an HTTP request.
 #### Parameters

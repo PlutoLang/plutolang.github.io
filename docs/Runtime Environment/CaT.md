@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 The CaT module is available via `require "pluto:cat"` and provides encoding and decoding for [the Colons and Tabs format](https://docs.soup.do/user/cat).
 
+---
 ### `cat.encode`
 Returns a string of CaT.
 #### Parameters
@@ -20,6 +21,7 @@ cat.encode {
 -->     Child: Also With Value
 ```
 
+---
 ### `cat.decode`
 Returns a table representing the CaT data.
 #### Parameters
