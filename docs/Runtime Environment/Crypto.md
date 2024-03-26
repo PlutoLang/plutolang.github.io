@@ -332,7 +332,7 @@ print(crypto.decrypt(enc, "aes-gcm", aadata, key, iv, tag)) --> Hello, world!
 1. `mode` — Must be "rsa".
 2. `bits` — A positive integer for a strict bit-length requirement, or a negative integer for a lax requirement. Common values are `1024`, `2048`, and `4096`.
 
-Returns two tables: The public key (consisting of `n` and `e`), and the private key (consisting of `p` and `q`).
+Returns two tables: The public key (consisting of `n` and `e`), and the private key (consisting of `p` and `q`). The [Bigint class](Bigint.md) is used for all values.
 ```pluto
 local pub, priv = crypto.generatekeypair("rsa", 512)
 print(dumpvar(pub))
