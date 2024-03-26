@@ -57,6 +57,8 @@ print(john.name) -- John
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20Human%20%3D%20%7B%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20end%0D%0A%7D%0D%0Alocal%20john%20%3D%20new%20Human(%22John%22)%0D%0Aprint(john.name)%20--%20John)
 
+Note that for compatibility with Lua and C API classes, the `new` operator checks for the existence of a static 'new' function. If it exists, `new X(...)` will be identical to `X.new(...)`.
+
 ## Class Statement
 
 The `class` statement is similar to a table constructor, but it does not require commas or semicolons:
