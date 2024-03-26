@@ -41,9 +41,9 @@ t.say("Hello") -- "Hello"
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20t%20%3D%20%7B%0D%0A%20%20%20%20static%20function%20say(msg)%0D%0A%20%20%20%20%20%20%20%20print(msg)%0D%0A%20%20%20%20end%0D%0A%7D%0D%0At.say(%22Hello%22)%20--%20%22Hello%22)
 
-## New Expression
+## New Operator
 
-Pluto adds an easy way to make instances with the `new` expression. This expression will also call the `__construct` method if it exists.
+Pluto adds an easy way to make instances with the `new` operator. This operator will also call the `__construct` method if it exists.
 
 ```pluto showLineNumbers
 local Human = {

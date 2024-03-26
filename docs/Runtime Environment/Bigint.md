@@ -5,7 +5,7 @@ Must be included via `require`.
 
 ---
 ### `bigint.new`
-To instantiate a bigint, you can call the `bigint.new` function, or use the `new` expression.
+To instantiate a bigint, you can call the `bigint.new` function, or use the `new` operator.
 #### Parameters
 1. The decimal value of the bigint.
 ```pluto
