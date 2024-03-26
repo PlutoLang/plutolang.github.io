@@ -1,5 +1,9 @@
+---
+sidebar_position: 3
+---
 Must be included via `require`.
 
+---
 ### `__construct`
 
 The constructor takes up to 3 arguments:

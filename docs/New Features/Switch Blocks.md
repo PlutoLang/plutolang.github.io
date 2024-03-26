@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 1
 ---
 Switch blocks consists of the following new keywords:
 - `case`

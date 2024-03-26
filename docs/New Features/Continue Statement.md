@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 Continue statements, like `break`, are meant to be used in loops. They skip the current iteration of the loop.
 

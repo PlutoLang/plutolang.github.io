@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Exception
 
 The `exception` class makes errors easier to parse with `where` and `what` members, as opposed to having a string with both.

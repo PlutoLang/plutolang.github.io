@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 Pluto offers optional compiler warnings for certain misbehaviors.
 
 ## Warning Types
@@ -29,6 +32,21 @@ file.pluto:1: warning: duplicate global declaration [global-shadow]
 To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_GLOBAL_SHADOW` macro.
 
 Furthermore, this only covers the globals 'table', 'string', and 'arg' by default. Integrators can overwrite the `PLUTO_COMMON_GLOBAL_NAMES` macro to change this list.
+
+### field-shadow
+This is raised when the same field is declared multiple times in a table constructor:
+```pluto showLineNumbers
+local t = {
+  key = "fruit",
+  value = "apple",
+  value = "banana"
+}
+```
+```
+file.pluto:4: warning: duplicate table field [field-shadow]
+    4 | value = "banana"
+      | ^^^^^^^^^^^^^^^^ here: this overwrites the value assigned to this field earlier
+```
 
 ### type-mismatch
 This is raised when the type of an expression doesn't match the hinted type. See [Type Hinting](<Type Hinting>).
@@ -130,6 +148,63 @@ file.pluto:1: warning: non-portable operator usage [non-portable-bytecode]
       | ^^^^^^^^^^^^^^^^^^^^^ here: this operator generates bytecode which is incompatible with Lua.
 ```
 To avoid excessive annoyance, this warning type is off by default. To enable it, scripters can use the [compile-time configuration](#compile-time-configuration) and integrators can define the `PLUTO_WARN_NON_PORTABLE_BYTECODE` macro.
+
+### unannotated-fallthrough
+This is raised when there's a non-obvious fallthrough in a switch block:
+```pluto showLineNumbers
+local a = 1
+switch a do
+  case 1:
+    print("Case 1")
+  case 2:
+    print("Case 2")
+end
+```
+```
+file.pluto:5: warning: possibly unwanted fallthrough [unannotated-fallthrough]
+    5 | case 2:
+      | ^^^^^^^ here: the case on line 3 flows into this case
+      + note: place `--@fallthrough` before this case if this is intended
+```
+As the warning points out, a `@fallthrough` annotation can be used to label the fallthrough, in turn silencing the warning:
+```pluto showLineNumbers
+local a = 1
+switch a do
+  case 1:
+    print("Case 1")
+    -- @fallthrough
+  case 2:
+    print("Case 2")
+end
+```
+
+### implicit-global
+This is raised when the `global` keyword is enabled and a global was declared without it. See [Explicit Globals](<Explicit Globals>).
+```pluto showLineNumbers
+pluto_use global
+
+a = 1
+```
+```
+file.pluto:3: warning: implicit global creation [implicit-global]
+    3 | a = 1
+      | ^^^^^ here: prefix this with 'global' if creating a global was intended
+```
+
+### discarded-return
+This is raised when the return value of a function declared `<nodiscard>` was discarded. See [Nodiscard Functions](<Nodiscard Functions>).
+```pluto showLineNumbers
+local function add(a, b) <nodiscard>
+    return a + b
+end
+
+add(1, 2)
+```
+```
+file.pluto:5: warning: discarding return value of function declared '<nodiscard>' [discarded-return]
+    5 | add(1, 2)
+      | ^^^^^^^^^ here
+```
 
 ## Compile-time Configuration
 The state of each warning type can be changed during compile-time and exception for certain code can be made.

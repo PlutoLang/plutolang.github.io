@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 Tables can now be frozen at their current state to forbid any future modification. This action is irreversible and permanent for the lifespan of the table.
 

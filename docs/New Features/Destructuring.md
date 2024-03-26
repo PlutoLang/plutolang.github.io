@@ -1,5 +1,5 @@
 ---
-sidebar_position: 15
+sidebar_position: 2
 ---
 Destructuring is a better way to assign local variables from expressions that return a table.
 
@@ -51,4 +51,11 @@ local a = t.age
 ```
 ```pluto title="Pluto way"
 local { n = name, a = age } = t
+```
+
+### Standard Library
+
+Table destructuring can be used to require multiple standard library modules at once using the '\*' module:
+```pluto
+local { base64, json } = require "*"
 ```

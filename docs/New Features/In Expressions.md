@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 2
 ---
 The `in` operator has been extended to support string searches and table searches. For these purposes, it's the fastest possible solution.
 

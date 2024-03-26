@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 The `export` modifier allows you to automatically aggregate things you want to export into a table.
 

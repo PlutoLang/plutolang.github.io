@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 Pluto makes a plethora of improvements when it comes to object-oriented programming.
 
 ## Method Creation
@@ -38,9 +41,9 @@ t.say("Hello") -- "Hello"
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20t%20%3D%20%7B%0D%0A%20%20%20%20static%20function%20say(msg)%0D%0A%20%20%20%20%20%20%20%20print(msg)%0D%0A%20%20%20%20end%0D%0A%7D%0D%0At.say(%22Hello%22)%20--%20%22Hello%22)
 
-## New Expression
+## New Operator
 
-Pluto adds an easy way to make instances with the `new` expression. This expression will also call the `__construct` method if it exists.
+Pluto adds an easy way to make instances with the `new` operator. This operator will also call the `__construct` method if it exists.
 
 ```pluto showLineNumbers
 local Human = {
@@ -53,6 +56,8 @@ print(john.name) -- John
 ```
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20Human%20%3D%20%7B%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20end%0D%0A%7D%0D%0Alocal%20john%20%3D%20new%20Human(%22John%22)%0D%0Aprint(john.name)%20--%20John)
+
+Note that for compatibility with Lua and C API classes, the `new` operator checks for the existence of a static 'new' function. If it exists, `new X(...)` will be identical to `X.new(...)`.
 
 ## Class Statement
 
