@@ -69,3 +69,15 @@ scheduler:run()
 --> 4
 --> 5
 ```
+
+### `errorfunc`
+`errorfunc` is a property on the scheduler that can optionally be set to customize how the scheduler reports errors in its coroutines. By default, this is `nil`, in which case any coroutine errors are rethrown (via `coroutine.xresume`).
+```pluto
+local { scheduler } = require "*"
+
+local sched = new scheduler()
+sched.errorfunc = |err| -> do print(debug.traceback(err)) end
+sched:add(function()
+    error("this is urgent: fatal error")
+end)
+```
