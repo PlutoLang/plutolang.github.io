@@ -59,3 +59,8 @@ sched:add(function()
 end)
 sched:run()
 ```
+---
+### `http.closeconnections`
+Closes all keep-alive connections like when closing the Lua state but in a non-blocking way. This function does nothing in WASM builds of Pluto.
+#### Multitasking
+This function must be called inside of a coroutine, as it will yield.
