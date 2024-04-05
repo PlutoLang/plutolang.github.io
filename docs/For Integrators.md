@@ -95,11 +95,3 @@ JMP        13       ; offset=13 newpc=0x247d29e90d8
 RETURN     1 1 1    ; return 0 value(s)
 ```
 This is great at deciphering obfuscated code which may be causing problems for your environment.
-
-## Disabling Filesystem Access
-Define the `PLUTO_NO_FILESYSTEM` macro in either your build configuration or the `luaconf.h` file. This prevents filesystem functions from being loaded into their libraries (`io`, `os`). Pluto will also compile any filesystem-related functions to do nothing more than "return 0;", so they're essentially nullsubs. This is done to protect from any attacks utilizing `package.loadlib`, which can load a Lua/Pluto library and access any symbol. Consider defining `PLUTO_NO_OS_EXECUTE` to disable filesystem access via process APIs.
-
-This affects the following functions:
-1. Every single `io` function.
-2. `os.remove`
-3. `os.rename`
