@@ -18,7 +18,7 @@ You can find pre-built binaries of Pluto for Windows, Linux, & Mac OS over on [P
 
 ### Chocolatey
 
-You can easily install pluto & plutoc via Chocolatey as follows:
+You can easily install `pluto` and `plutoc` via Chocolatey as follows:
 
 ```
 choco install plutolang
@@ -26,7 +26,7 @@ choco install plutolang
 
 ### APT Repository
 
-You can easily install pluto & plutoc via APT as follows:
+You can easily install Pluto via APT as follows:
 
 ```
 wget -qO- https://deb.calamity.gg/key.gpg | sudo tee /usr/share/keyrings/calamity-inc.gpg > /dev/null
@@ -35,11 +35,15 @@ sudo apt update
 sudo apt install pluto
 ```
 
-Don't worry about the "buster" part; our prebuilt binaries are compiled on Debian 10 (buster), but they work on all subsequent Debian releases, as well as Ubuntu 20 and above.
+This package includes the `pluto` and `plutoc` executables, shared library, as well as headers for developers (`#include <pluto/...>`).
+
+As the "buster" part implies, these binaries were compiled on Debian 10, but they work on all subsequent Debian releases, as well as Ubuntu 20 and above.
 
 ### AUR
 
 Pluto is in the Arch User Repository under the name `plutolang`.
+
+This package includes the `pluto` and `plutoc` executables, shared library, as well as headers for developers (`#include <pluto/...>`).
 
 ### Termux
 
