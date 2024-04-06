@@ -1,6 +1,6 @@
 Prism.languages.pluto = {
 	'comment': /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,
-	'attr-name': /(?<=(function|class|extends)\s)[\w:]+/,
+	'attr-name': /(?<=(function|class|extends|enum)\s)(?!begin)(?!class)[\w:]+/,
 	'keyword': /\$(define\b)?|\b(?:and|as|class|pluto_class|enum|begin|break|do|else|elseif|end|for|goto|if|in|local|new|not|or|repeat|return|static|then|until|while|continue|switch|case|default|pluto_switch|pluto_continue|extends|export|pluto_export|pluto_use|public|private|try|catch|pluto_try|pluto_catch|global)\b/,
 	'function': [
 		/\b(?!in\s)(?!\d)(?!return)(?!case)(?!function)(?!local)(?!new)\w+(?=\s*(?:\??\())/, // func()
