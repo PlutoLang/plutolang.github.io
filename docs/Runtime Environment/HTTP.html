@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.1">
 <title data-rh="true">HTTP | Pluto</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pluto-lang.org/docs/Runtime Environment/HTTP"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="HTTP | Pluto"><meta data-rh="true" name="description" content="Must be included via require."><meta data-rh="true" property="og:description" content="Must be included via require."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://pluto-lang.org/docs/Runtime Environment/HTTP"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Runtime Environment/HTTP" hreflang="en"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Runtime Environment/HTTP" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.80068ed9.css">
-<script src="/assets/js/runtime~main.c54e5459.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b45da7a8.js" defer="defer"></script>
 <script src="/assets/js/main.c8376266.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -22,7 +22,9 @@
 <li><strong>method:</strong> The HTTP request method to use. Defaults to GET.</li>
 <li><strong>headers:</strong> A table of headers, e.g. <code>{ [&quot;Content-Type&quot;] = &quot;application/json&quot; }</code>.</li>
 <li><strong>body:</strong> An optional request payload. If provided, the <code>Content-Length</code> header is set appropriately, and the method is set to POST unless otherwise specified.</li>
-<li><strong>prefer_ipv6:</strong> (Does nothing in WASM builds of Pluto.) When establishing a new connection, we attempt to lookup and connect via IPv4, retrying with IPv6 if needed. If this is set to true, we instead start with IPv6. This should not be needed for 99% of use cases.</li>
+<li><strong>prefer_ipv6:</strong> (Does nothing in WASM builds of Pluto.) When establishing a new connection, we attempt to lookup and connect via IPv4, retrying with IPv6 if needed. If this is set to true, we instead start with IPv6. This may be useful for &quot;LAN&quot; services that identify the LAN via IPv6 instead of IPv4.</li>
+<li><strong>dont_reuse:</strong> (Does nothing in WASM builds of Pluto.) Force the implementation not to reuse an existing socket, which may involve waiting. Instead a new connection is opened. This may be useful when many requests are headed to the same remote and you consider the time taken by a fresh handshake to be less than the time taken to wait to reuse.</li>
+<li><strong>dont_make_reusable:</strong> (Does nothing in WASM builds of Pluto.) If a new connection to the remote was opened to carry out the request, close it again after the request. This is useful to avoid burdening the remote for one-off requests.</li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>On success:</p>
