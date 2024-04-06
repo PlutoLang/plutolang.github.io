@@ -4,6 +4,66 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.9.0
+- Added `$define` statement
+- Added pipe operator (`|>`)
+- Added compound XOR operator (`~=`)
+- Added optional `global` keyword and 'implicit-global' warning
+- Added `@fallthrough` annotation and 'unannotated-fallthrough' warning
+- Added `<nodiscard>` function attribute and 'discarded-return' warning
+- Added 'field-shadow' warning
+- Lambdas can now have full bodies by starting with 'do' (e.g. `|a| -> do return a end`)
+- `pluto_use` can now also be used via `@pluto_use` in comments
+- `new` operator now also supports static 'new' function
+- Deprecated `**` operator (use `^` instead)
+- Deprecated `let` statement (use `local` instead)
+- Deprecated `const` statement (use `local` with `<const>` or `$define` instead)
+- Deprecated `<constexpr>` attribute (replaced by `$define` statement)
+- Re-added compile-time concat optimization
+- Fixed switch cases being able to jump into the scope of a variable
+- Fixed being able to set `nil` as a default argument
+
+Standard library:
+- Added '*' library
+- Added 'cat' library
+- Added 'http' library
+- Added 'socket' library
+- Added 'xml' library
+- Added 'bigint' class
+- Added 'scheduler' class
+- Added os.platform constant
+- Added range function
+- Added io.contents function
+- Added io.relative function
+- Added copying variants of existing functions (table.sorted, table.mapped, table.filtered, table.reversed, table.reordered)
+- Added table.size function
+- Added table.clear function
+- Added table.reduce, table.min, & table.max functions
+- Added table.find function
+- Added table.checkall function
+- Added coroutine.sleep function
+- Added crypto.generatekeypair function
+- Added crypto.encrypt & crypto.decrypt functions
+- Added crypto.sign & crypto.verify functions
+- Added crypto.sha1, crypto.sha384, & crypto.sha512 functions
+- Added crypto.adler32 function
+- Added url.parse function
+- Added math.round function
+- `json.encode` now supports `__order` for objects
+- `json.decode` now has an optional flags parameter, they can be combined via binary OR
+  - `json.withnull` makes it decode JSON nulls as `json.null` instead of `nil`
+  - `json.withorder` makes it produce `__order` field for objects
+- coroutines/threads now have a metatable by default
+- base64.encode & base32.encode changed padding parameter's default value from false to true (base64.urlencode is unchanged)
+- Fixed crypto.fnv1 & crypto.fnv1a producing incorrect hashes for non-ASCII strings
+
+CLI:
+- Added '-c' flag to pluto & plutoc to enable compatibility mode
+
+For integrators:
+- Added `PLUTO_READ_FILE_HOOK` & `PLUTO_WRITE_FILE_HOOK`
+- Added `PLUTO_HTTP_REQUEST_HOOK`
+- Removed `PLUTO_USE_THROW` as we now default to using C++ exceptions for Lua errors to avoid breaking RAII semantics. You can still specify `LUA_USE_LONGJMP` if you want long jumps.
 ## 0.8.2
 - Added variable scoping warnings to switch statements to highlight code that will break in 0.9.0
 - Improved some error messages
