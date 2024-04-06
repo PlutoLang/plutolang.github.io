@@ -4,6 +4,14 @@ sidebar_position: 2
 This page documents the changes & additions to the `io` library in Pluto, which is built on top of Lua 5.4's.
 
 ---
+### `io.rename`
+A variant of Lua's `os.rename` that raises an error on failure and instead has no return values.
+
+---
+### `io.remove`
+A variant of Lua's `os.remove` that raises an error on failure and instead has no return values.
+
+---
 ### `io.copy`
 Copy a file to another file, creating a new file if needed.
 #### Parameters
