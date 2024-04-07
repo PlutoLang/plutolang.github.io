@@ -83,8 +83,6 @@ This operator does not implement any metamethods.
 ## Walrus Operator
 The Walrus operator allows you to perform assignments inside of conditional expresssions.
 
-The second operand to your assignment is the value of the expression.
-
 ```pluto
 if a := get_value() then
     -- 'a' was assigned a truthy value.
@@ -94,29 +92,27 @@ end
 ```
 You can imagine it like this, but note they're not always the same:
 ```pluto
-local a = get_value()
-if a then
-    -- 'a' was assigned a truthy value.
-else
-    -- 'a' was assigned a falsy value.
+do
+    local a = get_value()
+    if a then
+        -- 'a' was assigned a truthy value.
+    else
+        -- 'a' was assigned a falsy value.
+    end
 end
 ```
 
-What makes the Walrus operator different is that it'll be evaluated as many times as the condition:
-```pluto
-local function get()
-    return math.random(0, 1)
+Note that for while-loops, it will be executed as many times as the condition:
+```pluto title="Pluto Way"
+while a := next_value() do
+    -- ...
 end
-
-while a := get() do
-    --| In the next iteration:
-    --|   - `a` will be assigned to `get()`.
-    --|   - Then the value will be evaluated for the condition.
-    --|
-    --| This happens because the Walrus operator itself is the condition.
-    --| It's not a short-hand for generating an assignment.
-    --|
-    --| Be aware of this if you intend on using the Walrus operator with loops.
+```
+```pluto title="Lua Way"
+while true do
+    local a = next_value()
+    if not a then break end
+    -- ...
 end
 ```
 
