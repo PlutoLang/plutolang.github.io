@@ -24,9 +24,7 @@ export function add(a, b)
 end
 ```
 
-The return statement is automatically generated.
-
-This works in all functions:
+The return statement is automatically generated at the end of the block, so it is not limited to the top-level function:
 
 ```pluto
 package.preload["test"] = function()
