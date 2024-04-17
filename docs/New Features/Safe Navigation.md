@@ -49,3 +49,16 @@ You can also check if the left-hand side of `:` is not nil:
 object?:onEvent(event) -- 'object' may be nil
 object?:onEvent?(event) -- 'object' and 'object.onEvent' may be nil
 ```
+
+Note that this feature will truncate multiple return values if they're not used as part of a fixed assignment:
+
+```pluto
+function myfunc()
+    return 1, 2
+end
+
+local a, b, c = _G:myfunc?()
+print(a, b, c) --> 1   2   nil
+
+print(_G:myfunc?()) --> 1
+```
