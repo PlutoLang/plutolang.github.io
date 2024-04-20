@@ -4,6 +4,22 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.9.1
+- Improved try/catch
+- Improved parsing of for-as loops
+- Deprecated if expressions (`if a then b else c`) in favor of ternary expressions (`a ? b : c`)
+- Fixed instances of `:` starting method call when it should delimit ternary expression
+- Fixed unreachable-code triggering for non-constant values
+- Fixed repeat + continue being able to read uninitialized variables
+- Fixed break and continue possibly not closing upvalues
+- Fixed continue not working as expected when passing through switch statement
+- Fixed switch cases being able to read uninitialized variables
+- Fixed inconsistent behavior with safe navigtion method calls and multiple return values
+- Fixed walrus operator being able to cause UB or corrupt the stack
+- Fixed pipe operator possibly generating incorrect code
+
+Huge thanks to @XmiliaH for reporting the majority of bugs fixed in this update and helping fix them.
+
 ## 0.9.0
 - Added `$define` statement
 - Added pipe operator (`|>`)
