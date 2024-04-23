@@ -4,6 +4,14 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.9.2
+This release fixes several regressions made in 0.9.1:
+- Fixed failing to compile on aarch64
+- Fixed method calls no longer working in ternary expressions even with parentheses
+- Fixed walrus operator no longer being usable within unary operator expressions
+
+Furthermore, it improves the walrus operator in regards to disallowing UB and clarifying related error messages.
+
 ## 0.9.1
 - Improved try/catch
 - Improved parsing of for-as loops
