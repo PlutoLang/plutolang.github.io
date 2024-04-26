@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 Must be included via `require`.
 
+---
 ### `base64.encode`
 Returns a base64-encoded string.
 #### Parameters
