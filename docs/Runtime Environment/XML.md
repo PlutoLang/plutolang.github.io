@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 Must be included via `require`.
+
+---
 ### `xml.encode`
 Returns a string of XML.
 #### Parameters
