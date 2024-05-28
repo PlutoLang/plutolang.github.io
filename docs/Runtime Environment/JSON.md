@@ -32,6 +32,17 @@ print(json.encode(data, true))
 --> }
 ```
 
+Because Lua tables do not have order guarantees, you can add an `__order` field to fix the order:
+```pluto
+local t = {
+    __order = { "a", "b", "c" },
+    a = 1,
+    b = 2,
+    c = 3
+}
+print(require"json".encode(t)) -- {"a":1,"b":2,"c":3}
+```
+
 The `json.null` value — assuming you did `local json = require("json")` — can be used to encode JSON null values.
 ```pluto
 local json = require("json")
