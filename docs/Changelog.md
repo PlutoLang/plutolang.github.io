@@ -4,6 +4,19 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.9.3
+- Added a warning for '(' being used instead of '|' for pipe operator arguments
+- Improved error reporting when an invalid parent is given to 'extends'
+- Fixed extending a global class unexpectedly pushing _G
+- Fixed incorrect results when using 'not' on result of null coalescing operator
+  - As a result of this fix, the null coalescing operator is now bytecode-compatible with Lua
+- Fixed parsing ambiguities with ternary expressions in switch cases
+
+Standard library:
+- Fixed `json.encode(json.decode(..., json.withnull + json.withorder))` producing unexpected artifacts
+- Fixed data corruption when json.decode is used on large data
+- Fixed insufficient TLS peer verification in HTTP library and socket.starttls in non-WASM builds (CVE-2024-32973)
+
 ## 0.9.2
 This release fixes several regressions made in 0.9.1:
 - Fixed failing to compile on aarch64
