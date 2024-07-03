@@ -4,6 +4,20 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.9.4
+- Improved field-shadow warning to say which field is shadowed
+- Improved handing of `parent` keyword
+- Improved error message for `if then`
+- Fixed an 'else if' warning false-positive
+- Fixed compile-time concat sometimes causing a parse error
+- Fixed infinite loop with nested switch expressions when flow should go to default case
+- Fixed exception when raising argument type mismatch warning when expected type is a function
+- Fixed a compatibility issue with `return case`
+
+Standard library:
+- Made string.replace binary-safe and faster
+- CaT module now supports the optional [value encoding](https://github.com/calamity-inc/Soup/blob/senpai/docs/user/cat.md#value-encoding) feature
+
 ## 0.9.3
 - Added a warning for '(' being used instead of '|' for pipe operator arguments
 - Improved error reporting when an invalid parent is given to 'extends'
