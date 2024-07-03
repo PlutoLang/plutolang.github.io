@@ -9,7 +9,7 @@ Prism.languages.pluto = {
 		/(?<=\|>)\s[\w.:]+/, // |> func
 		/\b(function|enum|class)\b/,
 		/\b(os\.platform|json\.null|json\.withnull|json\.withorder)\b/, // standard library constants
-		/\b(debug|table|string|number|io|os|coroutine|_VERSION|_PVERSION|_PSOUP)\b/, // standard library + type hints
+		/\b(debug|table|string|math|number|io|os|coroutine|_VERSION|_PVERSION|_PSOUP)\b/, // standard library + type hints
 	],
 	'attr-value': /<(const|close|nodiscard)>/,
 	'string': {
