@@ -30,7 +30,7 @@ assert(OPTION_4 == 6)
 ```
 Since this enum has a name, we can also access its enumerators with that:
 ```pluto
-assert(MyEnum.OPTIION_1 == 0)
+assert(MyEnum.OPTION_1 == 0)
 ```
 
 ## Scoped Enums
