@@ -24,18 +24,13 @@ You can easily install `pluto` and `plutoc` via Chocolatey as follows:
 choco install plutolang
 ```
 
-Note that the Chocolatey Community Repository may not always have the latest Pluto release due to their review process. So, if you want to be on the cutting edge, you might want to add our repository (Chocolatey 2.0.0 or above required):
-```
-choco source add -n "Calamity, Inc." -s https://choco.calamity.gg/index.json
-```
-
 ### APT Repository
 
 You can easily install Pluto via APT as follows:
 
 ```
-wget -qO- https://deb.calamity.gg/key.gpg | sudo tee /usr/share/keyrings/calamity-inc.gpg > /dev/null
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/calamity-inc.gpg] https://deb.calamity.gg/ buster main" | sudo tee /etc/apt/sources.list.d/calamity-inc.list > /dev/null
+wget -qO- https://calamity-inc.github.io/deb-repo/key.gpg | sudo tee /usr/share/keyrings/calamity-inc.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/calamity-inc.gpg] https://calamity-inc.github.io/deb-repo/ buster main" | sudo tee /etc/apt/sources.list.d/calamity-inc.list > /dev/null
 sudo apt update
 sudo apt install pluto
 ```
