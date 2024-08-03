@@ -39,7 +39,7 @@ local t = {
 t.say("Hello") -- "Hello"
 ```
 
-#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20t%20%3D%20%7B%0D%0A%20%20%20%20static%20function%20say(msg)%0D%0A%20%20%20%20%20%20%20%20print(msg)%0D%0A%20%20%20%20end%0D%0A%7D%0D%0At.say(%22Hello%22)%20--%20%22Hello%22)
+#### [Try It Yourself](https://plutolang.github.io/web/#code=local%20t%20%3D%20%7B%0D%0A%20%20%20%20static%20function%20say(msg)%0D%0A%20%20%20%20%20%20%20%20print(msg)%0D%0A%20%20%20%20end%0D%0A%7D%0D%0At.say(%22Hello%22)%20--%20%22Hello%22)
 
 ## New Operator
 
@@ -55,7 +55,7 @@ local john = new Human("John")
 print(john.name) -- John
 ```
 
-#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20Human%20%3D%20%7B%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20end%0D%0A%7D%0D%0Alocal%20john%20%3D%20new%20Human(%22John%22)%0D%0Aprint(john.name)%20--%20John)
+#### [Try It Yourself](https://plutolang.github.io/web/#code=local%20Human%20%3D%20%7B%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20end%0D%0A%7D%0D%0Alocal%20john%20%3D%20new%20Human(%22John%22)%0D%0Aprint(john.name)%20--%20John)
 
 Note that for compatibility with Lua and C API classes, the `new` operator checks for the existence of a static 'new' function. If it exists, `new X(...)` will be identical to `X.new(...)`.
 
@@ -107,7 +107,7 @@ print(human.age) -- 1
 ```
 This also adds a `__parent` field to Human.
 
-#### [Try It Yourself](https://pluto-lang.org/web/#code=class%20Entity%0D%0A%20%20%20%20age%20%3D%201%0D%0Aend%0D%0A%0D%0Aclass%20Human%20extends%20Entity%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human()%0D%0Aprint(human.age)%20--%201)
+#### [Try It Yourself](https://plutolang.github.io/web/#code=class%20Entity%0D%0A%20%20%20%20age%20%3D%201%0D%0Aend%0D%0A%0D%0Aclass%20Human%20extends%20Entity%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human()%0D%0Aprint(human.age)%20--%201)
 
 ## Parent Expression
 
@@ -134,7 +134,7 @@ print(human.name) -- "John"
 
 Note that if you have a local variable (or function parameter) called "parent", the `parent` expression will defer to it.
 
-#### [Try It Yourself](https://pluto-lang.org/web/#code=class%20Entity%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Aclass%20Human%20extends%20Entity%0D%0A%20%20%20%20--%20If%20we%20don't%20define%20__construct%2C%20the%20parent-constructor%20would%20be%20called%20automatically.%0D%0A%20%20%20%20--%20However%2C%20if%20we%20overwrite%20it%2C%20we%20can%20use%20parent%3A__construct%20to%20call%20it%20manually.%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20parent%3A__construct(name)%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human(%22John%22)%0D%0Aprint(human.name)%20--%20%22John%22)
+#### [Try It Yourself](https://plutolang.github.io/web/#code=class%20Entity%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Aclass%20Human%20extends%20Entity%0D%0A%20%20%20%20--%20If%20we%20don't%20define%20__construct%2C%20the%20parent-constructor%20would%20be%20called%20automatically.%0D%0A%20%20%20%20--%20However%2C%20if%20we%20overwrite%20it%2C%20we%20can%20use%20parent%3A__construct%20to%20call%20it%20manually.%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20parent%3A__construct(name)%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human(%22John%22)%0D%0Aprint(human.name)%20--%20%22John%22)
 
 ## Private Fields
 
@@ -161,7 +161,7 @@ print(human:getAge()) -- 42
 print(human.age) -- nil
 ```
 
-#### [Try It Yourself](https://pluto-lang.org/web/#code=class%20Human%0D%0A%20%20%20%20public%20name%0D%0A%20%20%20%20private%20age%0D%0A%0D%0A%20%20%20%20function%20__construct(name%2C%20age)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20%20%20%20%20self.age%20%3D%20age%0D%0A%20%20%20%20end%0D%0A%0D%0A%20%20%20%20function%20getAge()%0D%0A%20%20%20%20%20%20%20%20return%20self.age%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human(%22John%22%2C%2042)%0D%0Aprint(human.name)%20--%20%22John%22%0D%0Aprint(human%3AgetAge())%20--%2042%0D%0Aprint(human.age)%20--%20nil)
+#### [Try It Yourself](https://plutolang.github.io/web/#code=class%20Human%0D%0A%20%20%20%20public%20name%0D%0A%20%20%20%20private%20age%0D%0A%0D%0A%20%20%20%20function%20__construct(name%2C%20age)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20%20%20%20%20self.age%20%3D%20age%0D%0A%20%20%20%20end%0D%0A%0D%0A%20%20%20%20function%20getAge()%0D%0A%20%20%20%20%20%20%20%20return%20self.age%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human(%22John%22%2C%2042)%0D%0Aprint(human.name)%20--%20%22John%22%0D%0Aprint(human%3AgetAge())%20--%2042%0D%0Aprint(human.age)%20--%20nil)
 
 ## Constructor Promotion
 
@@ -183,7 +183,7 @@ print(human:getAge()) -- 42
 print(human.age) -- nil
 ```
 
-#### [Try It Yourself](https://pluto-lang.org/web/#code=class%20Human%0D%0A%20%20%20%20function%20__construct(public%20name%2C%20private%20age)%0D%0A%20%20%20%20end%0D%0A%0D%0A%20%20%20%20function%20getAge()%0D%0A%20%20%20%20%20%20%20%20return%20self.age%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human(%22John%22%2C%2042)%0D%0Aprint(human.name)%20--%20%22John%22%0D%0Aprint(human%3AgetAge())%20--%2042%0D%0Aprint(human.age)%20--%20nil)
+#### [Try It Yourself](https://plutolang.github.io/web/#code=class%20Human%0D%0A%20%20%20%20function%20__construct(public%20name%2C%20private%20age)%0D%0A%20%20%20%20end%0D%0A%0D%0A%20%20%20%20function%20getAge()%0D%0A%20%20%20%20%20%20%20%20return%20self.age%0D%0A%20%20%20%20end%0D%0Aend%0D%0A%0D%0Alocal%20human%20%3D%20new%20Human(%22John%22%2C%2042)%0D%0Aprint(human.name)%20--%20%22John%22%0D%0Aprint(human%3AgetAge())%20--%2042%0D%0Aprint(human.age)%20--%20nil)
 
 ## Instanceof Operator
 
@@ -206,7 +206,7 @@ local e = new Entity()
 print(instanceof(e, Entity)) -- true
 ```
 
-#### [Try It Yourself](https://pluto-lang.org/web/#code=class%20Entity%20end%0D%0Aclass%20Human%20extends%20Entity%20end%0D%0A%0D%0Alocal%20e%20%3D%20new%20Entity()%0D%0Alocal%20h%20%3D%20new%20Human()%0D%0A%0D%0Aprint(e%20instanceof%20Entity)%20--%20true%0D%0Aprint(e%20instanceof%20Human)%20--%20false%0D%0Aprint(h%20instanceof%20Entity)%20--%20true%20(by%20inheritance)%0D%0Aprint(h%20instanceof%20Human)%20--%20true%0D%0A%0D%0Aprint(instanceof(e%2C%20Entity))%20--%20true%0D%0A)
+#### [Try It Yourself](https://plutolang.github.io/web/#code=class%20Entity%20end%0D%0Aclass%20Human%20extends%20Entity%20end%0D%0A%0D%0Alocal%20e%20%3D%20new%20Entity()%0D%0Alocal%20h%20%3D%20new%20Human()%0D%0A%0D%0Aprint(e%20instanceof%20Entity)%20--%20true%0D%0Aprint(e%20instanceof%20Human)%20--%20false%0D%0Aprint(h%20instanceof%20Entity)%20--%20true%20(by%20inheritance)%0D%0Aprint(h%20instanceof%20Human)%20--%20true%0D%0A%0D%0Aprint(instanceof(e%2C%20Entity))%20--%20true%0D%0A)
 
 :::info
 Note that, while the instanceof operator generates Lua-compatible bytecode, the instanceof function is a part of Pluto's standard library, and hence unavailable under Lua.

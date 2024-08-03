@@ -93,9 +93,9 @@ If called inside of a coroutine, this function yields. Otherwise, it blocks.
 ```pluto
 local socket = require "pluto:socket"
 
-local s = socket.connect("pluto-lang.org", 443)
-assert(s:starttls("pluto-lang.org"), "Failed to establish secure connection.")
-s:send("GET / HTTP/1.1\r\nHost: pluto-lang.org\r\nConnection: close\r\n\r\n")
+local s = socket.connect("plutolang.github.io", 443)
+assert(s:starttls("plutolang.github.io"), "Failed to establish secure connection.")
+s:send("GET / HTTP/1.1\r\nHost: plutolang.github.io\r\nConnection: close\r\n\r\n")
 while data := s:recv() do
     print(data)
 end
