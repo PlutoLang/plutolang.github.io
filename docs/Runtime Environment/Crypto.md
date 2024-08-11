@@ -29,6 +29,8 @@ assert(crypto.md5(str) == "5eb63bbbe01eeed093cb22bb8f5acdc3")
 Hash a string using the DJB2 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
@@ -59,6 +61,8 @@ assert(crypto.fnv1a(str) == 8618312879776256743)
 Hash a string using the JOAAT non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
@@ -69,6 +73,8 @@ assert(crypto.joaat(str) == 1045060183)
 Hash a string using the SDBM non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
@@ -80,6 +86,8 @@ Hash a string using the CRC32 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 2. The initial value for the hash. By default, this is zero.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
@@ -111,6 +119,8 @@ assert(crypto.lookup3(str) == 1252609637)
 Hash a string using the Times33 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
@@ -120,6 +130,8 @@ assert(crypto.times33(str) == 3889643616)
 Hash a string using the Murmur1 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
@@ -130,6 +142,8 @@ assert(crypto.murmur1(str) == 3154674178)
 Hash a string using the Murmur2 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
@@ -139,6 +153,8 @@ assert(crypto.murmur2(str) == 1151865881)
 Hash a string using the Murmur2A non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
