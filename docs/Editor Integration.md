@@ -11,6 +11,8 @@ Although Pluto can theoretically be used with Lua-based tooling, we provide spec
 
 ## Installation
 
+The installation process depends on your editor:
+
 - **VS Code:** Search for `calamity-inc.pluto-syntax-highlighting` in the marketplace and press "Install."
 - **Sublime Text:** Open the command palette (Ctrl+Shift+P), select "Package Control: Install Package", search for "Pluto", and press enter.
 - **Visual Studio:** Click on Extensions > Manage Extensions. In the Online section, search for `calamity-inc.pluto-vsix` and press "Download."
