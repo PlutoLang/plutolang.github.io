@@ -214,7 +214,7 @@ For integrators:
 - Added `PLUTO_NO_BINARIES` - disables all dll/so/c module loading (for sandboxing)
 - Added `luaG_addsrcinfo`
 
-Far more information can be found at our documentation: https://plutolang.github.io/
+Far more information can be found at our documentation: https://pluto-lang.org/
 ## 0.7.4
 - Fixed unexpected behavior when using a ternary expression inside of an interpolated string
 - Fixed `table.contains` returning `0` instead of the actual key for non-integer key types
@@ -272,7 +272,7 @@ Standard library:
 For integrators:
 - Added `PLUTO_USE_LET`
 
-More detailed documentation can be found [here](https://plutolang.github.io/).
+More detailed documentation can be found [here](https://pluto-lang.org/).
 ## 0.6.3
 - Defaults arguments now produce Lua-compatible bytecode
 - Fixed default arguments not working for methods
@@ -336,7 +336,7 @@ Standard library:
 For integrators upgrading to Pluto 0.6.0:
 - Consider defining `PLUTO_COMPATIBLE_NEW`, `PLUTO_COMPATIBLE_CLASS`, `PLUTO_COMPATIBLE_PARENT` & `PLUTO_COMPATIBLE_EXPORT` so 'new', 'class', 'parent' & 'export' will not be reserved keywords just yet, instead 'pluto_new', 'pluto_class', 'pluto_parent' & 'pluto_export' can be used.
 
-More detailed documentation can be found [here](https://plutolang.github.io/).
+More detailed documentation can be found [here](https://pluto-lang.org/).
 ## 0.5.4
 - Default arguments now support tables
 - Pluto now supports building with C ABI so you can replace Lua's shared library with Pluto's without needing to change the program

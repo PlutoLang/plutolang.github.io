@@ -68,7 +68,7 @@ end
 ```
 The `default` case can be placed anywhere in the block. It also supports fallthrough, so remember to use `break` if you place it above any cases.
 
-#### [Try It Yourself](https://plutolang.github.io/web/#code=local%20value%20%3D%203%0D%0Aswitch%20value%20do%0D%0A%20%20case%201%3A%0D%0A%20%20case%202%3A%0D%0A%20%20case%203%3A%0D%0A%20%20case%204%3A%0D%0A%20%20case%205%3A%0D%0A%20%20%20%20print%20%22Got%201-5.%22%0D%0A%20%20%20%20break%0D%0A%20%20default%3A%0D%0A%20%20%20%20print%20%22Value%20is%20greater%20than%205.%22%0D%0Aend%0D%0A--%20Break%20jumps%20here.)
+#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20value%20%3D%203%0D%0Aswitch%20value%20do%0D%0A%20%20case%201%3A%0D%0A%20%20case%202%3A%0D%0A%20%20case%203%3A%0D%0A%20%20case%204%3A%0D%0A%20%20case%205%3A%0D%0A%20%20%20%20print%20%22Got%201-5.%22%0D%0A%20%20%20%20break%0D%0A%20%20default%3A%0D%0A%20%20%20%20print%20%22Value%20is%20greater%20than%205.%22%0D%0Aend%0D%0A--%20Break%20jumps%20here.)
 
 ## Case Blocks
 
@@ -131,7 +131,7 @@ print(place) --> 1st
 
 Note that the case blocks here have their conditions delimited by an arrow (->) instead of a colon (:).
 
-#### [Try It Yourself](https://plutolang.github.io/web/#code=local%20place%20%3D%201%0D%0Aplace%20%3D%20switch%20place%20do%0D%0A%20%20%20%20case%201%20-%3E%20%221st%22%0D%0A%20%20%20%20case%202%20-%3E%20%222nd%22%0D%0A%20%20%20%20case%203%20-%3E%20%223rd%22%0D%0A%20%20%20%20default%20-%3E%20%24%22%7Bplace%7Dth%22%0D%0Aend%0D%0Aprint(place))
+#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20place%20%3D%201%0D%0Aplace%20%3D%20switch%20place%20do%0D%0A%20%20%20%20case%201%20-%3E%20%221st%22%0D%0A%20%20%20%20case%202%20-%3E%20%222nd%22%0D%0A%20%20%20%20case%203%20-%3E%20%223rd%22%0D%0A%20%20%20%20default%20-%3E%20%24%22%7Bplace%7Dth%22%0D%0Aend%0D%0Aprint(place))
 
 Despite not being able to manually fall through, the shorthand fallthrough syntax still works:
 
@@ -149,7 +149,7 @@ print_range(9) --> nil
 
 Notice how the `default` case was omitted in this example, so it was implicitly set to `default -> nil`.
 
-#### [Try It Yourself](https://plutolang.github.io/web/#code=local%20function%20print_range(value)%0D%0A%20%20%20%20print(switch%20value%20do%0D%0A%20%20%20%20%20%20%20%20case%201%2C%202%2C%203%20-%3E%20%221-3%22%0D%0A%20%20%20%20%20%20%20%20case%204%2C%205%2C%206%20-%3E%20%224-6%22%0D%0A%20%20%20%20end)%0D%0Aend%0D%0Aprint_range(1)%20--%3E%20%221-3%22%0D%0Aprint_range(6)%20--%3E%20%224-6%22%0D%0Aprint_range(9)%20--%3E%20nil)
+#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20function%20print_range(value)%0D%0A%20%20%20%20print(switch%20value%20do%0D%0A%20%20%20%20%20%20%20%20case%201%2C%202%2C%203%20-%3E%20%221-3%22%0D%0A%20%20%20%20%20%20%20%20case%204%2C%205%2C%206%20-%3E%20%224-6%22%0D%0A%20%20%20%20end)%0D%0Aend%0D%0Aprint_range(1)%20--%3E%20%221-3%22%0D%0Aprint_range(6)%20--%3E%20%224-6%22%0D%0Aprint_range(9)%20--%3E%20nil)
 
 ## Using Compatibility Mode?
 You may need to use `pluto_switch` instead of `switch`. Alternatively, `pluto_use switch` will enable the keyword independently of environment settings.

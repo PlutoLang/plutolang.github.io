@@ -22,4 +22,4 @@ write()         --> "No text provided."
 write("Hello!") --> "Hello!"
 ```
 
-#### [Try It Yourself](https://plutolang.github.io/web/#code=local%20function%20write(text%20%3D%20%22No%20text%20provided.%22)%0D%0A%20%20%20%20print(text)%0D%0Aend%0D%0A%0D%0Awrite()%20%20%20%20%20%20%20%20%20--%3E%20%22No%20text%20provided.%22%0D%0Awrite(%22Hello!%22)%20--%3E%20%22Hello!%22)
+#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20function%20write(text%20%3D%20%22No%20text%20provided.%22)%0D%0A%20%20%20%20print(text)%0D%0Aend%0D%0A%0D%0Awrite()%20%20%20%20%20%20%20%20%20--%3E%20%22No%20text%20provided.%22%0D%0Awrite(%22Hello!%22)%20--%3E%20%22Hello!%22)
