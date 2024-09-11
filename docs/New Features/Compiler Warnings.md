@@ -207,7 +207,7 @@ file.pluto:5: warning: discarding return value of function declared '<nodiscard>
 ```
 
 ## Compile-time Configuration
-The state of each warning type can be changed during compile-time and exception for certain code can be made.
+The state of each warning type can be changed during compile-time and exceptions for certain code can be made.
 
 ### Changing Warning States
 
