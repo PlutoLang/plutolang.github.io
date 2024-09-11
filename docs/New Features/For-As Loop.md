@@ -23,5 +23,5 @@ end
 ```
 
 :::info
-The bytecode of this feature is only backwards-compatible with Lua when `pairs` or `ipairs` is used.
+The bytecode of this feature is only backwards-compatible with Lua when `pairs`, `ipairs`, or `next` is used. See [Generalized Iteration](<../QoL Improvements/Generalized Iteration.md>).
 :::
