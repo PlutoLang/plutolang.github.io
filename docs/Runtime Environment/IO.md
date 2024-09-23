@@ -61,7 +61,7 @@ end
 A boolean indicating if the path led towards a file.
 ```pluto
 local path = "./isfile/file"
-local bool = io.isdir(path)
+local bool = io.isfile(path)
 if bool then
     print("File!")
 else
