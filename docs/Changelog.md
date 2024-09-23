@@ -4,6 +4,17 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.9.5
+- Fixed io.contents not returning an empty string for empty files on Windows
+- Fixed table.clear not resetting cached length
+- Fixed http.request allowing header values to contain CR and LF (CVE-2024-45597)
+- Fixed strings implicitly concatenating with each other
+- Fixed incorrect formatting with some instances of VM dumping
+- PHP build scripts now pass on additional arguments to the compiler
+
+From Lua:
+- Fixed wrong code gen for indices with comparisons
+
 ## 0.9.4
 - Improved field-shadow warning to say which field is shadowed
 - Improved handing of `parent` keyword
