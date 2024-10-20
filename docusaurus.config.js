@@ -1,7 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const codeTheme = require('./src/theme/monokai');
+const fs = require('node:fs');
+const remarkShikiTwoSlash = require('remark-shiki-twoslash').default;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -41,6 +42,21 @@ const config = {
         },
       }),
     ],
+    [
+      'docusaurus-preset-shiki-twoslash',
+      {
+        theme: 'monokai',
+        langs: [
+          'cpp',
+          {
+            id: 'pluto',
+            name: 'pluto',
+            scopeName: 'source.pluto',
+            path: require.resolve('./src/theme/Pluto.tmLanguage.json'),
+          }
+        ],
+      }
+    ],
   ],
 
   themeConfig:
@@ -74,16 +90,6 @@ const config = {
       footer: {
         style: 'dark',
         copyright: `Copyright © ${new Date().getFullYear()} PlutoLang. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: codeTheme,
-        additionalLanguages: ['cpp'],
-        magicComments: [
-          {
-            className: 'code-block-error-line',
-            line: 'ERROR:',
-          },
-        ],
       },
       colorMode: {
         defaultMode: 'dark',

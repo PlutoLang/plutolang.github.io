@@ -70,3 +70,7 @@ p, h1, h2, h3, h4, a {
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.shiki.github-light {
+  display: none;
+}

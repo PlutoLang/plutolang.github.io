@@ -6,6 +6,6 @@ export default function prismIncludeLanguages(PrismObject) {
   // You can mutate PrismObject: registering plugins, deleting languages... As
   // long as you don't re-assign it
   globalThis.Prism = PrismObject;
-  require("./pluto.js");
+  //require("./pluto.js");
   delete globalThis.Prism;
 }
