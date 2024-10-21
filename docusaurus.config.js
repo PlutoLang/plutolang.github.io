@@ -45,7 +45,7 @@ const config = {
     [
       'docusaurus-preset-shiki-twoslash',
       {
-        theme: 'monokai',
+        theme: 'monokai-patched',
         langs: [
           'cpp',
           {
@@ -54,6 +54,9 @@ const config = {
             scopeName: 'source.pluto',
             path: require.resolve('./src/theme/Pluto.tmLanguage.json'),
           }
+        ],
+        themes: [
+          require('./src/theme/monokai-patched.json'),
         ],
       }
     ],
