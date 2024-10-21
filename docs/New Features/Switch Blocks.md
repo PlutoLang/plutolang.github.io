@@ -102,13 +102,10 @@ local t = {
     end
 }
 switch 42 do
-// ERROR:
-    case t:getVal(): -- This is interpreted as case t: getVal():print...
-// ERROR:
+    case t:getVal(): -- This is interpreted as `case t: getVal():print("val is 42")`
         print("val is 42")
-// ERROR:
         break
-    case (t:getVal()):
+    case (t:getVal()): -- This works as expected
         print("val is 42")
         break
 end

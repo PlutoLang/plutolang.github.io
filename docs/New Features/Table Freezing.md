@@ -7,28 +7,20 @@ Tables can now be frozen at their current state to forbid any future modificatio
 -- Disallowing any edits to the global environment table.
 table.freeze(_G)
 
-// ERROR:
 _G.string = {}
-// ERROR:
 -- file.pluto:4: attempt to modify frozen table.
 ```
 ```pluto showLineNumbers
 -- Creating a constant local that's associated with a frozen table.
 local Frozen <const> = table.freeze({ 1, 2, 3 })
 
-// ERROR:
 Frozen = {}
-// ERROR:
 -- file.pluto:4: attempt to reassign constant.
 
-// ERROR:
 Frozen[1] = "new value"
-// ERROR:
 -- file.pluto:7: attempt to modify frozen table.
 
-// ERROR:
 rawset(Frozen, "key", "value")
-// ERROR:
 -- file.pluto:10: attempt to modify frozen table.
 ```
 ```pluto showLineNumbers
@@ -36,9 +28,7 @@ rawset(Frozen, "key", "value")
 for i = 1, 249 do
   local name, value = debug.getlocal(1, i)
   if name == "Frozen" then
-    // ERROR:
     debug.setlocal(1, i, { ["key"] = "hello world" })
-    // ERROR:
     -- file.pluto:5: attempt to modify local variable with a frozen table.
   end
 end

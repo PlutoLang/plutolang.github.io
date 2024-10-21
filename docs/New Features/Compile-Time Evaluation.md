@@ -47,8 +47,7 @@ local a <const> = 123
 However, `$define` also enforces that the assigned variable is a compile-time constant:
 ```pluto
 local a <const> = {}
-// ERROR:
-$define a = {} -- variable was not assigned a compile-time constant value
+$define a = {} -- Error: variable was not assigned a compile-time constant value
 ```
 
 ## Conditionals
