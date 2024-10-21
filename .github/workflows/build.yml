@@ -11,10 +11,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@main
 
-      - name: build
-        run: |
-          npm ci
-          npm run build
+      - run: npm ci
+
+      - run: cp -rf patches/shiki-twoslash/* node_modules/shiki-twoslash/dist/
+
+      - run: npm run build
 
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
