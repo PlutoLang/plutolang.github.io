@@ -6,7 +6,7 @@ Pluto makes a plethora of improvements when it comes to object-oriented programm
 ## Method Creation
 
 A series of methods was otherwise ugly to implement into a Lua table.
-```pluto showLineNumbers title="Old Code"
+```pluto title="Old Code"
 local t = {}
 
 function t:f1(...) end
@@ -14,7 +14,7 @@ function t:f2(...) end
 function t:f3(...) end
 ```
 Now, you can inline these statements inside of your table.
-```pluto showLineNumbers title="New Code"
+```pluto title="New Code"
 local t = {
     function f1() end,
     function f2() end,
@@ -30,7 +30,7 @@ Keep in mind, this produces *methods*, meaning you'll need to use the colon invo
 
 For consistency with the above syntax, you can use 'static function' to declare non-method functions in your tables:
 
-```pluto showLineNumbers
+```pluto
 local t = {
     static function say(msg)
         print(msg)
@@ -45,7 +45,7 @@ t.say("Hello") -- "Hello"
 
 Pluto adds an easy way to make instances with the `new` operator. This operator will also call the `__construct` method if it exists.
 
-```pluto showLineNumbers
+```pluto
 local Human = {
     function __construct(name)
         self.name = name
@@ -63,7 +63,7 @@ Note that for compatibility with Lua and C API classes, the `new` operator check
 
 The `class` statement is similar to a table constructor, but it does not require commas or semicolons:
 
-```pluto showLineNumbers
+```pluto
 class Human
     function __construct(name)
         self.name = name
@@ -82,7 +82,7 @@ The class statement also supports modifiers: `local class NAME`, `export class N
 
 There is also a `class` expression, which can be used e.g. when assigning to a variable:
 
-```pluto showLineNumbers
+```pluto
 local Human = class
     function __construct(name)
         self.name = name
@@ -94,7 +94,7 @@ end
 
 The class statement also supports `extends` to specify a parent:
 
-```pluto showLineNumbers
+```pluto
 class Entity
     age = 1
 end
@@ -113,7 +113,7 @@ This also adds a `__parent` field to Human.
 
 The `parent` expression is a shorthand for `self.__parent`, which also supports method call syntax, in which case it's a shorthand for `self.__parent.METHOD(self, ...)`.
 
-```pluto showLineNumbers
+```pluto
 class Entity
     function __construct(name)
         self.name = name
@@ -189,7 +189,7 @@ print(human.age) -- nil
 
 The `instanceof` operator can be used to check if a table is a class instance, including inherited classes:
 
-```pluto showLineNumbers
+```pluto
 class Entity end
 class Human extends Entity end
 local e = new Entity()
@@ -200,7 +200,7 @@ print(h instanceof Entity) -- true (by inheritance)
 print(h instanceof Human) -- true
 ```
 It can also be used as a function:
-```pluto showLineNumbers
+```pluto
 class Entity end
 local e = new Entity()
 print(instanceof(e, Entity)) -- true
