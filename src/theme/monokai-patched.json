@@ -191,14 +191,14 @@
     {
       "scope": "entity.name.type, entity.name.class, entity.name.namespace, entity.name.scope-resolution",
       "settings": {
-        "fontStyle": "underline",
+        "fontStyle": "",
         "foreground": "#A6E22E"
       }
     },
     {
       "scope": "entity.other.inherited-class",
       "settings": {
-        "fontStyle": "italic underline",
+        "fontStyle": "italic",
         "foreground": "#A6E22E"
       }
     },
