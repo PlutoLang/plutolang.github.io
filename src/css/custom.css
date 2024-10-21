@@ -74,3 +74,18 @@ p, h1, h2, h3, h4, a {
 .shiki.github-light {
   display: none;
 }
+
+.shiki[showlinenumbers] code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+.shiki[showlinenumbers] code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115,138,148,.4)
+}
