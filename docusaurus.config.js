@@ -100,7 +100,10 @@ const config = {
         respectPrefersColorScheme: false,
       },
     }),
-  trailingSlash: false
+  trailingSlash: false,
+  scripts: [
+    { src: '/custom.js', async: true }
+  ]
 };
 
 module.exports = config;
