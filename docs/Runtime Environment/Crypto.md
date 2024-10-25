@@ -234,17 +234,12 @@ assert(crypto.sha512("Pluto", false) == "ee8410a8bf9511b94fd6669b5c3e0c4b86e8e4b
 ---
 ## Cryptographic PRNGs
 ### `crypto.random`
-The `crypto.random` function uses your operating system's default PRNG. 
-- On Linux-based systems, this is `/dev/urandom`.
-- On Windows, this is `BCryptGenRandom`.
-
-This is a cryptographically-secure PRNG when your system can provide those services. However, if it does not, then this is not cryptographically secure. Either way, it provides good randomness.
-#### Parameters
-1. The minimum value to return.
-2. The maximum value to return, as a range.
+This is a cryptographically secure PRNG, assuming the platform's implementation of the underlying primitive is secure.
+#### Returns
+A random lua integer, in the range from `math.mininteger` to `math.maxinteger`.
 ```pluto
 local crypto = require("crypto")
-assert(crypto.random(1, 10) < 11)
+print(crypto.random())
 ```
 
 ---
