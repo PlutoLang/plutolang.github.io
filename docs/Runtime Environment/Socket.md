@@ -83,14 +83,17 @@ print(sock:recv()) --> World
 
 ### `socket.starttls`
 Attempts to add the TLS crypto layer to the socket, making the transport layer a sole carrier for TLS traffic.
-#### Parameters
+#### Parameters (Client)
 1. The socket instance.
 2. The host name of the intended remote. This may be the same as what was passed to `socket.connect`. This name must be on the certificate that the remote will send.
+#### Parameters (Server)
+1. The socket instance.
+2. An array of tables describing available certificates. Each certificate needs a `chain` and `private_key` field, which should be a string containing valid PEM. The `private_key` must be RSA.
 #### Returns
 True on success. On failure, returns false and the socket is closed. If the socket is already using TLS, returns nil.
 #### Multitasking
 If called inside of a coroutine, this function yields. Otherwise, it blocks.
-```pluto norun
+```pluto norun title="Client Example"
 local socket = require "pluto:socket"
 
 local s = socket.connect("pluto-lang.org", 443)
@@ -99,6 +102,26 @@ s:send("GET / HTTP/1.1\r\nHost: pluto-lang.org\r\nConnection: close\r\n\r\n")
 while data := s:recv() do
     print(data)
 end
+```
+```pluto norun title="Server Example"
+local { http, scheduler, socket } = require "*"
+
+local certs = {
+    {
+        chain = http.request("https://tls.cat/certs/viatls-2024/cert.pem"),
+        private_key = http.request("https://tls.cat/certs/viatls-2024/key.pem"),
+    }
+}
+
+local sched = new scheduler()
+socket.bind(sched, 443, |s| -> do
+    if s:starttls(certs) then
+        local content = "Hello, world!"
+        s:send("HTTP/1.1 200 OK\r\nConnection: Close\r\nContent-Length: "..#content.."\r\n\r\n"..content)
+    end
+end)
+print("https://127-0-0-1.viatls.com/")
+sched:run()
 ```
 
 ### `socket.close`
