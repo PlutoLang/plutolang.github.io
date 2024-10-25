@@ -15,6 +15,19 @@ local max = a > b ? a : b
 ```
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20a%20%3D%206%0Alocal%20b%20%3D%209%0A%0Alocal%20max%20%3D%20a%20%3E%20b%20%3F%20a%20%3A%20b%0A%0Aprint(max))
 
+## If Expressions
+
+If expressions are an alternative syntax for ternary expressions:
+
+```pluto
+local a = 6
+local b = 9
+
+local max = if a > b then a else b end
+
+print(max) --> 9
+```
+
 ## Doesn't Lua already have ternaries?
 
 While it is true that you can do something like this:
