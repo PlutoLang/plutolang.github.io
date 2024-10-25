@@ -292,3 +292,15 @@ local t = {
 
 print(t:chunk(3)) --> { { 1, 2, 3 }, { "hello", "world" } }
 ```
+---
+### `table.back`
+Returns the last element of a table. This is functionally identical to `t[#t]`.
+#### Parameters
+1. The table.
+```pluto
+local t = { "a", "b", "c" }
+print(t[#t]) --> "c"
+
+-- Now can be fit into one line.
+print({ "a", "b", "c" }:back()) --> "c"
+```
