@@ -273,3 +273,22 @@ local t = {
 
 print(t:countvalues()) --> { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
 ```
+---
+### `table.chunk`
+Generates a new table which collects the values of the input and represents them in chunks of a specified size.
+#### Parameters
+1. The table.
+2. The desired `size` of each chunk.
+#### Errors
+An error is thrown if `size` is not greater than zero.
+```pluto
+local t = {
+    1,
+    2,
+    3,
+    ["key"] = "hello",
+    ["other key"] = "world"
+}
+
+print(t:chunk(3)) --> { { 1, 2, 3 }, { "hello", "world" } }
+```
