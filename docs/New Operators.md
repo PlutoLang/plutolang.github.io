@@ -35,6 +35,20 @@ a += 1
 Compound operators are syntactic sugar. They'll call the same metamethods as their non-compound counterparts.
 :::
 
+## Comparison Chaining
+The `<`, `<=`, `>`, and `>=` operators can now be chained successively.
+
+```pluto
+if 1 < 2 < 3 then
+    print("Hello, world!")
+end
+
+-- Pluto generates code which effectively evaluates to this:
+if 1 < 2 and 2 < 3 then
+    print("Hello, world!")
+end
+```
+
 ## Coalescing Operator
 The nil-coalescing operator is helpful for evaluating values against `nil`. 
 
