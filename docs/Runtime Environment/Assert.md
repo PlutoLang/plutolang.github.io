@@ -329,3 +329,18 @@ pluto: test.pluto:4 -> Assertion Error: (assert.searcherror)
     Error Message: something s
 --]]
 ```
+---
+### `assert.contains`
+Asserts that `element` is contained inside of `container` by using Pluto's modified `in` operator.
+It's important to understand the type constraints of `in` to understand the type constraints here.
+#### Parameters
+1. `element` — The element to search for. If `container` is a string, `element` must be a string. If `container` is a table, `element` can be any type.
+2. `container` — The container that `element` should be inside of. The `container` should be a string or table.
+#### Errors
+An assertion error is thrown if:
+1. `element` is not contained inside of `container`.
+2. `element` or `container` are of the wrong type and cannot be used with Pluto's modified `in` operator. 
+```pluto showLineNumbers
+assert.contains("hello", { "hello", "world" }) --> Passes.
+assert.contains("world", { "hello", "hello" }) --> Fails.
+```
