@@ -241,3 +241,17 @@ Runs the given function against all elements, returning true if all of them matc
 print({ 2, 4, 6 }:checkall(|x| -> x % 2 == 0) ? "All are even" : "Some are odd") --> All are even
 print({ 1, 2, 3 }:checkall(|x| -> x % 2 == 0) ? "All are even" : "Some are odd") --> Some are odd
 ```
+### `table.keys`
+Returns a new array-like table containing all keys from the table.
+#### Parameters
+1. The table.
+```pluto
+local t = {
+    ["key1"] = "value1",
+    ["key2"] = "value2",
+    "sequence",
+    "sequence sequence"
+}
+
+t:keys() --> { 1, 2, "key1", "key2" }
+```
