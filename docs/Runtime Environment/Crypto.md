@@ -358,6 +358,57 @@ print(dumpvar(priv))
 --> }
 ```
 
+### `crypto.exportkey`
+Exports a private key.
+#### Parameters
+1. The key to export.
+2. The exchange format to use. Only "pem" is supported right now.
+```pluto
+local { bigint, crypto } = require "pluto:*"
+
+local priv = {
+    p = new bigint("115443384115231951475820445136871322101870729500298182134363293112660251666017"),
+    q = new bigint("98365361248415863235179644468056200977592391948608651522703704315152579004021"),
+}
+print(crypto.exportkey(priv, "pem"))
+```
+```
+-----BEGIN RSA PRIVATE KEY-----
+MIIBOwIBAAJBANjRKgOuLxSxbL/fFg/3rJeRGGKz0EjxjjuV6QmgjZGq1LpI2KH+
+TrxVV4L94U0TCFo19vYtV6T4bOH/MlA6kFUCAwEAAQJANcTrfzWpgd99WXkM6uFQ
+iVcHneS7fPeAvziubf+F1E98zwFgLbIOiPSJcVkXc79A2PQZdbGq7dFAxVD0EpIs
+oQIhAP86o9Ap9KOH4rgZn8ElHyWKO/Cj8m7oHjSmHG/CBGZhAiEA2XjSTZJ37mg3
+gJOXlMjG4SK15/jRCB1CMx8f4VhBhnUCIQCWK0p3EDiAf1NGPs1gNxc8XzklPVFH
+MAuVrqbMmrs8AQIhAJ1aqvCuFlFO3zoNkRR64kxsjSq4AqfYY9oRn0OyVFcxAiBj
+ueZ/sI52jgP8+xK2x7coiX5/tDmXCGlp5utUAjk2+Q==
+-----END RSA PRIVATE KEY-----
+```
+
+### `crypto.importkey`
+Imports a private key.
+#### Parameters 
+1. The encoded key.
+2. The exchange format to use. Only "pem" is supported right now.
+```pluto
+local { bigint, crypto } = require "pluto:*"
+
+print(dumpvar(crypto.importkey([[-----BEGIN RSA PRIVATE KEY-----
+MIIBOwIBAAJBANjRKgOuLxSxbL/fFg/3rJeRGGKz0EjxjjuV6QmgjZGq1LpI2KH+
+TrxVV4L94U0TCFo19vYtV6T4bOH/MlA6kFUCAwEAAQJANcTrfzWpgd99WXkM6uFQ
+iVcHneS7fPeAvziubf+F1E98zwFgLbIOiPSJcVkXc79A2PQZdbGq7dFAxVD0EpIs
+oQIhAP86o9Ap9KOH4rgZn8ElHyWKO/Cj8m7oHjSmHG/CBGZhAiEA2XjSTZJ37mg3
+gJOXlMjG4SK15/jRCB1CMx8f4VhBhnUCIQCWK0p3EDiAf1NGPs1gNxc8XzklPVFH
+MAuVrqbMmrs8AQIhAJ1aqvCuFlFO3zoNkRR64kxsjSq4AqfYY9oRn0OyVFcxAiBj
+ueZ/sI52jgP8+xK2x7coiX5/tDmXCGlp5utUAjk2+Q==
+-----END RSA PRIVATE KEY-----]], "pem")))
+```
+```
+{
+    ["p"] = 115443384115231951475820445136871322101870729500298182134363293112660251666017,
+    ["q"] = 98365361248415863235179644468056200977592391948608651522703704315152579004021,
+}
+```
+
 ### `crypto.encrypt`
 #### Parameters
 1. `data` — The data to be encrypted.
