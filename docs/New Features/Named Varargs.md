@@ -10,7 +10,7 @@ function vfunc(...)
         print(arg)
     end
 end
-vfunc("Hello") -- "Hello"
+vfunc("Hello") --> Hello
 ```
 
 But, with named varargs, it can be as simple as this:
@@ -21,7 +21,7 @@ function vfunc(...args)
         print(arg)
     end
 end
-vfunc("Hello") -- "Hello"
+vfunc("Hello") --> Hello
 ```
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=function%20vfunc(...args)%0D%0A%20%20%20%20for%20args%20as%20arg%20do%0D%0A%20%20%20%20%20%20%20%20print(arg)%0D%0A%20%20%20%20end%0D%0Aend%0D%0Avfunc(%22Hello%22)%20--%20%22Hello%22)

@@ -8,11 +8,11 @@ for t as value do
     print(value)
 end
 
--- 1
--- 2
--- 3
--- hello
--- world
+--> 1
+--> 2
+--> 3
+--> hello
+--> world
 ```
 That code is identical to this:
 ```pluto showLineNumbers title="Old Code"

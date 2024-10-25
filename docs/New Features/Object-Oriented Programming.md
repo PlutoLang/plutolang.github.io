@@ -36,7 +36,7 @@ local t = {
         print(msg)
     end
 }
-t.say("Hello") -- "Hello"
+t.say("Hello") --> Hello
 ```
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20t%20%3D%20%7B%0D%0A%20%20%20%20static%20function%20say(msg)%0D%0A%20%20%20%20%20%20%20%20print(msg)%0D%0A%20%20%20%20end%0D%0A%7D%0D%0At.say(%22Hello%22)%20--%20%22Hello%22)
@@ -52,7 +52,7 @@ local Human = {
     end
 }
 local john = new Human("John")
-print(john.name) -- John
+print(john.name) --> John
 ```
 
 #### [Try It Yourself](https://pluto-lang.org/web/#code=local%20Human%20%3D%20%7B%0D%0A%20%20%20%20function%20__construct(name)%0D%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0D%0A%20%20%20%20end%0D%0A%7D%0D%0Alocal%20john%20%3D%20new%20Human(%22John%22)%0D%0Aprint(john.name)%20--%20John)
@@ -103,7 +103,7 @@ class Human extends Entity
 end
 
 local human = new Human()
-print(human.age) -- 1
+print(human.age) --> 1
 ```
 This also adds a `__parent` field to Human.
 
@@ -129,7 +129,7 @@ class Human extends Entity
 end
 
 local human = new Human("John")
-print(human.name) -- "John"
+print(human.name) --> John
 ```
 
 Note that if you have a local variable (or function parameter) called "parent", the `parent` expression will defer to it.
