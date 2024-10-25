@@ -254,7 +254,7 @@ local t = {
     "sequence sequence"
 }
 
-print(t:keys()) --> { 1, 2, "key1", "key2" }
+t:keys() -- { 1, 2, "key1", "key2" }
 ```
 ---
 ### `table.countvalues`
@@ -271,7 +271,7 @@ local t = {
     ["key2"] = "value"
 }
 
-print(t:countvalues()) --> { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
+t:countvalues() -- { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
 ```
 ---
 ### `table.chunk`
@@ -290,7 +290,7 @@ local t = {
     ["other key"] = "world"
 }
 
-print(t:chunk(3)) --> { { 1, 2, 3 }, { "hello", "world" } }
+t:chunk(3) -- { { 1, 2, 3 }, { "hello", "world" } }
 ```
 ---
 ### `table.back`
@@ -302,7 +302,7 @@ local t = { "a", "b", "c" }
 print(t[#t]) --> "c"
 
 -- Now can be fit into one line.
-print({ "a", "b", "c" }:back()) --> "c"
+print({ "a", "b", "c" }:back()) --> c
 ```
 ---
 ### `table.slice`
@@ -314,6 +314,6 @@ Returns a new table composed of the elements between the specified range. This i
 ```pluto
 local t = { 1, 2, 3, 4, 5 }
 
-print(t:slice(3)) --> { 3, 4, 5 }
-print(t:slice(2, 4)) --> { 2, 3, 4 }
+t:slice(3) -- { 3, 4, 5 }
+t:slice(2, 4) -- { 2, 3, 4 }
 ```
