@@ -11,7 +11,7 @@ Hash a string using Lua's version of the DJB2 non-cryptographic hashing algorith
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.lua(str) == 2871868277)
 ```
 ---
@@ -21,7 +21,7 @@ Hash a string using the MD5 semi-cryptographic hashing algorithm.
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.md5(str) == "5eb63bbbe01eeed093cb22bb8f5acdc3")
 ```
 ---
@@ -33,7 +33,7 @@ Hash a string using the DJB2 non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.djb2(str) == 894552257)
 ```
 ---
@@ -43,7 +43,7 @@ Hash a string using the FNV1 non-cryptographic hashing algorithm.
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.fnv1(str) == 9065573210506989167)
 ```
 ---
@@ -53,7 +53,7 @@ Hash a string using the FNV1A non-cryptographic hashing algorithm.
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.fnv1a(str) == 8618312879776256743)
 ```
 ---
@@ -65,7 +65,7 @@ Hash a string using the JOAAT non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.joaat(str) == 1045060183)
 ```
 ---
@@ -77,7 +77,7 @@ Hash a string using the SDBM non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.sdbm(str) == 430867652)
 ```
 ---
@@ -90,7 +90,7 @@ Hash a string using the CRC32 non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.crc32(str) == 222957957)
 ```
 ---
@@ -111,7 +111,7 @@ Hash a string using the Lookup3 non-cryptographic hashing algorithm.
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.lookup3(str) == 1252609637)
 ```
 ---
@@ -123,7 +123,7 @@ Hash a string using the Times33 non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.times33(str) == 3889643616)
 ```
 ### `crypto.murmur1`
@@ -134,7 +134,7 @@ Hash a string using the Murmur1 non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.murmur1(str) == 3154674178)
 ```
 ---
@@ -146,7 +146,7 @@ Hash a string using the Murmur2 non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.murmur2(str) == 1151865881)
 ```
 ### `crypto.murmur2a`
@@ -157,7 +157,7 @@ Hash a string using the Murmur2A non-cryptographic hashing algorithm.
 An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.murmur2a(str) == 2650573207)
 ```
 ### `crypto.murmur64a`
@@ -166,7 +166,7 @@ Hash a string using the Murmur64A non-cryptographic hashing algorithm.
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.murmur64a(str) == -3190198453633110066)
 ```
 ### `crypto.murmur64b`
@@ -175,7 +175,7 @@ Hash a string using the Murmur64A non-cryptographic hashing algorithm.
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.murmur64b(str) == 7088720765356542432)
 ```
 ---
@@ -185,7 +185,7 @@ Hash a string using the Murmur2Neutral non-cryptographic hashing algorithm.
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
+local str = "hello world"
 assert(crypto.murmur2neutral(str) == 1151865881)
 ```
 ---
