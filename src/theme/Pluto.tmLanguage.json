@@ -148,6 +148,32 @@
           "name": "punctuation.section.group.end.pluto"
         },
         {
+          "begin": "(?<=[\\.\\:]cdef|ffi\\.struct)\\s*(\\[(=*)\\[)",
+          "beginCaptures": {
+            "0": {
+              "name": "string.quoted.other.multiline.pluto"
+            },
+            "1": {
+              "name": "punctuation.definition.string.begin.pluto"
+            }
+          },
+          "contentName": "meta.embedded.pluto",
+          "end": "(\\]\\2\\])",
+          "endCaptures": {
+            "0": {
+              "name": "string.quoted.other.multiline.pluto"
+            },
+            "1": {
+              "name": "punctuation.definition.string.end.pluto"
+            }
+          },
+          "patterns": [
+            {
+              "include": "source.c"
+            }
+          ]
+        },
+        {
           "begin": "(?<!--)\\[(=*)\\[",
           "beginCaptures": {
             "0": {

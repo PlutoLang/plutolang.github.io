@@ -47,6 +47,7 @@ const config = {
       {
         theme: 'monokai-patched',
         langs: [
+          'c',
           'cpp',
           {
             id: 'pluto',
