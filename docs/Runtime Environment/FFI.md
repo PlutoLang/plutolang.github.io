@@ -31,7 +31,7 @@ Compiled like this:
 - Linux/MacOS: `clang -std=c++17 --shared -o liblib.so lib.cpp`
 
 Can be used like this:
-```pluto
+```pluto norun
 local ffi = require "pluto:ffi"
 local lib = ffi.open(os.platform == "windows" ? "lib" : "./liblib.so")
 assert(lib:value("i32", "MY_MAGIC_INT") == 69)
@@ -138,7 +138,7 @@ Parses a subset of C for values and functions and puts them on the library insta
 #### Parameters
 1. The C source code.
 #### Example
-```pluto
+```pluto norun
 local ffi = require "pluto:ffi"
 local lib = ffi.open(os.platform == "windows" ? "lib" : "./liblib.so")
 lib:cdef[[
@@ -149,7 +149,7 @@ assert(lib.MY_MAGIC_INT == 69)
 assert(lib.add(38, 4) == 42)
 ```
 This is equivalent to the following:
-```pluto
+```pluto norun
 local ffi = require "pluto:ffi"
 local lib = ffi.open(os.platform == "windows" ? "lib" : "./liblib.so")
 
