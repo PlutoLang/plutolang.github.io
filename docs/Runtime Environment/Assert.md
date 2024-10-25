@@ -341,6 +341,6 @@ An assertion error is thrown if:
 1. `element` is not contained inside of `container`.
 2. `element` or `container` are of the wrong type and cannot be used with Pluto's modified `in` operator. 
 ```pluto showLineNumbers
-assert.contains("hello", { "hello", "world" }) --> Passes.
-assert.contains("world", { "hello", "hello" }) --> Fails.
+assert.contains("hello", { "hello", "world" }) -- Passes.
+assert.contains("world", { "hello", "hello" }) -- Fails.
 ```

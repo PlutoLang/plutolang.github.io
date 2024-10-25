@@ -254,7 +254,7 @@ local t = {
     "sequence sequence"
 }
 
-t:keys() --> { 1, 2, "key1", "key2" }
+print(t:keys()) --> { 1, 2, "key1", "key2" }
 ```
 ---
 ### `table.countvalues`
@@ -271,5 +271,5 @@ local t = {
     ["key2"] = "value"
 }
 
-t:countvalues() --> { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
+print(t:countvalues()) --> { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
 ```
