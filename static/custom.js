@@ -12,12 +12,14 @@ function patchCodeblocks() {
 		div.className = "copy-button";
 		code.appendChild(div);
 
-		const button = document.createElement("button");
-		button.textContent = "Try It";
-		button.onclick = () => {
-			window.open("https://pluto-lang.org/web/#code=" + encodeURIComponent([...code.querySelectorAll(".code-container .line")].map(x => x.textContent).join("\n")));
-		};
-		div.appendChild(button);
+		if (!code.hasAttribute("norun")) {
+			const button = document.createElement("button");
+			button.textContent = "Try It";
+			button.onclick = () => {
+				window.open("https://pluto-lang.org/web/#code=" + encodeURIComponent([...code.querySelectorAll(".code-container .line")].map(x => x.textContent).join("\n")));
+			};
+			div.appendChild(button);
+		}
 
 		div.appendChild(code.querySelector(".copy-button")).className = "";
 	});
