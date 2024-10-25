@@ -22,5 +22,3 @@ script.pluto:2: Not implemented
 Not implemented
 script.pluto:2
 ```
-
-#### [Try It Yourself](https://pluto-lang.org/web/#code=try%0A%20%20%20%20new%20exception(%22Not%20implemented%22)%0Acatch%20e%20then%0A%20%20%20%20print(e)%20--%20same%20as%20error(%22Not%20implemented%22)%0A%20%20%20%20print(e.what)%0A%20%20%20%20print(e.where)%0Aend)
