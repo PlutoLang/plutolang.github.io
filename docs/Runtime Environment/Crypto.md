@@ -417,3 +417,20 @@ print(base64.encode(sig)) --> un1g04+cwG8WxYDpSlj4PO/hsTqSITgYKycRuR+m3AE6ypLyUC
 -- Verify
 print(crypto.verify(msg, "rsa-sha256", pub, sig)) --> true
 ```
+
+---
+## Miscellaneous
+### `crypto.decompress`
+Decompresses a DEFLATE-compressed string (one might call this an "INFLATE" function). Compatible with gzip and zlib headers and footers.
+#### Parameters
+1. The string to decompress.
+#### Returns
+1. The decompressed string.
+2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch`
+```pluto
+local decompressed, info = require"crypto".decompress("\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04")
+print(decompressed) --> Hello, Pluto!
+print(info.compressed_size) --> 14
+print(info.checksum_present) --> false
+print(info.checksum_mismatch) --> false
+```
