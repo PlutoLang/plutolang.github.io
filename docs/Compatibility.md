@@ -74,6 +74,14 @@ These are what they look like:
 - `pluto_try`
 - `pluto_catch`
 
+### Automatic Compatibility Inference
+When Pluto encounters its keywords being used as identifiers in source code, it handles this automatically:
+
+By default, using a Pluto keyword as an identifier would cause a parsing error. But if Pluto detects this situation, and:
+- No `pluto_use` statement is present for the afflicting keyword.
+- No compatibility settings are configured for the afflicting keyword.
+
+Then Pluto will automatically disable that specific keyword (note, still accessible through `pluto_*`) and prevent an error from occurring.
 ## Default Table Metatable
 
 This is [a feature in Pluto](Runtime%20Environment/Global%20&%20Base#default-metatables) that, by itself, is a benign QoL improvement for developers. However, in combination with our added standard library functions like [table.min](Runtime%20Environment/Table#tablemin), it can be an unexpected semantic change:
