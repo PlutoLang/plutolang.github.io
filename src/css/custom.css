@@ -81,3 +81,19 @@ p, h1, h2, h3, h4, a {
   text-align: right;
   color: rgba(115,138,148,.4)
 }
+
+.copy-button {
+  background: none !important;
+  cursor: auto !important;
+  padding: 0 !important;
+}
+
+.copy-button button {
+  appearance: none;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--ifm-global-radius);
+  cursor: pointer;
+  padding: 0.4rem 0.5rem;
+  margin-left: 0.3rem;
+}

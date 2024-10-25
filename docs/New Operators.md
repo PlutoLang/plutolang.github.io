@@ -83,7 +83,7 @@ This operator does not implement any metamethods.
 ## Walrus Operator
 The Walrus operator allows you to perform assignments inside of conditional expresssions.
 
-```pluto
+```pluto norun
 if a := get_value() then
     -- 'a' was assigned a truthy value.
 else
@@ -91,7 +91,7 @@ else
 end
 ```
 You can imagine it like this, but note they're not always the same:
-```pluto
+```pluto norun
 do
     local a = get_value()
     if a then
@@ -103,12 +103,12 @@ end
 ```
 
 Note that for while-loops, it will be executed as many times as the condition:
-```pluto title="Pluto Way"
+```pluto norun title="Pluto Way"
 while a := next_value() do
     -- ...
 end
 ```
-```pluto title="Lua Way"
+```pluto norun title="Lua Way"
 while true do
     local a = next_value()
     if not a then break end
@@ -128,7 +128,7 @@ print(eq, lt, gt) --> 0, -1, 1
 
 It works with any type that supports `__eq` and `__lt`, making it well-suited for usage in generic algorithms like sorting. The return values are designed such that you can compare them to `0`, e.g. with the values from above:
 
-```pluto
+```pluto norun
 print(eq <= 0) --> true
 print(lt <= 0) --> true
 print(gt <= 0) --> false
@@ -156,9 +156,8 @@ http.request("https://httpbin.org/get")
 -->     ["url"] = string(23) "https://httpbin.org/get",
 --> }
 ```
-#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20%7B%20http%2C%20json%20%7D%20%3D%20require%20%22pluto%3A*%22%0D%0A%0D%0Ahttp.request(%22https%3A%2F%2Fhttpbin.org%2Fget%22)%0D%0A%7C%3E%20json.decode%0D%0A%7C%3E%20dumpvar%0D%0A%7C%3E%20print%0D%0A)
 The HTTP-to-print pipeline here would otherwise be written like this:
-```pluto
+```pluto norun
 print(dumpvar(json.decode((http.request("https://httpbin.org/get")))))
 ```
 Note that the pipe operator only passes on the first return value, which is classically achieved by wrapping the expression in an extra pair of parentheses.
@@ -172,7 +171,6 @@ producer()
 |> tonumber|16|
 |> print --> 16
 ```
-#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20producer%20%3D%20%7C%7C%20-%3E%20%2210%22%0D%0A%0D%0Aproducer()%0D%0A%7C%3E%20tonumber%7C16%7C%0D%0A%7C%3E%20print%20--%3E%2016%0D%0A)
 
 ### Methods Calls
 There is specialized syntax for method calls with the pipe operator, too:
@@ -190,7 +188,6 @@ producer()
 |> obj:multiply
 |> print --> 42
 ```
-#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20producer%20%3D%20%7C%7C%20-%3E%2021%0D%0A%0D%0Alocal%20obj%20%3D%20%7B%0D%0A%20%20%20%20function%20multiply(value)%0D%0A%20%20%20%20%20%20%20%20return%20value%20*%20self.factor%0D%0A%20%20%20%20end%0D%0A%7D%0D%0Aobj.factor%20%3D%202%0D%0A%0D%0Aproducer()%0D%0A%7C%3E%20obj%3Amultiply%0D%0A%7C%3E%20print%20--%3E%2042%0D%0A)
 
 ### Anonymous Functions
 The righthand side of the pipe operator can also be an anonymous function, allowing for more advanced usage like this:
@@ -202,4 +199,3 @@ producer()
 
 --> The result was 42
 ```
-#### [Try It Yourself](https://pluto-lang.org/web/#code=local%20producer%20%3D%20%7C%7C%20-%3E%2042%0D%0A%0D%0Aproducer()%0D%0A%7C%3E%20%7Cres%7C%20-%3E%20print(%24%22The%20result%20was%20%7Bres%7D%22)%0D%0A%0D%0A--%3E%20The%20result%20was%2042%0D%0A)
