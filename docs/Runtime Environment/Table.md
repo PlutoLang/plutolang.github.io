@@ -304,3 +304,16 @@ print(t[#t]) --> "c"
 -- Now can be fit into one line.
 print({ "a", "b", "c" }:back()) --> "c"
 ```
+---
+### `table.slice`
+Returns a new table composed of the elements between the specified range. This is intended to be used on sequences.
+#### Parameters
+1. The table.
+2. The starting index.
+3. The ending index. This is optional. By default, this is the length of the table.
+```pluto
+local t = { 1, 2, 3, 4, 5 }
+
+print(t:slice(3)) --> { 3, 4, 5 }
+print(t:slice(2, 4)) --> { 2, 3, 4 }
+```
