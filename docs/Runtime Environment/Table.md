@@ -241,6 +241,7 @@ Runs the given function against all elements, returning true if all of them matc
 print({ 2, 4, 6 }:checkall(|x| -> x % 2 == 0) ? "All are even" : "Some are odd") --> All are even
 print({ 1, 2, 3 }:checkall(|x| -> x % 2 == 0) ? "All are even" : "Some are odd") --> Some are odd
 ```
+---
 ### `table.keys`
 Returns a new array-like table containing all keys from the table.
 #### Parameters
@@ -254,4 +255,21 @@ local t = {
 }
 
 t:keys() --> { 1, 2, "key1", "key2" }
+```
+---
+### `table.countvalues`
+Returns a key-value based table which describes how many times a value appears inside of a table.
+#### Parameters
+1. The table
+```pluto
+local t = {
+    1,
+    2, 2
+    3, 3, 3,
+    4, 4, 4, 4
+    ["key1"] = "value"
+    ["key2"] = "value"
+}
+
+t:countvalues() --> { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
 ```
