@@ -29,7 +29,7 @@ A convenience function that wraps `socket.listen`, automatically accepting new c
 1. A [scheduler](Scheduler) instance.
 2. The port to listen on.
 3. The callback function that will be called in a new coroutine for each client socket.
-```pluto
+```pluto norun
 local { scheduler, socket } = require "*"
 
 local sched = new scheduler()
@@ -58,7 +58,7 @@ Receive data from a socket.
 - If the socket is closed: Nil.
 #### Multitasking
 If a message is buffered, the function can return immediately. If not, it will yield if inside a coroutine, and block otherwise.
-```pluto
+```pluto norun
 local socket = require "pluto:socket"
 
 local s = socket.connect("google.com", 80)
@@ -71,7 +71,7 @@ Pushes a chunk of data to the front of the receive buffer, making it oldest for 
 #### Parameters
 1. The socket instance.
 2. The data to push.
-```pluto
+```pluto norun
 local socket = require "pluto:socket"
 
 local sock = socket.connect("google.com", 80)
@@ -90,7 +90,7 @@ Attempts to add the TLS crypto layer to the socket, making the transport layer a
 True on success. On failure, returns false and the socket is closed. If the socket is already using TLS, returns nil.
 #### Multitasking
 If called inside of a coroutine, this function yields. Otherwise, it blocks.
-```pluto
+```pluto norun
 local socket = require "pluto:socket"
 
 local s = socket.connect("pluto-lang.org", 443)
@@ -118,7 +118,7 @@ A new socket instance. The socket can be used as per usual, with the exception o
 - If there is not, it waits for one. Waiting means yielding if called inside a coroutine, and blocking otherwise.
 ### `hasconnection`
 Checks if there is an incoming client connection. If this function returns true, the next call to `accept` is guaranteed not to block or yield.
-```pluto
+```pluto norun
 local socket = require "pluto:socket"
 
 local l = socket.listen(80) or error("Failed to bind TCP/80")
