@@ -317,3 +317,36 @@ local t = { 1, 2, 3, 4, 5 }
 t:slice(3) -- { 3, 4, 5 }
 t:slice(2, 4) -- { 2, 3, 4 }
 ```
+---
+### `table.modget`
+Returns an element by index with wrap-around.
+#### Parameters
+1. The table.
+2. The index to get.
+```pluto
+local mask = { 0xf0, 0x0f }
+local data = { 0x11, 0x22, 0x33, 0x44 }
+for i, v in data do
+    -- Old way: data[i] = data[i] ~ mask[((i - 1) % #mask) + 1]
+    data[i] = data[i] ~ mask:modget(i)
+end
+assert(data[1] == 0x11 ~ 0xf0)
+assert(data[2] == 0x22 ~ 0x0f)
+assert(data[3] == 0x33 ~ 0xf0)
+assert(data[4] == 0x44 ~ 0x0f)
+```
+---
+### `table.modset`
+Updates an element by index with wrap-around.
+#### Parameters
+1. The table.
+2. The index to set.
+3. The value to set.
+```pluto
+local test = { 1, 2, 3 }
+test:modset(5, 5)
+test:modset(6, 6)
+assert(test[1] == 1)
+assert(test[2] == 5)
+assert(test[3] == 6)
+```
