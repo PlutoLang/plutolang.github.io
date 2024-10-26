@@ -150,6 +150,17 @@ print(ip) --> 1.1.1.1
 print(port) --> 443
 ```
 
+### `socket.getside`
+Get which side of the connection a socket is.
+#### Parameters
+1. The socket instance.
+#### Returns
+Either "client" or "server".
+```pluto norun
+local sock = require"socket".connect("1.1.1.1", 443)
+print(sock:getside()) --> client
+```
+
 ---
 ## Listener Class
 Listener instances are obtained by calling `socket.listen`.
