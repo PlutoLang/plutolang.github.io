@@ -172,6 +172,17 @@ assert(sock:starttls("1.1.1.1"))
 print(sock:istls()) --> true
 ```
 
+### `socket.isopen`
+Check if a connection is still open.
+#### Parameters
+1. The socket instance.
+```pluto norun
+local sock = require"socket".connect("1.1.1.1", 443)
+print(sock:isopen()) --> true
+sock:close()
+print(sock:isopen()) --> false
+```
+
 ---
 ## Listener Class
 Listener instances are obtained by calling `socket.listen`.
