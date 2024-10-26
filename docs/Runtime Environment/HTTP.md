@@ -48,7 +48,7 @@ Queries if a keep-alive connection is available for a remote. This function is n
 1. A partial URL identifying the remote. Partial because only the protocol, host, and port are used; additional components such as path are ignored.
 #### Multitasking
 If called inside of a coroutine, this function may yield. Otherwise, it may block.
-```pluto
+```pluto norun
 local { http, scheduler } = require "*"
 
 local sched = new scheduler()
