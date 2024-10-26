@@ -161,6 +161,17 @@ local sock = require"socket".connect("1.1.1.1", 443)
 print(sock:getside()) --> client
 ```
 
+### `socket.istls`
+Check if a connection is encrypted.
+#### Parameters
+1. The socket instance.
+```pluto norun
+local sock = require"socket".connect("1.1.1.1", 443)
+print(sock:istls()) --> false
+assert(sock:starttls("1.1.1.1"))
+print(sock:istls()) --> true
+```
+
 ---
 ## Listener Class
 Listener instances are obtained by calling `socket.listen`.
