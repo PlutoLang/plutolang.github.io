@@ -136,6 +136,20 @@ Closes a socket.
 #### Parameters
 1. The socket instance.
 
+### `socket.getpeer`
+Get information about the other end of a connection.
+#### Parameters
+1. The socket instance.
+#### Returns
+1. The IP address as a string.
+2. The port.
+```pluto norun
+local sock = require"socket".connect("1.1.1.1", 443)
+local ip, port = sock:getpeer()
+print(ip) --> 1.1.1.1
+print(port) --> 443
+```
+
 ---
 ## Listener Class
 Listener instances are obtained by calling `socket.listen`.
