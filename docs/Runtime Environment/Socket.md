@@ -66,6 +66,13 @@ s:send("GET / HTTP/1.1\r\nHost: google.com\r\n\r\n")
 print(s:recv())
 ```
 
+### `socket.peek`
+Look at received data without consuming it.
+#### Parameters
+1. The socket instances.
+#### Returns
+Either the string that would be returned next by `socket.recv` or nothing if there is no message in the receive buffer.
+
 ### `socket.unrecv`
 Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of `socket.recv`.
 #### Parameters
