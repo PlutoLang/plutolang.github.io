@@ -72,7 +72,7 @@ assert(table.contains(t, "nothing") == nil)
 ```
 ---
 ### `table.find`
-Looks for an element in a table.
+Search a table for an element, returning its value.
 #### Parameters
 1. The table to check.
 2. The callback function responsible for checking each element.
@@ -86,6 +86,19 @@ local items = {
 
 print(items:find(|item| -> item.id == 1).name) --> Apple
 ```
+---
+### `table.findkey`, `table.findindex`
+Search a table for an element, returning its key/index.
+#### Parameters
+1. The table to check.
+2. The callback function responsible for checking each element.
+#### Returns
+The key/index if found, otherwise `nil`.
+```pluto
+local fruit = { "apple", "banana", "orange" }
+print(fruit:findkey(|x| -> x == "banana")) --> 2
+print(fruit[2]) --> banana
+````
 ---
 ### `table.reverse`
 Reverses the array elements of a table.
