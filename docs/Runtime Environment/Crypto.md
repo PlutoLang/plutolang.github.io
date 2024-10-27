@@ -232,6 +232,15 @@ local crypto = require("crypto")
 assert(crypto.sha512("Pluto", false) == "ee8410a8bf9511b94fd6669b5c3e0c4b86e8e4bf7baa8dbd2773d4d6381dd1aecebbe391bef4c6158620ab3f6b794907652d4432c2301d7e1a6caf520565cdf2")
 ```
 ---
+### `crypto.ripemd160`
+Hash a string using the RIPEMD-160 cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+assert(require"crypto".ripemd160("Pluto") == "c2072a85f4a691803b8942709036072086fd9550")
+```
+---
 ## Cryptographic PRNGs
 ### `crypto.random`
 This is a cryptographically secure PRNG, assuming the platform's implementation of the underlying primitive is secure.
