@@ -275,3 +275,29 @@ Checks if a string starts with a prefix.
 local s = "hello world"
 print(string.startswith(s, "hello")) --> true
 ```
+---
+### `string.tohex`
+Converts a (binary) string to a hex representation.
+#### Parameters
+1. The string to convert.
+2. An optional bool to indicate that spaces should be used.
+3. An optional bool to indicate that the result should be upper-cased.
+#### Returns
+A new string.
+```pluto
+print("XYZ":tohex()) --> 58595a
+print("XYZ":tohex(true)) --> 58 59 5a
+print("XYZ":tohex(false, true)) --> 58595A
+print("XYZ":tohex(true, true)) --> 58 59 5A
+```
+---
+### `string.fromhex`
+Converts a hex string to binary.
+#### Parameters
+1. The string to convert.
+#### Returns
+A new string.
+```pluto
+print("58595a":fromhex()) --> XYZ
+print("58 59 5A":fromhex()) --> XYZ
+```
