@@ -83,15 +83,14 @@ It will output:
 ```
 VARARGPREP 0        ; prepare for 0 varargs
 LOADI      0 3      ; push 3
-MOVE       1 0      ; move 3 into R(A)
-EQI        1 1 0    ; 3 == 1
-EQI        1 2 1    ; 3 == 2
-EQI        1 3 1    ; 3 == 3
-GETTABUP   2 0 0    ; push T['print'] for function-0x247d2882520 (T=table-0x247d29ec9c8)                                              
-LOADK      3 1      ; push "Got 1-5."
+EQI        0 1 0    ; 3 == 1
+EQI        0 2 1    ; 3 == 2
+EQI        0 3 1    ; 3 == 3
+GETTABUP   1 0 0    ; push T['print'] for function-00007FF6211485A0 (T=table-0000019FEDA45580)
+LOADK      2 1      ; push "Got 1-5."
+CALL       1 2 1    ; call function-00007FF6211485A0 (nresults=0 nparams=1)
 <OUTPUT> Got 1-5.
-CALL       2 2 1    ; call cfunc (nresults=0 nparams=0)                                                                                                              
-JMP        13       ; offset=13 newpc=0x247d29e90d8
+JMP        13       ; offset=13 newpc=0000019FEDA5C2C4
 RETURN     1 1 1    ; return 0 value(s)
 ```
 This is great at deciphering obfuscated code which may be causing problems for your environment.
