@@ -178,7 +178,7 @@ io.writetime("foo.txt", time)
 This example adds an hour (= 60 minutes = 3600 seconds) to the last write time of "foo.txt" (or errors if that file does not exist).
 
 ---
-### `io.currentdir`
+### `io.currentdir`, `io.chdir`, `io.cwd`
 Get or set the current working directory.
 #### Parameters
 1. A path to the desired current working directory. If this parameter is absent, this function works as a *getter.*
