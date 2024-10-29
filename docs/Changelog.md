@@ -4,6 +4,36 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.10.0
+- Added chained comparisons (e.g. `1 <= i <= #t`)
+- Added private methods to classes
+- Private fields (and methods) can be declared and accessed anywhere inside the class now. Previously, you needed to define a private field *before* you accessed it. This is no longer a restriction.
+- Pluto now automatically detects if non-compatible keywords should be enabled or disabled based on usage
+  - This is overwritten by the scripter using `pluto_use` or the integrator or user managing compatibility mode, so it only applies when absolutely zero configuration has been applied. This is a significant improvement for lua source code compatibility. 
+- `do` can now be used instead of `then` and `begin`
+- `if` expressions are now no longer deprecated but require an `end` (e.g. `print(if a then b else c end)`)
+- `$define` statement now requires an assignment
+- Fixed handling when an invalid RSA private key is passed to crypto.encrypt, crypto.decrypt, crypto.sign
+- Fixed not being able to load Lua C modules on Linux
+  - For simplicity in this regard, Pluto now always uses the C ABI to export `lua_` functions and the C++ ABI for `pluto_` functions.
+
+Standard library:
+- Added canvas library
+- Added ffi library
+- Added regex library
+- Added assert.contains
+- Added bigint.eq, bigint.lt, & bigint.le
+- Added crypto.ripemd160
+- Added crypto.exportkey & crypto.importkey
+- Added crypto.decompress
+- Added string.tohex & string.fromhex
+- Added table.findindex/findkey, table.back, table.keys, table.modget, table.modset, table.slice, table.countvalues, & table.chunk
+- Added socket.getpeer, socket.peek, socket.getside, socket.istls, & socket.isopen
+- Added optional limit argument to string.split
+- Added io.cwd and io.chdir as aliases for io.currentdir
+- socket.starttls can now be used on server sockets
+- Optimized json.encode with `__order`
+
 ## 0.9.5
 - Fixed io.contents not returning an empty string for empty files on Windows
 - Fixed table.clear not resetting cached length
