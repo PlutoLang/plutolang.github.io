@@ -49,6 +49,7 @@ const config = {
         langs: [
           'c',
           'cpp',
+          'lua',
           {
             id: 'pluto',
             name: 'pluto',

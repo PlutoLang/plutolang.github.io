@@ -6,26 +6,29 @@ Pluto aims to be source- and bytecode-compatible with existing Lua code such tha
 
 ## New Keywords
 
-Pluto adds the following reserved tokens:
-- `switch`
-- `continue`
-- `enum`
-- `new`
-- `class`
-- `parent`
-- `export`
-- `try`
-- `catch`
+While Pluto does add a handful of new keywords (`switch`, `continue`, `enum`, `new`, `class`, `parent`, `export`, `try`, `catch`), it can automatically infer when these are used as identifiers to preserve compatibility with Lua:
+```lua
+local class = "supercar"
+print("it's a "..class) --> it's a supercar
+```
+However, if a script does actually end up using a feature, its respective keyword can no longer be used as an identifier:
+```pluto
+class Vehicle
+    -- ...
+end
 
-Which means you can't use them as identifiers. They can still be used with short-hand table indexes and goto labels because Pluto [allows reserved keywords to be used in those contexts](QoL%20Improvements/Reserved%20Identifiers).
+local class = "supercar" -- Error: expected a class name, found '='
+```
+The only exception to this is short-hand table syntax and goto labels because Pluto [allows reserved keywords to be used in those contexts](QoL%20Improvements/Reserved%20Identifiers).
 
-### Mitigations
+### Compatibility Mode
 
+Some users may wish for Pluto keywords to be off by default, for which we provide the following options:
 - **For Integrators:** Check your `luaconf.h` file to find the relevant macros under the "Compatibility" heading.
-- **For Scripters:** Use `pluto_use` in the source files. `-- @pluto_use * = false` to simply disable all incompatible keywords.
+- **For Scripters:** Put `-- @pluto_use * = false` at the top of your script.
 - **For Users:** Pass the `-c` flag to `pluto` or `plutoc`.
 
-The following sections will go more in-depth on source-level mitigations (for scripters).
+Note that when keywords have been disabled like this, Pluto will not infer that a script requires them automatically, instead requiring explicit opt-in via pluto_use.
 
 ### Compile-time Configuration (pluto_use)
 You can change the meaning of Pluto's reserved tokens at any point in your scripts using the `--@pluto_use` comment or `pluto_use` statement.
@@ -74,14 +77,6 @@ These are what they look like:
 - `pluto_try`
 - `pluto_catch`
 
-### Automatic Compatibility Inference
-When Pluto encounters its keywords being used as identifiers in source code, it handles this automatically:
-
-By default, using a Pluto keyword as an identifier would cause a parsing error. But if Pluto detects this situation, and:
-- No `pluto_use` statement is present for the afflicting keyword.
-- No compatibility settings are configured for the afflicting keyword.
-
-Then Pluto will automatically disable that specific keyword (note, still accessible through `pluto_*`) and prevent an error from occurring.
 ## Default Table Metatable
 
 This is [a feature in Pluto](Runtime%20Environment/Global%20&%20Base#default-metatables) that, by itself, is a benign QoL improvement for developers. However, in combination with our added standard library functions like [table.min](Runtime%20Environment/Table#tablemin), it can be an unexpected semantic change:

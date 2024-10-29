@@ -12,7 +12,7 @@ function patchCodeblocks() {
 		div.className = "copy-button";
 		code.appendChild(div);
 
-		if (code.querySelector(".language-id")?.textContent === "pluto" && !code.hasAttribute("norun")) {
+		if (["pluto", "lua"].indexOf(code.querySelector(".language-id")?.textContent) != -1 && !code.hasAttribute("norun")) {
 			const button = document.createElement("button");
 			button.textContent = "Try It";
 			button.onclick = () => {
