@@ -13,7 +13,6 @@ This page contains the changelogs from all [releases of Pluto](https://github.co
 - `do` can now be used instead of `then` and `begin`
 - `if` expressions are now no longer deprecated but require an `end` (e.g. `print(if a then b else c end)`)
 - `$define` statement now requires an assignment
-- Fixed handling when an invalid RSA private key is passed to crypto.encrypt, crypto.decrypt, crypto.sign
 - Fixed not being able to load Lua C modules on Linux
   - For simplicity in this regard, Pluto now always uses the C ABI to export `lua_` functions and the C++ ABI for `pluto_` functions.
 
@@ -33,6 +32,7 @@ Standard library:
 - Added io.cwd and io.chdir as aliases for io.currentdir
 - socket.starttls can now be used on server sockets
 - Optimized json.encode with `__order`
+- Fixed handling when an invalid RSA private key is passed to crypto.encrypt, crypto.decrypt, crypto.sign
 
 ## 0.9.5
 - Fixed io.contents not returning an empty string for empty files on Windows
