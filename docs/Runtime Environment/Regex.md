@@ -6,7 +6,7 @@ The Regex module is available via `require "pluto:regex"` and provides [Soup's f
 ### `regex.new`
 Parses a pattern and creates an instance for it.
 #### Parameters
-1. The regex to be *compiled*.
+1. The regex to be *compiled*. Note that this must be a full pattern with a start and end delimiter (commonly `/`). Flags may optionally be present after the end delimiter.
 #### Returns
 A pattern instance.
 
