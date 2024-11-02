@@ -31,5 +31,5 @@ a = 1
 ```
 file.pluto:3: warning: implicit global creation [implicit-global]
     3 | a = 1
-      | ^^^^^ here: prefix this with 'global' if creating a global was intended
+      | ^^^^^ here: prefix this with 'global' to be explicit
 ```
