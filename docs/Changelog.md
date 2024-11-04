@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
