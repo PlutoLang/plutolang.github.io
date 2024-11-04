@@ -4,6 +4,13 @@ sidebar_position: 12
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.10.1
+- Compatibility: Fixed not inferring that a keyword should be disabled from parameter
+- Universal Block Opener: Fixed `do` not being accepted instead of `then` for `catch` and `$if`
+- FFI library: Improved cdef parsing and error reporting
+- Crypto library: Fixed returning incorrect hex digest for MD5 in some cases
+- Socket library: Fixed an issue where the remote closing a connection too soon could cause recv/peek to never see some data that was sent
+
 ## 0.10.0
 - Added chained comparisons (e.g. `1 <= i <= #t`)
 - Added private methods to classes
