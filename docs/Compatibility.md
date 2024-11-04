@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 Pluto aims to be source- and bytecode-compatible with existing Lua code such that it can simply be used as a drop-in replacement for Lua, and Lua modules can simply be used in Pluto codebases. In the vast majority of cases, we do succeed, but there are a few things to be aware of.
