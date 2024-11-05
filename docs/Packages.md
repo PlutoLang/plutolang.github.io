@@ -46,5 +46,5 @@ To later update your dependencies, simply run `deps.pluto` again. [Learn more...
 While Pluto's standard library is still growing, a few packages are available to provide what is currently missing:
 - [iniparser](https://github.com/calamity-inc/iniparser) — INI reader & writer for Lua 5.3+ and Pluto
 - [pluto-websocket](https://github.com/PlutoLang/pluto-websocket) — expands Pluto's `socket` library with WebSocket client functionality
-- [pluto-dns](https://github.com/PlutoLang/pluto-query) — expands Pluto's `xml` library with query selector functionality
+- [pluto-query](https://github.com/PlutoLang/pluto-query) — expands Pluto's `xml` library with query selector functionality
 - [pluto-dns](https://github.com/PlutoLang/pluto-dns) — DNS client library
