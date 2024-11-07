@@ -82,7 +82,7 @@ else
 end
 ```
 ---
-### `io.makedir`
+### `io.makedir`, `io.mkdir`
 Create a directory.
 #### Parameters
 1. The path for the new directory.
@@ -109,7 +109,7 @@ for _, filepath in io.listdir(".") do
 end
 ```
 ---
-### `io.makedirs`
+### `io.makedirs`, `io.mkdirs`
 Creates a directory and all the non-existing parent directories in the given path.
 #### Parameters
 1. The string path for your new directory.
