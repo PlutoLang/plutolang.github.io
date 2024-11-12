@@ -4,6 +4,12 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.10.2
+- Added io.mkdir as an alias for io.makedir
+- Added io.mkdirs as an alias for io.makedirs
+- Fixed class preparsing issues with 'switch' & 'do' statements
+- Fixed not being able to use reserved identifiers with colon call syntax
+
 ## 0.10.1
 - Compatibility: Fixed not inferring that a keyword should be disabled from parameter
 - Universal Block Opener: Fixed `do` not being accepted instead of `then` for `catch` and `$if`
