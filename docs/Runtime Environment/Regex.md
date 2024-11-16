@@ -1,6 +1,3 @@
----
-sidebar_position: 3
----
 The Regex module is available via `require "pluto:regex"` and provides [Soup's flavor](https://github.com/calamity-inc/Soup/blob/senpai/docs/user/regex.md) of the popular string matching language.
 
 ### `regex.new`
