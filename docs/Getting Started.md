@@ -46,8 +46,23 @@ Pluto is in the Arch User Repository under the name `plutolang`.
 This package includes the `pluto` and `plutoc` executables, shared library, as well as headers for developers (`#include <pluto/...>`).
 
 ### Termux
-
 Pluto is available in the Termux package main repository under `plutolang` for binaries and `libpluto` for development library.
+
+### Nix/NixOS
+
+:::info
+This package is maintained by a member of our community.
+:::
+
+Pluto is available in the [NUR](https://github.com/nix-community/NUR) repository. You can try it by following the installation step, and then test it by running:
+```
+$ nix-shell -p nur.repos.mbekkomo.plutolang --command pluto
+```
+
+Optionally, if you want to install the packages without building it first, you can register a [Cachix](https://cachix.org) store to skip it.
+```
+$ cachix use mbekkomo
+```
 
 ## Compile Pluto Yourself
 
