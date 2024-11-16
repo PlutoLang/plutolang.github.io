@@ -1,6 +1,3 @@
----
-sidebar_position: 3
----
 The scheduler class — available via `require` — can be used to easily set up coroutine-based cooperative multitasking.
 
 ### `__construct`

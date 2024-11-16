@@ -1,6 +1,3 @@
----
-sidebar_position: 3
----
 Must be included via `require`. This library is not available in WASM builds of Pluto.
 
 ---
