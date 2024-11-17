@@ -106,22 +106,13 @@ This operator does not implement any metamethods.
 ## Walrus Operator
 The Walrus operator allows you to perform assignments inside of conditional expresssions.
 
-```pluto norun
-if a := get_value() then
-    -- 'a' was assigned a truthy value.
-else
-    -- 'a' was assigned a falsy value.
-end
-```
-You can imagine it like this, but note they're not always the same:
-```pluto norun
-do
-    local a = get_value()
-    if a then
-        -- 'a' was assigned a truthy value.
-    else
-        -- 'a' was assigned a falsy value.
-    end
+```pluto
+local get_value = || -> 1
+
+if val := get_value() then       -- scope of 'val' begins
+    print("got value: "..val)
+else                             -- scope of 'val' ends
+    print("got no value")
 end
 ```
 
