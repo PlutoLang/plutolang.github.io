@@ -55,8 +55,7 @@ pluto_use "0.8.0", global
 ```
 You can use a '+' after the version number to also enable all of the optional features. As of 0.9.0, the only optional feature is [explicit globals](New%20Features/Explicit%20Globals) (`global`).
 ```pluto
-pluto_use "0.9.0+"
--- The same as pluto_use "0.9.0", global
+pluto_use "0.9.0+" -- The same as pluto_use "0.9.0", global
 ```
 
 For module developers and scripts which may be used in future versions of Pluto, we recommend you use `pluto_use` for two reasons:
