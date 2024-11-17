@@ -53,7 +53,7 @@ local john = new Human("John")
 print(john.name) --> John
 ```
 
-Note that for compatibility with Lua and C API classes, the `new` operator checks for the existence of a static 'new' function. If it exists, `new X(...)` will be identical to `X.new(...)`.
+Note that for compatibility with Lua and C API classes, the `new` operator checks for the existence of a static `new` function. If it exists, `new X(...)` will be identical to `X.new(...)`. In contrast to `__construct`, there is no 'self' argument given to `new`.
 
 ## Class Statement
 
