@@ -56,12 +56,12 @@ This package is maintained by a member of our community.
 
 Pluto is available in the [NUR](https://github.com/nix-community/NUR) repository. You can try it by following the installation step, and then test it by running:
 ```
-$ nix-shell -p nur.repos.mbekkomo.plutolang --command pluto
+nix-shell -p nur.repos.mbekkomo.plutolang --command pluto
 ```
 
 Optionally, if you want to install the packages without building it first, you can register a [Cachix](https://cachix.org) store to skip it.
 ```
-$ cachix use mbekkomo
+cachix use mbekkomo
 ```
 
 ## Compile Pluto Yourself
