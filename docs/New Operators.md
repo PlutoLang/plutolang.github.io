@@ -35,6 +35,15 @@ a += 1
 Compound operators are syntactic sugar. They'll call the same metamethods as their non-compound counterparts.
 :::
 
+## Increment Operator
+In addition to the compound operator `+=`, there is an even faster way to increment a value by 1 using the prefixed ++ operator:
+```pluto
+local a = 1
+print(++a) --> 2
+++a
+print(a) --> 3
+```
+
 ## Comparison Chaining
 The `<`, `<=`, `>`, and `>=` operators can now be chained successively.
 
