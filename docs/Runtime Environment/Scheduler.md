@@ -15,6 +15,11 @@ The `run` method activates the scheduler. The scheduler resumes all coroutines a
 ```pluto
 local scheduler = new (require"pluto:scheduler") ()
 
+-- Make this example behave a bit better in the non-blocking WASM environment
+if coroutine.isyieldable() then
+    scheduler.yieldfunc = || -> coroutine.sleep(1)
+end
+
 local loops = 0
 scheduler:addloop(function()
     ++loops
@@ -50,8 +55,8 @@ scheduler:run()
 ```pluto
 local scheduler = new (require"pluto:scheduler") ()
 
--- Yield to OS every second instead of every millisecond.
-scheduler.yieldfunc = || -> os.sleep(1000)
+-- Use coroutine.sleep instead of os.sleep in a non-blocking environment, and increase the timeout from 1 to 1000 ms (1 second).
+scheduler.yieldfunc = || -> (coroutine.isyieldable() ? coroutine : os).sleep(1000)
 
 local loops = 0
 scheduler:addloop(function()
