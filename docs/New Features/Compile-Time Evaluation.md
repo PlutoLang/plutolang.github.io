@@ -22,17 +22,20 @@ assert(runtime == compile)
 ```
 
 This is available on preloaded Pluto libraries, such as:
-- `json`
 - `base32`
 - `base58`
 - `base64`
 - `crypto`
+- `json`
+- `url`
 
 And on the following functions:
+- `io.contents`
 - `tostring`
 - `utostring`
 - `tonumber`
 - `utonumber`
+- `type`
 
 ## Variables
 
