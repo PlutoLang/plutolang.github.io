@@ -109,7 +109,7 @@ print("data:image/png;base64,"..base64.encode(c:topng()))
 
 ---
 ### `canvas.tobwstring`
-Convert a canvas to a black and white unicode string.
+Convert a canvas to a black and white unicode string. This requires the height of the canvas to be an even number; if it is not, a black line will be added to the bottom of the canvas.
 #### Parameters
 1. The canvas instance.
 2. The color to be "white." Any other color will be "black."
