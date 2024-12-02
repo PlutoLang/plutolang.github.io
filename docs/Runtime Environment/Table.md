@@ -168,6 +168,15 @@ t:foreach(print)
 --> 2
 --> 3
 ```
+If the callback has a non-nil return, it is propagated:
+```pluto
+local t = { 1, 2, 3 }
+print(t:foreach(function(value)
+    if value % 2 == 0 then
+        return value
+    end
+end)) --> 2
+```
 ---
 ### `table.filter`
 Filters away keys (both array and non-array) that fail to meet the condition established by `callback`. Elimination is done by setting the value to `nil`, consider using `table.reorder` if you want a continuous array after filtering.
