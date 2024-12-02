@@ -4,6 +4,15 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.10.3
+- Compile-Time Evaluation: `io.contents` and `type` are now also available
+- Compile-Time Evaluation: Table return type is now supported (for functions like `url.parse`)
+- Improved handling when a C++ exception is thrown during ffi.call
+- Fixed not inferring that a keyword should be disabled when used as a global variable
+  - For Integrators: Added `PLUTO_PARANOID_KEYWORD_DETECTION` to make this more aggressive
+- Fixed infinite loop when switch control value contains `or` or `and`
+- Fixed base32.decode not working correctly on some ARM systems
+
 ## 0.10.2
 - Added io.mkdir as an alias for io.makedir
 - Added io.mkdirs as an alias for io.makedirs
