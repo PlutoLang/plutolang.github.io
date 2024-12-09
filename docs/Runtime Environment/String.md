@@ -19,7 +19,7 @@ assert(s:lower(1) == "hELLO")
 Splits a string by a separator.
 #### Parameters
 1. The string to split.
-2. The separator to split a string by. This can be any string.
+2. The separator to split a string by. This can be any string. Defaults to `,`.
 3. An optional limit for the returned table size.
 #### Returns
 A table.
