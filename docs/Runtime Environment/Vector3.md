@@ -54,6 +54,15 @@ print(#vec)            --> 3.7416573867739
 print(vec:magnitude()) --> 3.7416573867739
 ```
 
+### `distance`
+
+Calculates the distance between this vector and another provided instance.
+
+```pluto
+local { vector3 } = require "*"
+print(vector3(0, 0, 0):distance(vector3(1, 0, 1))) --> 1.4142135623731
+```
+
 ### `sum`
 
 Computes the sum of the `x`, `y` and `z` fields.
