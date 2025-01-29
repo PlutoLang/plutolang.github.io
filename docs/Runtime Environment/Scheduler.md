@@ -10,7 +10,7 @@ The `add` method can be used to turn a function into a coroutine. The coroutine 
 The `addloop` method is a wrapper for the `add` method that keeps invoking the given function until it returns false.
 
 ### `run`
-The `run` method activates the scheduler. The scheduler resumes all coroutines and then calls its yieldfunc until either all coroutines are finished, or coroutine throws an error — in which case it is rethrown.
+The `run` method activates the scheduler. The scheduler resumes all coroutines and then calls its yieldfunc until either all coroutines are finished, or a coroutine throws an error — in which case it is rethrown.
 
 ```pluto
 local scheduler = new (require"pluto:scheduler") ()
