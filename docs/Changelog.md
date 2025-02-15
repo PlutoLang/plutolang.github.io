@@ -4,6 +4,17 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.10.4
+- Compile-Time Evaluation: Fixed `$elseif` not working
+- Fixed derived classes having their \_\_index overwritten
+
+Standard Library:
+- Improved scheduler's handling of errorfunc so debug.traceback is more useful
+- Optimized base64 decode operations
+- FFI: Fixed unloading library if it's out of scope but its functions are not
+- FFI: Fixed incorrectly writing f32 & f64 values for struct members
+- Fixed various issues with big inputs on dumpvar, exportvar, json.encode, json.decode, xml.encode, & xml.decode
+
 ## 0.10.3
 - Compile-Time Evaluation: `io.contents` and `type` are now also available
 - Compile-Time Evaluation: Table return type is now supported (for functions like `url.parse`)
