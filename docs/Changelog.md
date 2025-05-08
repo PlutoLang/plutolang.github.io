@@ -4,6 +4,15 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.10.5
+- Improved error message when `new` is provided with a nil value
+- Fixed ternary expression sometimes picking a bad register
+- Fixed possible buffer overflow when processing comments
+
+Standard Library:
+- json.encode now errors when provided with a non-finite number such as NaN or infinity
+- Fixed a rare crash with json.encode
+
 ## 0.10.4
 - Compile-Time Evaluation: Fixed `$elseif` not working
 - Fixed derived classes having their \_\_index overwritten
