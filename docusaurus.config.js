@@ -2,7 +2,7 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const fs = require('node:fs');
-const remarkShikiTwoSlash = require('remark-shiki-twoslash').default;
+const rehypeShiki = require('@shikijs/rehype').default;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -36,31 +36,25 @@ const config = {
         docs: {
           breadcrumbs: false,
           sidebarPath: require.resolve('./sidebars.js'),
+          beforeDefaultRehypePlugins: [
+            [
+              rehypeShiki,
+              {
+                theme: require('./src/theme/monokai-patched.json'),
+                langs: [
+                  'c',
+                  'cpp',
+                  'lua',
+                  require('./src/theme/Pluto.tmLanguage.json'),
+                ],
+              }
+            ],
+          ],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
-    ],
-    [
-      'docusaurus-preset-shiki-twoslash',
-      {
-        theme: 'monokai-patched',
-        langs: [
-          'c',
-          'cpp',
-          'lua',
-          {
-            id: 'pluto',
-            name: 'pluto',
-            scopeName: 'source.pluto',
-            path: require.resolve('./src/theme/Pluto.tmLanguage.json'),
-          }
-        ],
-        themes: [
-          require('./src/theme/monokai-patched.json'),
-        ],
-      }
     ],
   ],
 
