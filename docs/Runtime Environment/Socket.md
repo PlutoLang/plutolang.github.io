@@ -170,6 +170,17 @@ assert(sock:starttls("1.1.1.1"))
 print(sock:istls()) --> true
 ```
 
+### `socket.isudp`
+Check if a connection is using UDP transport.
+#### Parameters
+1. The socket instance.
+```pluto norun
+local sock = require"socket".connect("1.1.1.1", 443, "tcp")
+print(sock:isudp()) --> false
+sock = require"socket".connect("1.1.1.1", 53, "udp")
+print(sock:isudp()) --> true
+```
+
 ### `socket.isopen`
 Check if a connection is still open.
 #### Parameters
