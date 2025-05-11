@@ -6,6 +6,7 @@ Establishes a TCP connection.
 #### Parameters
 1. The host to connect to. Either an IPv4 or IPv6 address, or a domain name resolving to one.
 2. The port to contact the host on.
+3. The transport to use, "tcp" or "udp". Defaults to "tcp".
 #### Returns
 A socket instance on success. Nil on failure.
 #### Multitasking
