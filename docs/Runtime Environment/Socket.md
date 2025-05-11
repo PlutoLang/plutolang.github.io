@@ -16,7 +16,7 @@ If called inside of a coroutine, this function yields. Otherwise, it blocks.
 ### `socket.listen`
 Creates a new listener for the given port.
 #### Parameters
-1. The port to listen on.
+1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
 A listener instance on success. Nil on failure.
 
@@ -25,7 +25,7 @@ A listener instance on success. Nil on failure.
 A convenience function that wraps `socket.listen`, automatically accepting new clients and spinning up a coroutine for them.
 #### Parameters
 1. A [scheduler](Scheduler) instance.
-2. The port to listen on.
+2. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 3. The callback function that will be called in a new coroutine for each client socket.
 ```pluto norun
 local { scheduler, socket } = require "*"
