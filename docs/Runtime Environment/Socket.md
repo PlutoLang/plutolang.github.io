@@ -39,6 +39,22 @@ sched:run()
 ```
 
 ---
+### `socket.udpserver`
+Creates a pseudo-socket to listen for UDP datagrams on the given port.
+#### Parameters
+1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
+#### Returns
+A pseudo-socket which can `recv` UDP datagrams and then `send` a response.
+```pluto norun
+local serv = socket.udpserver(30726)
+while data := serv:recv() do
+    if data == "ping" then
+        serv:send("pong")
+    end
+end
+```
+
+---
 ## Socket Class
 Socket instances are obtained by calling `socket.connect` (client), or from a listener (server).
 ### `socket.send`
