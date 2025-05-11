@@ -12,16 +12,6 @@ local str = "hello world"
 assert(crypto.lua(str) == 2871868277)
 ```
 ---
-### `crypto.md5`
-Hash a string using the MD5 semi-cryptographic hashing algorithm.
-#### Parameters
-1. The string to hash.
-```pluto
-local crypto = require("crypto")
-local str = "hello world"
-assert(crypto.md5(str) == "5eb63bbbe01eeed093cb22bb8f5acdc3")
-```
----
 ### `crypto.djb2`
 Hash a string using the DJB2 non-cryptographic hashing algorithm.
 #### Parameters
@@ -184,6 +174,17 @@ Hash a string using the Murmur2Neutral non-cryptographic hashing algorithm.
 local crypto = require("crypto")
 local str = "hello world"
 assert(crypto.murmur2neutral(str) == 1151865881)
+```
+---
+## Semi-Cryptographic Hashing Algorithms
+### `crypto.md5`
+Hash a string using the MD5 semi-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+```pluto
+local crypto = require("crypto")
+local str = "hello world"
+assert(crypto.md5(str) == "5eb63bbbe01eeed093cb22bb8f5acdc3")
 ```
 ---
 ## Cryptographic Hashing Algorithms
