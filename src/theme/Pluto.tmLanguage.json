@@ -95,6 +95,40 @@
           ]
         },
         {
+          "begin": "(\\$alias)(?:\\s+(?:[a-zA-Z_][a-zA-Z0-9_]*([.:]))?([a-zA-Z_][a-zA-Z0-9_]*))?\\s*(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.function.preprocessoralias.pluto"
+            },
+            "2": {
+              "name": "punctuation.separator.parameter.pluto"
+            },
+            "3": {
+              "name": "entity.name.function.preprocessoralias.pluto"
+            },
+            "4": {
+              "name": "punctuation.section.group.begin.pluto"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.group.end.pluto"
+            }
+          },
+          "name": "meta.preprocessoralias.pluto",
+          "patterns": [
+            {
+              "match": "[a-zA-Z_][a-zA-Z0-9_]*",
+              "name": "variable.parameter.preprocessoralias.pluto"
+            },
+            {
+              "match": ",",
+              "name": "punctuation.separator.comma.pluto"
+            }
+          ]
+        },
+        {
           "match": "\\b(function)($|\\s+)(?:[a-zA-Z_][a-zA-Z0-9_]*([.:]))?([a-zA-Z_][a-zA-Z0-9_]*)?",
           "captures": {
             "1": {
@@ -272,7 +306,7 @@
           "name": "storage.type.attribute.pluto"
         },
         {
-          "match": "\\$define\\b",
+          "match": "\\$(define|alias)\\b",
           "name": "storage.modifier.pluto"
         },
         {
@@ -353,7 +387,7 @@
               "name": "keyword.control.pluto"
             }
           },
-          "match": "\\b((?:pluto_)?enum(?:\\s+class)?)(?:\\s+(begin)|(?:\\s+([a-zA-Z_][a-zA-Z0-9_]*)?)(?:\\s+(begin))?)?",
+          "match": "\\b((?:pluto_)?enum(?:\\s+class)?)(?:\\s+(begin|do)|(?:\\s+([a-zA-Z_][a-zA-Z0-9_]*)?)(?:\\s+(begin|do))?)?",
           "name": "meta.enum.pluto"
         },
         {
@@ -408,7 +442,11 @@
           }
         },
         {
-          "match": "\\b(?<![.\\:])(local|global|static|export|pluto_export)\\b",
+          "match": "\\b(?<![.\\:])(local|global|export|pluto_export)\\b",
+          "name": "storage.modifier.pluto"
+        },
+        {
+          "match": "\\b(?<![.\\:])(static)(?!\\s*\\()\\b",
           "name": "storage.modifier.pluto"
         },
         {
@@ -416,7 +454,7 @@
           "name": "constant.language.pluto"
         },
         {
-          "match": "(?<![^.]\\.|:)\\b(_G|_VERSION|_PVERSION|_PSOUP|math\\.(pi|huge|mininteger|maxinteger)|os\\.platform|json\\.(null|withnull|withorder))\\b",
+          "match": "(?<![^.]\\.|:)\\b(_G|_VERSION|_PVERSION|_PSOUP|math\\.(pi|huge|mininteger|maxinteger)|os\\.(platform|arch)|json\\.(null|withnull|withorder))\\b",
           "name": "constant.language.pluto support.constant.builtin.pluto"
         },
         {

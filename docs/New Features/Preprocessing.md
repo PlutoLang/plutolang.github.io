@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-Pluto's parser provides some powerful constructs which allow you to write code that will never be seen at runtime.
+Pluto provides some powerful constructs which allow you to write code that will never be seen at runtime.
 
 ## Function calls
 
@@ -68,3 +68,31 @@ $end
 ```
 
 In this case, only one of the two paths will be compiled in; the rest will not take up any space.
+
+## Aliases
+
+Preprocessor aliases are similar to C/C++ macros. For example, you can define an alias for a keyword:
+
+```pluto
+$alias let = local
+let a = 1
+print(a) --> 1
+```
+
+or write simple functions which will be fully inlined at the call site:
+
+```pluto
+$alias add(a, b) = a + b
+assert(add(1, 2) == 3)
+```
+
+If you want to write an alias over multiple lines, you can use a backslash to continue it:
+
+```pluto
+$alias seq = "a"  \
+             ..   \
+             "b"  \
+             ..   \
+             "c"
+assert(seq == "abc")
+```
