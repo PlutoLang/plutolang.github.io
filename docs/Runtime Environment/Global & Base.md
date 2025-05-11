@@ -177,3 +177,23 @@ assert(0xefffffffffffffff % 12 == 7)
 assert(smod(0xefffffffffffffff, 12) == -5)
 assert(umod(0xefffffffffffffff, 12) == 11)
 ```
+
+---
+### `callonce`
+Calls the given function exactly once and then caches its return value.
+```pluto
+local function expensive_constructor()
+    print("expensive_constructor called")
+    return { "A", "B", "C" }
+end
+
+for i = 1, 3 do
+    local t = callonce(expensive_constructor)
+    print(t[i])
+end
+
+--> expensive_constructor called
+--> A
+--> B
+--> C
+```
