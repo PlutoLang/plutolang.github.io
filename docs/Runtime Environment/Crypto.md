@@ -81,6 +81,19 @@ local str = "hello world"
 assert(crypto.crc32(str) == 222957957)
 ```
 ---
+### `crypto.crc32c`
+Hash a string using the CRC32C non-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. The initial value for the hash. By default, this is zero.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
+```pluto
+local crypto = require("crypto")
+local str = "hello world"
+assert(crypto.crc32c(str) == 3381945770)
+```
+---
 ### `crypto.adler32`
 Hash a string using the Adler-32 non-cryptographic hashing algorithm.
 #### Parameters
