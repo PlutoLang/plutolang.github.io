@@ -25,13 +25,14 @@ end
 ```
 ---
 ### `io.part`
-Extracts the given part from a path.
+Extracts the parts of a path.
 #### Parameters
 1. A string path or file stream.
-2. The part to return, "parent" or "name".
+2. Optionally, which part to return, "parent" or "name".
 #### Returns
-The extracted part.
+The extracted part(s) of the path.
 ```pluto
+print(io.part("/path/to/foo.txt")) -- "/path/to", "foo.txt"
 print(io.part("/path/to/foo.txt", "parent")) -- "/path/to"
 print(io.part("/path/to/foo.txt", "name")) -- "foo.txt"
 ```
