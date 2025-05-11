@@ -19,21 +19,24 @@ assert(s:lower(1) == "hELLO")
 Splits a string by a separator.
 #### Parameters
 1. The string to split.
-2. The separator to split a string by. This can be any string. Defaults to `,`.
+2. The separator to split a string by. Defaults to an empty string.
 3. An optional limit for the returned table size.
 #### Returns
 A table.
+```pluto title="Splitting a string by an empty separator"
+print(dumpvar("ABC":split())) -- { "A", "B", "C" }
+```
 ```pluto title="Splitting a string by a single character"
 local s = "hello world, how is everyone doing?"
-string.split(s, " ") -- { "hello", "world,", "how", "is", "everyone", "doing?" }
+print(dumpvar(s:split(" "))) -- { "hello", "world,", "how", "is", "everyone", "doing?" }
 ```
 ```pluto title="Splitting a string by a substring"
 local s = "helloFOOworld,FOOhowFOOisFOOeveryoneFOOdoing?"
-string.split(s, "FOO") -- { "hello", "world,", "how", "is", "everyone", "doing?" }
+print(dumpvar(s:split("FOO"))) -- { "hello", "world,", "how", "is", "everyone", "doing?" }
 ```
 ```pluto title="Splitting a string by a single character with a limit"
 local s = "hello world, how is everyone doing?"
-string.split(s, " ", 3) -- { "hello", "world,", "how is everyone doing?" }
+print(dumpvar(s:split(" ", 3))) -- { "hello", "world,", "how is everyone doing?" }
 ```
 ---
 ### `string.rfind`
