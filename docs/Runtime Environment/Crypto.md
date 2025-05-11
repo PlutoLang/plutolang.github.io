@@ -181,10 +181,12 @@ assert(crypto.murmur2neutral(str) == 1151865881)
 Hash a string using the MD5 semi-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
 assert(crypto.md5(str) == "5eb63bbbe01eeed093cb22bb8f5acdc3")
+assert(crypto.md5(str, true) == "\x5e\xb6\x3b\xbb\xe0\x1e\xee\xd0\x93\xcb\x22\xbb\x8f\x5a\xcd\xc3")
 ```
 ---
 ## Cryptographic Hashing Algorithms
