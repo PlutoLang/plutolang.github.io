@@ -26,6 +26,10 @@ else
 end
 ```
 
+### `os.arch`
+
+`os.arch` is a global string containing the host CPU architecture as well as the bit width, separated by a comma. For example, it would be `x86, 64-bit` for x86_64, `arm, 64-bit` for ARM64, and `wasm, 32-bit` for a typical WebAssembly environment.
+
 ---
 ### `package.path`
 `package.path` is modified to also search for `.pluto` files.
