@@ -36,6 +36,7 @@ And on the following functions:
 - `tonumber`
 - `utonumber`
 - `type`
+- `assert`
 
 ## Variables
 
