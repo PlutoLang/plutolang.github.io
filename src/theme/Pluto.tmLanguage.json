@@ -581,6 +581,10 @@
           "name": "constant.numeric.integer.binary.pluto"
         },
         {
+          "match": "0[oO][0-7][0-7_]*",
+          "name": "constant.numeric.integer.octal.pluto"
+        },
+        {
           "match": "(?<![\\w\\d])\\d[0-9_]*(?![pPeE.0-9])",
           "name": "constant.numeric.integer.pluto"
         },
