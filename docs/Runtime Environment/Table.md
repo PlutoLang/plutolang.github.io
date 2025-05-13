@@ -32,28 +32,6 @@ t:clear()
 print(t:size()) --> 0
 ```
 ---
-### `table.freeze`
-Freezes a table to prevent modification.
-#### Parameters
-1. The table to freeze
-#### Returns
-The input table.
-```pluto
-local t = table.freeze({...})
--- `table.freeze(t)` on another line will work fine too.
-t.key = "value" -- Fails.
-```
----
-### `table.isfrozen`
-Checks if this table is frozen.
-#### Parameters
-1. The table to check.
-```pluto
-local t = {}
-table.freeze(t)
-assert(table.isfrozen(t) == true)
-```
----
 ### `table.contains`
 Checks if this table contains an element.
 #### Parameters
