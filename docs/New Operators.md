@@ -105,7 +105,6 @@ This operator does not implement any metamethods.
 
 ## Walrus Operator
 The Walrus operator allows you to perform assignments inside of conditional expresssions.
-
 ```pluto
 local get_value = || -> 1
 
@@ -116,7 +115,7 @@ else                             -- scope of 'val' ends
 end
 ```
 
-Note that for while-loops, it will be executed as many times as the condition:
+It can also be used in while loops, where it will be executed as many times as the condition:
 ```pluto norun title="Pluto Way"
 while a := next_value() do
     -- ...
@@ -128,6 +127,22 @@ while true do
     if not a then break end
     -- ...
 end
+```
+
+In both cases, it is not limited to initialize only a single variable, although only the first is checked for truthiness:
+```pluto
+local co = coroutine.create(function()
+    while true do
+        while _has_val, val := coroutine.yield() do
+            print(val)
+        end
+    end
+end)
+co:resume() -- start coroutine
+co:resume(true, 1) --> 1
+co:resume(false)
+co:resume(true, 2) --> 2
+co:resume(true, nil) --> nil
 ```
 
 ## Spaceship Operator
