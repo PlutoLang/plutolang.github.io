@@ -8,9 +8,6 @@ This page documents the changes & additions to Pluto's runtime environment, whic
 ### `_PVERSION`
 `_PVERSION` is the global to check your current version of Pluto.
 
-### `_PSOUP`
-`_PSOUP` is a global boolean you can access to check linkage with Soup. Always true as of 0.8.0.
-
 ### `os.platform`
 `os.platform` is a global string containing the host platform. Can be "windows", "wasm", "linux", "macos", "android", or "unknown".
 
