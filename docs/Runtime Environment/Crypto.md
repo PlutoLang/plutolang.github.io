@@ -258,11 +258,18 @@ print(crypto.ripemd160("Pluto")) --> c2072a85f4a691803b8942709036072086fd9550
 ## Cryptographic PRNGs
 ### `crypto.random`
 This is a cryptographically secure PRNG, assuming the platform's implementation of the underlying primitive is secure.
+#### Parameters
+This function takes 0-2 integer parameters that define the output range:
+- If no arguments are given, an inclusive range from `math.mininteger` to `math.maxinteger` is used.
+- If 1 argument (`n`) is given, an inclusive range from 1 to `n` is used.
+- If 2 arguments (`l`, `u`) are given, an inclusive range from `l` to `u` is used.
 #### Returns
-A random lua integer, in the range from `math.mininteger` to `math.maxinteger`.
+A random lua integer, in the given range.
 ```pluto
 local crypto = require("crypto")
-print(crypto.random())
+print(crypto.random()) -- Prints an integer from math.mininteger to math.maxinteger.
+print(crypto.random(6)) -- Prints an integer from 1 to 6, like a dice roll.
+print(crypto.random(10, 20)) -- Prints an integer from 10 to 20.
 ```
 
 ---
