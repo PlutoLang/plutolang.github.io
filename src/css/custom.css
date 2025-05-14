@@ -93,3 +93,7 @@ p, h1, h2, h3, h4, a {
   padding: 0.4rem 0.5rem;
   margin-left: 0.3rem;
 }
+
+pre.theme-code-block {
+  background-color: #272822;
+}
