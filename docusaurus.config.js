@@ -3,6 +3,11 @@
 
 const fs = require('node:fs');
 const remarkShikiTwoSlash = require('remark-shiki-twoslash').default;
+const rehypeRaw = require('rehype-raw').default;
+
+const rehypeRawOptions = {
+  passThrough: ['mdxjsEsm', 'mdxJsxTextElement', 'mdxJsxFlowElement', 'mdxFlowExpression']
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -36,6 +41,7 @@ const config = {
         docs: {
           breadcrumbs: false,
           sidebarPath: require.resolve('./sidebars.js'),
+          rehypePlugins: [[rehypeRaw, rehypeRawOptions]], // fix for MDX compilation courtesy of kamranayub: https://github.com/shikijs/twoslash/issues/125#issuecomment-2692325341
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
