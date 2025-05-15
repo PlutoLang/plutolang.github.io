@@ -247,11 +247,26 @@ Returns a new array-like table containing all keys from the table.
 local t = {
     ["key1"] = "value1",
     ["key2"] = "value2",
-    "sequence",
-    "sequence sequence"
+    "foo",
+    "bar"
 }
 
 print(dumpvar(t:keys())) -- { 1, 2, "key1", "key2" }
+```
+---
+### `table.values`
+Returns a new array-like table containing all values from the table.
+#### Parameters
+1. The table.
+```pluto
+local t = {
+    ["key1"] = "value1",
+    ["key2"] = "value2",
+    "foo",
+    "bar"
+}
+
+print(dumpvar(t:values())) -- { "foo", "bar", "value1", "value2" }
 ```
 ---
 ### `table.countvalues`
