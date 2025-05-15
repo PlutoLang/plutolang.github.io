@@ -19,12 +19,12 @@ assert(s:lower(1) == "hELLO")
 Splits a string by a separator.
 #### Parameters
 1. The string to split.
-2. The separator to split a string by. Defaults to an empty string.
+2. The separator to split the string by.
 3. An optional limit for the returned table size.
 #### Returns
 A table.
 ```pluto title="Splitting a string by an empty separator"
-print(dumpvar("ABC":split())) -- { "A", "B", "C" }
+print(dumpvar("ABC":split(""))) -- { "A", "B", "C" }
 ```
 ```pluto title="Splitting a string by a single character"
 local s = "hello world, how is everyone doing?"
