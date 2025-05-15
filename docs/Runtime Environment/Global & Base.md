@@ -49,7 +49,9 @@ table.contains(t, 1)
 table.concat(t, "\n")
 coroutine.resume(c)
 ```
-This behavior is implemented by setting the `__index` metamethod to the respective library (`_G.table` or `_G.coroutine`). If you override the metatable, you may want to replicate that.
+The default metatables for the types are as follows:
+- Table: `{ __mindex = _G.table }` (using Pluto's own [`__mindex` metamethod](<../New Features/Mindex Metamethod.md>))
+- Coroutine/thread: `{ __index = _G.coroutine }`
 
 ---
 ### `dumpvar`
