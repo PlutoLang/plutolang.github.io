@@ -279,15 +279,15 @@ print(dumpvar(t:keys())) -- { 1, 2, "key1", "key2" }
 ### `table.countvalues`
 Returns a key-value based table which describes how many times a value appears inside of a table.
 #### Parameters
-1. The table
+1. The table.
 ```pluto
 local t = {
     1,
-    2, 2
+    2, 2,
     3, 3, 3,
-    4, 4, 4, 4
-    ["key1"] = "value"
-    ["key2"] = "value"
+    4, 4, 4, 4,
+    ["key1"] = "value",
+    ["key2"] = "value",
 }
 
 print(dumpvar(t:countvalues())) -- { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
