@@ -188,10 +188,10 @@ Filters away keys (both array and non-array) that fail to meet the condition est
 The input table.
 ```pluto
 data = { 1, 2, 3, 4, 5 }
-data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ") |> print -- "1 3 5"
+data:filter(|v| -> v % 2 ~= 0):reorder():concat(" ") |> print --> 1 3 5
 
 data = { 2, 2, 3, 4, 4 }
-data:filter(|k, v| -> k == v, true):reorder():concat(" ") |> print -- "2 3 4"
+data:filter(|k, v| -> k == v, true):reorder():concat(" ") |> print --> 2 3 4
 ```
 ### `table.filtered`
 Copying variant of `table.filter`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
@@ -207,10 +207,10 @@ Remaps every key to a new value, provided by the `callback` function.
 The input table.
 ```pluto
 data = "41 20 68"
-data:split(" "):map(tonumber):map(|v| -> v + 1):concat(" ") |> print -- "42 21 69"
+data:split(" "):map(tonumber):map(|v| -> v + 1):concat(" ") |> print --> 42 21 69
 
 data = "10 15 10"
-data:split(" "):map(tonumber):map(|k, v| -> k * v, true):concat(" ") |> print -- "10 30 30"
+data:split(" "):map(tonumber):map(|k, v| -> k * v, true):concat(" ") |> print --> 10 30 30
 ```
 In this example, we first use the `tonumber` function to turn the strings into numbers, then add 1 to them. (Although the first step is not needed in Lua/Pluto since the `+` operator would take care of it, it is used here for demonstration purposes.)
 ### `table.mapped`
@@ -273,7 +273,7 @@ local t = {
     "sequence sequence"
 }
 
-t:keys() -- { 1, 2, "key1", "key2" }
+print(dumpvar(t:keys())) -- { 1, 2, "key1", "key2" }
 ```
 ---
 ### `table.countvalues`
@@ -290,7 +290,7 @@ local t = {
     ["key2"] = "value"
 }
 
-t:countvalues() -- { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
+print(dumpvar(t:countvalues())) -- { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
 ```
 ---
 ### `table.chunk`
@@ -309,7 +309,7 @@ local t = {
     ["other key"] = "world"
 }
 
-t:chunk(3) -- { { 1, 2, 3 }, { "hello", "world" } }
+print(dumpvar(t:chunk(3))) -- { { 1, 2, 3 }, { "hello", "world" } }
 ```
 ---
 ### `table.back`
@@ -318,9 +318,9 @@ Returns the last element of a table. This is functionally identical to `t[#t]`.
 1. The table.
 ```pluto
 local t = { "a", "b", "c" }
-print(t[#t]) --> "c"
+print(t[#t]) --> c
 
--- Now can be fit into one line.
+-- Now works without an intermediate variable for the table:
 print({ "a", "b", "c" }:back()) --> c
 ```
 ---
@@ -333,8 +333,8 @@ Returns a new table composed of the elements between the specified range. This i
 ```pluto
 local t = { 1, 2, 3, 4, 5 }
 
-t:slice(3) -- { 3, 4, 5 }
-t:slice(2, 4) -- { 2, 3, 4 }
+print(dumpvar(t:slice(3))) -- { 3, 4, 5 }
+print(dumpvar(t:slice(2, 4))) -- { 2, 3, 4 }
 ```
 ---
 ### `table.modget`
@@ -365,7 +365,7 @@ Updates an element by index with wrap-around.
 local test = { 1, 2, 3 }
 test:modset(5, 5)
 test:modset(6, 6)
-assert(test[1] == 1)
-assert(test[2] == 5)
-assert(test[3] == 6)
+print(test[1]) --> 1
+print(test[2]) --> 5
+print(test[3]) --> 6
 ```
