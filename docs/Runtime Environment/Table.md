@@ -286,6 +286,25 @@ local t = {
 print(dumpvar(t:countvalues())) -- { [1] = 1, [2] = 2, [3] = 3, [4] = 4, ["value"] = 2 }
 ```
 ---
+### `table.dedup`, `table.deduplicate`
+Sets any keys with a duplicate value in the table to nil.
+#### Parameters
+1. The table.
+```pluto
+local t = {
+    1,
+    2, 2,
+    3, 3, 3,
+    4, 4, 4, 4,
+}
+
+print(dumpvar(t:dedup())) -- { [1] = 1, [2] = 2, [4] = 3, [7] = 4 }
+print(dumpvar(t:dedup():reorder())) -- { 1, 2, 3, 4 }
+```
+### `table.deduped`, `table.deduplicated`
+Copying variant of `table.dedup`/`table.deduplicate`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+
+---
 ### `table.chunk`
 Generates a new table which collects the values of the input and represents them in chunks of a specified size.
 #### Parameters
