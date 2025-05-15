@@ -305,6 +305,21 @@ local t = {
 print(dumpvar(t:chunk(3))) -- { { 1, 2, 3 }, { "hello", "world" } }
 ```
 ---
+### `table.invert`
+Generates a new table with an inverse key-value relationship to the input table.
+#### Parameters
+1. The table.
+```pluto
+local t = {
+    ["key1"] = "value1",
+    ["key2"] = "value2",
+    "foo",
+    "bar"
+}
+
+print(dumpvar(t:invert())) -- { value1 = "key1", value2 = "key2", foo = 1, bar = 2 }
+```
+---
 ### `table.back`
 Returns the last element of a table. This is functionally identical to `t[#t]`.
 #### Parameters
