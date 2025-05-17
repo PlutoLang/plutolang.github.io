@@ -63,10 +63,6 @@ p, h1, h2, h3, h4, a {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.shiki.github-light {
-  display: none;
-}
-
 .shiki[showlinenumbers] code {
   counter-reset: step;
   counter-increment: step 0;
@@ -96,4 +92,8 @@ p, h1, h2, h3, h4, a {
   cursor: pointer;
   padding: 0.4rem 0.5rem;
   margin-left: 0.3rem;
+}
+
+pre.theme-code-block {
+  background-color: #272822;
 }
