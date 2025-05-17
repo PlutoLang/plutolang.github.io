@@ -6,6 +6,7 @@ Establishes a TCP connection.
 #### Parameters
 1. The host to connect to. Either an IPv4 or IPv6 address, or a domain name resolving to one.
 2. The port to contact the host on.
+3. The transport to use, "tcp" or "udp". Defaults to "tcp".
 #### Returns
 A socket instance on success. Nil on failure.
 #### Multitasking
@@ -15,7 +16,7 @@ If called inside of a coroutine, this function yields. Otherwise, it blocks.
 ### `socket.listen`
 Creates a new listener for the given port.
 #### Parameters
-1. The port to listen on.
+1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
 A listener instance on success. Nil on failure.
 
@@ -24,7 +25,7 @@ A listener instance on success. Nil on failure.
 A convenience function that wraps `socket.listen`, automatically accepting new clients and spinning up a coroutine for them.
 #### Parameters
 1. A [scheduler](Scheduler) instance.
-2. The port to listen on.
+2. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 3. The callback function that will be called in a new coroutine for each client socket.
 ```pluto norun
 local { scheduler, socket } = require "*"
@@ -35,6 +36,22 @@ socket.bind(sched, 80, |s| -> do
     s:send("HTTP/1.1 200 OK\r\nConnection: Close\r\nContent-Length: "..#content.."\r\n\r\n"..content)
 end)
 sched:run()
+```
+
+---
+### `socket.udpserver`
+Creates a pseudo-socket to listen for UDP datagrams on the given port.
+#### Parameters
+1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
+#### Returns
+A pseudo-socket which can `recv` UDP datagrams and then `send` a response.
+```pluto norun
+local serv = socket.udpserver(30726)
+while data := serv:recv() do
+    if data == "ping" then
+        serv:send("pong")
+    end
+end
 ```
 
 ---
@@ -167,6 +184,17 @@ local sock = require"socket".connect("1.1.1.1", 443)
 print(sock:istls()) --> false
 assert(sock:starttls("1.1.1.1"))
 print(sock:istls()) --> true
+```
+
+### `socket.isudp`
+Check if a connection is using UDP transport.
+#### Parameters
+1. The socket instance.
+```pluto norun
+local sock = require"socket".connect("1.1.1.1", 443, "tcp")
+print(sock:isudp()) --> false
+sock = require"socket".connect("1.1.1.1", 53, "udp")
+print(sock:isudp()) --> true
 ```
 
 ### `socket.isopen`

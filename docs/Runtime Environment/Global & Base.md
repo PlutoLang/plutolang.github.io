@@ -8,9 +8,6 @@ This page documents the changes & additions to Pluto's runtime environment, whic
 ### `_PVERSION`
 `_PVERSION` is the global to check your current version of Pluto.
 
-### `_PSOUP`
-`_PSOUP` is a global boolean you can access to check linkage with Soup. Always true as of 0.8.0.
-
 ### `os.platform`
 `os.platform` is a global string containing the host platform. Can be "windows", "wasm", "linux", "macos", "android", or "unknown".
 
@@ -25,6 +22,10 @@ else
     io.write("\n")
 end
 ```
+
+### `os.arch`
+
+`os.arch` is a global string containing the host CPU architecture as well as the bit width, separated by a comma. For example, it would be `x86, 64-bit` for x86_64, `arm, 64-bit` for ARM64, and `wasm, 32-bit` for a typical WebAssembly environment.
 
 ---
 ### `package.path`
@@ -48,7 +49,9 @@ table.contains(t, 1)
 table.concat(t, "\n")
 coroutine.resume(c)
 ```
-This behavior is implemented by setting the `__index` metamethod to the respective library (`_G.table` or `_G.coroutine`). If you override the metatable, you may want to replicate that.
+The default metatables for the types are as follows:
+- Table: `{ __mindex = _G.table }` (using Pluto's own [`__mindex` metamethod](<../New Features/Mindex Metamethod.md>))
+- Coroutine/thread: `{ __index = _G.coroutine }`
 
 ---
 ### `dumpvar`
@@ -154,4 +157,42 @@ Calls the given function and returns a string of warnings raised by it.
 local w = wcall(|| -> warn("Bad!"))
 print(w ~= "" ? (w:strip()) : "No warnings")
 -- Output: "Bad!"
+```
+
+---
+### `sdiv`, `udiv`
+Performs a standard integer division (signed and unsigned).
+```pluto
+assert(0xefffffffffffffff // 12 == -96076792050570582)
+assert(sdiv(0xefffffffffffffff, 12) == -96076792050570581)
+assert(udiv(0xefffffffffffffff, 12) == 1441151880758558719)
+```
+
+---
+### `smod`, `umod`
+Performs a standard integer modulo operation (signed and unsigned).
+```pluto
+assert(0xefffffffffffffff % 12 == 7)
+assert(smod(0xefffffffffffffff, 12) == -5)
+assert(umod(0xefffffffffffffff, 12) == 11)
+```
+
+---
+### `callonce`
+Calls the given function exactly once and then caches its return value.
+```pluto
+local function expensive_constructor()
+    print("expensive_constructor called")
+    return { "A", "B", "C" }
+end
+
+for i = 1, 3 do
+    local t = callonce(expensive_constructor)
+    print(t[i])
+end
+
+--> expensive_constructor called
+--> A
+--> B
+--> C
 ```

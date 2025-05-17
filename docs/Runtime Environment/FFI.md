@@ -113,6 +113,29 @@ The offset in bytes.
 This constant can be used to give `0` to a "ptr"-type argument.
 
 ---
+### `ffi.alloc`
+Creates a userdata with the given size.
+#### Parameters
+1. The size in bytes.
+#### Returns
+A new userdata.
+
+---
+### `ffi.write`
+Copies data from a string to a userdata.
+#### Parameters
+1. The string.
+2. The userdata.
+
+---
+### `ffi.read`
+Turns a userdata into a string.
+#### Parameters
+1. The userdata.
+#### Returns
+A string.
+
+---
 ## FFI Library Class
 Obtained from `ffi.open`.
 

@@ -9,17 +9,7 @@ Hash a string using Lua's version of the DJB2 non-cryptographic hashing algorith
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.lua(str) == 2871868277)
-```
----
-### `crypto.md5`
-Hash a string using the MD5 semi-cryptographic hashing algorithm.
-#### Parameters
-1. The string to hash.
-```pluto
-local crypto = require("crypto")
-local str = "hello world"
-assert(crypto.md5(str) == "5eb63bbbe01eeed093cb22bb8f5acdc3")
+print(crypto.lua(str)) --> 2871868277
 ```
 ---
 ### `crypto.djb2`
@@ -31,7 +21,7 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.djb2(str) == 894552257)
+print(crypto.djb2(str)) --> 894552257
 ```
 ---
 ### `crypto.fnv1`
@@ -41,7 +31,7 @@ Hash a string using the FNV1 non-cryptographic hashing algorithm.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.fnv1(str) == 9065573210506989167)
+print(crypto.fnv1(str)) --> 9065573210506989167
 ```
 ---
 ### `crypto.fnv1a`
@@ -51,7 +41,7 @@ Hash a string using the FNV1A non-cryptographic hashing algorithm.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.fnv1a(str) == 8618312879776256743)
+print(crypto.fnv1a(str)) --> 8618312879776256743
 ```
 ---
 ### `crypto.joaat`
@@ -63,7 +53,7 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.joaat(str) == 1045060183)
+print(crypto.joaat(str)) --> 1045060183
 ```
 ---
 ### `crypto.sdbm`
@@ -75,7 +65,7 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.sdbm(str) == 430867652)
+print(crypto.sdbm(str)) --> 430867652
 ```
 ---
 ### `crypto.crc32`
@@ -88,7 +78,20 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.crc32(str) == 222957957)
+print(crypto.crc32(str)) --> 222957957
+```
+---
+### `crypto.crc32c`
+Hash a string using the CRC32C non-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. The initial value for the hash. By default, this is zero.
+#### Returns
+An integer between 0 and 0xffffffff, inclusive.
+```pluto
+local crypto = require("crypto")
+local str = "hello world"
+print(crypto.crc32c(str)) --> 3381945770
 ```
 ---
 ### `crypto.adler32`
@@ -99,7 +102,7 @@ Hash a string using the Adler-32 non-cryptographic hashing algorithm.
 ```pluto
 local crypto = require("crypto")
 local str = "hello"
-assert(crypto.adler32(str) == 103547413)
+print(crypto.adler32(str)) --> 103547413
 ```
 ---
 ### `crypto.lookup3`
@@ -109,7 +112,7 @@ Hash a string using the Lookup3 non-cryptographic hashing algorithm.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.lookup3(str) == 1252609637)
+print(crypto.lookup3(str)) --> 1252609637
 ```
 ---
 ### `crypto.times33`
@@ -121,7 +124,7 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.times33(str) == 3889643616)
+print(crypto.times33(str)) --> 3889643616
 ```
 ### `crypto.murmur1`
 Hash a string using the Murmur1 non-cryptographic hashing algorithm.
@@ -132,7 +135,7 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.murmur1(str) == 3154674178)
+print(crypto.murmur1(str)) --> 3154674178
 ```
 ---
 ### `crypto.murmur2`
@@ -144,7 +147,7 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.murmur2(str) == 1151865881)
+print(crypto.murmur2(str)) --> 1151865881
 ```
 ### `crypto.murmur2a`
 Hash a string using the Murmur2A non-cryptographic hashing algorithm.
@@ -155,7 +158,7 @@ An integer between 0 and 0xffffffff, inclusive.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.murmur2a(str) == 2650573207)
+print(crypto.murmur2a(str)) --> 2650573207
 ```
 ### `crypto.murmur64a`
 Hash a string using the Murmur64A non-cryptographic hashing algorithm.
@@ -164,7 +167,7 @@ Hash a string using the Murmur64A non-cryptographic hashing algorithm.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.murmur64a(str) == -3190198453633110066)
+print(crypto.murmur64a(str)) --> -3190198453633110066
 ```
 ### `crypto.murmur64b`
 Hash a string using the Murmur64A non-cryptographic hashing algorithm.
@@ -173,7 +176,7 @@ Hash a string using the Murmur64A non-cryptographic hashing algorithm.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.murmur64b(str) == 7088720765356542432)
+print(crypto.murmur64b(str)) --> 7088720765356542432
 ```
 ---
 ### `crypto.murmur2neutral`
@@ -183,7 +186,20 @@ Hash a string using the Murmur2Neutral non-cryptographic hashing algorithm.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-assert(crypto.murmur2neutral(str) == 1151865881)
+print(crypto.murmur2neutral(str)) --> 1151865881
+```
+---
+## Semi-Cryptographic Hashing Algorithms
+### `crypto.md5`
+Hash a string using the MD5 semi-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+local str = "hello world"
+print(crypto.md5(str)) --> 5eb63bbbe01eeed093cb22bb8f5acdc3
+print(crypto.md5(str, true)) --> \x5e\xb6\x3b\xbb\xe0\x1e\xee\xd0\x93\xcb\x22\xbb\x8f\x5a\xcd\xc3
 ```
 ---
 ## Cryptographic Hashing Algorithms
@@ -194,8 +210,8 @@ Hash a string using the SHA-1 cryptographic hashing algorithm.
 2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
 ```pluto
 local crypto = require("crypto")
-assert(crypto.sha1("Pluto") == "bce8c9aca4120776fad6b517874aa09c46405454")
-assert(crypto.sha1("Pluto", true) == "\xbc\xe8\xc9\xac\xa4\x12\x07\x76\xfa\xd6\xb5\x17\x87\x4a\xa0\x9c\x46\x40\x54\x54")
+print(crypto.sha1("Pluto")) --> bce8c9aca4120776fad6b517874aa09c46405454
+print(crypto.sha1("Pluto", true)) --> \xbc\xe8\xc9\xac\xa4\x12\x07\x76\xfa\xd6\xb5\x17\x87\x4a\xa0\x9c\x46\x40\x54\x54
 ```
 ---
 ### `crypto.sha256`
@@ -205,8 +221,8 @@ Hash a string using the SHA-256 cryptographic hashing algorithm.
 2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
 ```pluto
 local crypto = require("crypto")
-assert(crypto.sha256("Pluto") == "8dad5f6a7dd2dcd8c35ec2fd7babb499bcad60d27d73fe73eca2ce025dfd3b47")
-assert(crypto.sha256("Pluto", true) == "\x8d\xad\x5f\x6a\x7d\xd2\xdc\xd8\xc3\x5e\xc2\xfd\x7b\xab\xb4\x99\xbc\xad\x60\xd2\x7d\x73\xfe\x73\xec\xa2\xce\x02\x5d\xfd\x3b\x47")
+print(crypto.sha256("Pluto")) --> 8dad5f6a7dd2dcd8c35ec2fd7babb499bcad60d27d73fe73eca2ce025dfd3b47
+print(crypto.sha256("Pluto", true)) --> \x8d\xad\x5f\x6a\x7d\xd2\xdc\xd8\xc3\x5e\xc2\xfd\x7b\xab\xb4\x99\xbc\xad\x60\xd2\x7d\x73\xfe\x73\xec\xa2\xce\x02\x5d\xfd\x3b\x47
 ```
 ---
 ### `crypto.sha384`
@@ -216,7 +232,7 @@ Hash a string using the SHA-384 cryptographic hashing algorithm.
 2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
 ```pluto
 local crypto = require("crypto")
-assert(crypto.sha384("Pluto", false) == "db890233a919b6745d632633c419e14540ff79f1a89bc4ac194b00e7f913f0f06d5d4d7d6cc2b4aaf9485d223afb8cf0")
+print(crypto.sha384("Pluto", false)) --> db890233a919b6745d632633c419e14540ff79f1a89bc4ac194b00e7f913f0f06d5d4d7d6cc2b4aaf9485d223afb8cf0
 ```
 ---
 ### `crypto.sha512`
@@ -226,7 +242,7 @@ Hash a string using the SHA-512 cryptographic hashing algorithm.
 2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
 ```pluto
 local crypto = require("crypto")
-assert(crypto.sha512("Pluto", false) == "ee8410a8bf9511b94fd6669b5c3e0c4b86e8e4bf7baa8dbd2773d4d6381dd1aecebbe391bef4c6158620ab3f6b794907652d4432c2301d7e1a6caf520565cdf2")
+print(crypto.sha512("Pluto", false)) --> ee8410a8bf9511b94fd6669b5c3e0c4b86e8e4bf7baa8dbd2773d4d6381dd1aecebbe391bef4c6158620ab3f6b794907652d4432c2301d7e1a6caf520565cdf2
 ```
 ---
 ### `crypto.ripemd160`
@@ -235,17 +251,25 @@ Hash a string using the RIPEMD-160 cryptographic hashing algorithm.
 1. The string to hash.
 2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
 ```pluto
-assert(require"crypto".ripemd160("Pluto") == "c2072a85f4a691803b8942709036072086fd9550")
+local crypto = require("crypto")
+print(crypto.ripemd160("Pluto")) --> c2072a85f4a691803b8942709036072086fd9550
 ```
 ---
 ## Cryptographic PRNGs
 ### `crypto.random`
 This is a cryptographically secure PRNG, assuming the platform's implementation of the underlying primitive is secure.
+#### Parameters
+This function takes 0-2 integer parameters that define the output range:
+- If no arguments are given, an inclusive range from `math.mininteger` to `math.maxinteger` is used.
+- If 1 argument (`n`) is given, an inclusive range from 1 to `n` is used.
+- If 2 arguments (`l`, `u`) are given, an inclusive range from `l` to `u` is used.
 #### Returns
-A random lua integer, in the range from `math.mininteger` to `math.maxinteger`.
+A random lua integer, in the given range.
 ```pluto
 local crypto = require("crypto")
-print(crypto.random())
+print(crypto.random()) -- Prints an integer from math.mininteger to math.maxinteger.
+print(crypto.random(6)) -- Prints an integer from 1 to 6, like a dice roll.
+print(crypto.random(10, 20)) -- Prints an integer from 10 to 20.
 ```
 
 ---

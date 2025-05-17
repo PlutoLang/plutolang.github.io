@@ -5,6 +5,17 @@ Pluto offers optional compiler warnings for certain misbehaviors.
 
 ## Warning Types
 
+### unused
+This is raised when a local is declared but never used.
+```pluto showLineNumbers
+local a
+```
+```
+file.pluto:1: warning: unused local variable [unused]
+    1 | local a
+      | ^^^^^^^ here: 'a' is unused
+```
+
 ### var-shadow
 This is raised when a new local is created with the same name as an existing one.
 ```pluto showLineNumbers

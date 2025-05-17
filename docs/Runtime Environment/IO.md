@@ -25,13 +25,14 @@ end
 ```
 ---
 ### `io.part`
-Extracts the given part from a path.
+Extracts the parts of a path.
 #### Parameters
 1. A string path or file stream.
-2. The part to return, "parent" or "name".
+2. Optionally, which part to return, "parent" or "name".
 #### Returns
-The extracted part.
+The extracted part(s) of the path.
 ```pluto
+print(io.part("/path/to/foo.txt")) -- "/path/to", "foo.txt"
 print(io.part("/path/to/foo.txt", "parent")) -- "/path/to"
 print(io.part("/path/to/foo.txt", "name")) -- "foo.txt"
 ```
@@ -184,4 +185,29 @@ If this function is acting as a *getter*, it will return the current working dir
 ```pluto
 local cwd = io.currentdir() -- Get cwd
 io.currentdir("abc/abc") -- Set a new cwd
+```
+
+---
+### `io.chmod`
+Get or set file permissions on Unix-like systems.
+#### Parameters
+1. A string path or file stream. If this parameter is absent, this function works as an *availability check*.
+2. The desired mode/permissions. If this parameter is absent, this function works as a *getter*.
+#### Returns
+If this function is acting as an *availability check*, it will return a boolean.
+
+If this function is acting as a *getter*, it will return an integer if used on a supporting platform and there wasn't an error `stat`ing the file.
+
+```pluto
+io.contents("chmod-test.txt", "") -- create chmod-test.txt with no contents
+if mode := io.chmod("chmod-test.txt") then
+    print("File mode: %o":format(mode))
+    mode |= 0o111 -- +x
+    io.chmod("chmod-test.txt", mode)
+    print("New file mode: %o":format(mode))
+elseif io.chmod() then
+    print("Failed to stat chmod-test.txt")
+else
+    print("chmod is not available on this platform.")
+end
 ```
