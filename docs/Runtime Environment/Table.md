@@ -218,7 +218,7 @@ Copying variant of `table.map`; returns a new table instead of modifying the inp
 
 ---
 ### `table.reduce`
-For every value stored in the table, computes `accumulator = f(value, accumulator)`, returning the accumulator at the end.
+For every value stored in the table, computes `accumulator = f(accumulator, value)`, returning the accumulator at the end.
 #### Parameters
 1. The table.
 2. The callback responsible for producing the updated accumulator.
@@ -227,7 +227,7 @@ For every value stored in the table, computes `accumulator = f(value, accumulato
 The accumulator.
 ```pluto
 local t = { 1, 2, 3 }
-t:reduce(|value, accumulator| -> value + accumulator) |> print --> 6
+t:reduce(|accumulator, value| -> accumulator + value) |> print --> 6
 ```
 
 ### `table.min`
