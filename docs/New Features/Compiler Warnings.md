@@ -190,17 +190,30 @@ end
 ```
 
 ### implicit-global
-This is raised when the `global` keyword is enabled and a global was declared without it. See [Explicit Globals](<Explicit Globals>).
+This is raised when a global is declared without an explicit prefix, such as the optional `global` keyword:
 ```pluto showLineNumbers
 pluto_use global
-
 a = 1
 ```
 ```
-file.pluto:3: warning: implicit global creation [implicit-global]
-    3 | a = 1
-      | ^^^^^ here: prefix this with 'global' to be explicit
+file.pluto:2: warning: implicit global creation [implicit-global]
+    2 | a = 1
+      | ^^^^^ here: prefix this with '_G.' or 'global' to be explicit
 ```
+
+Examples of code that does not raise this warning:
+```pluto
+pluto_use global
+global a = 1
+a = 2
+```
+```pluto
+-- @pluto_warnings enable-implicit-global
+_G.a = 1
+a = 2
+```
+
+This warning type is enabled via `pluto_use global` or [compile-time configuration](#compile-time-configuration).
 
 ### discarded-return
 This is raised when the return value of a function declared `<nodiscard>` was discarded. See [Nodiscard Functions](<Nodiscard Functions>).
