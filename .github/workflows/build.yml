@@ -13,8 +13,6 @@ jobs:
 
       - run: npm ci
 
-      - run: cp -rf patches/shiki-twoslash/* node_modules/shiki-twoslash/dist/
-
       - run: npm run build
 
       - name: deploy
