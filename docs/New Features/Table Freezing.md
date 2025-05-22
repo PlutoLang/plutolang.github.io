@@ -39,3 +39,7 @@ All modifications to the table from within the Lua environment will be prevented
 :::caution
 If you're going to use this for a sandbox, ensure you call `table.freeze` before any users can access the Lua environment, otherwise they can replace that function.
 :::
+
+:::info
+As of Pluto 0.11.0, these functions are unavailable by default. You can enable them by defining the `PLUTO_ENABLE_TABLE_FREEZING` macro.
+:::
