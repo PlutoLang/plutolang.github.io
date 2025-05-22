@@ -1,5 +1,14 @@
-The `__mindex` metatable field is accessed when a method call is attempted on a nil value.
+The `__mindex` metamethod stands for 'method index'. It has a secondary priority to `__index` and it's only invoked when the lookup is being performed by method invocation syntax. This is used to avoid compatibility issues regarding Pluto's default metatable for tables. For example:
+```pluto
+local t = { "a", "b", "c" }
+print(t:concat())
+```
+In this code, the following occurs:
+1. `concat` key is not directly present in the table, so `__index` is queried.
+2. `__index` returns nil.
+3. Since `__index` returned nil and this lookup is being performed by method invocation syntax (`:`), `__mindex` is queried.
 
+Another example:
 ```pluto
 local t = setmetatable({}, {
     __mindex = {
@@ -18,12 +27,7 @@ print(t.sum) --> nil
 print(t:sum()) --> 3
 ```
 
-Notice how the above sample uses `:insert` instead of `table.insert`, this works because:
-- Pluto sets a default metatable on every table with `{ __mindex = _G.table }`
-- `__mindex` is looked up recursively — in this case the metatable of our metatable has Pluto's default metatable.
-
-Furthermore, note that `__mindex` is only checked after direct/raw access and `__index` lookups have yielded nil:
-
+Beware of a caveat:
 ```pluto
 local t = { 1, 2 }
 print(t:min()) --> 1
