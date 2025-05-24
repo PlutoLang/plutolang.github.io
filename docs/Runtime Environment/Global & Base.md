@@ -8,6 +8,18 @@ This page documents the changes & additions to Pluto's runtime environment, whic
 ### `_PVERSION`
 `_PVERSION` is the global to check your current version of Pluto.
 
+```pluto
+if _PVERSION == nil then
+    print("Plain Lua detected (".._VERSION..")")
+else
+    io.write("Pluto detected (".._PVERSION.."), based on ".._VERSION)
+    if os.platform then
+        io.write(", running on "..os.platform)
+    end
+    io.write("\n")
+end
+```
+
 ---
 ### `package.path`
 `package.path` is modified to also search for `.pluto` files.
