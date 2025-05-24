@@ -4,6 +4,40 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.11.0
+- Added preprocessor aliases (`$alias`)
+- Added compile-time evaluated statement `$assert`
+- Added warning for unused local variables
+- Added octal numerals
+- Added `__mindex` metamethod
+  - This is now used by default table metatable, elimiting the compatibility concerns it previously had.
+- Export is no longer deprecated but now implies constness
+- Walrus operator can now initialize multiple variables
+- Compile-time conditionals can now be equality checks
+- Table freezing is now an optional feature, enabled via `PLUTO_ENABLE_TABLE_FREEZING`
+- Fixed implicit conversion of booleans to strings outside of concats
+- Removed table length cache
+- Removed let & const
+
+Standard library:
+- Added buffer library
+- Added table.invert, table.dedup/deduplicate, table.deduped/deduplicated, table.values
+- Added crypto.crc32c
+- crypto.random now treats 1-2 arguments like math.random
+- Added optional 'binary' parameter to crypto.md5
+- Added ffi.alloc, ffi.write, & ffi.read
+- Added UDP support to socket.connect
+- Added socket.isudp, socket.udpserver
+- Added io.chmod
+- Added os.arch constant
+- Added callonce function
+- Added sdiv, udiv, smod, & umod functions
+- string.split's needle parameter is now required (previously defaulted to `","`)
+- socket.listen & socket.bind can now be bound to a specific IP address
+- io.part now returns 'parent, name' if part argument is omitted
+- Optimized json.encode & json.decode
+- Removed `_PSOUP` constant
+
 ## 0.10.5
 - Improved error message when `new` is provided with a nil value
 - Fixed ternary expression sometimes picking a bad register
