@@ -21,12 +21,12 @@ Note, `continue` will skip code. If any code within your loop will determine if 
 
 ## Continue's Only Argument
 This keyword accepts an optional integral argument which tells it how many levels of enclosing loops it should skip to the end of. The default value is 1, thus skipping to the end of the current loop.
-```pluto showLineNumbers title="Example 1"
+```pluto norun title="Example 1"
 for i = 1, 10 do -- Loop 1.
     continue 1 -- This is identical to `continue` without any arguments.
 end
 ```
-```pluto showLineNumbers title="Example 2"
+```pluto norun title="Example 2"
 for i = 1, 10 do -- Loop 1.
     for ii = 1, 5 do -- Loop 2.
         continue 1 -- This will continue from Loop 2.
