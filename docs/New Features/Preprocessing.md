@@ -84,7 +84,7 @@ or write simple functions which will be fully inlined at the call site:
 
 ```pluto
 $alias add(a, b) = a + b
-assert(add(1, 2) == 3)
+print(add(1, 2)) --> 3
 ```
 
 If you want to write an alias over multiple lines, you can use a backslash to continue it:
@@ -95,5 +95,5 @@ $alias seq = "a"  \
              "b"  \
              ..   \
              "c"
-assert(seq == "abc")
+print(seq) --> abc
 ```
