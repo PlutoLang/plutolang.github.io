@@ -5,9 +5,9 @@ The messages for syntax errors are enhanced. They include tailored messages and 
 if a < b and t == 5 return "Gottem" end
 ```
 ```diff title="Emitted Syntax Error"
-syntax error: file.pluto:1: expected 'then' to delimit condition.
+syntax error: file.pluto:1: unexpected symbol near 'return'
     1 | if a < b and t == 5 return "Gottem" end
-      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ here: expected 'then' symbol.
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ here: expected 'then' or 'do' to open the block
 ```
 ### Example 2
 ```pluto showLineNumbers title="Problematic Code"
