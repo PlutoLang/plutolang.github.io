@@ -97,3 +97,9 @@ p, h1, h2, h3, h4, a {
   padding: 0.4rem 0.5rem;
   margin-left: 0.3rem;
 }
+
+/* needed for plain text */
+pre.shiki code:not(:has(.line)) {
+  padding-left: var(--ifm-pre-padding);
+  padding-right: var(--ifm-pre-padding);
+}
