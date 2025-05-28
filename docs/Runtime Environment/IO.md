@@ -14,15 +14,9 @@ Copy a file to another file, creating a new file if needed.
 #### Parameters
 1. A string path or file stream.
 2. A path towards the file to copy into.
-#### Returns
-A boolean indicating if the file was successfully copied.
-```pluto
-if io.copy("./cfg/config.txt", "./backup_cfg/config.txt") then
-    print("Successfully created a backup config!")
-else
-    print("Failed to create a backup config.")
-end
-```
+#### Errors
+Raises a Lua error if the copy operation fails.
+
 ---
 ### `io.part`
 Extracts the parts of a path.
