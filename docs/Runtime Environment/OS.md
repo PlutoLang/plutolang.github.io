@@ -21,3 +21,9 @@ os.sleep(1000) -- Pause this thread for 1000ms.
 All of these return their respective times since implementation-specific epoch.
 ### `os.unixseconds`
 Returns seconds since UNIX epoch.
+
+
+---
+### `os.rename`, `os.remove`
+Although we'd rather these functions be in the IO library, these Lua variants are retained, but modified to assume UTF-8 path encoding for the same cross-platform consistency the IO library has.
+
