@@ -1,5 +1,7 @@
 This page documents the changes & additions to the `io` library in Pluto, which is built on top of Lua 5.4's.
 
+To improve cross-platform consistency, all IO functions assume UTF-8 encoding for paths.
+
 ---
 ### `io.rename`
 A variant of Lua's `os.rename` that raises an error on failure and instead has no return values.
