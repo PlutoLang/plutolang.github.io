@@ -76,6 +76,7 @@ const config = {
       navbar: {
         title: 'Pluto',
         logo: {
+          href: 'docs/Introduction',
           alt: 'Pluto Logo',
           src: 'img/logo.png',
         },
