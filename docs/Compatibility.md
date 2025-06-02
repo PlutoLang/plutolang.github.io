@@ -44,16 +44,16 @@ It is also possible to specify a version number, which is a shorthand for the ke
 - `"0.6.0"` corresponds to `* = false, switch, continue, enum, new, class, parent, export`
 - `"0.8.0"` corresponds to `* = false, switch, continue, enum, new, class, parent, export, try, catch`
 
-So, writing a portable script that only makes use of Pluto 0.8.0's features requires this at the beginning:
+So, writing a portable script that only makes use of Pluto 0.8.0's keywords requires this at the beginning:
 ```pluto
 pluto_use "0.8.0"
 ```
 
-This feature also supports quick encompassing of optional features. So, instead of:
+This feature also supports quick encompassing of optional keywords. So, instead of:
 ```pluto
 pluto_use "0.8.0", global
 ```
-You can use a '+' after the version number to also enable all of the optional features. As of 0.9.0, the only optional feature is [explicit globals](New%20Features/Explicit%20Globals) (`global`).
+You can use a '+' after the version number to also enable all of the optional keywords. As of 0.9.0, the only optional keyword is `global`:
 ```pluto
 pluto_use "0.9.0+" -- The same as pluto_use "0.9.0", global
 ```
