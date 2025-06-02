@@ -47,5 +47,6 @@ While Pluto's standard library is still growing, a few packages are available to
 - [iniparser](https://github.com/calamity-inc/iniparser) — INI reader & writer for Lua 5.3+ and Pluto
 - [pluto-discord-bot](https://github.com/PlutoLang/pluto-discord-bot) — a library enabling you to write Discord bots in Pluto
 - [pluto-websocket](https://github.com/PlutoLang/pluto-websocket) — expands Pluto's `socket` library with WebSocket client functionality
+- [pluto-zip](https://github.com/PlutoLang/pluto-zip) — a library to read & create zip archives
 - [pluto-query](https://github.com/PlutoLang/pluto-query) — expands Pluto's `xml` library with query selector functionality
 - [pluto-dns](https://github.com/PlutoLang/pluto-dns) — DNS client library
