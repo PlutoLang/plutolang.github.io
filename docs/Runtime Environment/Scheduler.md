@@ -15,7 +15,7 @@ The `run` method activates the scheduler. The scheduler resumes all coroutines a
 ```pluto
 local scheduler = new (require"pluto:scheduler") ()
 
--- Make this example behave a bit better in the non-blocking WASM environment
+-- Use coroutine.sleep instead of os.sleep in a non-blocking environment
 if coroutine.isyieldable() then
     scheduler.yieldfunc = || -> coroutine.sleep(1)
 end
