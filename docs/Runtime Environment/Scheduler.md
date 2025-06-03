@@ -4,7 +4,7 @@ The scheduler class — available via `require` — can be used to easily set up
 The constructor takes no arguments.
 
 ### `add`
-The `add` method can be used to turn a function into a coroutine. The coroutine is resumed once and then added to the scheduler.
+The `add` method can be used to turn a function into a coroutine. The coroutine is resumed once, added to the scheduler, and returned.
 
 ### `addloop`
 The `addloop` method is a wrapper for the `add` method that keeps invoking the given function until it returns false.
