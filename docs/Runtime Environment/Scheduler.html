@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.7.0">
 <title data-rh="true">Scheduler | Pluto</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pluto-lang.org/docs/Runtime Environment/Scheduler"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Scheduler | Pluto"><meta data-rh="true" name="description" content="The scheduler class — available via require — can be used to easily set up coroutine-based cooperative multitasking."><meta data-rh="true" property="og:description" content="The scheduler class — available via require — can be used to easily set up coroutine-based cooperative multitasking."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://pluto-lang.org/docs/Runtime Environment/Scheduler"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Runtime Environment/Scheduler" hreflang="en"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Runtime Environment/Scheduler" hreflang="x-default"><script src="/custom.js" async></script><link rel="stylesheet" href="/assets/css/styles.659234e3.css">
-<script src="/assets/js/runtime~main.01631043.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.5d796edc.js" defer="defer"></script>
 <script src="/assets/js/main.2c382bd6.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -12,7 +12,7 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="__construct"><code>__construct</code><a href="#__construct" class="hash-link" aria-label="Direct link to __construct" title="Direct link to __construct">​</a></h3>
 <p>The constructor takes no arguments.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="add"><code>add</code><a href="#add" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
-<p>The <code>add</code> method can be used to turn a function into a coroutine. The coroutine is resumed once and then added to the scheduler.</p>
+<p>The <code>add</code> method can be used to turn a function into a coroutine. The coroutine is resumed once, added to the scheduler, and returned.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="addloop"><code>addloop</code><a href="#addloop" class="hash-link" aria-label="Direct link to addloop" title="Direct link to addloop">​</a></h3>
 <p>The <code>addloop</code> method is a wrapper for the <code>add</code> method that keeps invoking the given function until it returns false.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="run"><code>run</code><a href="#run" class="hash-link" aria-label="Direct link to run" title="Direct link to run">​</a></h3>
