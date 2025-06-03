@@ -27,6 +27,8 @@ A convenience function that wraps `socket.listen`, automatically accepting new c
 1. A [scheduler](Scheduler) instance.
 2. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 3. The callback function that will be called in a new coroutine for each client socket.
+#### Returns
+The coroutine that was created and added to the scheduler.
 #### Errors
 Raises an error to the caller if the port could not be bound.
 
