@@ -6,7 +6,7 @@ sidebar_position: 0
 Pluto is a superset of Lua 5.4 designed to assist with general-purpose programming & facilitate cleaner, more streamlined development via:
 - A [greatly enhanced standard library](<category/runtime-environment>) and [pre-existing packages](<Packages#noteworthy-packages-for-pluto>).
 - More than a dozen highly-desired syntaxes such as [switch statements](<New Features/Switch Blocks>), [compound operators](<New Operators#compound-operators>), [string interpolation](<New Features/String Interpolation>), [classes](<New Features/Object-Oriented Programming#class-statement>), [ternary expressions](<New Features/Ternary Expressions>), [enums](<New Features/Enumerations>), etc.
-- A myriad of other improvements, such as [generalized iteration](<Qol Improvements/Generalized Iteraction>), [compiler warnings](<New Features/Compiler Warnings>), and a [preprocessor](<New Features/Preprocessing>).
+- A myriad of other improvements, such as [generalized iteration](<QoL Improvements/Generalized Iteration>), [compiler warnings](<New Features/Compiler Warnings>), and a [preprocessor](<New Features/Preprocessing>).
 
 Despite the immense additions, Pluto remains highly compatible with Lua:
 - (Mostly) compatible with Lua 5.4 source code.
