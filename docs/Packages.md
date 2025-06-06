@@ -16,7 +16,7 @@ So, if you want to `require` a file in the same working directory, e.g. `mylib`,
 
 Notably, there is no standardized `lib` or `modules` folder. However, you can update `package.path` to check such folders as well:
 ```pluto norun
-package.path ..= package.config[3].."lib"..package.config[1].."?.pluto"
+package.path ..= package.config[3].."lib/?.pluto":replace("/", package.config[1])
 ```
 With this, we could for example have `mylib` located at `./lib/mylib.pluto`.
 
