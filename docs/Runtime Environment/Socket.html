@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.0">
 <title data-rh="true">Socket | Pluto</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pluto-lang.org/docs/Runtime Environment/Socket"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Socket | Pluto"><meta data-rh="true" name="description" content="Must be included via require. This library is not available in WASM builds of Pluto."><meta data-rh="true" property="og:description" content="Must be included via require. This library is not available in WASM builds of Pluto."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://pluto-lang.org/docs/Runtime Environment/Socket"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Runtime Environment/Socket" hreflang="en"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Runtime Environment/Socket" hreflang="x-default"><script src="/custom.js" async></script><link rel="stylesheet" href="/assets/css/styles.0a24dd38.css">
-<script src="/assets/js/runtime~main.6ec10901.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.a7d60a61.js" defer="defer"></script>
 <script src="/assets/js/main.18e92860.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -43,6 +43,10 @@
 <li>Either an int with the port to listen on or a string such as <code>1.2.3.4:567</code> for systems with multiple public-facing addresses.</li>
 <li>The callback function that will be called in a new coroutine for each client socket.</li>
 </ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The coroutine that was created and added to the scheduler.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="errors">Errors<a href="#errors" class="hash-link" aria-label="Direct link to Errors" title="Direct link to Errors">​</a></h4>
+<p>Raises an error to the caller if the port could not be bound.</p>
 <pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2" norun="true"><div class="language-id">pluto</div><div class="code-container"><code><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> { scheduler</span><span style="color:#9F570F">,</span><span style="color:#F8F8F2"> socket } </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#66D9EF">require</span><span style="color:#F8F8F2"> </span><span style="color:#E6DB74">&quot;*&quot;</span></div><div class="line"></div><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> sched </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#F92672">new</span><span style="color:#F8F8F2"> </span><span style="color:#66D9EF;font-style:italic">scheduler</span><span style="color:#F8F8F2">()</span></div><div class="line"><span style="color:#F8F8F2">socket</span><span style="color:#9F570F">.</span><span style="color:#66D9EF">bind</span><span style="color:#F8F8F2">(sched</span><span style="color:#9F570F">,</span><span style="color:#F8F8F2"> </span><span style="color:#AE81FF">80</span><span style="color:#9F570F">,</span><span style="color:#F8F8F2"> |</span><span style="color:#FD971F;font-style:italic">s</span><span style="color:#F8F8F2">| </span><span style="color:#66D9EF;font-style:italic">-&gt;</span><span style="color:#F8F8F2"> </span><span style="color:#F92672">do</span></div><div class="line"><span style="color:#F8F8F2">    </span><span style="color:#F92672">local</span><span style="color:#F8F8F2"> content </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#E6DB74">&quot;Hello, world!&quot;</span></div><div class="line"><span style="color:#F8F8F2">    s</span><span style="color:#9F570F">:</span><span style="color:#66D9EF">send</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;HTTP/1.1 200 OK</span><span style="color:#AE81FF">\r\n</span><span style="color:#E6DB74">Connection: Close</span><span style="color:#AE81FF">\r\n</span><span style="color:#E6DB74">Content-Length: &quot;</span><span style="color:#F92672">..#</span><span style="color:#F8F8F2">content</span><span style="color:#F92672">..</span><span style="color:#E6DB74">&quot;</span><span style="color:#AE81FF">\r\n\r\n</span><span style="color:#E6DB74">&quot;</span><span style="color:#F92672">..</span><span style="color:#F8F8F2">content)</span></div><div class="line"><span style="color:#F92672">end</span><span style="color:#F8F8F2">)</span></div><div class="line"><span style="color:#F8F8F2">sched</span><span style="color:#9F570F">:</span><span style="color:#66D9EF">run</span><span style="color:#F8F8F2">()</span></div></code></div><button type="button" aria-label="Copy code to clipboard" class="copy-button">Copy</button></pre>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="socketudpserver"><code>socket.udpserver</code><a href="#socketudpserver" class="hash-link" aria-label="Direct link to socketudpserver" title="Direct link to socketudpserver">​</a></h3>
@@ -51,7 +55,7 @@
 <ol>
 <li>Either an int with the port to listen on or a string such as <code>1.2.3.4:567</code> for systems with multiple public-facing addresses.</li>
 </ol>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>A pseudo-socket which can <code>recv</code> UDP datagrams and then <code>send</code> a response.</p>
 <pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2" norun="true"><div class="language-id">pluto</div><div class="code-container"><code><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> serv </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> socket</span><span style="color:#9F570F">.</span><span style="color:#66D9EF">udpserver</span><span style="color:#F8F8F2">(</span><span style="color:#AE81FF">30726</span><span style="color:#F8F8F2">)</span></div><div class="line"><span style="color:#F92672">while</span><span style="color:#F8F8F2"> data </span><span style="color:#F92672">:=</span><span style="color:#F8F8F2"> serv</span><span style="color:#9F570F">:</span><span style="color:#66D9EF">recv</span><span style="color:#F8F8F2">() </span><span style="color:#F92672">do</span></div><div class="line"><span style="color:#F8F8F2">    </span><span style="color:#F92672">if</span><span style="color:#F8F8F2"> data </span><span style="color:#F92672">==</span><span style="color:#F8F8F2"> </span><span style="color:#E6DB74">&quot;ping&quot;</span><span style="color:#F8F8F2"> </span><span style="color:#F92672">then</span></div><div class="line"><span style="color:#F8F8F2">        serv</span><span style="color:#9F570F">:</span><span style="color:#66D9EF">send</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;pong&quot;</span><span style="color:#F8F8F2">)</span></div><div class="line"><span style="color:#F8F8F2">    </span><span style="color:#F92672">end</span></div><div class="line"><span style="color:#F92672">end</span></div></code></div><button type="button" aria-label="Copy code to clipboard" class="copy-button">Copy</button></pre>
 <hr>
@@ -70,7 +74,7 @@
 <ol>
 <li>The socket instance.</li>
 </ol>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ul>
 <li>If the socket is open: The oldest chunk of data received on the transport layer (TCP packet) or crypto layer (TLS record) as a string.</li>
 <li>If the socket is closed: Nil.</li>
@@ -84,7 +88,7 @@
 <ol>
 <li>The socket instances.</li>
 </ol>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>Either the string that would be returned next by <code>socket.recv</code> or nothing if there is no message in the receive buffer.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="socketunrecv"><code>socket.unrecv</code><a href="#socketunrecv" class="hash-link" aria-label="Direct link to socketunrecv" title="Direct link to socketunrecv">​</a></h3>
 <p>Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of <code>socket.recv</code>.</p>
@@ -106,7 +110,7 @@
 <li>The socket instance.</li>
 <li>An array of tables describing available certificates. Each certificate needs a <code>chain</code> and <code>private_key</code> field, which should be a string containing valid PEM. The <code>private_key</code> must be RSA.</li>
 </ol>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>True on success. On failure, returns false and the socket is closed. If the socket is already using TLS, returns nil.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="multitasking-2">Multitasking<a href="#multitasking-2" class="hash-link" aria-label="Direct link to Multitasking" title="Direct link to Multitasking">​</a></h4>
 <p>If called inside of a coroutine, this function yields. Otherwise, it blocks.</p>
@@ -124,7 +128,7 @@
 <ol>
 <li>The socket instance.</li>
 </ol>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ol>
 <li>The IP address as a string.</li>
 <li>The port.</li>
@@ -136,7 +140,7 @@
 <ol>
 <li>The socket instance.</li>
 </ol>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-8">Returns<a href="#returns-8" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>Either &quot;client&quot; or &quot;server&quot;.</p>
 <pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2" norun="true"><div class="language-id">pluto</div><div class="code-container"><code><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> sock </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#66D9EF">require</span><span style="color:#E6DB74">&quot;socket&quot;</span><span style="color:#9F570F">.</span><span style="color:#66D9EF">connect</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;1.1.1.1&quot;</span><span style="color:#9F570F">,</span><span style="color:#F8F8F2"> </span><span style="color:#AE81FF">443</span><span style="color:#F8F8F2">)</span></div><div class="line"><span style="color:#66D9EF">print</span><span style="color:#F8F8F2">(sock</span><span style="color:#9F570F">:</span><span style="color:#66D9EF">getside</span><span style="color:#F8F8F2">()) </span><span style="color:#88846F">--&gt; client</span></div></code></div><button type="button" aria-label="Copy code to clipboard" class="copy-button">Copy</button></pre>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="socketistls"><code>socket.istls</code><a href="#socketistls" class="hash-link" aria-label="Direct link to socketistls" title="Direct link to socketistls">​</a></h3>
@@ -165,7 +169,7 @@
 <p>Listener instances are obtained by calling <code>socket.listen</code>.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="accept"><code>accept</code><a href="#accept" class="hash-link" aria-label="Direct link to accept" title="Direct link to accept">​</a></h3>
 <p>Accepts an incoming client connection, waiting until there is one.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-8">Returns<a href="#returns-8" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-9">Returns<a href="#returns-9" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>A new socket instance. The socket can be used as per usual, with the exception of the starttls function being unavailable.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="multitasking-3">Multitasking<a href="#multitasking-3" class="hash-link" aria-label="Direct link to Multitasking" title="Direct link to Multitasking">​</a></h4>
 <ul>
