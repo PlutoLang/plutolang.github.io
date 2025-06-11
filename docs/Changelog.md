@@ -4,6 +4,22 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.11.1
+- Improved implicit-global coverage for multiple assignments within the same statement
+- Fixed preprocessor aliases not taking multi-token arguments (e.g. function calls)
+- Fixed compile-time concatenation shadowing optional parentheses
+- Fixed `extends` not inheriting `__pairs`
+
+Standard Library:
+- socket.bind now returns the created coroutine and errors are raised to the caller instead of the scheduler
+- Fixed socket.listen/socket.bind not failing for bound TCP ports on Windows
+- Fixed `os.sleep(1)` taking considerably longer than 1ms on Windows
+- Fixed `scheduler:run` yielding after the final tick
+- Fixed `dumpvar` and `exportvar`'s quoted strings not escaping bytes that would make it invalid UTF-8
+- Fixed filesystem errors on Windows not being UTF-8 encoded when the user has a non-English locale
+
+You can view the full commit log [here](https://github.com/PlutoLang/Pluto/compare/0.11.0...0.11.1).
+
 ## 0.11.0
 - Added preprocessor aliases (`$alias`)
 - Added compile-time evaluated statement `$assert`
