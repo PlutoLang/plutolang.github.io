@@ -72,32 +72,16 @@ say(nil) --> The message was nil.
 say("Hello, world!") --> Hello, world!
 ````
 
-It's a cleaner version of this code:
+You can even use it with compound assignments:
 ```pluto
-local function say(message)
-    if message == nil then
-        message = "The message was nil."
-    end
+local function config(data)
+    data.dark_mode ??= true
 
-    print(message)
+    print("Dark mode is "..data.dark_mode)
 end
 
-say() --> The message was nil.
-say(nil) --> The message was nil.
-say("Hello, world!") --> Hello, world!
-```
-
-You can even use compound assignment:
-```pluto
-local function say(message)
-    message ??= "The message was nil."
-
-    print(message)
-end
-
-say() --> The message was nil.
-say(nil) --> The message was nil.
-say("Hello, world!") --> Hello, world!
+config{ dark_mode = false } --> Dark mode is false
+config{}                    --> Dark mode is true
 ```
 :::info
 This operator does not implement any metamethods.
