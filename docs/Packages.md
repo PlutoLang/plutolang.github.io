@@ -50,3 +50,4 @@ While Pluto's standard library is still growing, a few packages are available to
 - [pluto-zip](https://github.com/PlutoLang/pluto-zip) — a library to read & create zip archives
 - [pluto-query](https://github.com/PlutoLang/pluto-query) — expands Pluto's `xml` library with query selector functionality
 - [pluto-dns](https://github.com/PlutoLang/pluto-dns) — DNS client library
+- [pluto-s3](https://github.com/PlutoLang/pluto-s3) —  S3 client library including AWS4 and HMAC algorithms
