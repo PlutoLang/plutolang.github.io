@@ -16,6 +16,8 @@ file.pluto:1: warning: unused local variable [unused]
       | ^^^^^^^ here: 'a' is unused
 ```
 
+This warning is not raised for variables starting with an underscore (`_`) as this is a common convention for unused variables.
+
 ### var-shadow
 This is raised when a new local is created with the same name as an existing one.
 ```pluto showLineNumbers
