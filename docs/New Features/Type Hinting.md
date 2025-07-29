@@ -25,6 +25,7 @@ There's no effect on performance. This is implemented entirely during the compil
 - `userdata`
 - `nil`
 - `void` (return type only)
+- `any`
 
 Prefix a `?` to indicate void-able types, e.g. `?string` indicates that it may be absent, nil, or a string.
 
