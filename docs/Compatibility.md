@@ -49,15 +49,6 @@ So, writing a portable script that only makes use of Pluto 0.8.0's keywords requ
 pluto_use "0.8.0"
 ```
 
-This feature also supports quick encompassing of optional keywords. So, instead of:
-```pluto
-pluto_use "0.8.0", global
-```
-You can use a '+' after the version number to also enable all of the optional keywords. As of 0.9.0, the only optional keyword is `global`:
-```pluto
-pluto_use "0.9.0+" -- The same as pluto_use "0.9.0", global
-```
-
 For module developers and scripts which may be used in future versions of Pluto, we recommend you use `pluto_use` for two reasons:
 - **Portability.** This will override the compatibility mode settings compiled into Pluto so your script will be parsed identically in all Pluto environments.
 - **Proactive compatibility.** Any keywords added by future versions of Pluto will also be put in compatibility mode by these statements, so in the off-chance your script uses a future reserved keyword as a variable name, it would still parse as you intended when you wrote it.
