@@ -467,11 +467,13 @@ print(base64.encode(enc))
 print(enc |> crypto.decrypt|"rsa-pkcs1", priv|) --> A secret message to the owner of the private key.
 ```
 ### `crypto.sign`
+Signs a message as per the PKCS#1 v1.5 scheme.
 #### Parameters
 1. `data` — The data to sign.
 2. `mode` — "rsa-sha256" or "rsa-sha1".
 3. `key` — The private key to use.
 ### `crypto.verify`
+Verifies a message as per the PKCS#1 v1.5 scheme.
 #### Parameters
 1. `data` — The data that was signed.
 2. `mode` — "rsa-sha256" or "rsa-sha1".
