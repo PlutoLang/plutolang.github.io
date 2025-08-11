@@ -4,6 +4,20 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.11.2
+Compiler:
+- Fixed `extends` not inheriting `__index`, `__mindex`, `__newindex`
+- Fixed lexer looping infinitely on a self-referencing alias
+
+Runtime:
+- Fixed `in` for substring checking not being binary safe
+- Fixed table.slice crashing when producing a big slice
+- Fixed `exportvar`'s handling of non-finite numbers
+- Fixed bigint addition when operands are a mix of positive and negative
+- Fixed memory leaks under some rare conditions
+
+You can view the full commit log [here](https://github.com/PlutoLang/Pluto/compare/0.11.1...0.11.2).
+
 ## 0.11.1
 - Improved implicit-global coverage for multiple assignments within the same statement
 - Fixed preprocessor aliases not taking multi-token arguments (e.g. function calls)
