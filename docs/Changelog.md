@@ -4,6 +4,11 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.11.3
+Fixed some regressions from 0.11.2:
+- io.isfile and io.isdir erroring on non-existent paths
+- io.copy erroring when the destination doesn't exist
+
 ## 0.11.2
 Compiler:
 - Fixed `extends` not inheriting `__index`, `__mindex`, `__newindex`
