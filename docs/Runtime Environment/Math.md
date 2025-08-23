@@ -21,4 +21,8 @@ print(math.round(2.5)) --> 3
 ```
 ---
 ### `math.atan2`
-An alias of `math.atan`.
+An alias for the `math.atan` function.
+
+---
+### `math.inf`
+An alias for the `math.huge` constant.
