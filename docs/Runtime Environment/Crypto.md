@@ -542,6 +542,51 @@ print(crypto.verify(msg, "rsa-sha256", pub, sig)) --> true
 ```
 
 ---
+## Curve25519
+### `crypto.generatekeypair`
+Generates a keypair for Curve25519.
+#### Parameters
+1. `mode` — Must be "curve25519".
+
+Returns two strings: the public key and the private key, each 32 bytes.
+
+```pluto
+local crypto = require "pluto:crypto"
+local pub, priv = crypto.generatekeypair("curve25519")
+print(priv:tohex())
+print(pub:tohex())
+assert(crypto.derive("curve25519", priv) == pub)
+```
+
+### `crypto.derive`
+Derives a Curve25519 public key from a private key.
+#### Parameters
+1. `mode` — Must be "curve25519".
+2. `key` — The 32-byte private key.
+
+Returns the corresponding public key.
+
+### `crypto.x25519`
+Performs an X25519 Diffie-Hellman exchange on Curve25519.
+#### Parameters
+1. `private` — The local 32-byte private key.
+2. `public` — The peer's 32-byte public key.
+
+Returns the 32-byte shared secret.
+
+```pluto
+local crypto = require "pluto:crypto"
+
+local alice_priv <const> = "77076d0a7318a57d3c16c17251b26645df4c2f87ebc0992ab177fba51db92c2a":fromhex()
+local alice_pub <const> = "8520f0098930a754748b7ddcb43ef75a0dbf3a0d26381af4eba4a98eaa9b4e6a":fromhex()
+local bob_priv <const> = "5dab087e624a8a4b79e17f8b83800ee66f3bb1292618b6fd1c2f8b27ff88e0eb":fromhex()
+local bob_pub <const> = "de9edb7d7b7dc1b4d35b61c2ece435373f8343c85b78674dadfc7e146f882b4f":fromhex()
+
+print(crypto.x25519(alice_priv, bob_pub):tohex()) --> 4a5d9d5ba4ce2de1728e3bf480350f25e07e21c947d19e3376f09b3c1e161742
+print(crypto.x25519(bob_priv, alice_pub):tohex()) --> 4a5d9d5ba4ce2de1728e3bf480350f25e07e21c947d19e3376f09b3c1e161742
+```
+
+---
 ## Miscellaneous
 ### `crypto.decompress`
 Decompresses a DEFLATE-compressed string (one might call this an "INFLATE" function). Compatible with gzip and zlib headers and footers.
