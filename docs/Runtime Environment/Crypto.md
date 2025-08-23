@@ -506,14 +506,23 @@ print(crypto.verify(msg, "rsa-sha256", pub, sig)) --> true
 ### `crypto.decompress`
 Decompresses a DEFLATE-compressed string (one might call this an "INFLATE" function). Compatible with gzip and zlib headers and footers.
 #### Parameters
-1. The string to decompress.
+1. `data` — The string to decompress.
+2. `offset` — Optional starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`. To provide an `offset` without a decompressed size, pass `nil` as the third argument.
+3. `decompressed_size` — Optional size of the decompressed output. When only two arguments are given, the second argument is treated as `decompressed_size`.
 #### Returns
 1. The decompressed string.
 2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch`
 ```pluto
-local decompressed, info = require"crypto".decompress("\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04")
+local deflated = "\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04"
+
+local decompressed, info = require"crypto".decompress(deflated)
 print(decompressed) --> Hello, Pluto!
 print(info.compressed_size) --> 14
 print(info.checksum_present) --> false
 print(info.checksum_mismatch) --> false
+
+-- Decompress from an offset
+decompressed, info = require"crypto".decompress("Don't mind me" .. deflated, 14, nil)
+print(decompressed) --> Hello, Pluto
+print(info.compressed_size) --> 14
 ```
