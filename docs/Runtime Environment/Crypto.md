@@ -398,6 +398,25 @@ print(dumpvar(priv))
 --> }
 ```
 
+### `crypto.derive`
+Derives a public key from a private key.
+#### Parameters
+1. `mode` — Must be "rsa".
+2. `key` — The private key containing `p` and `q`.
+#### Returns
+The public key corresponding to the private key.
+```pluto
+local { bigint, crypto } = require "pluto:*"
+
+local priv = {
+    p = new bigint("115443384115231951475820445136871322101870729500298182134363293112660251666017"),
+    q = new bigint("98365361248415863235179644468056200977592391948608651522703704315152579004021"),
+}
+local pub = crypto.derive("rsa", priv)
+print(pub.n) --> 11355630182234424425429331560518598643298965915936825610957270519615363349759012613228119611304846673085167794661819394470107090216347491908311079792054357
+print(pub.e) --> 65537
+```
+
 ### `crypto.exportkey`
 Exports a private key.
 #### Parameters
