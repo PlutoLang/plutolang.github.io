@@ -134,8 +134,8 @@ local { http, scheduler, socket } = require "*"
 
 local certs = {
     {
-        chain = http.request("https://tls.cat/certs/viatls-2024/cert.pem"),
-        private_key = http.request("https://tls.cat/certs/viatls-2024/key.pem"),
+        chain = http.request("https://tls.cat/certs/faketls-latest/cert.pem"),
+        private_key = http.request("https://tls.cat/certs/faketls-latest/key.pem"),
     }
 }
 
@@ -146,7 +146,7 @@ socket.bind(sched, 443, |s| -> do
         s:send("HTTP/1.1 200 OK\r\nConnection: Close\r\nContent-Length: "..#content.."\r\n\r\n"..content)
     end
 end)
-print("https://127-0-0-1.viatls.com/")
+print("https://127-0-0-1.faketls.com/")
 sched:run()
 ```
 
