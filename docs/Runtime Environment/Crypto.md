@@ -265,6 +265,19 @@ local crypto = require("crypto")
 print(crypto.ripemd160("Pluto")) --> c2072a85f4a691803b8942709036072086fd9550
 ```
 ---
+### `crypto.hmac`
+Authenticates a message using the HMAC construction with the given hash algorithm.
+#### Parameters
+1. The hash algorithm to use. `"sha1"`, `"sha256"`, `"sha384"`, or `"sha512"`.
+2. The secret key.
+3. The message to authenticate.
+4. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+local key = "\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b"a
+print(crypto.hmac("sha256", key, "Hi There")) --> b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7
+```
+---
 ## Cryptographic PRNGs
 ### `crypto.random`
 This is a cryptographically secure PRNG, assuming the platform's implementation of the underlying primitive is secure.
