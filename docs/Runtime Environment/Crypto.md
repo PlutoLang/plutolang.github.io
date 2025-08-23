@@ -452,29 +452,27 @@ ueZ/sI52jgP8+xK2x7coiX5/tDmXCGlp5utUAjk2+Q==
 ### `crypto.encrypt`
 #### Parameters
 1. `data` — The data to be encrypted.
-2. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
+2. `mode` — "rsa-sha1", "rsa-sha256", "rsa-sha384", or "rsa-sha512" for RSA-OAEP with the corresponding hash, "rsa-pkcs1" for PKCS#1 v1.5, or "rsa" if you know what you're doing.
 3. `key` — The public or private key to use. Commonly, a public key is used to encrypt data.
+4. `label` — *(optional)* Associated data/label used for RSA-OAEP. Must match between encryption and decryption.
 ### `crypto.decrypt`
 #### Parameters
 1. `data` — The ciphertext to decrypt.
-2. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
+2. `mode` — "rsa-sha1", "rsa-sha256", "rsa-sha384", or "rsa-sha512" for RSA-OAEP with the corresponding hash, "rsa-pkcs1" for PKCS#1 v1.5, or "rsa" if you know what you're doing.
 3. `key` — The public or private key to use. If the data was encrypted with the public key, the private key is needed to decrypt it.
+4. `label` — *(optional)* Associated data/label used for RSA-OAEP. Must match what was provided during encryption.
 ```pluto
 local { base64, bigint, crypto } = require "pluto:*"
 local priv = {
     p = new bigint("115443384115231951475820445136871322101870729500298182134363293112660251666017"),
     q = new bigint("98365361248415863235179644468056200977592391948608651522703704315152579004021"),
 }
--- Derive public key
-local pub = {
-    n = priv.p * priv.q, -- 11355630182234424425429331560518598643298965915936825610957270519615363349759012613228119611304846673085167794661819394470107090216347491908311079792054357
-    e = new bigint(0x10001) -- 65537
-}
+local pub = crypto.derive("rsa", priv)
 -- Encrypt
-local enc = crypto.encrypt("A secret message to the owner of the private key.", "rsa-pkcs1", pub)
+local enc = crypto.encrypt("You know the primes!", "rsa-sha1", pub, "Authenticated Data")
 print(base64.encode(enc))
 -- Decrypt
-print(enc |> crypto.decrypt|"rsa-pkcs1", priv|) --> A secret message to the owner of the private key.
+print(enc |> crypto.decrypt|"rsa-sha1", priv, "Authenticated Data"|) --> You know the primes!
 ```
 ### `crypto.sign`
 Signs a message as per the PKCS#1 v1.5 scheme.
