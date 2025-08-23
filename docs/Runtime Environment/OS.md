@@ -16,12 +16,26 @@ This page documents the changes & additions to the `os` library in Pluto, which 
 ```pluto
 os.sleep(1000) -- Pause this thread for 1000ms.
 ```
+
 ---
 ### `os.nanos`, `os.micros`, `os.millis`, `os.seconds`
 All of these return their respective times since implementation-specific epoch.
 ### `os.unixseconds`
 Returns seconds since UNIX epoch.
 
+---
+### `os.dnsresolve`
+Asks the operating system to perform a DNS lookup.
+#### Parameters
+1. The DNS record type, e.g. `"A"` for IPv4 or `"AAAA"` for IPv6.
+2. The domain name to query.
+#### Return
+An array of tables describing each record. Each table contains a `type` and `data` field.
+#### Example
+```pluto norun
+print(dumpvar(os.dnsresolve("A", "one.one.one.one"))) -- { { type = "A", data = "1.1.1.1" }, { type = "A", data = "1.0.0.1" } }
+```
+Not available on Android/Termux or WASM builds of Pluto.
 
 ---
 ### `os.rename`, `os.remove`
