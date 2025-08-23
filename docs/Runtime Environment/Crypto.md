@@ -25,7 +25,7 @@ print(crypto.djb2(str)) --> 894552257
 ```
 ---
 ### `crypto.fnv1`
-Hash a string using the FNV1 non-cryptographic hashing algorithm.
+Hash a string using the 64-bit FNV1 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 ```pluto
@@ -35,13 +35,23 @@ print(crypto.fnv1(str)) --> 9065573210506989167
 ```
 ---
 ### `crypto.fnv1a`
-Hash a string using the FNV1A non-cryptographic hashing algorithm.
+Hash a string using the 64-bit FNV1A non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
 print(crypto.fnv1a(str)) --> 8618312879776256743
+```
+---
+### `crypto.fnv1a32`
+Hash a string using the 32-bit FNV1A non-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+```pluto
+local crypto = require("crypto")
+local str = "hello world"
+print(crypto.fnv1a32(str)) --> 3582672807
 ```
 ---
 ### `crypto.joaat`
