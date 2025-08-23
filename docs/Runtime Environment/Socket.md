@@ -112,22 +112,35 @@ Attempts to add the TLS crypto layer to the socket, making the transport layer a
 #### Parameters (Client)
 1. The socket instance.
 2. The host name of the intended remote. This may be the same as what was passed to `socket.connect`. This name must be on the certificate that the remote will send.
+3. An optional table of options.
 #### Parameters (Server)
 1. The socket instance.
 2. An array of tables describing available certificates. Each certificate needs a `chain` and `private_key` field, which should be a string containing valid PEM. The `private_key` must be RSA.
+3. An optional table of options.
+#### Options
+- `alpn` — An array of protocol names to negotiate via ALPN. On success, the selected protocol is returned as a second value.
+- `early_data` — Data to send immediately after the TLS handshake begins. Client only.
 #### Returns
-True on success. On failure, returns false and the socket is closed. If the socket is already using TLS, returns nil.
+`true` on success and, if ALPN is used, the selected protocol. On failure, returns `false` and the socket is closed. If the socket is already using TLS, returns `nil`.
 #### Multitasking
 If called inside of a coroutine, this function yields. Otherwise, it blocks.
-```pluto norun title="Client Example"
+```pluto norun title="Client Example (Early Data)"
 local socket = require "pluto:socket"
 
 local s = socket.connect("pluto-lang.org", 443)
-assert(s:starttls("pluto-lang.org"), "Failed to establish secure connection.")
-s:send("GET / HTTP/1.1\r\nHost: pluto-lang.org\r\nConnection: close\r\n\r\n")
+assert(s:starttls("pluto-lang.org", {
+    early_data = "GET / HTTP/1.1\r\nHost: pluto-lang.org\r\nConnection: close\r\n\r\n"
+}))
 while data := s:recv() do
     print(data)
 end
+```
+```pluto norun title="Client Example (ALPN)"
+local socket = require "pluto:socket"
+local s = socket.connect("pluto-lang.org", 443)
+print(select(2, s:starttls("pluto-lang.org", {
+    alpn = { "h2", "http/1.1" }
+})))
 ```
 ```pluto norun title="Server Example"
 local { http, scheduler, socket } = require "*"
