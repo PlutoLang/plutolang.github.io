@@ -97,3 +97,13 @@ $alias seq = "a"  \
              "c"
 print(seq) --> abc
 ```
+
+## `$haltcompiler`
+
+This statement will stop the parser processing further code.
+
+```pluto
+print(io.contents("index.pluto"):split("\n$haltcompiler"):back():strip()) --> Anything after the $haltcompiler statement is not processed as Pluto source code.
+$haltcompiler
+Anything after the $haltcompiler statement is not processed as Pluto source code.
+```
