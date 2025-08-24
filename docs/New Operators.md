@@ -36,12 +36,17 @@ Compound operators are syntactic sugar. They'll call the same metamethods as the
 :::
 
 ## Increment Operator
-In addition to the compound operator `+=`, there is an even faster way to increment a value by 1 using the prefixed ++ operator:
+In addition to the compound operator `+=`, there is an even faster way to increment a value by 1 using the ++ operator:
 ```pluto
 local a = 1
+-- Prefix
 print(++a) --> 2
 ++a
 print(a) --> 3
+-- Postfix
+print(a++) --> 3
+a++
+print(a) --> 5
 ```
 
 ## Comparison Chaining
