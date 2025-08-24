@@ -301,3 +301,16 @@ A new string.
 print("58595a":fromhex()) --> XYZ
 print("58 59 5A":fromhex()) --> XYZ
 ```
+---
+### `string.span`
+Returns a substring from a starting position and length. This differs from string.sub, which takes a start and end position.
+#### Parameters
+1. The string.
+2. The starting position.
+3. The length.
+#### Returns
+The substring.
+```pluto
+print("abcd":sub(2, 2)) --> b
+print("abcd":span(2, 2)) --> bc
+```

@@ -136,6 +136,29 @@ Turns a userdata into a string.
 A string.
 
 ---
+### `ffi.callback`
+Creates a function pointer callable from native code. This function is only available on x86, x86_64, and aarch64.
+#### Parameters
+1. The return type. Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
+2. The argument type(s).
+3. The Pluto function to execute.
+#### Returns
+An FFI Callback instance.
+#### Example
+```pluto norun
+local ffi = require "pluto:ffi"
+local cb = ffi.callback("i32", "i32", function(val)
+    return val + 69
+end)
+lib:wrap("void", "set_cb", "ptr")(cb)
+assert(lib:wrap("i32", "call_cb", "i32")(42) == 42 + 69)
+```
+
+:::info
+This function is incompatible with [W^X](https://en.wikipedia.org/wiki/W%5EX). ARM-based MacOS may enforce this without the `com.apple.security.cs.allow-jit` entitlement.
+:::
+
+---
 ## FFI Library Class
 Obtained from `ffi.open`.
 
@@ -182,3 +205,27 @@ lib.add = lib:wrap("i32", "add", "i32", "i32")
 assert(lib.MY_MAGIC_INT == 69)
 assert(lib.add(38, 4) == 42)
 ```
+
+---
+## FFI Callback Class
+Returned from `ffi.callback`.
+
+### `blocking`
+Gets or sets whether native calls from non-Pluto threads block until processed.
+#### Parameters
+1. (optional) A boolean.
+#### Returns
+The current state if no parameter is provided.
+
+### `tick`
+Processes pending callback invocations queued from other threads.
+
+### `defaultreturn`
+Gets or sets the value returned to native code while callbacks are queued in non-blocking mode.
+#### Parameters
+1. (optional) The value to return.
+#### Returns
+The current default return value if no parameter is provided.
+
+### `callcount`
+Returns the number of times the callback has been invoked.

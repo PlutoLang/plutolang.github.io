@@ -67,6 +67,22 @@ print(new bigint(10) % new bigint(3)) --> 1
 ```
 
 ---
+### `__unm`
+Returns a new bigint with the sign bit flipped.
+```pluto
+local bigint = require "pluto:bigint"
+print(-new bigint(10)) --> -10
+```
+
+---
+### `bigint.abs`
+Returns a new bigint with the sign bit zeroed.
+```pluto
+local bigint = require "pluto:bigint"
+print(new bigint(-10):abs()) --> 10
+```
+
+---
 ### `bigint.pow`, `__pow`
 Performs expontentiation on two bigints. Returns a new bigint.
 ```pluto
@@ -75,9 +91,49 @@ print(new bigint(2) ^ new bigint(10)) --> 1024
 ```
 
 ---
+### `bigint.gcd`
+Computes the greates common divisor shared by 2 bigints.
+```pluto
+local bigint = require "pluto:bigint"
+print(bigint.new(48):gcd(bigint.new(18))) --> 6
+```
+
+---
 ### `bigint.bitlength`
 Returns the position of the most significant set bit as a plain integer.
 ```pluto
 local bigint = require "pluto:bigint"
 print(new bigint(420):bitlength()) --> 9
+```
+
+---
+### `bigint.isprobableprime`
+Non-deterministically check if a number is prime.
+#### Parameters
+1. The bigint.
+2. Number of Miller-Rabin iterations to perform.
+```pluto
+local bigint = require "pluto:bigint"
+print(new bigint(91):isprobableprime(10)) --> false
+```
+
+---
+### `bigint.export`
+Exports the bigint to a big-endian binary string.
+#### Parameters
+1. The bigint.
+2. The minimum number of bytes to return.
+```pluto
+local bigint = require "pluto:bigint"
+print(new bigint("1056"):export():tohex()) --> 0420
+print(new bigint("1056"):export(4):tohex()) --> 00000420
+```
+
+---
+### `bigint.import`
+Creates a bigint from a big-endian binary string.
+```pluto
+local bigint = require "pluto:bigint"
+print(bigint.import("\x04\x20"):tostring()) --> 1056
+print(bigint.import("\x00\x00\x04\x20"):tostring()) --> 1056
 ```

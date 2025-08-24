@@ -396,3 +396,38 @@ print(test[1]) --> 1
 print(test[2]) --> 5
 print(test[3]) --> 6
 ```
+
+---
+### `table.clone`
+Creates a copy of a table, optionally cloning nested tables up to a specified depth.
+#### Parameters
+1. The table to clone.
+2. The depth to clone to. Defaults to 100.
+#### Returns
+A new table containing the cloned values.
+```pluto
+local t = {
+    a = {
+        b = {
+            c = {},
+        },
+    },
+}
+
+local t1 = t:clone(1)
+assert(t1.a == t.a) -- depth 1 does not copy nested tables
+
+local t2 = t:clone(2)
+assert(t2.a ~= t.a)      -- 'a' is cloned
+assert(t2.a.b == t.a.b)  -- but 'b' is shared
+```
+
+---
+### `table.create`
+Creates a new empty table, preallocating memory. Improves performance and memory usage when you know how many elements the table will have.
+#### Parameters
+1. How many elements the table will have as a sequence.
+2. How many other elements the table will have. Defaults to 0.
+:::info
+We are documenting this for the sake of completeness of in regards to "changes from Lua 5.4", but this function is actually backported from Lua 5.5.
+:::

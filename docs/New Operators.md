@@ -36,12 +36,28 @@ Compound operators are syntactic sugar. They'll call the same metamethods as the
 :::
 
 ## Increment Operator
-In addition to the compound operator `+=`, there is an even faster way to increment a value by 1 using the prefixed ++ operator:
+In addition to the compound operator `+=`, there is an even faster way to increment a value by 1 using the ++ operator:
 ```pluto
 local a = 1
+-- Prefix
 print(++a) --> 2
 ++a
 print(a) --> 3
+-- Postfix
+print(a++) --> 3
+a++
+print(a) --> 5
+```
+
+## Integer Exponentiation
+Exponentiates 2 integers, as opposed to Lua's `^` which is floating point based.
+```pluto
+print(2 ** 2) --> 4
+print(2 ^ 2) --> 4.0
+```
+```pluto
+print(30 ** 30) --> 2565992168703393792
+print(30 ^ 30) --> 2.0589113209465e+44
 ```
 
 ## Comparison Chaining

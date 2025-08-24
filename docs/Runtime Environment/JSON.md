@@ -2,31 +2,33 @@ Must be included via `require`.
 
 ---
 ### `json.encode`
-Returns a string of JSON.
+Returns a string of JSON or MessagePack.
 #### Parameters
 1. `data` — A boolean, number, string, or table to encode as JSON.
-2. `pretty` — Whether to return a human-readable string of JSON. Defaults to `false`.
+2. `format` — Can be `"compact"`, `"pretty"`, or `"msgpack"`. Defaults to `"compact"`.
 ```pluto
 local json = require("json")
 local data
 
-data = "Hello, World!"
-print(json.encode(data, true))
---> "Hello, World!"
+data = "Hello, world!"
+print(json.encode(data, "pretty"))
+--> "Hello, world!"
 
 data = {
-    key = "Hello, World!",
+    key = "Hello, world!",
     nested = {
         nested_key = 1337
     }
 }
-print(json.encode(data, true))
+print(json.encode(data, "pretty"))
 --> {
--->     "key": "Hello, World!",
+-->     "key": "Hello, world!",
 -->     "nested": {
 -->         "nested_key": 1337
 -->     }
 --> }
+
+print(json.encode({ 0, true, json.null }, "msgpack"):tohex()) --> 9300c3c0
 ```
 
 Because Lua tables do not have order guarantees, you can add an `__order` field to fix the order:
@@ -51,46 +53,32 @@ print(json.encode(json.null)) --> null
 ### `json.decode`
 Returns multiple potential types. If you pass a serialized boolean, number, or string, then it will return the same type. If you pass a complex JSON object, it will return a table.
 #### Parameters
-1. `data` — The JSON data to decode.
+1. `data` — The JSON or MessagePack data to decode.
 2. `flags` — Options to augment the return value. Multiple options can be combined with bitwise OR (`|`). Defaults to `0`.
     - `json.withnull` — decodes JSON null values as `json.null` instead of `nil`.
     - `json.withorder` — adds an `__order` field to tables of decoded JSON objects. `json.encode` respects this, so this is perfect for modifying data while preserving order.
+    - `json.msgpack` — treats the input as MessagePack data instead of JSON.
 ```pluto
 local json = require("json")
-local data, encoded, decoded
+local encoded, decoded
 
--- Basic Type
-
-data = "Hello, World!"
-encoded = json.encode(data, true)
+encoded = [[{"key":"Hello, world!","nested":{"nested_key":1337}}]]
 decoded = json.decode(encoded)
+print(decoded.key) --> Hello, world!
+print(decoded.nested.nested_key) --> 1337
 
-assert(decoded == data)
-assert(type(decoded) == "string")
-
--- Complex Type
-
-data = {
-    key = "Hello",
-    nested = {
-        nested_key = 1337
-    }
-}
-encoded = json.encode(data, true)
-decoded = json.decode(encoded)
-
-assert(decoded.key == "Hello")
-assert(type(decoded) == "table")
-assert(decoded.nested.nested_key == 1337)
-
--- Flags
-
-encoded = [[{
-    "null": null,
-    "string": "Hello"
-}]]
+-- Null & Order
+encoded = [[{"null":null,"string":"Hello"}]]
 decoded = json.decode(encoded, json.withnull | json.withorder)
 assert(decoded.__order[1] == "null")
 assert(decoded.null == json.null)
-assert(json.encode(decoded, true) == encoded)
+assert(json.encode(decoded) == encoded)
+
+-- MessagePack
+encoded = "\x93\x00\xc3\xc0"
+decoded = json.decode(encoded, json.msgpack | json.withnull | json.withorder)
+assert(decoded[1] == 0)
+assert(decoded[2] == true)
+assert(decoded[3] == json.null)
+assert(json.encode(decoded, "msgpack") == encoded)
 ```

@@ -25,7 +25,7 @@ print(crypto.djb2(str)) --> 894552257
 ```
 ---
 ### `crypto.fnv1`
-Hash a string using the FNV1 non-cryptographic hashing algorithm.
+Hash a string using the 64-bit FNV1 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 ```pluto
@@ -35,13 +35,23 @@ print(crypto.fnv1(str)) --> 9065573210506989167
 ```
 ---
 ### `crypto.fnv1a`
-Hash a string using the FNV1A non-cryptographic hashing algorithm.
+Hash a string using the 64-bit FNV1A non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
 print(crypto.fnv1a(str)) --> 8618312879776256743
+```
+---
+### `crypto.fnv1a32`
+Hash a string using the 32-bit FNV1A non-cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+```pluto
+local crypto = require("crypto")
+local str = "hello world"
+print(crypto.fnv1a32(str)) --> 3582672807
 ```
 ---
 ### `crypto.joaat`
@@ -255,6 +265,19 @@ local crypto = require("crypto")
 print(crypto.ripemd160("Pluto")) --> c2072a85f4a691803b8942709036072086fd9550
 ```
 ---
+### `crypto.hmac`
+Authenticates a message using the HMAC construction with the given hash algorithm.
+#### Parameters
+1. The hash algorithm to use. `"sha1"`, `"sha256"`, `"sha384"`, or `"sha512"`.
+2. The secret key.
+3. The message to authenticate.
+4. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+local key = "\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b"a
+print(crypto.hmac("sha256", key, "Hi There")) --> b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7
+```
+---
 ## Cryptographic PRNGs
 ### `crypto.random`
 This is a cryptographically secure PRNG, assuming the platform's implementation of the underlying primitive is secure.
@@ -388,6 +411,25 @@ print(dumpvar(priv))
 --> }
 ```
 
+### `crypto.derive`
+Derives a public key from a private key.
+#### Parameters
+1. `mode` — Must be "rsa".
+2. `key` — The private key containing `p` and `q`.
+#### Returns
+The public key corresponding to the private key.
+```pluto
+local { bigint, crypto } = require "pluto:*"
+
+local priv = {
+    p = new bigint("115443384115231951475820445136871322101870729500298182134363293112660251666017"),
+    q = new bigint("98365361248415863235179644468056200977592391948608651522703704315152579004021"),
+}
+local pub = crypto.derive("rsa", priv)
+print(pub.n) --> 11355630182234424425429331560518598643298965915936825610957270519615363349759012613228119611304846673085167794661819394470107090216347491908311079792054357
+print(pub.e) --> 65537
+```
+
 ### `crypto.exportkey`
 Exports a private key.
 #### Parameters
@@ -442,29 +484,27 @@ ueZ/sI52jgP8+xK2x7coiX5/tDmXCGlp5utUAjk2+Q==
 ### `crypto.encrypt`
 #### Parameters
 1. `data` — The data to be encrypted.
-2. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
+2. `mode` — "rsa-sha1", "rsa-sha256", "rsa-sha384", or "rsa-sha512" for RSA-OAEP with the corresponding hash, "rsa-pkcs1" for PKCS#1 v1.5, or "rsa" if you know what you're doing.
 3. `key` — The public or private key to use. Commonly, a public key is used to encrypt data.
+4. `label` — *(optional)* Associated data/label used for RSA-OAEP. Must match between encryption and decryption.
 ### `crypto.decrypt`
 #### Parameters
 1. `data` — The ciphertext to decrypt.
-2. `mode` — "rsa-pkcs1" for PKCS#1 padding, or "rsa" if you know what you're doing.
+2. `mode` — "rsa-sha1", "rsa-sha256", "rsa-sha384", or "rsa-sha512" for RSA-OAEP with the corresponding hash, "rsa-pkcs1" for PKCS#1 v1.5, or "rsa" if you know what you're doing.
 3. `key` — The public or private key to use. If the data was encrypted with the public key, the private key is needed to decrypt it.
+4. `label` — *(optional)* Associated data/label used for RSA-OAEP. Must match what was provided during encryption.
 ```pluto
 local { base64, bigint, crypto } = require "pluto:*"
 local priv = {
     p = new bigint("115443384115231951475820445136871322101870729500298182134363293112660251666017"),
     q = new bigint("98365361248415863235179644468056200977592391948608651522703704315152579004021"),
 }
--- Derive public key
-local pub = {
-    n = priv.p * priv.q, -- 11355630182234424425429331560518598643298965915936825610957270519615363349759012613228119611304846673085167794661819394470107090216347491908311079792054357
-    e = new bigint(0x10001) -- 65537
-}
+local pub = crypto.derive("rsa", priv)
 -- Encrypt
-local enc = crypto.encrypt("A secret message to the owner of the private key.", "rsa-pkcs1", pub)
+local enc = crypto.encrypt("You know the primes!", "rsa-sha1", pub, "Authenticated Data")
 print(base64.encode(enc))
 -- Decrypt
-print(enc |> crypto.decrypt|"rsa-pkcs1", priv|) --> A secret message to the owner of the private key.
+print(enc |> crypto.decrypt|"rsa-sha1", priv, "Authenticated Data"|) --> You know the primes!
 ```
 ### `crypto.sign`
 Signs a message as per the PKCS#1 v1.5 scheme.
@@ -502,18 +542,72 @@ print(crypto.verify(msg, "rsa-sha256", pub, sig)) --> true
 ```
 
 ---
+## Curve25519
+### `crypto.generatekeypair`
+Generates a keypair for Curve25519.
+#### Parameters
+1. `mode` — Must be "curve25519".
+
+Returns two strings: the public key and the private key, each 32 bytes.
+
+```pluto
+local crypto = require "pluto:crypto"
+local pub, priv = crypto.generatekeypair("curve25519")
+print(priv:tohex())
+print(pub:tohex())
+assert(crypto.derive("curve25519", priv) == pub)
+```
+
+### `crypto.derive`
+Derives a Curve25519 public key from a private key.
+#### Parameters
+1. `mode` — Must be "curve25519".
+2. `key` — The 32-byte private key.
+
+Returns the corresponding public key.
+
+### `crypto.x25519`
+Performs an X25519 Diffie-Hellman exchange on Curve25519.
+#### Parameters
+1. `private` — The local 32-byte private key.
+2. `public` — The peer's 32-byte public key.
+
+Returns the 32-byte shared secret.
+
+```pluto
+local crypto = require "pluto:crypto"
+
+local alice_priv <const> = "77076d0a7318a57d3c16c17251b26645df4c2f87ebc0992ab177fba51db92c2a":fromhex()
+local alice_pub <const> = "8520f0098930a754748b7ddcb43ef75a0dbf3a0d26381af4eba4a98eaa9b4e6a":fromhex()
+local bob_priv <const> = "5dab087e624a8a4b79e17f8b83800ee66f3bb1292618b6fd1c2f8b27ff88e0eb":fromhex()
+local bob_pub <const> = "de9edb7d7b7dc1b4d35b61c2ece435373f8343c85b78674dadfc7e146f882b4f":fromhex()
+
+print(crypto.x25519(alice_priv, bob_pub):tohex()) --> 4a5d9d5ba4ce2de1728e3bf480350f25e07e21c947d19e3376f09b3c1e161742
+print(crypto.x25519(bob_priv, alice_pub):tohex()) --> 4a5d9d5ba4ce2de1728e3bf480350f25e07e21c947d19e3376f09b3c1e161742
+```
+
+---
 ## Miscellaneous
 ### `crypto.decompress`
 Decompresses a DEFLATE-compressed string (one might call this an "INFLATE" function). Compatible with gzip and zlib headers and footers.
 #### Parameters
-1. The string to decompress.
+1. `data` — The string to decompress.
+2. `offset` — Optional starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`. To provide an `offset` without a decompressed size, pass `nil` as the third argument.
+3. `decompressed_size` — Optional size of the decompressed output. When only two arguments are given, the second argument is treated as `decompressed_size`.
 #### Returns
 1. The decompressed string.
 2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch`
 ```pluto
-local decompressed, info = require"crypto".decompress("\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04")
+local deflated = "\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04"
+
+local decompressed, info = require"crypto".decompress(deflated)
 print(decompressed) --> Hello, Pluto!
 print(info.compressed_size) --> 14
 print(info.checksum_present) --> false
 print(info.checksum_mismatch) --> false
+
+-- Decompress from an offset
+decompressed, info = require"crypto".decompress("Don't mind me" .. deflated, 14, nil)
+print(decompressed) --> Hello, Pluto
+print(info.compressed_size) --> 14
 ```
