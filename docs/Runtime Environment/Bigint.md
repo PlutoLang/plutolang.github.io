@@ -116,3 +116,24 @@ Non-deterministically check if a number is prime.
 local bigint = require "pluto:bigint"
 print(new bigint(91):isprobableprime(10)) --> false
 ```
+
+---
+### `bigint.export`
+Exports the bigint to a big-endian binary string.
+#### Parameters
+1. The bigint.
+2. The minimum number of bytes to return.
+```pluto
+local bigint = require "pluto:bigint"
+print(new bigint("1056"):export():tohex()) --> 0420
+print(new bigint("1056"):export(4):tohex()) --> 00000420
+```
+
+---
+### `bigint.import`
+Creates a bigint from a big-endian binary string.
+```pluto
+local bigint = require "pluto:bigint"
+print(bigint.import("\x04\x20"):tostring()) --> 1056
+print(bigint.import("\x00\x00\x04\x20"):tostring()) --> 1056
+```
