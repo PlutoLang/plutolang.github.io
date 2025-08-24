@@ -128,29 +128,31 @@ print(human.name) --> John
 
 Note that if you have a local variable (or function parameter) called "parent", the `parent` expression will defer to it.
 
-## Private Fields
+## Restricted Fields
 
-Pluto allows you to specify if a field is 'public' or 'private'. Private fields can only be accessed by the class that defined them.
+Pluto allows you to specify if a field is 'public', 'protected' or 'private'. Private fields can only be accessed by the class that defined them. Protected fields can additionally also be accessed by descendant classes.
 
 ```pluto
-class Human
-    public name
-    private age
-
-    function __construct(name, age)
-        self.name = name
-        self.age = age
-    end
-
-    function getAge()
-        return self.age
+class Vehicle
+    function __construct(protected manufacturer)
     end
 end
 
-local human = new Human("John", 42)
-print(human.name) -- "John"
-print(human:getAge()) -- 42
-print(human.age) -- nil
+class Car extends Vehicle
+    function __construct(manufacturer, private model, public year)
+        parent:__construct(manufacturer)
+    end
+
+    function getName()
+        return $"{self.year} {self.manufacturer} {self.model}"
+    end
+end
+
+local cor = new Car("Toyota", "Corolla", 2025)
+print(cor.manufacturer) --> nil
+print(cor.model) --> nil
+print(cor.year) --> 2025
+print(cor:getName()) --> 2025 Toyota Corolla
 ```
 
 ## Constructor Promotion
