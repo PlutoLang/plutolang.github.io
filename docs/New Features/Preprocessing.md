@@ -98,6 +98,21 @@ $alias seq = "a"  \
 print(seq) --> abc
 ```
 
+## `$include`
+
+To reuse code for Pluto's parse-time features such as type hinting, you can include a common 'header' file.
+
+```pluto norun title="header.pluto"
+$declare _VERSION: string
+$declare _PVERSION: string
+```
+
+```pluto title="index.pluto" run="https://pluto-lang.org/web/#file_names[]=index.pluto&file_contents[]=%24include%20%22header.pluto%22%0A%0Alocal%20_%3A%20number%20%3D%20_VERSION%20--%20type%20mismatch&file_names[]=header.pluto&file_contents[]=%24declare%20_VERSION%3A%20string%0A%24declare%20_PVERSION%3A%20string"
+$include "header.pluto"
+
+local _: number = _VERSION -- type mismatch
+```
+
 ## `$haltcompiler`
 
 This statement will stop the parser processing further code.
