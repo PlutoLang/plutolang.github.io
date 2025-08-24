@@ -14,22 +14,25 @@
     "pluto": {
       "patterns": [
         {
-          "begin": "\\b(function)(?:\\s+(?:[a-zA-Z_][a-zA-Z0-9_]*([.:]))?([a-zA-Z_][a-zA-Z0-9_]*))?\\s*(\\()",
+          "begin": "(?:(\\$declare)\\s+)?\\b(function)(?:\\s+(?:[a-zA-Z_][a-zA-Z0-9_]*([.:]))?([a-zA-Z_][a-zA-Z0-9_]*))?\\s*(\\()",
           "beginCaptures": {
             "1": {
-              "name": "storage.type.function.pluto"
+              "name": "storage.modifier.pluto"
             },
             "2": {
-              "name": "punctuation.separator.parameter.pluto"
+              "name": "storage.type.function.pluto"
             },
             "3": {
-              "name": "entity.name.function.pluto"
+              "name": "punctuation.separator.parameter.pluto"
             },
             "4": {
+              "name": "entity.name.function.pluto"
+            },
+            "5": {
               "name": "punctuation.section.group.begin.pluto"
             }
           },
-          "end": "(\\))(?:(:)\\s+(void|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\??))?(\\s*<nodiscard>)?",
+          "end": "(\\))(?:(:)\\s+(void|\\([^)]*\\)|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\??))?(\\s*<nodiscard>)?",
           "endCaptures": {
             "1": {
               "name": "punctuation.section.group.end.pluto"
@@ -66,7 +69,13 @@
               "name": "constant.language.pluto"
             },
             {
-              "match": "(:)\\s+(\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\??)",
+              "include": "#function_type"
+            },
+            {
+              "include": "#table_type"
+            },
+            {
+              "match": "(:)\\s+(\\([^)]*\\)|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\??)",
               "captures": {
                 "1": {
                   "name": "punctuation.separator.colon.pluto"
@@ -125,6 +134,34 @@
             {
               "match": ",",
               "name": "punctuation.separator.comma.pluto"
+            }
+          ]
+        },
+        {
+          "begin": "(\\$type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(=)",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.type.named.pluto"
+            },
+            "2": {
+              "name": "entity.name.type.pluto"
+            },
+            "3": {
+              "name": "keyword.operator.assignment.pluto"
+            }
+          },
+          "end": "(?=$)",
+          "name": "meta.type.named.pluto",
+          "patterns": [
+            {
+              "include": "#function_type_no_colon"
+            },
+            {
+              "include": "#table_type_no_colon"
+            },
+            {
+              "match": "\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*)\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*)\\??",
+              "name": "storage.type.primitive.pluto"
             }
           ]
         },
@@ -306,8 +343,54 @@
           "name": "storage.type.attribute.pluto"
         },
         {
-          "match": "\\$(define|alias)\\b",
+          "match": "\\$(define|alias|haltcompiler)\\b",
           "name": "storage.modifier.pluto"
+        },
+        {
+          "begin": "(?<!\\S)(\\$declare)\\s+(?!class)(?!pluto_class)(?!function)(?:(and|break|do|else|elseif|end|false|for|function|goto|if|in|local|nil|not|or|repeat|pluto_use|pluto_switch|pluto_continue|pluto_enum|pluto_new|pluto_class|pluto_export|pluto_try|pluto_catch|switch|continue|enum|new|class|export|try|catch|return|then|true|until|while)\\b|\\w+)\\s*(:)\\s*(\\{)",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.pluto"
+            },
+            "2": {
+              "name": "invalid.name.reserved.not-narrow.not-overridable.not-optional.not-special.pluto"
+            },
+            "3": {
+              "name": "punctuation.separator.colon.pluto"
+            },
+            "4": {
+              "name": "punctuation.section.table.begin.pluto"
+            }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.table.end.pluto"
+            }
+          },
+          "name": "meta.typehint.table.pluto",
+          "patterns": [
+            {
+              "include": "#table_type_body"
+            }
+          ]
+        },
+        {
+          "match": "(?<!\\S)(\\$declare)\\s+(?!class)(?!pluto_class)(?!function)(?:(and|break|do|else|elseif|end|false|for|function|goto|if|in|local|nil|not|or|repeat|pluto_use|pluto_switch|pluto_continue|pluto_enum|pluto_new|pluto_class|pluto_export|pluto_try|pluto_catch|switch|continue|enum|new|class|export|try|catch|return|then|true|until|while)\\b|\\w+)(?:\\s*(:)\\s+(?!function\\s*\\()(\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*)\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*)\\??))?(?!\\s*=\\s*\\|[a-zA-Z0-9_,\\s]*\\|\\s*->)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.pluto"
+            },
+            "2": {
+              "name": "invalid.name.reserved.not-narrow.not-overridable.not-optional.not-special.pluto"
+            },
+            "3": {
+              "name": "punctuation.separator.colon.pluto"
+            },
+            "4": {
+              "name": "storage.type.primitive.pluto"
+            }
+          }
         },
         {
           "match": "\\+|-|%|#|\\*|\\/|\\^|==|~=|!=|<=?|>=?|(?<!\\.)\\.{2}(?!\\.)|\\$|\\||~|&",
@@ -356,7 +439,13 @@
               "end": "\\w+"
             },
             {
-              "match": "(:)\\s+(\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\??)",
+              "include": "#function_type"
+            },
+            {
+              "include": "#table_type"
+            },
+            {
+              "match": "(:)\\s+(\\([^)]*\\)|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\??)",
               "captures": {
                 "1": {
                   "name": "punctuation.separator.colon.pluto"
@@ -387,7 +476,7 @@
               "name": "keyword.control.pluto"
             }
           },
-          "match": "\\b((?:pluto_)?enum(?:\\s+class)?)(?:\\s+(begin|do)|(?:\\s+([a-zA-Z_][a-zA-Z0-9_]*)?)(?:\\s+(begin|do))?)?",
+          "match": "\\b((?:pluto_)?enum\\b(?:\\s+class)?)(?:\\s+(begin|do)|(?:\\s+([a-zA-Z_][a-zA-Z0-9_]*)?)(?:\\s+(begin|do))?)?",
           "name": "meta.enum.pluto"
         },
         {
@@ -425,7 +514,39 @@
           "name": "keyword.control.pluto"
         },
         {
-          "match": "\\b(?<!\\.)(local|global)\\s+(?!class)(?!pluto_class)(?!function)(?:(and|break|do|else|elseif|end|false|for|function|goto|if|in|local|nil|not|or|repeat|pluto_use|pluto_switch|pluto_continue|pluto_enum|pluto_new|pluto_class|pluto_export|pluto_try|pluto_catch|switch|continue|enum|new|class|export|try|catch|return|then|true|until|while)\\b|\\w+)(?:\\s*(:)\\s+(\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata)\\??))?",
+          "begin": "\\b(?<!\\.)(local|global)\\s+(?!class)(?!pluto_class)(?!function)(?:(and|break|do|else|elseif|end|false|for|function|goto|if|in|local|nil|not|or|repeat|pluto_use|pluto_switch|pluto_continue|pluto_enum|pluto_new|pluto_class|pluto_export|pluto_try|pluto_catch|switch|continue|enum|new|class|export|try|catch|return|then|true|until|while)\\b|\\w+)\\s*(:)\\s*(\\{)",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.pluto"
+            },
+            "2": {
+              "name": "invalid.name.reserved.not-narrow.not-overridable.not-optional.not-special.pluto"
+            },
+            "3": {
+              "name": "punctuation.separator.colon.pluto"
+            },
+            "4": {
+              "name": "punctuation.section.table.begin.pluto"
+            }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.table.end.pluto"
+            }
+          },
+          "name": "meta.typehint.table.pluto",
+          "patterns": [
+            {
+              "include": "#table_type_body"
+            }
+          ]
+        },
+        {
+          "include": "#function_type"
+        },
+        {
+          "match": "\\b(?<!\\.)(local|global)\\s+(?!class)(?!pluto_class)(?!function)(?:(and|break|do|else|elseif|end|false|for|function|goto|if|in|local|nil|not|or|repeat|pluto_use|pluto_switch|pluto_continue|pluto_enum|pluto_new|pluto_class|pluto_export|pluto_try|pluto_catch|switch|continue|enum|new|class|export|try|catch|return|then|true|until|while)\\b|\\w+)(?:\\s*(:)\\s+(?!function\\s*\\()(\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*)\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*)\\??))?(?!\\s*=\\s*\\|[a-zA-Z0-9_,\\s]*\\|\\s*->)",
           "captures": {
             "1": {
               "name": "storage.modifier.pluto"
@@ -454,7 +575,7 @@
           "name": "constant.language.pluto"
         },
         {
-          "match": "(?<![^.]\\.|:)\\b(_G|_VERSION|_PVERSION|math\\.(pi|huge|mininteger|maxinteger)|os\\.(platform|arch)|json\\.(null|withnull|withorder))\\b",
+          "match": "(?<![^.]\\.|:)\\b(_G|_VERSION|_PVERSION|math\\.(pi|huge|mininteger|maxinteger)|os\\.(platform|arch)|json\\.(null|withnull|withorder|msgpack))\\b",
           "name": "constant.language.pluto support.constant.builtin.pluto"
         },
         {
@@ -480,6 +601,14 @@
         {
           "match": "!",
           "name": "keyword.operator.logical.pluto"
+        },
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*=\\s*\\|[a-zA-Z0-9_,\\s]*\\|\\s*->)",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arrow.pluto"
+            }
+          }
         },
         {
           "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*(?:[({\"']|\\$[\"']|\\[\\[))",
@@ -751,6 +880,218 @@
               "include": "#pluto"
             }
           ]
+        }
+      ]
+    },
+    "table_type": {
+      "begin": "(:)\\s*(\\{)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.separator.colon.pluto"
+        },
+        "2": {
+          "name": "punctuation.section.table.begin.pluto"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.table.end.pluto"
+        }
+      },
+      "name": "meta.typehint.table.pluto",
+      "patterns": [
+        {
+          "include": "#table_type_body"
+        }
+      ]
+    },
+    "table_type_body": {
+      "patterns": [
+        {
+          "match": "[a-zA-Z_][a-zA-Z0-9_]*",
+          "name": "variable.other.field.pluto"
+        },
+        {
+          "include": "#function_type"
+        },
+        {
+          "include": "#table_type"
+        },
+        {
+          "match": "(:)\\s+(\\([^)]*\\)|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\??)",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.colon.pluto"
+            },
+            "2": {
+              "name": "storage.type.primitive.pluto"
+            }
+          },
+          "name": "meta.typehint.pluto"
+        },
+        {
+          "match": ";",
+          "name": "punctuation.terminator.semicolon.pluto"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.pluto"
+        }
+      ]
+    },
+    "function_type": {
+      "begin": "(:)\\s*(function)\\s*(?=\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.separator.colon.pluto"
+        },
+        "2": {
+          "name": "storage.type.function.pluto"
+        }
+      },
+      "end": "(?=[,)=\\}\\]\\|\\s]|$)",
+      "name": "meta.typehint.function.pluto",
+      "patterns": [
+        {
+          "begin": "\\(",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.group.begin.pluto"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.group.end.pluto"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#function_type_params"
+            }
+          ]
+        },
+        {
+          "include": "#function_type"
+        },
+        {
+          "include": "#table_type"
+        },
+        {
+          "match": "(:)\\s+(\\([^)]*\\)|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\??)",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.colon.pluto"
+            },
+            "2": {
+              "name": "storage.type.primitive.pluto"
+            }
+          },
+          "name": "meta.typehint.pluto"
+        }
+      ]
+    },
+    "function_type_params": {
+      "patterns": [
+        {
+          "match": "[a-zA-Z_][a-zA-Z0-9_]*",
+          "name": "variable.parameter.function.pluto"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.pluto"
+        },
+        {
+          "match": "\\.\\.\\.",
+          "name": "constant.language.pluto"
+        },
+        {
+          "include": "#function_type"
+        },
+        {
+          "include": "#table_type"
+        },
+        {
+          "match": "(:)\\s+(\\([^)]*\\)|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\??)",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.colon.pluto"
+            },
+            "2": {
+              "name": "storage.type.primitive.pluto"
+            }
+          },
+          "name": "meta.typehint.pluto"
+        }
+      ]
+    },
+    "function_type_no_colon": {
+      "begin": "(function)\\s*(?=\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "storage.type.function.pluto"
+        }
+      },
+      "end": "(?=[,)=\\}\\]\\|\\s]|$)",
+      "name": "meta.typehint.function.pluto",
+      "patterns": [
+        {
+          "begin": "\\(",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.group.begin.pluto"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.group.end.pluto"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#function_type_params"
+            }
+          ]
+        },
+        {
+          "include": "#function_type"
+        },
+        {
+          "include": "#table_type"
+        },
+        {
+          "match": "(:)\\s+(\\([^)]*\\)|\\??(?:(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\|)*(?:string|number|int|float|bool(?:ean)?|function|table|userdata|any|nil|[a-zA-Z_][a-zA-Z0-9_]*|\\{[^}]*\\})\\??)",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.colon.pluto"
+            },
+            "2": {
+              "name": "storage.type.primitive.pluto"
+            }
+          },
+          "name": "meta.typehint.pluto"
+        }
+      ]
+    },
+    "table_type_no_colon": {
+      "begin": "(\\{)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.table.begin.pluto"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.table.end.pluto"
+        }
+      },
+      "name": "meta.typehint.table.pluto",
+      "patterns": [
+        {
+          "include": "#table_type_body"
         }
       ]
     },
