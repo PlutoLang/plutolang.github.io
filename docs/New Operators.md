@@ -49,6 +49,17 @@ a++
 print(a) --> 5
 ```
 
+## Integer Exponentiation
+Exponentiates 2 integers, as opposed to Lua's `^` which is floating point based.
+```pluto
+print(2 ** 2) --> 4
+print(2 ^ 2) --> 4.0
+```
+```pluto
+print(30 ** 30) --> 2565992168703393792
+print(30 ^ 30) --> 2.0589113209465e+44
+```
+
 ## Comparison Chaining
 The `<`, `<=`, `>`, and `>=` operators can now be chained successively.
 
