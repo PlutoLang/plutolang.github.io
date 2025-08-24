@@ -105,3 +105,14 @@ Returns the position of the most significant set bit as a plain integer.
 local bigint = require "pluto:bigint"
 print(new bigint(420):bitlength()) --> 9
 ```
+
+---
+### `bigint.isprobableprime`
+Non-deterministically check if a number is prime.
+#### Parameters
+1. The bigint.
+2. Number of Miller-Rabin iterations to perform.
+```pluto
+local bigint = require "pluto:bigint"
+print(new bigint(91):isprobableprime(10)) --> false
+```
