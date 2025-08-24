@@ -26,7 +26,7 @@ print(t.sum) --> nil
 print(t:sum()) --> 3
 ```
 
-```pluto title="An example of __index taking precedence"
+```pluto title="An example of a field taking precedence"
 local t = { 1, 2 }
 print(t:min()) --> 1
 t.min = 1
