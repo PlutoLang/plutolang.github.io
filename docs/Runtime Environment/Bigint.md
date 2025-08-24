@@ -91,6 +91,14 @@ print(new bigint(2) ^ new bigint(10)) --> 1024
 ```
 
 ---
+### `bigint.gcd`
+Computes the greates common divisor shared by 2 bigints.
+```pluto
+local bigint = require "pluto:bigint"
+print(bigint.new(48):gcd(bigint.new(18))) --> 6
+```
+
+---
 ### `bigint.bitlength`
 Returns the position of the most significant set bit as a plain integer.
 ```pluto
