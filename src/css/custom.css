@@ -103,3 +103,8 @@ pre.shiki code:not(:has(.line)) {
   padding-left: var(--ifm-pre-padding);
   padding-right: var(--ifm-pre-padding);
 }
+
+/* enforce monospacing height-wise as well (needed for empty lines) */
+pre.shiki div.line {
+  height: 22px;
+}
