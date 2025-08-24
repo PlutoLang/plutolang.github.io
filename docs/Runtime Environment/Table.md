@@ -396,3 +396,13 @@ print(test[1]) --> 1
 print(test[2]) --> 5
 print(test[3]) --> 6
 ```
+
+---
+### `table.create`
+Creates a new empty table, preallocating memory. Improves performance and memory usage when you know how many elements the table will have.
+#### Parameters
+1. How many elements the table will have as a sequence.
+2. How many other elements the table will have. Defaults to 0.
+:::info
+We are documenting this for the sake of completeness of in regards to "changes from Lua 5.4", but this function is actually backported from Lua 5.5.
+:::
