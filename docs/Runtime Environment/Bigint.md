@@ -75,6 +75,14 @@ print(-new bigint(10)) --> -10
 ```
 
 ---
+### `bigint.abs`
+Returns a new bigint with the sign bit zeroed.
+```pluto
+local bigint = require "pluto:bigint"
+print(new bigint(-10):abs()) --> 10
+```
+
+---
 ### `bigint.pow`, `__pow`
 Performs expontentiation on two bigints. Returns a new bigint.
 ```pluto
