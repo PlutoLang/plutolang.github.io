@@ -223,3 +223,18 @@ print(io.unique("index", "pluto")) --> index (2).pluto
 ```pluto
 print(io.unique("file_that_doesnt_exist", "pluto")) --> file_that_doesnt_exist.pluto
 ```
+
+---
+### `io.symlink`
+Create a symbolic link pointing to a file or directory.
+#### Parameters
+1. The path that the link will point to.
+2. The path where the symlink will be created.
+#### Errors
+Raises a Lua error if the operation fails.
+```pluto
+io.symlink("data-v3.json", "data-latest.json")
+```
+:::caution
+This function will fail on Windows when not running as administrator.
+:::
