@@ -207,3 +207,19 @@ else
     print("chmod is not available on this platform.")
 end
 ```
+
+---
+### `io.unique`
+Generate a unique file name by appending a number when a conflict occurs.
+#### Parameters
+1. The base file name without extension.
+2. The file extension.
+#### Returns
+A string representing a file name that does not already exist.
+```pluto
+-- assuming index.pluto exists
+print(io.unique("index", "pluto")) --> index (2).pluto
+```
+```pluto
+print(io.unique("file_that_doesnt_exist", "pluto")) --> file_that_doesnt_exist.pluto
+```
