@@ -67,6 +67,14 @@ print(new bigint(10) % new bigint(3)) --> 1
 ```
 
 ---
+### `__unm`
+Returns a new bigint with the sign bit flipped.
+```pluto
+local bigint = require "pluto:bigint"
+print(-new bigint(10)) --> -10
+```
+
+---
 ### `bigint.pow`, `__pow`
 Performs expontentiation on two bigints. Returns a new bigint.
 ```pluto
