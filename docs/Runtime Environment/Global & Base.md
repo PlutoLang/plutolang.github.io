@@ -189,3 +189,14 @@ end
 --> B
 --> C
 ```
+
+---
+### `utf8.offset`
+This function is modified to have an additional return value, the end position of the character:
+```lua
+print(select(2, utf8.offset("プ", 1))) --> 3
+print(#"プ") --> 3
+```
+:::info
+We are documenting this for the sake of completeness of in regards to "changes from Lua 5.4", but this patch is actually backported from Lua 5.5.
+:::
