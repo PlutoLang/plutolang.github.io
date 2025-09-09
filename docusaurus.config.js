@@ -18,7 +18,16 @@ const config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.png',
-  plugins: [require.resolve("@easyops-cn/docusaurus-search-local")],
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // Include `zh` to enable a custom tokenizer that splits on symbols
+        // like '.' so queries for `startswith` match `string.startswith`.
+        language: ["en", "zh"],
+      },
+    ],
+  ],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
