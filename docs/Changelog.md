@@ -4,6 +4,68 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.12.0
+- Added postfix ++ operator
+- Added \*\* as an integer exponentiation operator (this previously was a deprecated alias for ^)
+- Added `protected` class fields
+- Added `$object` syntax for table creation
+- Added `$include`
+- Added `$haltcompiler`
+- Trailing commas are now allowed for arguments, parameters, and destructuring
+- String interpolation now implicitly calls `tostring` on each interpolation value
+- Deprecated the optional 'global' keyword
+- Deprecated reassignment of for loop control variables in preparation for Lua 5.5
+- Removed the deprecated `<constexpr>` attribute
+
+Type System:
+- Added `any` and `nil` type hints
+- Added type hinting for multiple return values
+- Added complex type hinting for tables to specify fields
+- Type hints for `function` type can now also specify the parameters and returns
+- Added `$type` syntax for named types (this replaces the constexpr call `$type(x)`)
+- Added `$declare` to set the type of a global
+- Added `$getproptype` to query the parser's idea of a variable's type
+
+Standard Library:
+- Global & Base
+  - `dumpvar`'s output now includes metatable `__name` where applicable
+- Bigint
+  - Added bigint.abs, bigint.gcd, bigint.isprobableprime, bigint.export, bigint.import
+  - Added __unm metamethod to bigints
+  - Bigint operations now accept plain Lua ints as operands
+- Crypto
+  - Added curve25519 to crypto.generatekeypair
+  - Added crypto.hmac, crypto.fnv1a32, crypto.x25519, crypto.derive
+  - Added RSA OAEP modes to crypto.encrypt & crypto.decrypt (rsa-sha1, rsa-sha256, rsa-sha384, rsa-sha512)
+  - Added optional offset parameter to crypto.decompress
+  - Removed previously-deprecated crypto.hexstream
+- FFI
+  - Added ffi.callback
+- IO
+  - Added io.unique, io.symlink
+  - Removed previously-deprecated io.copyto
+- JSON
+  - Added MessagePack support to json.encode and json.decode
+- Math
+  - Added math.trunc, math.cbrt, math.hypot
+  - Added `math.inf` as an alias for `math.huge`
+- OS
+  - Added os.dnsresolve
+- Socket
+  - Added alpn option to socket.starttls
+  - Added early_data option to client-side socket.starttls
+- String
+  - Added string.span
+  - Removed previously-deprecated string.find_first_of, string.find_first_not_of, string.find_last_of, string.find_last_not_of, string.lfind
+- Table
+  - Added table.create
+  - Added table.clone
+- UTF8
+  - utf8.offset now also returns the final position of the codepoint
+
+For Integrators:
+- Pulled `luaL_openselectedlibs` from Lua 5.5 so you can now define which Lua and Pluto libraries to load globally + preloaded via bitflags. `luaL_openlibs` is now a macro using this function to the same effect as before.
+
 ## 0.11.3
 Fixed some regressions from 0.11.2:
 - io.isfile and io.isdir erroring on non-existent paths
