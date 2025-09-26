@@ -4,6 +4,19 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.12.1
+Compiler:
+- Fixed pipe operator method call when used on result of call
+- Fixed function type hint parameter list erroring at the 4th type
+- Fixed function type hint parameter list not allowing trailing commas
+
+Runtime:
+- Fixed sometimes not erroring on missing arguments to bigint functions
+- Fixed bigint comparisons for all-negative operands and between positive zero and negative zero
+- Fixed bigint.gcd for zero and negative operands
+- Fixed json.encode rarely misidentifying array-ish tables as object-ish
+- Fixed stack corruption when 'in' expression has to run Lua for comparisons
+
 ## 0.12.0
 - Added postfix ++ operator
 - Added \*\* as an integer exponentiation operator (this previously was a deprecated alias for ^)
