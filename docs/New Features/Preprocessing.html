@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.0">
 <title data-rh="true">Preprocessing | Pluto</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pluto-lang.org/docs/New Features/Preprocessing"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Preprocessing | Pluto"><meta data-rh="true" name="description" content="Pluto provides some powerful constructs which allow you to write code that will never be seen at runtime."><meta data-rh="true" property="og:description" content="Pluto provides some powerful constructs which allow you to write code that will never be seen at runtime."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://pluto-lang.org/docs/New Features/Preprocessing"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/New Features/Preprocessing" hreflang="en"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/New Features/Preprocessing" hreflang="x-default"><script src="/custom.js" async></script><link rel="stylesheet" href="/assets/css/styles.4b8d2611.css">
-<script src="/assets/js/runtime~main.d9a627e0.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.de68032c.js" defer="defer"></script>
 <script src="/assets/js/main.9c0fb453.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -17,23 +17,13 @@
 <pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2" showlinenumbers="true"><div class="language-id">pluto</div><div class="code-container"><code><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> runtime </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#66D9EF">require</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;crypto&quot;</span><span style="color:#F8F8F2">)</span><span style="color:#9F570F">.</span><span style="color:#66D9EF">joaat</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;Hello, World!&quot;</span><span style="color:#F8F8F2">)</span></div><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> compile </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#F92672">$</span><span style="color:#F8F8F2">crypto</span><span style="color:#9F570F">.</span><span style="color:#66D9EF">joaat</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;Hello, World!&quot;</span><span style="color:#F8F8F2">)</span></div><div class="line"></div><div class="line"><span style="color:#66D9EF">assert</span><span style="color:#F8F8F2">(runtime </span><span style="color:#F92672">==</span><span style="color:#F8F8F2"> compile)</span></div></code></div><button type="button" aria-label="Copy code to clipboard" class="copy-button">Copy</button></pre>
 <p>If you&#x27;re unfamiliar with compile-time evaluation, this is essentially what the code turns into:</p>
 <pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2" showlinenumbers="true"><div class="language-id">pluto</div><div class="code-container"><code><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> runtime </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#66D9EF">require</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;crypto&quot;</span><span style="color:#F8F8F2">)</span><span style="color:#9F570F">.</span><span style="color:#66D9EF">joaat</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">&quot;Hello, World!&quot;</span><span style="color:#F8F8F2">)</span></div><div class="line"><span style="color:#F92672">local</span><span style="color:#F8F8F2"> compile </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> </span><span style="color:#AE81FF">847757641</span><span style="color:#F8F8F2"> </span><span style="color:#88846F">-- The JOAAT hash of &quot;Hello, World!&quot;</span></div><div class="line"></div><div class="line"><span style="color:#66D9EF">assert</span><span style="color:#F8F8F2">(runtime </span><span style="color:#F92672">==</span><span style="color:#F8F8F2"> compile)</span></div></code></div><button type="button" aria-label="Copy code to clipboard" class="copy-button">Copy</button></pre>
-<p>This is available on preloaded Pluto libraries, such as:</p>
-<ul>
-<li><code>base32</code></li>
-<li><code>base58</code></li>
-<li><code>base64</code></li>
-<li><code>crypto</code></li>
-<li><code>json</code></li>
-<li><code>url</code></li>
-</ul>
-<p>And on the following functions:</p>
+<p>This is available on preloaded Pluto libraries, such as <code>base64</code> and <code>json</code>, and the following functions:</p>
 <ul>
 <li><code>io.contents</code></li>
 <li><code>tostring</code></li>
 <li><code>utostring</code></li>
 <li><code>tonumber</code></li>
 <li><code>utonumber</code></li>
-<li><code>type</code></li>
 <li><code>assert</code></li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="variables">Variables<a href="#variables" class="hash-link" aria-label="Direct link to Variables" title="Direct link to Variables">​</a></h2>
