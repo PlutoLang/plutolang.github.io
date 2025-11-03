@@ -21,21 +21,12 @@ local compile = 847757641 -- The JOAAT hash of "Hello, World!"
 assert(runtime == compile)
 ```
 
-This is available on preloaded Pluto libraries, such as:
-- `base32`
-- `base58`
-- `base64`
-- `crypto`
-- `json`
-- `url`
-
-And on the following functions:
+This is available on preloaded Pluto libraries, such as `base64` and `json`, and the following functions:
 - `io.contents`
 - `tostring`
 - `utostring`
 - `tonumber`
 - `utonumber`
-- `type`
 - `assert`
 
 ## Variables
