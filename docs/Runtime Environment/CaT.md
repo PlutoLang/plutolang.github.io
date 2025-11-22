@@ -48,7 +48,7 @@ print(dumpvar(data))
 --> }
 ```
 
-With the default "full" representation, the retuned table has an `__index` metamethod for ease of use:
+With the default "full" representation, the returned table has an `__index` metamethod for ease of use:
 
 ```pluto
 print(data.List.value) --> With Value
