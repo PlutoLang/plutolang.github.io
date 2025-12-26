@@ -1,4 +1,4 @@
-This page documents the changes & additions to the `coroutine` library in Pluto, which is built on top of Lua 5.4's.
+This page documents the changes & additions to the `coroutine` library in Pluto, which is built on top of Lua 5.5's.
 
 ---
 ### `coroutine.xresume`

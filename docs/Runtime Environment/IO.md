@@ -1,4 +1,4 @@
-This page documents the changes & additions to the `io` library in Pluto, which is built on top of Lua 5.4's.
+This page documents the changes & additions to the `io` library in Pluto, which is built on top of Lua 5.5's.
 
 To improve cross-platform consistency, all IO functions assume UTF-8 encoding for paths.
 

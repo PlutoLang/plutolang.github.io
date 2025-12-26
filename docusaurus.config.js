@@ -12,7 +12,7 @@ const rehypeRawOptions = {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Pluto',
-  tagline: 'A superset of Lua 5.4 with a focus on general-purpose programming.',
+  tagline: 'A superset of Lua 5.5 with a focus on general-purpose programming.',
   url: 'https://pluto-lang.org',
   baseUrl: '/',
   onBrokenLinks: 'warn',

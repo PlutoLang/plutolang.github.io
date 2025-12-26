@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-This page documents the changes & additions to Pluto's runtime environment, which is built on top of Lua 5.4's.
+This page documents the changes & additions to Pluto's runtime environment, which is built on top of Lua 5.5's.
 
 ---
 ### `_PVERSION`
