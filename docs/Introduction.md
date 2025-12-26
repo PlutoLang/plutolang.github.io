@@ -13,7 +13,7 @@ Despite the immense additions, Pluto remains highly compatible with Lua:
   - Our only breakage is the addition of new keywords, which causes conflicts when those keywords are used as identifiers. However, Pluto leverages parser heuristics and — in cases where parser heuristics fail — [Compatibility Mode](<Compatibility#compatibility-mode>) to eliminate this concern. Most Lua 5.5 source code will execute flawlessly on Pluto.
 - Reads and writes Lua 5.5 bytecode meaning it's forwards- and backwards-compatible.
   - Only some Pluto features generate backwards-incompatible bytecode, but they will say so in their documentation.
-- Actively rebases with Lua's main repository. We are not a time-frozen dialect. When Lua 5.5 releases, we intend on updating to that.
+- Actively rebases with Lua's main repository. We are not a time-frozen dialect. Initially starting on Lua 5.4, Pluto has successfully performed a gradual rebase onto Lua 5.5.
 
 With Compatibility Mode, Pluto has been dropped into large communities and did not break any existing scripts.
 
