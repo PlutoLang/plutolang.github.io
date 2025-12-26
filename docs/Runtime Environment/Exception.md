@@ -5,13 +5,13 @@ The `exception` class makes errors easier to parse with `where` and `what` membe
 For ease of use, constructing an exception automatically _throws_ it.
 
 ```pluto showLineNumbers
-try
+xpcall(|| -> do
     new exception("Not implemented")
-catch e then
+end, |e| -> do
     print(e) -- same as error("Not implemented")
     print(e.what)
     print(e.where)
-end
+end)
 ```
 **Output:**
 ```

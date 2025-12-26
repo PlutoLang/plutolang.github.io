@@ -42,11 +42,10 @@ It is also possible to specify a version number, which is a shorthand for the ke
 - `"0.2.0"` corresponds to `* = false, switch, continue`
 - `"0.5.0"` corresponds to `* = false, switch, continue, enum`
 - `"0.6.0"` corresponds to `* = false, switch, continue, enum, new, class, parent, export`
-- `"0.8.0"` corresponds to `* = false, switch, continue, enum, new, class, parent, export, try, catch`
 
-So, writing a portable script that only makes use of Pluto 0.8.0's keywords requires this at the beginning:
+So, writing a portable script that only makes use of Pluto 0.6.0's keywords requires this at the beginning:
 ```pluto
-pluto_use "0.8.0"
+pluto_use "0.6.0"
 ```
 
 For module developers and scripts which may be used in future versions of Pluto, we recommend you use `pluto_use` for two reasons:
@@ -64,5 +63,3 @@ These are what they look like:
 - `pluto_class`
 - `pluto_parent`
 - `pluto_export`
-- `pluto_try`
-- `pluto_catch`
