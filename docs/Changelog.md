@@ -4,6 +4,22 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.12.2
+- Deprecated try/catch statement
+
+Compiler/Type System:
+- Fixed uninitialised variables not being propagated as nil
+
+Runtime:
+- Fixed further instances of `dumpvar` and `exportvar`'s quoted strings not escaping invalid UTF-8
+- Fixed io library functions throwing a C++ exception when provided with invalid UTF-8
+- Fixed bigint.gcd infinitely looping or crashing with some inputs
+- Fixed cat.encode asserting or crashing when provided with non-table value
+
+For Integrators:
+- `PLUTO_NO_FILESYSTEM` now also disables $include
+- Fixed `noexcept` being present in lua.h
+
 ## 0.12.1
 Compiler:
 - Fixed pipe operator method call when used on result of call
