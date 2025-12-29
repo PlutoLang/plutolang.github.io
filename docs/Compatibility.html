@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.0">
 <title data-rh="true">Compatibility | Pluto</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://pluto-lang.org/docs/Compatibility"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Compatibility | Pluto"><meta data-rh="true" name="description" content="Pluto aims to be source- and bytecode-compatible with existing Lua code such that it can simply be used as a drop-in replacement for Lua, and Lua modules can simply be used in Pluto codebases. In the vast majority of cases, we do succeed, but there are a few things to be aware of."><meta data-rh="true" property="og:description" content="Pluto aims to be source- and bytecode-compatible with existing Lua code such that it can simply be used as a drop-in replacement for Lua, and Lua modules can simply be used in Pluto codebases. In the vast majority of cases, we do succeed, but there are a few things to be aware of."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://pluto-lang.org/docs/Compatibility"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Compatibility" hreflang="en"><link data-rh="true" rel="alternate" href="https://pluto-lang.org/docs/Compatibility" hreflang="x-default"><script src="/custom.js" async></script><link rel="stylesheet" href="/assets/css/styles.4b8d2611.css">
-<script src="/assets/js/runtime~main.8c6c5ab9.js" defer="defer"></script>
-<script src="/assets/js/main.9c0fb453.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.6fa9a9a9.js" defer="defer"></script>
+<script src="/assets/js/main.d5f01fbe.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -35,10 +35,9 @@
 <li><code>&quot;0.2.0&quot;</code> corresponds to <code>* = false, switch, continue</code></li>
 <li><code>&quot;0.5.0&quot;</code> corresponds to <code>* = false, switch, continue, enum</code></li>
 <li><code>&quot;0.6.0&quot;</code> corresponds to <code>* = false, switch, continue, enum, new, class, parent, export</code></li>
-<li><code>&quot;0.8.0&quot;</code> corresponds to <code>* = false, switch, continue, enum, new, class, parent, export, try, catch</code></li>
 </ul>
-<p>So, writing a portable script that only makes use of Pluto 0.8.0&#x27;s keywords requires this at the beginning:</p>
-<pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2"><div class="language-id">pluto</div><div class="code-container"><code><div class="line"><span style="color:#F92672">pluto_use</span><span style="color:#F8F8F2"> </span><span style="color:#E6DB74">&quot;0.8.0&quot;</span></div></code></div><button type="button" aria-label="Copy code to clipboard" class="copy-button">Copy</button></pre>
+<p>So, writing a portable script that only makes use of Pluto 0.6.0&#x27;s keywords requires this at the beginning:</p>
+<pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2"><div class="language-id">pluto</div><div class="code-container"><code><div class="line"><span style="color:#F92672">pluto_use</span><span style="color:#F8F8F2"> </span><span style="color:#E6DB74">&quot;0.6.0&quot;</span></div></code></div><button type="button" aria-label="Copy code to clipboard" class="copy-button">Copy</button></pre>
 <p>For module developers and scripts which may be used in future versions of Pluto, we recommend you use <code>pluto_use</code> for two reasons:</p>
 <ul>
 <li><strong>Portability.</strong> This will override the compatibility mode settings compiled into Pluto so your script will be parsed identically in all Pluto environments.</li>
@@ -55,8 +54,6 @@
 <li><code>pluto_class</code></li>
 <li><code>pluto_parent</code></li>
 <li><code>pluto_export</code></li>
-<li><code>pluto_try</code></li>
-<li><code>pluto_catch</code></li>
 </ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/Bindings"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Bindings</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/For Integrators"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">For Integrators</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#new-keywords" class="table-of-contents__link toc-highlight">New Keywords</a><ul><li><a href="#compatibility-mode" class="table-of-contents__link toc-highlight">Compatibility Mode</a></li><li><a href="#compile-time-configuration-pluto_use" class="table-of-contents__link toc-highlight">Compile-time Configuration (pluto_use)</a></li><li><a href="#compatible-keywords" class="table-of-contents__link toc-highlight">Compatible Keywords</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 PlutoLang. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
