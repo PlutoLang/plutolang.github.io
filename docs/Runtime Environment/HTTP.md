@@ -32,7 +32,7 @@ The first request to a remote may take a while — especially with HTTPS — due
 local http = require "pluto:http"
 local body, status_code, headers, status_text = http.request("https://httpbin.org/anything")
 print(status_code.." "..status_text)
-if os.platform != "wasm" then
+if os.platform != "emscripten" then
     print(dumpvar(headers))
 end
 print(body)

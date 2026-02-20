@@ -2,7 +2,7 @@ This page documents the changes & additions to the `os` library in Pluto, which 
 
 ---
 ### `os.platform`
-`os.platform` is a global string containing the host platform. Can be "windows", "wasm", "linux", "macos", "android", or "unknown".
+`os.platform` is a global string containing the host platform. Can be "windows", "emscripten", "linux", "macos", "android", or "unknown".
 
 ---
 ### `os.arch`
