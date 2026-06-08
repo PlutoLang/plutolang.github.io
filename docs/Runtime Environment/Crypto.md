@@ -589,26 +589,34 @@ print(crypto.x25519(bob_priv, alice_pub):tohex()) --> 4a5d9d5ba4ce2de1728e3bf480
 ---
 ## Miscellaneous
 ### `crypto.decompress`
-Decompresses a DEFLATE-compressed string (one might call this an "INFLATE" function). Compatible with gzip and zlib headers and footers.
+Decompresses a compressed string.
+#### Overloads
+- `(data)`
+- `(data, max_decompressed_size)`
+- `(data, algorithm)`
+- `(data, offset, max_decompressed_size)`
+- `(data, algorithm, max_decompressed_size)`
+- `(data, algorithm, offset, max_decompressed_size)`
 #### Parameters
-1. `data` — The string to decompress.
-2. `offset` — Optional starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`. To provide an `offset` without a decompressed size, pass `nil` as the third argument.
-3. `decompressed_size` — Optional size of the decompressed output. When only two arguments are given, the second argument is treated as `decompressed_size`.
+- `data` — The string to decompress.
+- `max_decompressed_size` — The number of bytes that the compression result is expected to take up. Defaults to -1.
+- `algorithm` — The algorithm that was used to compress the string. Can be `"deflate"` or `"lzf"`. Defaults to `"deflate"`.
+- `offset` — The starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`.
 #### Returns
 1. The decompressed string.
 2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch`
 ```pluto
 local deflated = "\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04"
 
-local decompressed, info = require"crypto".decompress(deflated)
-print(decompressed) --> Hello, Pluto!
+local inflated, info = require"crypto".decompress(deflated)
+print(inflated) --> Hello, Pluto!
 print(info.compressed_size) --> 14
 print(info.checksum_present) --> false
 print(info.checksum_mismatch) --> false
 
 -- Decompress from an offset
-decompressed, info = require"crypto".decompress("Don't mind me" .. deflated, 14, nil)
-print(decompressed) --> Hello, Pluto
+inflated, info = require"crypto".decompress("Don't mind me" .. deflated, 14, nil)
+print(inflated) --> Hello, Pluto
 print(info.compressed_size) --> 14
 ```
 
