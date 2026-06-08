@@ -10,7 +10,7 @@ A pattern instance.
 
 ---
 ### `regex.match`
-Attempt to match a pattern instance.
+Attempts to match a pattern instance.
 #### Parameters
 1. The pattern instance.
 #### Returns
@@ -67,4 +67,39 @@ local pattern = new regex [[/[A-Z]/]]
 print(pattern:search("Hello World")) -- 1, 2
 print(pattern:search("Hello World", 2)) -- 7, 8
 print(pattern:search("Hello World", 8)) -- nil
+```
+
+---
+### `regex.replace`
+Replaces the first or all matches in a string, depending on the 'g' flag.
+#### Parameters
+1. The pattern instance.
+2. The string to search in.
+3. The replacement string.
+#### Returns
+The new string.
+```pluto title="Replace first match"
+local regex = require "pluto:regex"
+local r = new regex [[/[0-9]+/]]
+print(r:replace("I have 3 apples and 5 bananas.", "2")) --> I have 2 apples and 5 bananas.
+```
+```pluto title="Replace all matches"
+local regex = require "pluto:regex"
+local r = new regex [[/[0-9]+/g]]
+print(r:replace("I have 3 apples and 5 bananas.", "2")) --> I have 2 apples and 2 bananas.
+```
+
+---
+### `regex.substitute`
+Substitutes the first or all matches in a string, depending on the 'g' flag.
+#### Parameters
+1. The pattern instance.
+2. The string to search in.
+3. The substitution string. The substitution can reference capturing groups by their index, e.g. `$1` for capturing group 1. Use `$$` to produce `$`.
+#### Returns
+The new string.
+```pluto
+local regex = require "pluto:regex"
+local r = new regex [[/.+ (.+)/]]
+print(r:substitute("hello earth", "welcome to $1")) --> welcome to earth
 ```
