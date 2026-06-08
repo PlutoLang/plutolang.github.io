@@ -120,6 +120,7 @@ Attempts to add the TLS crypto layer to the socket, making the transport layer a
 #### Options
 - `alpn` — An array of protocol names to negotiate via ALPN. On success, the selected protocol is returned as a second value.
 - `early_data` — Data to send immediately after the TLS handshake begins. Client only.
+- `require_ecdhe` — Only offer ciphersuites with ECDHE forward-secrecy. Client only.
 #### Returns
 `true` on success and, if ALPN is used, the selected protocol. On failure, returns `false` and the socket is closed. If the socket is already using TLS, returns `nil`.
 #### Multitasking

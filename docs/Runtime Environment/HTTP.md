@@ -13,6 +13,7 @@ Performs an HTTP request.
 - **prefer_ipv6:** (Does nothing in WASM builds of Pluto.) When establishing a new connection, we attempt to lookup and connect via IPv4, retrying with IPv6 if needed. If this is set to true, we instead start with IPv6. This may be useful for "LAN" services that identify the LAN via IPv6 instead of IPv4.
 - **dont_reuse:** (Does nothing in WASM builds of Pluto.) Force the implementation not to reuse an existing socket, which may involve waiting. Instead a new connection is opened. This may be useful when many requests are headed to the same remote and you consider the time taken by a fresh handshake to be less than the time taken to wait to reuse.
 - **dont_make_reusable:** (Does nothing in WASM builds of Pluto.) If a new connection to the remote was opened to carry out the request, close it again after the request. This is useful to avoid burdening the remote for one-off requests.
+- **require_ecdhe:** (Does nothing in WASM builds of Pluto.) When using HTTPS, only offer ciphersuites with ECDHE forward-secrecy.
 #### Returns
 On success:
 1. The response body as a string.
