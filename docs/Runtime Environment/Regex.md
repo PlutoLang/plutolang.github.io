@@ -47,3 +47,24 @@ print(dumpvar(pattern:match("the chosen one")))
 -->     ["what"] = string(6) "chosen",
 --> }
 ```
+
+---
+### `regex.search`
+Looks for a match of the regex in a string.
+#### Parameters
+1. The pattern instance.
+2. The string to search in.
+3. The offset to start searching at. Defaults to 1.
+#### Returns
+On success:
+1. The start offset.
+2. The end offset.
+
+On failure: Nil.
+```pluto
+local regex = require "pluto:regex"
+local pattern = new regex [[/[A-Z]/]]
+print(pattern:search("Hello World")) -- 1, 2
+print(pattern:search("Hello World", 2)) -- 7, 8
+print(pattern:search("Hello World", 8)) -- nil
+```
