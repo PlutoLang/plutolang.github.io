@@ -611,3 +611,16 @@ decompressed, info = require"crypto".decompress("Don't mind me" .. deflated, 14,
 print(decompressed) --> Hello, Pluto
 print(info.compressed_size) --> 14
 ```
+
+### `crypto.compress`
+Compresses a string.
+#### Parameters
+1. `data` — The string to compress.
+2. `algo` — The algorithm to use. Must be "lzf".
+#### Returns
+The compressed string.
+```pluto
+local str = "冥王星は星だ。「星」ここだ。"
+local compressed = require"crypto".compress(str, "lzf")
+print($"Compressed {#str} -> {#compressed} bytes.")
+```
