@@ -10,8 +10,6 @@ end
 process_file(file = "hello.txt", version = 2) -- "Processing hello.txt with mode 'r' and version 2"
 ```
 
-Note that this example also makes use of [default arguments](Default%20Arguments.md) and [string interpolation](String%20Interpolation.md).
-
 ## Mixing arguments
 
 You can use positional arguments for the first few arguments and then use named arguments for the latter ones, for example:
@@ -23,6 +21,12 @@ end
 process_file("hello.txt", version = 2) -- "Processing hello.txt with mode 'r' and version 2"
 ```
 
-## Limitations
+## Global functions
 
-This feature is implemented entirely in the parser and therefore only works for local functions at the moment.
+This feature is implemented entirely in the parser, so it only works for functions where the parser knows the signature. However, `$declare` can be used to (re)introduce this information:
+
+```pluto
+$declare sdiv: function(dividend: number, divisor: number): number
+
+print(sdiv(divisor = 3, dividend = 6)) --> 2
+```
