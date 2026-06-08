@@ -90,7 +90,7 @@ else
 end
 ```
 ---
-### `io.listdir`
+### `io.listdir`, `io.scandir`
 List all the files within a directory.
 #### Parameters
 1. A string path to the directory.
