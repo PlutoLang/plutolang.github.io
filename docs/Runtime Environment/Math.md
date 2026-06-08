@@ -12,6 +12,38 @@ print(math.isnan(x))
 ```
 
 ---
+### `math.clz`
+Returns the number of leading zero bits in an integer's binary representation.
+#### Parameters
+1. The integer to inspect.
+```pluto
+local bitwidth = math.popcnt(~0)
+print(math.clz(1 << (bitwidth - 1))) --> 0
+print(math.clz(0) == bitwidth) --> true
+```
+
+---
+### `math.ctz`
+Returns the number of trailing zero bits in an integer's binary representation.
+#### Parameters
+1. The integer to inspect.
+```pluto
+local bitwidth = math.popcnt(~0)
+print(math.ctz(0b101000)) --> 3
+print(math.ctz(0) == bitwidth) --> true
+```
+
+---
+### `math.popcnt`
+Returns the number of set bits in an integer's binary representation.
+#### Parameters
+1. The integer to inspect.
+```pluto
+print(math.popcnt(0)) --> 0
+print(math.popcnt(0b10101)) --> 3
+```
+
+---
 ### `math.round`
 Rounds a number to the nearest integer.
 #### Parameters
