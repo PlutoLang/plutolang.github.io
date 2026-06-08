@@ -1,6 +1,15 @@
 This page documents the changes & additions to the `string` library in Pluto, which is built on top of Lua 5.5's.
 
 ---
+### `string.format`
+This function has been extended with an additional format option:
+- `%Q` — quotes the string in an UTF-8 safe manner
+```pluto
+print(string.format("%q", "\xff")) --> "�"
+print(string.format("%Q", "\xff")) --> "\255"
+```
+
+---
 ### `string.upper`
 This function now takes a second parameter that specifies which index to capitalize.
 ```pluto
