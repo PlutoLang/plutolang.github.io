@@ -183,6 +183,13 @@ print(ip) --> 1.1.1.1
 print(port) --> 443
 ```
 
+### `socket.setpeer`
+Sets the endpoint of a UDP socket.
+#### Parameters
+1. The socket instance.
+2. The IP address.
+3. The port.
+
 ### `socket.getside`
 Get which side of the connection a socket is.
 #### Parameters
