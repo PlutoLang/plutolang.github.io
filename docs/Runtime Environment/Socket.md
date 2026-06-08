@@ -2,7 +2,7 @@ Must be included via `require`. This library is not available in WASM builds of 
 
 ---
 ### `socket.connect`
-Establishes a TCP connection.
+Creates a new connection to the given endpoint.
 #### Parameters
 1. The host to connect to. Either an IPv4 or IPv6 address, or a domain name resolving to one.
 2. The port to contact the host on.
