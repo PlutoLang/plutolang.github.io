@@ -29,7 +29,7 @@ Asks the operating system to perform a DNS lookup.
 #### Parameters
 1. The DNS record type, e.g. `"A"` for IPv4 or `"AAAA"` for IPv6.
 2. The domain name to query.
-#### Return
+#### Returns
 An array of tables describing each record. Each table contains a `type` and `data` field.
 #### Example
 ```pluto norun
