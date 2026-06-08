@@ -278,6 +278,17 @@ local key = "\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0
 print(crypto.hmac("sha256", key, "Hi There")) --> b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7
 ```
 ---
+### `crypto.whirlpool`
+Hash a string using the Whirlpool cryptographic hashing algorithm.
+#### Parameters
+1. The string to hash.
+2. When set to true, returns raw binary data. false outputs lowercase hex digits. By default, this is false.
+```pluto
+local crypto = require("crypto")
+local str = "hello world"
+print(crypto.whirlpool(str)) --> 8d8309ca6af848095bcabaf9a53b1b6ce7f594c1434fd6e5177e7e5c20e76cd30936d8606e7f36acbef8978fea008e6400a975d51abe6ba4923178c7cf90c802
+```
+---
 ## Cryptographic PRNGs
 ### `crypto.random`
 This is a cryptographically secure PRNG, assuming the platform's implementation of the underlying primitive is secure.
