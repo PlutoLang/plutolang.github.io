@@ -6,7 +6,7 @@ This is intended for advanced users.
 
 ---
 ### `ffi.open`
-Loads a DLL/SO (dynamic link library/shared object).
+Loads a DLL/SO (dynamic link library/shared object). This function is not available in WASM builds of Pluto.
 #### Parameters
 1. The name of the library which is to be located by the operating system. A relative or absolute path also works.
 #### Returns
