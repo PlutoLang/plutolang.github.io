@@ -4,6 +4,35 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.13.0
+- Pluto is now based on [Lua 5.5](https://www.lua.org/manual/5.5/readme.html#changes)
+  - Bytecode from Lua 5.4 and previous Pluto versions will not work in this version and vice-versa
+  - The `__mindex` metamethod will no longer be used for bytecode compiled by plain Lua
+
+Compiler:
+- Named arguments now work for `$declare`d/hinted functions with parameter names
+- Ternary expression and null coalescing operator no longer emit unreachable/dead code for constant conditions
+- The math library can now be used in compile-time function calling
+- Removed the previously-deprecated try/catch statement
+- Fixed prefix ++ expression sometimes pushing an unexpected value
+- Fixed class preprocessing error when `function` is used as a type hint or method name
+
+Standard Library:
+- Added wasm library
+- Added regex.search, regex.replace & regex.substitute
+- Added socket.setpeer
+- Added lzf support to crypto.decompress
+- Added crypto.compress for lzf
+- Added crypto.whirlpool
+- Added math.ctz, math.clz, math.popcnt
+- Added table.isarray
+- Added require_ecdhe option to http.request & socket.starttls
+- Added %Q to string.format for UTF-8-safe quoting
+- Added io.scandir as an alias of io.listdir
+- Changed os.platform "wasm" to "emscripten"
+- Removed os.dnsresolve on MacOS due to not respecting /etc/hosts as expected
+- Fixed crypto.sha384 & crypto.sha512 providing incorrect digests for some inputs
+
 ## 0.12.2
 - Deprecated try/catch statement
 
