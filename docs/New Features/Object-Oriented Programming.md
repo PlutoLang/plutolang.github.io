@@ -128,6 +128,26 @@ print(human.name) --> John
 
 Note that if you have a local variable (or function parameter) called "parent", the `parent` expression will defer to it.
 
+## Constructor Promotion
+
+Because a common task of `__construct` methods is to assign the value of arguments to table fields, Pluto provides a simple syntax to reduce this boilerplate:
+
+```pluto
+class Human
+    function __construct(public name, private age)
+    end
+
+    function getAge()
+        return self.age
+    end
+end
+
+local human = new Human("John", 42)
+print(human.name) -- "John"
+print(human:getAge()) -- 42
+print(human.age) -- nil
+```
+
 ## Restricted Fields
 
 Pluto allows you to specify if a field is 'public', 'protected' or 'private'. Private fields can only be accessed by the class that defined them. Protected fields can additionally also be accessed by descendant classes.
@@ -153,26 +173,6 @@ print(cor.manufacturer) --> nil
 print(cor.model) --> nil
 print(cor.year) --> 2025
 print(cor:getName()) --> 2025 Toyota Corolla
-```
-
-## Constructor Promotion
-
-Because a common task of `__construct` methods is to assign the value of arguments to table fields, Pluto provides a simple syntax to reduce this boilerplate:
-
-```pluto
-class Human
-    function __construct(public name, private age)
-    end
-
-    function getAge()
-        return self.age
-    end
-end
-
-local human = new Human("John", 42)
-print(human.name) -- "John"
-print(human:getAge()) -- 42
-print(human.age) -- nil
 ```
 
 ## Instanceof Operator
