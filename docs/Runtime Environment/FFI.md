@@ -167,14 +167,14 @@ Creates a function wrapper.
 #### Parameters
 1. The return type. Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
 2. The name of the function.
-3. The argument type(s). Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
+3. The argument type(s). Can be "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
 #### Returns
 A new function wrapper instance, which can be called.
 
 ### `value`
 Gets an exported value and interprets it using the given type.
 #### Parameters
-1. The type. Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
+1. The type. Can be "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
 2. The name of the export.
 #### Returns
 The interpreted value.
