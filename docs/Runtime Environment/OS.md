@@ -41,3 +41,6 @@ Only available on Windows and Linux.
 ### `os.rename`, `os.remove`
 Although we'd rather these functions be in the IO library, these Lua variants are retained, but modified to assume UTF-8 path encoding for the same cross-platform consistency the IO library has.
 
+---
+### `os.execute`, `os.getenv`
+These functions have also been patched to use UTF-8 on Windows.
