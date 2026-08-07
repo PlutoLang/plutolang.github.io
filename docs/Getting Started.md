@@ -48,22 +48,6 @@ This package includes the `pluto` and `plutoc` executables, shared library, as w
 ### Termux
 Pluto is available in the Termux package main repository under `plutolang` for binaries and `libpluto` for development library.
 
-### Nix/NixOS
-
-:::info
-This package is maintained by a member of our community.
-:::
-
-Pluto is available in the [NUR](https://github.com/nix-community/NUR) repository. You can try it by following the installation step, and then test it by running:
-```
-nix-shell -p nur.repos.mbekkomo.plutolang --command pluto
-```
-
-Optionally, if you want to install the packages without building it first, you can register a [Cachix](https://cachix.org) store to skip it.
-```
-cachix use mbekkomo
-```
-
 ## Compile Pluto Yourself
 
 Pluto can compile on virtually any platform, as long as there's a C++ 17 compiler for it.
