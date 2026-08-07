@@ -4,6 +4,14 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.13.1
+- Updated to [Lua 5.5.1](https://www.lua.org/bugs.html#5.5.0)
+- Fixed vararg tables not getting a default table metatable
+- Fixed class preprocessing failing on `case ...: if`
+- Fixed os.execute & os.getenv not using UTF-8 on Windows
+- Fixed FFI not handling floats correctly on ABIs with specific registers for them
+- Fixed FFI callback not working when called from an FFI callback
+
 ## 0.13.0
 - Pluto is now based on [Lua 5.5](https://www.lua.org/manual/5.5/readme.html#changes)
   - Bytecode from Lua 5.4 and previous Pluto versions will not work in this version and vice-versa
