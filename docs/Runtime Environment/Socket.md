@@ -8,7 +8,7 @@ Creates a new connection to the given endpoint.
 2. The port to contact the host on.
 3. The transport to use, "tcp" or "udp". Defaults to "tcp".
 #### Returns
-A socket instance on success. Nil on failure.
+A [socket](#socket-class) instance on success. Nil on failure.
 #### Multitasking
 If called inside of a coroutine, this function yields. Otherwise, it blocks.
 
@@ -18,7 +18,7 @@ Creates a new listener for the given port.
 #### Parameters
 1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
-A listener instance on success. Nil on failure.
+A [listener](#listener-class) instance on success. Nil on failure.
 
 ---
 ### `socket.bind`
