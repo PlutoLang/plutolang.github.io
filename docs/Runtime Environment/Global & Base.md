@@ -156,18 +156,18 @@ print(w ~= "" ? (w:strip()) : "No warnings")
 ### `sdiv`, `udiv`
 Performs a standard integer division (signed and unsigned).
 ```pluto
-assert(0xefffffffffffffff // 12 == -96076792050570582)
-assert(sdiv(0xefffffffffffffff, 12) == -96076792050570581)
-assert(udiv(0xefffffffffffffff, 12) == 1441151880758558719)
+print(0xefffffffffffffff // 12) --> -96076792050570582
+print(sdiv(0xefffffffffffffff, 12)) --> -96076792050570581
+print(udiv(0xefffffffffffffff, 12)) --> 1441151880758558719
 ```
 
 ---
 ### `smod`, `umod`
 Performs a standard integer modulo operation (signed and unsigned).
 ```pluto
-assert(0xefffffffffffffff % 12 == 7)
-assert(smod(0xefffffffffffffff, 12) == -5)
-assert(umod(0xefffffffffffffff, 12) == 11)
+print(0xefffffffffffffff % 12) --> 7
+print(smod(0xefffffffffffffff, 12)) --> -5
+print(umod(0xefffffffffffffff, 12)) --> 11
 ```
 
 ---
