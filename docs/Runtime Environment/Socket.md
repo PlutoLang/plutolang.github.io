@@ -51,6 +51,8 @@ Creates a pseudo-socket to listen for UDP datagrams on the given port.
 #### Returns
 A pseudo-socket which can `recv` UDP datagrams and then `send` a response.
 ```pluto norun
+local socket = require "pluto:socket"
+
 local serv = socket.udpserver(30726)
 while data := serv:recv() do
     if data == "ping" then
