@@ -610,7 +610,7 @@ Decompresses a compressed string.
 - `(data, algorithm, offset, max_decompressed_size)`
 #### Parameters
 - `data` — The string to decompress.
-- `max_decompressed_size` — The number of bytes that the compression result is expected to take up. Defaults to -1.
+- `max_decompressed_size` — The number of bytes that the compression result is expected to take up. Defaults to -1, which multiplies the compressed size for an educated guess.
 - `algorithm` — The algorithm that was used to compress the string. Can be `"deflate"` or `"lzf"`. Defaults to `"deflate"`.
 - `offset` — The starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`.
 #### Returns
