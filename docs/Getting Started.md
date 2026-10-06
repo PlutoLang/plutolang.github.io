@@ -37,7 +37,7 @@ sudo apt install pluto
 
 This package includes the `pluto` and `plutoc` executables, shared library, as well as headers for developers (`#include <pluto/...>`).
 
-As the "buster" part implies, these binaries were compiled on Debian 10, but they work on all subsequent Debian releases, as well as Ubuntu 20 and above.
+The distribution name "buster" is hardcoded, but the amd64 releases of Pluto 0.13.x are compiled on Debian 10, so they will work on subsequent Debian releases as well as Ubuntu 20 and above. The arm64 releases require a slightly more up-to-date operating system (details not finalized yet).
 
 ### AUR
 
