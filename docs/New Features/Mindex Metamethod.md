@@ -8,7 +8,7 @@ In this code, the following occurs:
 2. `__index` returns nil.
 3. Since `__index` returned nil and this lookup is being performed by method invocation syntax (`:`), `__mindex` is queried.
 
-```pluto title="An example showing how __mindex is walked recursively so :insert still works with a custom __mindex"
+```pluto title="An example showing semantics with field access and recursion"
 local t = setmetatable({}, {
     __mindex = {
         function sum()
@@ -32,3 +32,7 @@ print(t:min()) --> 1
 t.min = 1
 print(t:min()) -- attempt to call a number value
 ```
+
+:::info
+In cases where bytecode compiled by Lua is ran in Pluto, the `__mindex` metamethod not queried.
+:::
