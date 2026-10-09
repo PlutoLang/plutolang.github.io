@@ -119,6 +119,7 @@ print(crypto.adler32(str)) --> 103547413
 Hash a string using the Lookup3 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
+2. The initial value for the hash. By default, this is zero.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
