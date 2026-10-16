@@ -4,6 +4,16 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.13.2
+Compiler:
+- Improved some syntax error messages
+- Fixed "static" not working as a name in shorthand table syntax
+
+Standard Library:
+- Optimized sha512 & sha384
+- Fixed HTTP requests timing out when the request or response is too big
+- Fixed crypto.decompress crashing when output allocation fails in some circumstances
+
 ## 0.13.1
 - Updated to [Lua 5.5.1](https://www.lua.org/bugs.html#5.5.0)
 - Fixed vararg tables not getting a default table metatable
