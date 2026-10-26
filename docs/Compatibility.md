@@ -6,7 +6,7 @@ Pluto aims to be source- and bytecode-compatible with existing Lua code such tha
 
 ## New Keywords
 
-While Pluto does add a handful of new keywords (`switch`, `continue`, `enum`, `new`, `class`, `parent`, `export`, `try`, `catch`), it can automatically infer when these are used as identifiers to preserve compatibility with Lua:
+While Pluto does add a handful of new keywords (`switch`, `continue`, `enum`, `new`, `class`, `parent`, `export`), it can automatically infer when these are used as identifiers to preserve compatibility with Lua:
 ```lua
 local class = "supercar"
 print("it's a "..class) --> it's a supercar
