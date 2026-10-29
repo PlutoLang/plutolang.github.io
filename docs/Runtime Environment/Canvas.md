@@ -23,7 +23,7 @@ Creates a new canvas instance containing a QR code.
 - "ecl" specifies the error correction level between "low", "medium", "quartile", "high". defaults to "low".
 - "border" specifies the number of pixels around the QR code. defaults to 0.
 - "bg" specifies the background color. defaults to `0x000000` for black.
-- "fg" specifies the background color. defaults to `0xffffff` for white.
+- "fg" specifies the foreground color. defaults to `0xffffff` for white.
 
 ```pluto
 local canvas = require "canvas"
