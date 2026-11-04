@@ -616,7 +616,7 @@ Decompresses a compressed string.
 - `offset` — The starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`.
 #### Returns
 1. The decompressed string.
-2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch`
+2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch` (not present with algorithm="lzf")
 ```pluto
 local deflated = "\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04"
 
