@@ -35,7 +35,7 @@ An array of tables describing each record. Each table contains a `type` and `dat
 ```pluto norun
 print(dumpvar(os.dnsresolve("A", "one.one.one.one"))) -- { { type = "A", data = "1.1.1.1" }, { type = "A", data = "1.0.0.1" } }
 ```
-Only available on Windows and Linux.
+Only available on Windows, Linux, and MacOS.
 
 ---
 ### `os.rename`, `os.remove`
