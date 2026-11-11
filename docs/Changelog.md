@@ -4,6 +4,18 @@ sidebar_position: 13
 
 This page contains the changelogs from all [releases of Pluto](https://github.com/PlutoLang/Pluto/releases).
 
+## 0.13.3
+Compiler:
+- Fixed local classes not being able to reference themselves
+- Fixed 'extends' after 'new' not working as expected
+
+Standard Library:
+- os.dnsresolve made available on MacOS again, now respects /etc/hosts
+- Fixed http.request always timing out with method="HEAD"
+
+For Integrators:
+- Fixed write file hook not being called for mode "r+" (instead called read file hook)
+
 ## 0.13.2
 Compiler:
 - Improved some syntax error messages
