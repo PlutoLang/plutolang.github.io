@@ -24,7 +24,7 @@ The only exception to this is short-hand table syntax and goto labels because Pl
 ### Compatibility Mode
 
 Some users may wish for Pluto keywords to be off by default, for which we provide the following options:
-- **For Integrators:** Check your `luaconf.h` file to find the relevant macros under the "Compatibility" heading.
+- **For Integrators:** Call `L->l_G->setCompatibilityMode(true);` or define the `PLUTO_COMPATIBLE_MODE` macro.
 - **For Scripters:** Put `-- @pluto_use * = false` at the top of your script.
 - **For Users:** Pass the `-c` flag to `pluto` or `plutoc`.
 
