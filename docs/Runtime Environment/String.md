@@ -164,9 +164,10 @@ Same as `string.format`, but performs the operation under the `en_US.UTF-8` loca
 ### `string.replace`
 Replace substrings with another substring. Similar to `string.gsub`, but it operates on plain-text and is not burdened by a pattern capture limit.
 #### Parameters
-1. `original` — The substring to replace.
-2. `substitute` — The replacement substring.
-3. `max_replace` — The maximum number of replacements you wish to occur. The default value is `0`, which means "infinite". If you pass `1`, this leads to a maximum of one replacement, and so on.
+1. `string` — The string to modify.
+2. `original` — The substring to replace.
+3. `substitute` — The replacement substring.
+4. `max_replace` — The maximum number of replacements you wish to occur. The default value is `0`, which means "infinite". If you pass `1`, this leads to a maximum of one replacement, and so on.
 #### Errors
 An error is thrown under the following conditions:
 1. `max_replace` is less than zero.
