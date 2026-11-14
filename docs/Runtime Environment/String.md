@@ -166,11 +166,11 @@ Replace substrings with another substring. Similar to `string.gsub`, but it oper
 #### Parameters
 1. `original` — The substring to replace.
 2. `substitute` — The replacement substring.
-3. `max_replace` — The maximum number of replacements you wish to occur. The default value is effectively `0`, which means "infinite". If you pass `1`, this leads to a maximum of one replacement, and so on.
+3. `max_replace` — The maximum number of replacements you wish to occur. The default value is `0`, which means "infinite". If you pass `1`, this leads to a maximum of one replacement, and so on.
 #### Errors
 An error is thrown under the following conditions:
 1. `max_replace` is less than zero.
-2. The length of `substitute` is zero.
+2. The length of `original` is zero.
 ```pluto
 print(string.replace("Hello, world!", "!", "."))         --> Hello, world.
 print(string.replace("Hello, world!", "apple", ""))      --> Hello, world!
