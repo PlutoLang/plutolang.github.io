@@ -16,7 +16,6 @@ const config = {
   url: 'https://pluto-lang.org',
   baseUrl: '/',
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.png',
   plugins: [
     [
