@@ -441,9 +441,9 @@ assert(t2.a.b == t.a.b)  -- but 'b' is shared
 ---
 ### `table.isarray`
 Checks if a table is an array, meaning it only has positive integer keys with no holes between 1 and its [size](#tablesize).
-### Parameters
+#### Parameters
 1. The table to check.
-### Returns
+#### Returns
 A boolean.
 ```pluto
 print({ 1, 2, 3 }:isarray()) --> true
