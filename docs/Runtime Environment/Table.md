@@ -1,7 +1,6 @@
-This page documents the changes & additions to the `table` library in Pluto, which is built on top of Lua 5.5's.
+This page documents the `table` library in Pluto, which is built on top of Lua 5.5's.
 
----
-### Default Metatable
+## Default Metatable
 Pluto gives each table a metatable by default, akin to how each string has a metatable by default.
 ```pluto
 local t = {}
@@ -16,16 +15,9 @@ table.concat(t, "\n")
 ```
 The default metatable is `{ __mindex = _G.table }`, using Pluto's own [`__mindex` metamethod](<../New Features/Mindex Metamethod.md>).
 
----
-### `table.sort`
-This function was modified to return the input table instead of `nil`, such that:
-```pluto
-local t = { 3, 2, 1 }
-t = t:sort(...)
-```
-Will not result in `t` becoming `nil`.
+## Added
 ### `table.sorted`
-Copying variant of `table.sort`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+Copying variant of [table.sort](#tablesort); returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ### `table.size`
@@ -130,7 +122,7 @@ After:
 --]]
 ```
 ### `table.reversed`
-Copying variant of `table.reverse`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+Copying variant of [table.reverse](#tablereverse); returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ### `table.reorder`
@@ -146,7 +138,7 @@ local t1 = { 1, nil, 2, nil, nil, 3, nil, 4 }
 assert.equal(t1:reorder(), { 1, 2, 3, 4 })
 ```
 ### `table.reordered`
-Copying variant of `table.reorder`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+Copying variant of [table.reorder](#tablereorder); returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ### `table.foreach`
@@ -188,7 +180,7 @@ data = { 2, 2, 3, 4, 4 }
 data:filter(|k, v| -> k == v, true):reorder():concat(" ") |> print --> 2 3 4
 ```
 ### `table.filtered`
-Copying variant of `table.filter`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+Copying variant of [table.filter](#tablefilter); returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ### `table.map`
@@ -208,7 +200,7 @@ data:split(" "):map(tonumber):map(|k, v| -> k * v, true):concat(" ") |> print --
 ```
 In this example, we first use the `tonumber` function to turn the strings into numbers, then add 1 to them. (Although the first step is not needed in Lua/Pluto since the `+` operator would take care of it, it is used here for demonstration purposes.)
 ### `table.mapped`
-Copying variant of `table.map`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+Copying variant of [table.map](#tablemap); returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ### `table.reduce`
@@ -318,7 +310,7 @@ print(dumpvar(t:dedup())) -- { [1] = 1, [2] = 2, [4] = 3, [7] = 4 }
 print(dumpvar(t:dedup():reorder())) -- { 1, 2, 3, 4 }
 ```
 ### `table.deduped`, `table.deduplicated`
-Copying variant of `table.dedup`/`table.deduplicate`; returns a new table instead of modifying the input table. Note that nested tables will not be copied.
+Copying variant of [table.dedup](#tablededup-tablededuplicate); returns a new table instead of modifying the input table. Note that nested tables will not be copied.
 
 ---
 ### `table.chunk`
@@ -449,4 +441,128 @@ A boolean.
 print({ 1, 2, 3 }:isarray()) --> true
 print({ 1, nil, 3 }:isarray()) --> false
 print({ 1, 2, a = 1 }:isarray()) --> false
+```
+
+## Changed
+### `table.sort`
+Sorts the array part of a table in-place.
+#### Parameters
+1. The table to sort.
+2. An optional comparison function that receives two list elements and returns true when the first element must come before the second in the final order.
+#### Returns
+The input table. **(Added by Pluto)**
+```pluto
+local t = { 3, 1, 2 }
+t:sort()
+print(t:concat(" ")) --> 1 2 3
+t = t:sort(|a, b| -> a > b) -- In Pluto, sort returns the input table again, so t does not become nil
+print(t:concat(" ")) --> 3 2 1
+```
+
+## Unchanged
+### `table.concat`
+Concatenates the array part of a table into a string.
+#### Parameters
+1. The table.
+2. The separator. Defaults to an empty string.
+3. The starting index. Defaults to `1`.
+4. The ending index. Defaults to `#list`.
+#### Returns
+The concatenated string.
+```pluto
+local t = { "a", "b", "c" }
+print(t:concat(", ")) --> a, b, c
+print(t:concat("-", 2, 3)) --> b-c
+```
+
+---
+### `table.create`
+Creates a new empty table, preallocating memory. This preallocation may help performance and save memory when you know in advance how many elements the table will have.
+#### Parameters
+1. The expected number of array elements.
+2. The expected number of other elements. Defaults to 0.
+#### Returns
+A new empty table.
+```pluto
+local t = table.create(3)
+print(#t) --> 0
+t:insert("a")
+print(#t) --> 1
+print(t:concat()) --> a
+```
+
+---
+### `table.insert`
+Inserts an element in the array part of a table, optionally shifting elements up.
+#### Parameters
+1. The table.
+2. The position to insert at. Defaults to `#list+1`.
+3. The value to insert.
+```pluto
+local t = { "a", "c" }
+t:insert(2, "b")
+print(t:concat(" ")) --> a b c
+t:insert("d")
+print(t:concat(" ")) --> a b c d
+```
+
+---
+### `table.move`
+Moves elements in the array part of up to 2 tables, supporting overlaps.
+#### Parameters
+1. The source table.
+2. The first index to move.
+3. The last index to move.
+4. The destination index.
+5. The destination table. Defaults to the source table.
+#### Returns
+The destination table.
+```pluto
+local t = { 1, 2, 3, 4, 5 }
+t:move(2, 4, 1)
+print(t:concat(" ")) --> 2 3 4 4 5
+```
+
+---
+### `table.pack`
+Returns a new table with all arguments stored into keys `1`, `2`, etc. and with a field `n` with the total number of arguments.
+#### Parameters
+1. The arguments to store.
+#### Returns
+A new table containing the arguments, with the field `n`. Note that the resulting table may not be a sequence if some arguments are nil.
+```pluto
+local t = table.pack(1, nil, 3)
+print(t.n) --> 3
+print(t[1], t[3]) --> 1    3
+```
+
+---
+### `table.remove`
+Removes an element from the array part of a table, optionally shifting elements down.
+#### Parameters
+1. The table.
+2. The position to remove. Defaults to the last position.
+#### Returns
+The value of the removed element.
+```pluto
+local t = { "a", "b", "c", "d" }
+print(t:remove()) --> d
+print(t:remove(1)) --> a
+print(t:concat(" ")) --> b c
+```
+
+---
+### `table.unpack`
+Returns elements from the array part of a table.
+#### Parameters
+1. The table.
+2. The starting index. Defaults to 1.
+3. The ending index. Defaults to the last position.
+#### Returns
+The elements.
+```pluto
+local t = { 1, 2, 3, 4 }
+print(table.unpack(t))       --> 1    2    3    4
+print(table.unpack(t, 2))    --> 2    3    4
+print(table.unpack(t, 2, 3)) --> 2    3
 ```
