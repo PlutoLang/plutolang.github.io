@@ -25,28 +25,6 @@ end
 `package.path` is modified to also search for `.pluto` files.
 
 ---
-### Default Metatables
-
-Tables and coroutines/threads have metatables by default, akin to how each string has a metatable by default.
-```pluto
-local t = {}
-local c = coroutine.create(|| -> do end)
-
--- Can do this:
-t:contains(1)
-t:concat("\n")
-c:resume()
-
--- As opposed to this:
-table.contains(t, 1)
-table.concat(t, "\n")
-coroutine.resume(c)
-```
-The default metatables for the types are as follows:
-- Table: `{ __mindex = _G.table }` (using Pluto's own [`__mindex` metamethod](<../New Features/Mindex Metamethod.md>))
-- Coroutine/thread: `{ __index = _G.coroutine }`
-
----
 ### `dumpvar`
 A debug function designed to dump values into human-readable formats.
 #### Parameters

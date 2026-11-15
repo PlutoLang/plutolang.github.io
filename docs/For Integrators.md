@@ -18,8 +18,8 @@ local ひゃく = 100
 This can be disabled by defining `PLUTO_NO_UTF8`.
 ### Jump Table
 [This optional optimization](<Optimizations/Jump Table>) can be enabled by defining `PLUTO_FORCE_JUMPTABLE`.
-### Default Metatables
-[This feature](<Runtime Environment/Global & Base#default-metatables>) can be disabled by defining `PLUTO_FORCE_JUMPTABLE`.
+### Default Table Metatable
+[This feature](<Runtime Environment/Table#default-metatables>) can be disabled by defining `PLUTO_NO_DEFAULT_TABLE_METATABLE`.
 ### Table Freezing
 [This optional feature](<New Features/Table Freezing>) can be enabled by defining `PLUTO_ENABLE_TABLE_FREEZING`.
 ### Parser Cache

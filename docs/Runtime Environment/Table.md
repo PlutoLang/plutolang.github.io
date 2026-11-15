@@ -1,6 +1,22 @@
 This page documents the changes & additions to the `table` library in Pluto, which is built on top of Lua 5.5's.
 
 ---
+### Default Metatable
+Pluto gives each table a metatable by default, akin to how each string has a metatable by default.
+```pluto
+local t = {}
+
+-- Can do this:
+t:contains(1)
+t:concat("\n")
+
+-- As opposed to this:
+table.contains(t, 1)
+table.concat(t, "\n")
+```
+The default metatable is `{ __mindex = _G.table }`, using Pluto's own [`__mindex` metamethod](<../New Features/Mindex Metamethod.md>).
+
+---
 ### `table.sort`
 This function was modified to return the input table instead of `nil`, such that:
 ```pluto
