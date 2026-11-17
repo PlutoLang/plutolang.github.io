@@ -167,3 +167,10 @@ end
 --> B
 --> C
 ```
+
+---
+### `newuserdata`
+Constructs a 0-sized userdata with an empty metatable.
+```pluto
+print(newuserdata()) --> userdata: 0x...
+```
