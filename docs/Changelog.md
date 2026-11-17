@@ -195,7 +195,7 @@ You can view the full commit log [here](https://github.com/PlutoLang/Pluto/compa
 - Added warning for unused local variables
 - Added octal numerals
 - Added `__mindex` metamethod
-  - This is now used by default table metatable, elimiting the compatibility concerns it previously had.
+  - This is now used by default table metatable, eliminating the compatibility concerns it previously had.
 - Export is no longer deprecated but now implies constness
 - Walrus operator can now initialize multiple variables
 - Compile-time conditionals can now be equality checks
@@ -351,7 +351,7 @@ Furthermore, it improves the walrus operator in regards to disallowing UB and cl
 - Fixed break and continue possibly not closing upvalues
 - Fixed continue not working as expected when passing through switch statement
 - Fixed switch cases being able to read uninitialized variables
-- Fixed inconsistent behavior with safe navigtion method calls and multiple return values
+- Fixed inconsistent behavior with safe navigation method calls and multiple return values
 - Fixed walrus operator being able to cause UB or corrupt the stack
 - Fixed pipe operator possibly generating incorrect code
 

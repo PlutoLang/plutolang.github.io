@@ -63,7 +63,7 @@ Then, you can use any of the build methods documented here.
 ### PHP Scripts
 
 :::info
-PHP is required for this method. You can check if PHP is installed by running `php -v`. You can install it via `sudo apt intall php-cli` on Debian or `sudo pacman -S php` on Arch.
+PHP is required for this method. You can check if PHP is installed by running `php -v`. You can install it via `sudo apt install php-cli` on Debian or `sudo pacman -S php` on Arch.
 :::
 
 Simply run the following commands:

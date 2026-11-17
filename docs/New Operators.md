@@ -104,7 +104,7 @@ This operator does not implement any metamethods.
 :::
 
 ## Walrus Operator
-The Walrus operator allows you to perform assignments inside of conditional expresssions.
+The Walrus operator allows you to perform assignments inside of conditional expressions.
 ```pluto
 local get_value = || -> 1
 
