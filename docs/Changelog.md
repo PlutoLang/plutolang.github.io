@@ -126,7 +126,7 @@ Standard Library:
   - Added crypto.hmac, crypto.fnv1a32, crypto.x25519, crypto.derive
   - Added RSA OAEP modes to crypto.encrypt & crypto.decrypt (rsa-sha1, rsa-sha256, rsa-sha384, rsa-sha512)
   - Added optional offset parameter to crypto.decompress
-  - Removed previously-deprecated crypto.hexstream
+  - Removed previously-deprecated crypto.hexdigest
 - FFI
   - Added ffi.callback
 - IO
