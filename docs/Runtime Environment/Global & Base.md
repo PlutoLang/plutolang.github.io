@@ -149,6 +149,14 @@ print(umod(0xefffffffffffffff, 12)) --> 11
 ```
 
 ---
+### `utonumber`
+Same as `tonumber`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
+
+---
+### `utostring`
+Same as `tostring`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
+
+---
 ### `callonce`
 Calls the given function exactly once and then caches its return value.
 ```pluto
