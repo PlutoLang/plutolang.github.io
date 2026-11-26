@@ -84,6 +84,24 @@ An alias for the [math.atan](#mathatan) function.
 ### `math.inf`
 An alias for the [math.huge](#mathhuge) constant.
 
+---
+### `math.sdiv`, `math.udiv`
+Performs a standard integer division (signed and unsigned).
+```pluto
+print(0xefffffffffffffff // 12) --> -96076792050570582
+print(sdiv(0xefffffffffffffff, 12)) --> -96076792050570581
+print(udiv(0xefffffffffffffff, 12)) --> 1441151880758558719
+```
+
+---
+### `math.smod`, `math.umod`
+Performs a standard integer modulo operation (signed and unsigned).
+```pluto
+print(0xefffffffffffffff % 12) --> 7
+print(smod(0xefffffffffffffff, 12)) --> -5
+print(umod(0xefffffffffffffff, 12)) --> 11
+```
+
 ## Unchanged
 
 ### `math.abs`

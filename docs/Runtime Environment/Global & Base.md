@@ -131,24 +131,6 @@ print(w ~= "" ? (w:strip()) : "No warnings")
 ```
 
 ---
-### `sdiv`, `udiv`
-Performs a standard integer division (signed and unsigned).
-```pluto
-print(0xefffffffffffffff // 12) --> -96076792050570582
-print(sdiv(0xefffffffffffffff, 12)) --> -96076792050570581
-print(udiv(0xefffffffffffffff, 12)) --> 1441151880758558719
-```
-
----
-### `smod`, `umod`
-Performs a standard integer modulo operation (signed and unsigned).
-```pluto
-print(0xefffffffffffffff % 12) --> 7
-print(smod(0xefffffffffffffff, 12)) --> -5
-print(umod(0xefffffffffffffff, 12)) --> 11
-```
-
----
 ### `utonumber`
 Same as `tonumber`, but performs the operation under the `en_US.UTF-8` locale. Ensures the same result on all systems.
 
