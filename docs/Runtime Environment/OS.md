@@ -44,3 +44,7 @@ Although we'd rather these functions be in the IO library, these Lua variants ar
 ---
 ### `os.execute`, `os.getenv`
 These functions have also been patched to use UTF-8 on Windows.
+
+---
+### `os.unlink`
+An alias for `os.remove`.

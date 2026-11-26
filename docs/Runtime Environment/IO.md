@@ -7,7 +7,7 @@ To improve cross-platform consistency, all IO functions assume UTF-8 encoding fo
 A variant of Lua's `os.rename` that raises an error on failure and instead has no return values.
 
 ---
-### `io.remove`
+### `io.remove`, `io.unlink`
 A variant of Lua's `os.remove` that raises an error on failure and instead has no return values.
 
 ---
