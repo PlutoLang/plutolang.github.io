@@ -95,9 +95,14 @@ print(c.r) --> 255
 ### `ffi.sizeof`
 Measures the size of an FFI Struct Type.
 #### Parameters
-1. An FFI Struct Type instance, the name of a struct stored on the FFI library itself, or an instance of the struct.
+1. The name of a primitive type or an FFI struct name, type, or instance.
 #### Returns
 The size in bytes.
+```pluto
+local ffi = require "pluto:ffi"
+
+print(ffi.sizeof("int")) --> 4
+```
 
 ---
 ### `ffi.offsetof`
