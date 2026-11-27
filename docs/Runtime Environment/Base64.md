@@ -8,7 +8,7 @@ Returns a base64-encoded string.
 2. `pad` — Whether or not to apply padding. Defaults to `true`.
 ```pluto
 local base64 = require("base64")
-print(base64.encode("Hello, World!")) --> SGVsbG8sIFdvcmxkIQ==
+print(base64.encode("Hello, world!")) --> SGVsbG8sIHdvcmxkIQ==
 ```
 ---
 ### `base64.decode`
@@ -17,7 +17,7 @@ Returns a decoded base64 string.
 1. `data` — A string of base64 data.
 ```pluto
 local base64 = require("base64")
-print(base64.decode("SGVsbG8sIFdvcmxkIQ==")) --> Hello, world!
+print(base64.decode("SGVsbG8sIHdvcmxkIQ==")) --> Hello, world!
 ```
 ---
 ### `base64.urlencode`
@@ -27,7 +27,7 @@ Returns a base64url-encoded string. This variant is sometimes refered to as file
 2. `pad` — Whether or not to apply padding. Defaults to `false`.
 ```pluto
 local base64 = require("base64")
-print(base64.urlencode("Hello, World!")) --> SGVsbG8sIFdvcmxkIQ
+print(base64.urlencode("Hello, world!")) --> SGVsbG8sIHdvcmxkIQ
 ```
 ---
 ### `base64.urldecode`
@@ -36,5 +36,5 @@ Similar to `base64.decode` except for base64url.
 1. `data` — A string of base64 data.
 ```pluto
 local base64 = require("base64")
-print(base64.urldecode("SGVsbG8sIFdvcmxkIQ")) --> Hello, world!
+print(base64.urldecode("SGVsbG8sIHdvcmxkIQ")) --> Hello, world!
 ```
