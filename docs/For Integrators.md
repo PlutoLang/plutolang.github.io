@@ -126,7 +126,7 @@ Similar to the loadfile hook, `PLUTO_LOADCLIB_HOOK` can be defined to moderate C
 ### Disable Filesystem Access
 You can define `PLUTO_NO_FILESYSTEM` to disable the io library, os.remove, os.rename, as well as [the $include directive](<New Features/Preprocessing#include>).
 ### Disable Command Access
-Define `PLUTO_NO_OS_EXECUTE` to disable os.execute and io.popen.
+Define `PLUTO_NO_OS_EXECUTE` to disable os.execute, io.popen, and [Pluto's os.system](<Runtime Environment/OS#ossystem>).
 ### Prevent Loading of Binary Modules
 The `PLUTO_NO_BINARIES` macro can be defined to totally eliminate `package.loadlib` and any DLL/SO loading capability from the `require` function. This is helpful because `package.loadlib` can be used to bypass sandbox restrictions by manually loading symbols from a Lua/Pluto library, and the `require` function can load any Lua/Pluto C Module which may or may not provide dangerous functions. This is generally vital for any sandbox. This mechanism cannot be bypassed, since it configures Pluto to compile without support for any of the aforementioned features.
 ### Disable HTTP Requests

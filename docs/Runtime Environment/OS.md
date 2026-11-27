@@ -48,3 +48,11 @@ These functions have also been patched to use UTF-8 on Windows.
 ---
 ### `os.unlink`
 An alias for `os.remove`.
+
+---
+### `os.system`
+Similar to `os.execute` but returns the output of the program as a string instead of forwarding it.
+```pluto norun
+os.execute("echo Hello") --> Hello
+print(dumpvar(os.system("echo Hello"):strip())) --> string(5) "Hello"
+```
