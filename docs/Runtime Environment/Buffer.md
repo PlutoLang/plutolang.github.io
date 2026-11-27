@@ -18,15 +18,11 @@ Appends a string to a buffer instance.
 ---
 ### `buffer.tostring`, `__tostring`
 
-Converts the buffer into a string.
+Returns the value of the buffer as a string.
 
 #### Parameters
 
 1. The buffer instance.
-
-#### Returns
-
-A string.
 
 ```pluto
 local buffer = require "pluto:buffer"

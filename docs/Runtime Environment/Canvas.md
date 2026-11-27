@@ -44,13 +44,11 @@ print(c:tobwstring(0xffffff))
 
 ---
 ### `canvas.get`
-Gets the color of the pixel at the given coordinates.
+Returns the color of the pixel at the given coordinates as an integer.
 #### Parameters
 1. The canvas instance.
 2. The X coordinate.
 3. The Y coordinate.
-#### Returns
-The color as an integer.
 
 ---
 ### `canvas.set`
@@ -86,19 +84,15 @@ Multiplies the size of a canvas.
 
 ---
 ### `canvas.tobmp`
-Convert a canvas to a BMP image.
+Returns the canvas image as a BMP-encoded string.
 #### Parameters
 1. The canvas instance.
-#### Returns
-A string.
 
 ---
 ### `canvas.topng`
-Convert a canvas to a PNG image.
+Returns the canvas image as a PNG-encoded string.
 #### Parameters
 1. The canvas instance.
-#### Returns
-A string.
 ```pluto
 local { base64, canvas } = require "*"
 local c = new canvas(5, 5)
@@ -109,9 +103,7 @@ print("data:image/png;base64,"..base64.encode(c:topng()))
 
 ---
 ### `canvas.tobwstring`
-Convert a canvas to a black and white unicode string. This requires the height of the canvas to be an even number; if it is not, a black line will be added to the bottom of the canvas.
+Returns the canvas image as a black and white unicode string. This requires the height of the canvas to be an even number; if it is not, a black line will be added to the bottom of the canvas.
 #### Parameters
 1. The canvas instance.
 2. The color to be "white." Any other color will be "black."
-#### Returns
-A string.
