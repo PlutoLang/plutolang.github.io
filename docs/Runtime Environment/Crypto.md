@@ -615,12 +615,14 @@ Decompresses a compressed string.
 - `(data, algorithm, offset, max_decompressed_size)`
 #### Parameters
 - `data` — The string to decompress.
-- `max_decompressed_size` — The number of bytes that the compression result is expected to take up. Defaults to -1, which multiplies the compressed size for an educated guess.
-- `algorithm` — The algorithm that was used to compress the string. Can be `"deflate"` or `"lzf"`. Defaults to `"deflate"`.
-- `offset` — The starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`.
+- `algorithm` — The algorithm to use. Can be `"deflate"`, `"gzip"` or `"lzf"`. Defaults to `"deflate"`, which accepts the gzip and zlib wrappers as well.
+- `max_decompressed_size` — The number of bytes that the compression result is expected to take up. Defaults to -1, which multiplies the compressed size for an educated guess. `"gzip"` uses the embedded decompressed size information, instead.
+- `offset` — The starting position inside `data`, using `string.sub` semantics. Defaults to `1`. Ignored for `"gzip"`.
 #### Returns
 1. The decompressed string.
-2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch` (not present with algorithm="lzf")
+2. Additional information depending on the algorithm:
+    - For `"deflate"`, a table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch`
+    - For `"gzip"`, a boolean indicating if the checksum matches.
 ```pluto
 local deflated = "\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04"
 
@@ -640,7 +642,7 @@ print(info.compressed_size) --> 14
 Compresses a string.
 #### Parameters
 1. `data` — The string to compress.
-2. `algo` — The algorithm to use. Must be "lzf".
+2. `algo` — The algorithm to use. Must be `"lzf"`.
 #### Returns
 The compressed string.
 ```pluto
