@@ -111,8 +111,8 @@ Hash a string using the Adler-32 non-cryptographic hashing algorithm.
 2. The initial value for the hash. By default, this is zero.
 ```pluto
 local crypto = require("crypto")
-local str = "hello"
-print(crypto.adler32(str)) --> 103547413
+local str = "hello world"
+print(crypto.adler32(str)) --> 436929629
 ```
 ---
 ### `crypto.lookup3`
