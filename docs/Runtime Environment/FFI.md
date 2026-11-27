@@ -129,16 +129,16 @@ A new userdata.
 ### `ffi.write`
 Copies data from a string to a userdata.
 #### Parameters
-1. The string.
-2. The userdata.
+1. The userdata or lightuserdata.
+2. If a lightuserdata was given, the size of it.
+3. The string to write. Gets truncated if it exceeds the size.
 
 ---
 ### `ffi.read`
-Turns a userdata into a string.
+Returns a binary string with the contents of a userdata.
 #### Parameters
-1. The userdata.
-#### Returns
-A string.
+1. The userdata or lightuserdata.
+2. If a lightuserdata was given, the size of it.
 
 ---
 ### `ffi.callback`
