@@ -295,11 +295,18 @@ Returns a substring from a starting position and length. This differs from [stri
 1. The string.
 2. The starting position.
 3. The length.
-#### Returns
-The substring.
 ```pluto
 print("abcd":sub(2, 2)) --> b
 print("abcd":span(2, 2)) --> bc
+```
+---
+### `string.levenshtein`
+Returns the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between two strings.
+#### Parameters
+1. The first string.
+2. The second string.
+```pluto
+print(string.levenshtein("abc", "abba")) --> 2
 ```
 
 ## Changed
