@@ -641,12 +641,14 @@ print(info.compressed_size) --> 14
 ### `crypto.compress`
 Compresses a string.
 #### Parameters
-1. `data` — The string to compress.
-2. `algo` — The algorithm to use. Must be `"lzf"`.
+1. The string to compress.
+2. The algorithm to use. Can be `"deflate"`, `"zlib"`, `"gzip"`, or `"lzf"`.
+3. The compression level to use (0-9). Defaults to 6. Not applicable to `"lzf"`.
 #### Returns
 The compressed string.
 ```pluto
 local str = "冥王星は星だ。「星」ここだ。"
-local compressed = require"crypto".compress(str, "lzf")
-print($"Compressed {#str} -> {#compressed} bytes.")
+local deflated = require"crypto".compress(str, "deflate")
+local lzfd = require"crypto".compress(str, "lzf")
+print($"Input is {#str} bytes; {#deflated} with DEFLATE, and {#lzfd} with LZF.")
 ```
