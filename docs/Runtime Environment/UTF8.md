@@ -1,5 +1,26 @@
 This page documents the `utf8` library in Pluto, which is built on top of Lua 5.5's.
 
+## Added
+### `utf8.from16`
+Converts a UTF-16 binary string to a UTF-8 string.
+#### Parameters
+1. The UTF-16 string.
+#### Returns
+The new string.
+```pluto
+print(utf8.from16("480065006c006c006f002c002000164e4c75210020003dd8afdc":fromhex())) --> Hello, 世界! 💯
+```
+---
+### `utf8.to16`
+Converts a UTF-8 string to a UTF-16 binary string.
+#### Parameters
+1. The UTF-16 string.
+#### Returns
+The new string.
+```pluto
+print(utf8.to16("Hello, 世界! 💯"):tohex()) --> 480065006c006c006f002c002000164e4c75210020003dd8afdc
+```
+
 ## Unchanged
 ### `utf8.char`
 Constructs a concatenation of UTF-8 byte sequences for the given codepoints.
