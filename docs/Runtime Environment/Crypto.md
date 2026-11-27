@@ -120,10 +120,14 @@ Hash a string using the Lookup3 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 2. The initial value for the hash. By default, this is zero.
+3. An optional bool that, if true, treats the initial value as a 64-bit integer and makes the return a 64-bit integer.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-print(crypto.lookup3(str)) --> 1252609637
+print("%x":format(crypto.lookup3(str))) --> 4aa94e65
+print("%x":format(crypto.lookup3(str, 0x100000000, false))) --> 4aa94e65
+print("%x":format(crypto.lookup3(str, 0, true))) --> bc3e110a4aa94e65
+print("%x":format(crypto.lookup3(str, 0x100000000, true))) --> 317424d0cac53b50
 ```
 ---
 ### `crypto.times33`
