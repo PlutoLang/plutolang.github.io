@@ -7,7 +7,7 @@ This page documents every macro Pluto adds to `luaconf.h`. You can define these 
 
 ## General
 ### Colored Output
-If `PLUTO_USE_COLORED_OUTPUT` is defined, Pluto spruces its warning and error messages with ANSI color codes.
+If `PLUTO_USE_COLORED_OUTPUT` is defined, Pluto spruces its warning and error messages with ANSI color codes. Under the hood, this simply changes the default value of `global_State::colored_output`.
 ### Short Errors
 You can define `PLUTO_SHORT_ERRORS` to disable code snippets being included in warning and error messages, shortening them.
 ### UTF-8 Variable Names
