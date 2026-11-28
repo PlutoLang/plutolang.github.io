@@ -62,6 +62,36 @@ end
 ```
 
 ---
+### `socket.ipint`
+Converts an IP address string to integers.
+#### Parameters
+1. The IP address string.
+#### Returns
+1. The least significant IPv6 dword.
+2. The 2nd least significant IPv6 dword.
+3. The 3rd least significant IPv6 dword.
+4. The most significant IPv6 dword.
+```pluto
+local socket = require "pluto:socket"
+print("%x":format(socket.ipint("1.2.3.4"))) --> 1020304
+print("%x,%x,%x,%x":format(socket.ipint("::cafe:babe:dead:beef"))) --> deadbeef,cafebabe,0,0
+```
+### `socket.ipstring`
+Converts IP address integers to a string.
+#### Parameters
+1. The least significant IPv6 dword.
+2. The 2nd least significant IPv6 dword. Defaults to 0xFFFF.
+3. The 3rd least significant IPv6 dword. Defaults to 0.
+4. The most significant IPv6 dword. Defaults to 0.
+#### Returns
+The IP address string.
+```pluto
+local socket = require "pluto:socket"
+print(socket.ipstring(0x01_02_03_04)) --> 1.2.3.4
+print(socket.ipstring(0xdeadbeef, 0xcafebabe)) --> ::cafe:babe:dead:beef
+```
+
+---
 ## Socket Class
 Socket instances are obtained by calling [socket.connect](#socketconnect) (client), or from a [listener](#listener-class) (server).
 ### `socket.send`
