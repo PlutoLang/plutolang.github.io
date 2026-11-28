@@ -63,3 +63,25 @@ sched:run()
 Closes all keep-alive connections like when closing the Lua state but in a non-blocking way. This function does nothing in WASM builds of Pluto.
 #### Multitasking
 This function must be called inside of a coroutine, as it will yield.
+
+---
+### `http.eventstream`
+Executes an event-stream request. This function is not available in WASM builds of Pluto.
+#### Parameters
+1. The URL to send a request to as a string. This parameter is optional in the sense that the options table (parameter 2) can be parameter 1 instead, but must have the "url" option then.
+2. The table of options. This parameter is optional if a URL was given.
+3. The callback function that will be invoked for each event.
+#### Options
+- **method:** The HTTP request method to use. Defaults to GET.
+- **headers:** A table of headers, e.g. `{ ["Content-Type"] = "application/json" }`.
+- **body:** An optional request payload. If provided, the `Content-Length` header is set appropriately, and the method is set to POST unless otherwise specified.
+```pluto norun
+require"http".eventstream("https://postman-echo.com/server-events/1", |data| -> print(dumpvar(data)))
+```
+```pluto norun title="Possible output"
+{
+    ["event"] = string(4) "info",
+    ["data"] = string(32) "Keep listening to server updates",
+    ["id"] = string(1) "1",
+}
+```
