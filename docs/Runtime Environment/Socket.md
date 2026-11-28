@@ -117,11 +117,15 @@ Sends data on a socket.
 Receive data from a socket.
 #### Parameters
 1. The socket instance.
+2. An optional timeout in milliseconds.
 #### Returns
-- If the socket is open: The oldest chunk of data received on the transport layer (TCP packet) or crypto layer (TLS record) as a string.
+- If the socket is open: The oldest chunk of data received as a string.
 - If the socket is closed: Nil.
 #### Multitasking
 If a message is buffered, the function can return immediately. If not, it will yield if inside a coroutine, and block otherwise.
+:::warning
+If this function is used on a UDP socket without a timeout, it is very easily possible that the call will block or yield forever.
+:::
 ```pluto norun
 local socket = require "pluto:socket"
 
