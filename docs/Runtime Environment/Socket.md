@@ -16,19 +16,25 @@ If called inside of a coroutine, this function yields. Otherwise, it blocks.
 ### `socket.listen`
 Creates a new listener for the given port. This function is not available in WASM builds of Pluto.
 #### Parameters
-1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
+1. An int with the port to listen on, `0` for a random free port, or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
-A [listener](#listener-class) instance on success. Nil on failure.
+On success:
+1. A [listener](#listener-class) instance.
+2. The port that was bound.
+
+On failure:
+1. Nil.
 
 ---
 ### `socket.bind`
 A convenience function that wraps [socket.listen](#socketlisten), automatically accepting new clients and spinning up a coroutine for them. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. A [scheduler](Scheduler) instance.
-2. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
+2. An int with the port to listen on, `0` for a random free port, or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 3. The callback function that will be called in a new coroutine for each client socket.
 #### Returns
-The coroutine that was created and added to the scheduler.
+1. The coroutine that was created and added to the scheduler.
+2. The port that was bound.
 #### Errors
 Raises an error to the caller if the port could not be bound.
 
