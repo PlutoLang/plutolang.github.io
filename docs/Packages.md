@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 7
 ---
 
 This document will explain how external libraries are handled in Pluto and give some recommendations for their usage.

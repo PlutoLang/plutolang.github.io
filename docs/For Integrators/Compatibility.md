@@ -19,7 +19,7 @@ end
 
 local class = "supercar" -- Error: expected a class name, found '='
 ```
-The only exception to this is short-hand table syntax and goto labels because Pluto [allows reserved keywords to be used in those contexts](QoL%20Improvements/Reserved%20Identifiers).
+The only exception to this is short-hand table syntax and goto labels because Pluto [allows reserved keywords to be used in those contexts](../QoL%20Improvements/Reserved%20Identifiers).
 
 ### Compatibility Mode
 
