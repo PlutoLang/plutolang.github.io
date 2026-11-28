@@ -22,7 +22,7 @@ A [listener](#listener-class) instance on success. Nil on failure.
 
 ---
 ### `socket.bind`
-A convenience function that wraps `socket.listen`, automatically accepting new clients and spinning up a coroutine for them. This function is not available in WASM builds of Pluto.
+A convenience function that wraps [socket.listen](#socketlisten), automatically accepting new clients and spinning up a coroutine for them. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. A [scheduler](Scheduler) instance.
 2. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
@@ -63,7 +63,7 @@ end
 
 ---
 ## Socket Class
-Socket instances are obtained by calling `socket.connect` (client), or from a listener (server).
+Socket instances are obtained by calling [socket.connect](#socketconnect) (client), or from a [listener](#listener-class) (server).
 ### `socket.send`
 Sends data on a socket.
 #### Parameters
@@ -92,10 +92,10 @@ Look at received data without consuming it.
 #### Parameters
 1. The socket instances.
 #### Returns
-Either the string that would be returned next by `socket.recv` or nothing if there is no message in the receive buffer.
+Either the string that would be returned next by [socket.recv](#socketrecv) or nothing if there is no message in the receive buffer.
 
 ### `socket.unrecv`
-Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of `socket.recv`.
+Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of [socket.recv](#socketrecv).
 #### Parameters
 1. The socket instance.
 2. The data to push.
@@ -113,7 +113,7 @@ print(sock:recv()) --> World
 Attempts to add the TLS crypto layer to the socket, making the transport layer a sole carrier for TLS traffic.
 #### Parameters (Client)
 1. The socket instance.
-2. The host name of the intended remote. This may be the same as what was passed to `socket.connect`. This name must be on the certificate that the remote will send.
+2. The host name of the intended remote. This may be the same as what was passed to [socket.connect](#socketconnect). This name must be on the certificate that the remote will send.
 3. An optional table of options.
 #### Parameters (Server)
 1. The socket instance.
@@ -197,7 +197,7 @@ Get which side of the connection a socket is.
 #### Parameters
 1. The socket instance.
 #### Returns
-Either "client" or "server".
+Either `"client"` or `"server"`.
 ```pluto norun
 local sock = require"socket".connect("1.1.1.1", 443)
 print(sock:getside()) --> client
@@ -238,7 +238,7 @@ print(sock:isopen()) --> false
 
 ---
 ## Listener Class
-Listener instances are obtained by calling `socket.listen`.
+Listener instances are obtained by calling [socket.listen](#socketlisten).
 ### `accept`
 Accepts an incoming client connection, waiting until there is one.
 #### Returns
@@ -247,7 +247,7 @@ A new socket instance. The socket can be used as per usual, with the exception o
 - If there is an incoming client connection, this function returns immediately.
 - If there is not, it waits for one. Waiting means yielding if called inside a coroutine, and blocking otherwise.
 ### `hasconnection`
-Checks if there is an incoming client connection. If this function returns true, the next call to `accept` is guaranteed not to block or yield.
+Checks if there is an incoming client connection. If this function returns true, the next call to [accept](#accept) is guaranteed not to block or yield.
 ```pluto norun
 local socket = require "pluto:socket"
 
