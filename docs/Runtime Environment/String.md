@@ -295,11 +295,18 @@ Returns a substring from a starting position and length. This differs from [stri
 1. The string.
 2. The starting position.
 3. The length.
-#### Returns
-The substring.
 ```pluto
 print("abcd":sub(2, 2)) --> b
 print("abcd":span(2, 2)) --> bc
+```
+---
+### `string.levenshtein`
+Returns the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between two strings.
+#### Parameters
+1. The first string.
+2. The second string.
+```pluto
+print(string.levenshtein("abc", "abba")) --> 2
 ```
 
 ## Changed
@@ -309,7 +316,9 @@ Formats a string according to a format string and a list of values, similar to C
 Supported conversions include:
 - `%c` — a character with the given numeric code
 - `%d`, `%i` — a signed integer
-- `%o`, `%x`, `%X` — an unsigned octal or hexadecimal integer
+- `%b` — an unsigned binary (base 2) integer **(Added by Pluto)**
+- `%o` — an unsigned octal (base 8) integer
+- `%x`, `%X` — an unsigned hexadecimal (base 16) integer
 - `%a`, `%A`, `%e`, `%E`, `%f`, `%g`, `%G` — floating-point numbers
 - `%p` — a pointer
 - `%q` — a string or number in a form that can be read back by Lua
@@ -321,6 +330,7 @@ Options such as flags (`-`, `+`, space, `#`, `0`) and width/precision may be use
 
 ```pluto
 print(string.format("%d + %f = %.02f", 1, 0.2, 1.2)) --> 1 + 0.200000 = 1.20
+print(string.format("%b %o %d %x", 69, 69, 69, 69)) --> 1000101 105 69 45
 print(string.format("%q", "\xff")) --> "�"
 print(string.format("%Q", "\xff")) --> "\255"
 ```

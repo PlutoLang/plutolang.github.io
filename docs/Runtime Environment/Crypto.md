@@ -120,10 +120,14 @@ Hash a string using the Lookup3 non-cryptographic hashing algorithm.
 #### Parameters
 1. The string to hash.
 2. The initial value for the hash. By default, this is zero.
+3. An optional bool that, if true, treats the initial value as a 64-bit integer and makes the return a 64-bit integer.
 ```pluto
 local crypto = require("crypto")
 local str = "hello world"
-print(crypto.lookup3(str)) --> 1252609637
+print("%x":format(crypto.lookup3(str))) --> 4aa94e65
+print("%x":format(crypto.lookup3(str, 0x100000000, false))) --> 4aa94e65
+print("%x":format(crypto.lookup3(str, 0, true))) --> bc3e110a4aa94e65
+print("%x":format(crypto.lookup3(str, 0x100000000, true))) --> 317424d0cac53b50
 ```
 ---
 ### `crypto.times33`
@@ -611,12 +615,14 @@ Decompresses a compressed string.
 - `(data, algorithm, offset, max_decompressed_size)`
 #### Parameters
 - `data` — The string to decompress.
-- `max_decompressed_size` — The number of bytes that the compression result is expected to take up. Defaults to -1, which multiplies the compressed size for an educated guess.
-- `algorithm` — The algorithm that was used to compress the string. Can be `"deflate"` or `"lzf"`. Defaults to `"deflate"`.
-- `offset` — The starting position inside `data`, using `string.sub` semantics. Defaults to the beginning of `data`.
+- `algorithm` — The algorithm to use. Can be `"deflate"`, `"gzip"` or `"lzf"`. Defaults to `"deflate"`, which accepts the gzip and zlib wrappers as well.
+- `max_decompressed_size` — The number of bytes that the compression result is expected to take up. Defaults to -1, which multiplies the compressed size for an educated guess. `"gzip"` uses the embedded decompressed size information, instead.
+- `offset` — The starting position inside `data`, using `string.sub` semantics. Defaults to `1`. Ignored for `"gzip"`.
 #### Returns
 1. The decompressed string.
-2. A table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch` (not present with algorithm="lzf")
+2. Additional information depending on the algorithm:
+    - For `"deflate"`, a table with extra information: `compressed_size`, `checksum_present`, `checksum_mismatch`
+    - For `"gzip"`, a boolean indicating if the checksum matches.
 ```pluto
 local deflated = "\xF3\x48\xCD\xC9\xC9\xD7\x51\x08\xC8\x29\x2D\xC9\x57\x04"
 
@@ -635,12 +641,14 @@ print(info.compressed_size) --> 14
 ### `crypto.compress`
 Compresses a string.
 #### Parameters
-1. `data` — The string to compress.
-2. `algo` — The algorithm to use. Must be "lzf".
+1. The string to compress.
+2. The algorithm to use. Can be `"deflate"`, `"zlib"`, `"gzip"`, or `"lzf"`.
+3. The compression level to use (0-9). Defaults to 6. Not applicable to `"lzf"`.
 #### Returns
 The compressed string.
 ```pluto
 local str = "冥王星は星だ。「星」ここだ。"
-local compressed = require"crypto".compress(str, "lzf")
-print($"Compressed {#str} -> {#compressed} bytes.")
+local deflated = require"crypto".compress(str, "deflate")
+local lzfd = require"crypto".compress(str, "lzf")
+print($"Input is {#str} bytes; {#deflated} with DEFLATE, and {#lzfd} with LZF.")
 ```

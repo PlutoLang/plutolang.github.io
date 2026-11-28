@@ -2,12 +2,12 @@
 sidebar_position: 12
 ---
 
-# For Integrators
+# luaconf.h
 This page documents every macro Pluto adds to `luaconf.h`. You can define these macros as part of your build process or by modifying `luaconf.h` directly.
 
 ## General
 ### Colored Output
-If `PLUTO_USE_COLORED_OUTPUT` is defined, Pluto spruces its warning and error messages with ANSI color codes.
+If `PLUTO_USE_COLORED_OUTPUT` is defined, Pluto spruces its warning and error messages with ANSI color codes. Under the hood, this simply changes the default value of `global_State::colored_output`.
 ### Short Errors
 You can define `PLUTO_SHORT_ERRORS` to disable code snippets being included in warning and error messages, shortening them.
 ### UTF-8 Variable Names
@@ -17,18 +17,18 @@ local ひゃく = 100
 ```
 This can be disabled by defining `PLUTO_NO_UTF8`.
 ### Jump Table
-[This optional optimization](<Optimizations/Jump Table>) can be enabled by defining `PLUTO_FORCE_JUMPTABLE`.
+[This optional optimization](<../Optimizations/Jump Table>) can be enabled by defining `PLUTO_FORCE_JUMPTABLE`.
 ### Default Table Metatable
-[This feature](<Runtime Environment/Table#default-metatables>) can be disabled by defining `PLUTO_NO_DEFAULT_TABLE_METATABLE`.
+[This feature](<../Runtime Environment/Table#default-metatables>) can be disabled by defining `PLUTO_NO_DEFAULT_TABLE_METATABLE`.
 ### Table Freezing
-[This optional feature](<New Features/Table Freezing>) can be enabled by defining `PLUTO_ENABLE_TABLE_FREEZING`.
+[This optional feature](<../New Features/Table Freezing>) can be enabled by defining `PLUTO_ENABLE_TABLE_FREEZING`.
 ### Parser Cache
 Defining `PLUTO_PARSER_CACHE` enables a parser cache that aims to improve performance in projects with lots of plain text source files that rarely change.
 
 ## Warnings
-[Pluto's compiler warnings](<New Features/Compiler Warnings>) can all be enabled or disabled by default using their respective macros, e.g. `PLUTO_WARN_GLOBAL_SHADOW` or `PLUTO_NO_WARN_TYPE_MISMATCH`.
+[Pluto's compiler warnings](<../New Features/Compiler Warnings>) can all be enabled or disabled by default using their respective macros, e.g. `PLUTO_WARN_GLOBAL_SHADOW` or `PLUTO_NO_WARN_TYPE_MISMATCH`.
 ### global-shadow
-For [the global-shadow warning](<New Features/Compiler Warnings#global-shadow>), `PLUTO_COMMON_GLOBAL_NAMES` defines which names are covered, with the default being:
+For [the global-shadow warning](<../New Features/Compiler Warnings#global-shadow>), `PLUTO_COMMON_GLOBAL_NAMES` defines which names are covered, with the default being:
 ```cpp
 #define PLUTO_COMMON_GLOBAL_NAMES "table","string","arg"
 ```
@@ -124,18 +124,20 @@ This requires you to use Pluto as a static library, as otherwise this linking re
 ### Binary Module Filters
 Similar to the loadfile hook, `PLUTO_LOADCLIB_HOOK` can be defined to moderate C modules.
 ### Disable Filesystem Access
-You can define `PLUTO_NO_FILESYSTEM` to disable the io library, os.remove, os.rename, as well as [the $include directive](<New Features/Preprocessing#include>).
+You can define `PLUTO_NO_FILESYSTEM` to disable the io library, os.remove, os.rename, as well as [the $include directive](<../New Features/Preprocessing#include>).
 ### Disable Command Access
-Define `PLUTO_NO_OS_EXECUTE` to disable os.execute and io.popen.
+Define `PLUTO_NO_OS_EXECUTE` to disable os.execute, io.popen, and [Pluto's os.system](<../Runtime Environment/OS#ossystem>).
 ### Prevent Loading of Binary Modules
 The `PLUTO_NO_BINARIES` macro can be defined to totally eliminate `package.loadlib` and any DLL/SO loading capability from the `require` function. This is helpful because `package.loadlib` can be used to bypass sandbox restrictions by manually loading symbols from a Lua/Pluto library, and the `require` function can load any Lua/Pluto C Module which may or may not provide dangerous functions. This is generally vital for any sandbox. This mechanism cannot be bypassed, since it configures Pluto to compile without support for any of the aforementioned features.
+### Disable Unsafe Debug Functions
+Define `PLUTO_SAFE_DEBUG_LIB` to reduce [the debug library](<../Runtime Environment/Debug>) to [debug.getinfo](<../Runtime Environment/Debug#debuggetinfo>) and [debug.traceback](<../Runtime Environment/Debug#debugtraceback>), allowing scripts to get useful debug information without risking the safety of your environment.
 ### Disable HTTP Requests
-You can define `PLUTO_DISABLE_HTTP_COMPLETELY` to make all [HTTP requests](<Runtime Environment/HTTP#httprequest>) fail. Note that you may also wish to disable [the socket library](<Runtime Environment/Socket>) as it could be used to the same effect with more effort:
+You can define `PLUTO_DISABLE_HTTP_COMPLETELY` to make all [HTTP requests](<../Runtime Environment/HTTP#httprequest>) fail. Note that you may also wish to disable [the socket library](<../Runtime Environment/Socket>) as it could be used to the same effect with more effort:
 ```cpp
 luaL_openselectedlibs(L, PLUTO_DEFAULTLOADLIBS, ~PLUTO_SOCKETLIBK);
 ```
 ### HTTP Request Hook
-Set `PLUTO_HTTP_REQUEST_HOOK` to a function to be called for any [HTTP request](<Runtime Environment/HTTP#httprequest>) with the following signature:
+Set `PLUTO_HTTP_REQUEST_HOOK` to a function to be called for any [HTTP request](<../Runtime Environment/HTTP#httprequest>) with the following signature:
 ```cpp
 extern bool ContmodOnHttpRequest(lua_State* L, const char* url);
 ```

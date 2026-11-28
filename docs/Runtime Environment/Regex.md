@@ -70,6 +70,27 @@ print(pattern:search("Hello World", 8)) -- nil
 ```
 
 ---
+### `regex.split`
+Splits a string at matches of the regex.
+#### Parameters
+1. The pattern instance.
+2. The string to split.
+#### Returns
+A sequential table with each string segment.
+```pluto
+local regex = require "pluto:regex"
+
+local r = new regex [[/(?<=[0-9]);+/]]
+print(dumpvar(r:split("a;1;;;b;2;;c;3;d;4")))
+--> {
+-->     [1] = string(3) "a;1",
+-->     [2] = string(3) "b;2",
+-->     [3] = string(3) "c;3",
+-->     [4] = string(3) "d;4",
+--> }
+```
+
+---
 ### `regex.replace`
 Replaces the first or all matches in a string, depending on the 'g' flag.
 #### Parameters

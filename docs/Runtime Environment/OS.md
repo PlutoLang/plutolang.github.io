@@ -25,7 +25,7 @@ Returns seconds since UNIX epoch.
 
 ---
 ### `os.dnsresolve`
-Asks the operating system to perform a DNS lookup.
+Asks the operating system to perform a DNS lookup. Only available on Windows, Linux, and MacOS.
 #### Parameters
 1. The DNS record type, e.g. `"A"` for IPv4 or `"AAAA"` for IPv6.
 2. The domain name to query.
@@ -35,7 +35,6 @@ An array of tables describing each record. Each table contains a `type` and `dat
 ```pluto norun
 print(dumpvar(os.dnsresolve("A", "one.one.one.one"))) -- { { type = "A", data = "1.1.1.1" }, { type = "A", data = "1.0.0.1" } }
 ```
-Only available on Windows, Linux, and MacOS.
 
 ---
 ### `os.rename`, `os.remove`
@@ -44,3 +43,15 @@ Although we'd rather these functions be in the IO library, these Lua variants ar
 ---
 ### `os.execute`, `os.getenv`
 These functions have also been patched to use UTF-8 on Windows.
+
+---
+### `os.unlink`
+An alias for `os.remove`.
+
+---
+### `os.system`
+Similar to `os.execute` but returns the output of the program as a string instead of forwarding it.
+```pluto norun
+os.execute("echo Hello") --> Hello
+print(dumpvar(os.system("echo Hello"):strip())) --> string(5) "Hello"
+```

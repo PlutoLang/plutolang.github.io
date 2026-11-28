@@ -95,9 +95,14 @@ print(c.r) --> 255
 ### `ffi.sizeof`
 Measures the size of an FFI Struct Type.
 #### Parameters
-1. An FFI Struct Type instance, the name of a struct stored on the FFI library itself, or an instance of the struct.
+1. The name of a primitive type or an FFI struct name, type, or instance.
 #### Returns
 The size in bytes.
+```pluto
+local ffi = require "pluto:ffi"
+
+print(ffi.sizeof("int")) --> 4
+```
 
 ---
 ### `ffi.offsetof`
@@ -124,22 +129,22 @@ A new userdata.
 ### `ffi.write`
 Copies data from a string to a userdata.
 #### Parameters
-1. The string.
-2. The userdata.
+1. The userdata or lightuserdata.
+2. If a lightuserdata was given, the size of it.
+3. The string to write. Gets truncated if it exceeds the size.
 
 ---
 ### `ffi.read`
-Turns a userdata into a string.
+Returns a binary string with the contents of a userdata.
 #### Parameters
-1. The userdata.
-#### Returns
-A string.
+1. The userdata or lightuserdata.
+2. If a lightuserdata was given, the size of it.
 
 ---
 ### `ffi.callback`
 Creates a function pointer callable from native code. This function is only available on x86, x86_64, and aarch64.
 #### Parameters
-1. The return type. Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
+1. The return type. Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "bool", "ptr" or "str".
 2. The argument type(s).
 3. The Pluto function to execute.
 #### Returns
@@ -165,16 +170,36 @@ Obtained from `ffi.open`.
 ### `wrap`
 Creates a function wrapper.
 #### Parameters
-1. The return type. Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
+1. The return type. Can be "void", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "bool", "ptr" or "str".
 2. The name of the function.
-3. The argument type(s). Can be "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
+3. The argument type(s). Can be "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "bool", "ptr", "str", or "..." on the last argument for variadic functions.
 #### Returns
 A new function wrapper instance, which can be called.
+
+For a variadic wrapper, the call format is `(fixed args, vararg types, vararg values)`; for example:
+```cpp
+double fsum(unsigned int count, ...)
+{
+    double result = 0;
+    va_list args;
+    va_start(args, count);
+    for (unsigned int i = 0; i != count; ++i)
+    {
+        result += va_arg(args, double);
+    }
+    va_end(args);
+    return result;
+}
+```
+```pluto norun
+local fsum = lib:wrap("f64", "fsum", "u32", "...")
+print(fsum(2, "f64", "f64", 0.1, 0.2)) --> 0.3
+```
 
 ### `value`
 Gets an exported value and interprets it using the given type.
 #### Parameters
-1. The type. Can be "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "ptr" or "str".
+1. The type. Can be "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64", "f32", "f64", "bool", "ptr" or "str".
 2. The name of the export.
 #### Returns
 The interpreted value.

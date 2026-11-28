@@ -1,8 +1,8 @@
-Must be included via `require`. This library is not available in WASM builds of Pluto.
+Must be included via `require`.
 
 ---
 ### `socket.connect`
-Creates a new connection to the given endpoint.
+Creates a new connection to the given endpoint. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. The host to connect to. Either an IPv4 or IPv6 address, or a domain name resolving to one.
 2. The port to contact the host on.
@@ -14,21 +14,27 @@ If called inside of a coroutine, this function yields. Otherwise, it blocks.
 
 ---
 ### `socket.listen`
-Creates a new listener for the given port.
+Creates a new listener for the given port. This function is not available in WASM builds of Pluto.
 #### Parameters
-1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
+1. An int with the port to listen on, `0` for a random free port, or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
-A [listener](#listener-class) instance on success. Nil on failure.
+On success:
+1. A [listener](#listener-class) instance.
+2. The port that was bound.
+
+On failure:
+1. Nil.
 
 ---
 ### `socket.bind`
-A convenience function that wraps `socket.listen`, automatically accepting new clients and spinning up a coroutine for them.
+A convenience function that wraps [socket.listen](#socketlisten), automatically accepting new clients and spinning up a coroutine for them. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. A [scheduler](Scheduler) instance.
-2. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
+2. An int with the port to listen on, `0` for a random free port, or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 3. The callback function that will be called in a new coroutine for each client socket.
 #### Returns
-The coroutine that was created and added to the scheduler.
+1. The coroutine that was created and added to the scheduler.
+2. The port that was bound.
 #### Errors
 Raises an error to the caller if the port could not be bound.
 
@@ -45,7 +51,7 @@ sched:run()
 
 ---
 ### `socket.udpserver`
-Creates a pseudo-socket to listen for UDP datagrams on the given port.
+Creates a pseudo-socket to listen for UDP datagrams on the given port. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
@@ -62,8 +68,51 @@ end
 ```
 
 ---
+### `socket.interfaces`
+Lists available network adapters. Only available on Windows, Linux, and MacOS.
+#### Returns
+A sequential table of tables with the following fields:
+- `name` — display name of the adapter
+- `ip_addr` — LAN IPv4 address as a string
+- `netmask` — LAN IPv4 netmask as a string
+- `mac_addr` — MAC address as a string using `-` to separate digits
+```pluto norun
+print(dumpvar(require"socket".interfaces()))
+```
+
+---
+### `socket.ipint`
+Converts an IP address string to integers.
+#### Parameters
+1. The IP address string.
+#### Returns
+1. The least significant IPv6 dword.
+2. The 2nd least significant IPv6 dword.
+3. The 3rd least significant IPv6 dword.
+4. The most significant IPv6 dword.
+```pluto
+local socket = require "pluto:socket"
+print("%x":format(socket.ipint("1.2.3.4"))) --> 1020304
+print("%x,%x,%x,%x":format(socket.ipint("::cafe:babe:dead:beef"))) --> deadbeef,cafebabe,0,0
+```
+### `socket.ipstring`
+Converts IP address integers to a string.
+#### Parameters
+1. The least significant IPv6 dword.
+2. The 2nd least significant IPv6 dword. Defaults to 0xFFFF.
+3. The 3rd least significant IPv6 dword. Defaults to 0.
+4. The most significant IPv6 dword. Defaults to 0.
+#### Returns
+The IP address string.
+```pluto
+local socket = require "pluto:socket"
+print(socket.ipstring(0x01_02_03_04)) --> 1.2.3.4
+print(socket.ipstring(0xdeadbeef, 0xcafebabe)) --> ::cafe:babe:dead:beef
+```
+
+---
 ## Socket Class
-Socket instances are obtained by calling `socket.connect` (client), or from a listener (server).
+Socket instances are obtained by calling [socket.connect](#socketconnect) (client), or from a [listener](#listener-class) (server).
 ### `socket.send`
 Sends data on a socket.
 #### Parameters
@@ -74,11 +123,15 @@ Sends data on a socket.
 Receive data from a socket.
 #### Parameters
 1. The socket instance.
+2. An optional timeout in milliseconds.
 #### Returns
-- If the socket is open: The oldest chunk of data received on the transport layer (TCP packet) or crypto layer (TLS record) as a string.
+- If the socket is open: The oldest chunk of data received as a string.
 - If the socket is closed: Nil.
 #### Multitasking
 If a message is buffered, the function can return immediately. If not, it will yield if inside a coroutine, and block otherwise.
+:::warning
+If this function is used on a UDP socket without a timeout, it is very easily possible that the call will block or yield forever.
+:::
 ```pluto norun
 local socket = require "pluto:socket"
 
@@ -92,10 +145,10 @@ Look at received data without consuming it.
 #### Parameters
 1. The socket instances.
 #### Returns
-Either the string that would be returned next by `socket.recv` or nothing if there is no message in the receive buffer.
+Either the string that would be returned next by [socket.recv](#socketrecv) or nothing if there is no message in the receive buffer.
 
 ### `socket.unrecv`
-Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of `socket.recv`.
+Pushes a chunk of data to the front of the receive buffer, making it oldest for the purposes of [socket.recv](#socketrecv).
 #### Parameters
 1. The socket instance.
 2. The data to push.
@@ -113,7 +166,7 @@ print(sock:recv()) --> World
 Attempts to add the TLS crypto layer to the socket, making the transport layer a sole carrier for TLS traffic.
 #### Parameters (Client)
 1. The socket instance.
-2. The host name of the intended remote. This may be the same as what was passed to `socket.connect`. This name must be on the certificate that the remote will send.
+2. The host name of the intended remote. This may be the same as what was passed to [socket.connect](#socketconnect). This name must be on the certificate that the remote will send.
 3. An optional table of options.
 #### Parameters (Server)
 1. The socket instance.
@@ -197,7 +250,7 @@ Get which side of the connection a socket is.
 #### Parameters
 1. The socket instance.
 #### Returns
-Either "client" or "server".
+Either `"client"` or `"server"`.
 ```pluto norun
 local sock = require"socket".connect("1.1.1.1", 443)
 print(sock:getside()) --> client
@@ -238,7 +291,7 @@ print(sock:isopen()) --> false
 
 ---
 ## Listener Class
-Listener instances are obtained by calling `socket.listen`.
+Listener instances are obtained by calling [socket.listen](#socketlisten).
 ### `accept`
 Accepts an incoming client connection, waiting until there is one.
 #### Returns
@@ -247,7 +300,7 @@ A new socket instance. The socket can be used as per usual, with the exception o
 - If there is an incoming client connection, this function returns immediately.
 - If there is not, it waits for one. Waiting means yielding if called inside a coroutine, and blocking otherwise.
 ### `hasconnection`
-Checks if there is an incoming client connection. If this function returns true, the next call to `accept` is guaranteed not to block or yield.
+Checks if there is an incoming client connection. If this function returns true, the next call to [accept](#accept) is guaranteed not to block or yield.
 ```pluto norun
 local socket = require "pluto:socket"
 
