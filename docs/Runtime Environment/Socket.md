@@ -1,8 +1,8 @@
-Must be included via `require`. This library is not available in WASM builds of Pluto.
+Must be included via `require`.
 
 ---
 ### `socket.connect`
-Creates a new connection to the given endpoint.
+Creates a new connection to the given endpoint. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. The host to connect to. Either an IPv4 or IPv6 address, or a domain name resolving to one.
 2. The port to contact the host on.
@@ -14,7 +14,7 @@ If called inside of a coroutine, this function yields. Otherwise, it blocks.
 
 ---
 ### `socket.listen`
-Creates a new listener for the given port.
+Creates a new listener for the given port. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
@@ -22,7 +22,7 @@ A [listener](#listener-class) instance on success. Nil on failure.
 
 ---
 ### `socket.bind`
-A convenience function that wraps `socket.listen`, automatically accepting new clients and spinning up a coroutine for them.
+A convenience function that wraps `socket.listen`, automatically accepting new clients and spinning up a coroutine for them. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. A [scheduler](Scheduler) instance.
 2. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
@@ -45,7 +45,7 @@ sched:run()
 
 ---
 ### `socket.udpserver`
-Creates a pseudo-socket to listen for UDP datagrams on the given port.
+Creates a pseudo-socket to listen for UDP datagrams on the given port. This function is not available in WASM builds of Pluto.
 #### Parameters
 1. Either an int with the port to listen on or a string such as `1.2.3.4:567` for systems with multiple public-facing addresses.
 #### Returns
