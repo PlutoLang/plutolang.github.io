@@ -62,6 +62,19 @@ end
 ```
 
 ---
+### `socket.interfaces`
+Lists available network adapters. Only available on Windows, Linux, and MacOS.
+#### Returns
+A sequential table of tables with the following fields:
+- `name` — display name of the adapter
+- `ip_addr` — LAN IPv4 address as a string
+- `netmask` — LAN IPv4 netmask as a string
+- `mac_addr` — MAC address as a string using `-` to separate digits
+```pluto norun
+print(dumpvar(require"socket".interfaces()))
+```
+
+---
 ### `socket.ipint`
 Converts an IP address string to integers.
 #### Parameters
